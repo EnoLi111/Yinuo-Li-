@@ -3087,6 +3087,20 @@
       }
     }
 
+  
+    /* V14 — force the product asset to render without any rectangular backing */
+    .hanshu-product-zone,
+    .hanshu-product-object {
+      background: transparent !important;
+    }
+
+    .hanshu-product-object {
+      display: block;
+      border: 0 !important;
+      box-shadow: none !important;
+      clip-path: none !important;
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -3313,7 +3327,7 @@
 
                 <img
                   class="hanshu-product-object"
-                  src="hanshu-product-3d.png"
+                  src="hanshu-product-transparent-v2.png"
                   alt="韩束亮白紧致身体精华液产品图"
                 />
 
