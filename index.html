@@ -2955,6 +2955,138 @@
       }
     }
 
+  
+    /* =========================================================
+       V13 — REAL XIAOHONGSHU COVER IMAGES
+       两张真实封面图已嵌入，并保持整台手机可点击。
+    ========================================================= */
+
+    .real-note-cover {
+      height: 225px;
+      padding: 0;
+      background: #eee;
+    }
+
+    .real-note-cover::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20,17,18,.08), transparent 34%, rgba(20,17,18,.48) 100%);
+      pointer-events: none;
+    }
+
+    .real-note-cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .pet-cover img {
+      object-position: 49% 53%;
+    }
+
+    .hack-cover img {
+      object-position: 50% 44%;
+    }
+
+    .featured-phone:hover .real-note-cover img {
+      transform: scale(1.045);
+    }
+
+    .real-cover-badge {
+      position: absolute;
+      z-index: 4;
+      left: 10px;
+      right: 10px;
+      bottom: 12px;
+      padding: 9px 10px 10px;
+      border: 1px solid rgba(255,255,255,.52);
+      background: rgba(247,243,240,.77);
+      box-shadow: 0 7px 20px rgba(31,24,27,.13);
+      backdrop-filter: blur(9px);
+    }
+
+    .real-cover-badge small {
+      display: block;
+      color: rgba(37,33,38,.52);
+      font-size: 4.5px;
+      line-height: 1.3;
+      letter-spacing: .12em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .real-cover-badge strong {
+      display: block;
+      margin-top: 3px;
+      color: var(--ink);
+      font-family: var(--cn);
+      font-size: 10px;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      font-weight: 800;
+    }
+
+    .real-cover-link {
+      position: absolute;
+      z-index: 5;
+      top: 9px;
+      right: 9px;
+      padding: 5px 7px;
+      border: 1px solid rgba(255,255,255,.54);
+      border-radius: 999px;
+      background: rgba(30,25,27,.58);
+      color: #fff;
+      font-size: 4px;
+      line-height: 1.2;
+      letter-spacing: .10em;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+    }
+
+    .featured-phone {
+      isolation: isolate;
+    }
+
+    .featured-phone::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 16px -12px -12px 16px;
+      border: 1px solid rgba(37,33,38,.16);
+      border-radius: 30px;
+      opacity: 0;
+      transform: translate(-7px, -7px);
+      transition: opacity .3s ease, transform .3s ease;
+    }
+
+    .featured-phone:hover::after {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    @media (max-width: 720px) {
+      .real-note-cover {
+        height: 184px;
+      }
+
+      .real-cover-badge {
+        left: 7px;
+        right: 7px;
+        bottom: 8px;
+        padding: 7px 8px;
+      }
+
+      .real-cover-badge strong {
+        font-size: 8px;
+      }
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -3199,7 +3331,7 @@
 
                 <a
                   class="featured-phone pet-phone"
-                  href="https://www.xiaohongshu.com/discovery/item/698ac601000000000a02fbd0"
+                  href="https://www.xiaohongshu.com/discovery/item/698ac601000000000a02fbd0?source=webshare&amp;xhsshare=pc_web&amp;xsec_token=ABzQWr6ilQzCYmDizqI2RrxmzES3JGzxYOUG3P867WXwU=&amp;xsec_source=pc_share"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="打开宠物陪伴特辑小红书笔记"
@@ -3219,11 +3351,16 @@
                       <span>关注</span>
                     </div>
 
-                    <div class="featured-phone-cover pet-cover">
-                      <small>PET × BODY CARE</small>
-                      <strong>宠物陪伴<br>特辑</strong>
-                      <p>情绪价值 × 产品体验</p>
-                      <span class="pet-paw">♡</span>
+                    <div class="featured-phone-cover real-note-cover pet-cover">
+                      <img
+                        src="hanshu-pet-cover.jpg"
+                        alt="韩束宠物陪伴特辑封面：橘猫、玩偶与韩束亮白瓶"
+                      />
+                      <div class="real-cover-badge">
+                        <small>PET × BODY CARE</small>
+                        <strong>宠物陪伴特辑</strong>
+                      </div>
+                      <span class="real-cover-link">OPEN NOTE ↗</span>
                     </div>
 
                     <div class="featured-phone-copy">
@@ -3241,7 +3378,7 @@
 
                 <a
                   class="featured-phone hack-phone"
-                  href="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a"
+                  href="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a?source=webshare&amp;xhsshare=pc_web&amp;xsec_token=AB-QJ1E5WLnUlyGA5pqewyy3juKJe6mHAmFVVGsHSKd3c=&amp;xsec_source=pc_share"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="打开年前亮白体膜特辑小红书笔记"
@@ -3261,16 +3398,16 @@
                       <span>关注</span>
                     </div>
 
-                    <div class="featured-phone-cover hack-cover">
-                      <small>BEAUTY HACK</small>
-                      <strong>年前亮白<br>体膜特辑</strong>
-                      <p>急救感 × 攻略感 × 功效具象化</p>
-                      <span class="hack-chart">
-                        <i style="--h:42%"></i>
-                        <i style="--h:68%"></i>
-                        <i style="--h:88%"></i>
-                        <i style="--h:61%"></i>
-                      </span>
+                    <div class="featured-phone-cover real-note-cover hack-cover">
+                      <img
+                        src="hanshu-hack-cover.jpg"
+                        alt="韩束年前亮白体膜特辑封面：手持韩束亮白瓶"
+                      />
+                      <div class="real-cover-badge">
+                        <small>BEAUTY HACK × BODY CARE</small>
+                        <strong>年前亮白体膜特辑</strong>
+                      </div>
+                      <span class="real-cover-link">OPEN NOTE ↗</span>
                     </div>
 
                     <div class="featured-phone-copy">
