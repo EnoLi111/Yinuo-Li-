@@ -265,7 +265,260 @@
       #rippleCanvas { display:none; }
     }
 
+  
+    /* =========================================================
+       V6 — HANDWRITTEN HERO / QUIETER COLLAGE / LOOSE NOTES
+    ========================================================= */
+    :root {
+      --hand: "Caveat", "Comic Sans MS", cursive;
+    }
+
+    .hero-grid {
+      grid-template-columns: .76fr 1.24fr;
+      gap: clamp(48px, 6vw, 100px);
+    }
+
+    .hero-copy {
+      align-self: center;
+      padding-top: 0;
+      transform: translateY(-1vh);
+    }
+
+    .hero h1 {
+      width: max-content;
+      max-width: 100%;
+      font-family: var(--hand);
+      font-size: clamp(7.1rem, 10.6vw, 12.8rem);
+      line-height: .61;
+      letter-spacing: -.035em;
+      font-weight: 700;
+      transform: rotate(-1.2deg);
+      text-wrap: nowrap;
+    }
+
+    .hero h1 em {
+      margin-top: 32px;
+      margin-left: 18px;
+      color: var(--rose-deep);
+      font-family: var(--hand);
+      font-size: .78em;
+      line-height: .7;
+      letter-spacing: -.025em;
+      font-weight: 500;
+      transform: rotate(-2deg);
+    }
+
+    .hero-tags {
+      max-width: 580px;
+      margin-top: 72px;
+      gap: 9px;
+    }
+
+    .hero-tags span {
+      padding: 8px 12px;
+      background: rgba(252,251,249,.68);
+      font-size: 8px;
+      letter-spacing: .135em;
+    }
+
+    .hero-cta {
+      margin-top: 78px;
+      gap: 42px;
+      font-size: 9px;
+      letter-spacing: .18em;
+    }
+
+    .cover-stage {
+      min-height: 735px;
+      padding: 12px 0 8px;
+    }
+
+    .collage-wrap {
+      width: min(555px, 49vw);
+      margin-top: 0;
+      transform: rotate(-.45deg);
+      filter: drop-shadow(0 22px 39px rgba(47,39,46,.105));
+    }
+
+    .collage-wrap::before {
+      inset: 2% 5% 3%;
+      transform: rotate(.6deg);
+      opacity: .88;
+    }
+
+    .frag {
+      box-shadow:
+        0 7px 16px rgba(47,39,46,.145),
+        0 1px 0 rgba(255,255,255,.82) inset;
+    }
+
+    .frag:hover {
+      transform: translateY(-4px) rotate(var(--r)) scale(1.012);
+    }
+
+    .hero-note {
+      box-shadow: 0 16px 31px rgba(58,52,55,.115);
+      animation-timing-function: ease-in-out;
+    }
+
+    .hero-note h3 {
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .hero-note p {
+      line-height: 1.78;
+    }
+
+    .hn1 {
+      left: -7.5%;
+      top: 8%;
+      width: 194px;
+      min-height: 158px;
+      rotate: -5.8deg;
+      --base-rot: -5.8deg;
+      animation-duration: 7.2s;
+      animation-delay: -1.1s;
+      --dx: 5px;
+      --dy: -5px;
+      --dr: .7deg;
+    }
+
+    .hn2 {
+      left: 1.5%;
+      bottom: 2.5%;
+      width: 178px;
+      min-height: 151px;
+      rotate: 4.2deg;
+      --base-rot: 4.2deg;
+      animation-duration: 8.3s;
+      animation-delay: -3.4s;
+      --dx: -4px;
+      --dy: -6px;
+      --dr: -.7deg;
+    }
+
+    .hn3 {
+      right: -7.5%;
+      top: 21%;
+      width: 184px;
+      min-height: 154px;
+      rotate: 5deg;
+      --base-rot: 5deg;
+      animation-duration: 6.7s;
+      animation-delay: -2.2s;
+      --dx: -5px;
+      --dy: -4px;
+      --dr: -.8deg;
+    }
+
+    .hn4 {
+      right: .8%;
+      bottom: 7%;
+      width: 166px;
+      min-height: 147px;
+      rotate: -5.2deg;
+      --base-rot: -5.2deg;
+      animation-duration: 7.8s;
+      animation-delay: -4.1s;
+      --dx: 4px;
+      --dy: -5px;
+      --dr: .65deg;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding-top: 7vh;
+      }
+
+      .hero h1 {
+        font-size: clamp(7rem, 16vw, 11rem);
+      }
+
+      .hero-tags {
+        margin-top: 62px;
+      }
+
+      .cover-stage {
+        min-height: 790px;
+      }
+
+      .collage-wrap {
+        width: min(560px, 73vw);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero-copy {
+        padding-top: 4vh;
+      }
+
+      .hero h1 {
+        width: 100%;
+        font-size: clamp(5.2rem, 24vw, 7.5rem);
+        line-height: .65;
+      }
+
+      .hero h1 em {
+        margin-top: 23px;
+        margin-left: 8px;
+      }
+
+      .hero-tags {
+        margin-top: 48px;
+      }
+
+      .hero-cta {
+        margin-top: 55px;
+      }
+
+      .cover-stage {
+        min-height: 745px;
+      }
+
+      .collage-wrap {
+        width: min(365px, 85vw);
+      }
+
+      .hn1 {
+        left: -1%;
+        top: 8%;
+        width: 134px;
+        min-height: 118px;
+        rotate: -5deg;
+      }
+
+      .hn2 {
+        left: 2%;
+        bottom: 4%;
+        width: 129px;
+        min-height: 114px;
+        rotate: 4deg;
+      }
+
+      .hn3 {
+        right: -1%;
+        top: 17%;
+        width: 132px;
+        min-height: 116px;
+        rotate: 4.5deg;
+      }
+
+      .hn4 {
+        right: 1%;
+        bottom: 10%;
+        width: 126px;
+        min-height: 112px;
+        rotate: -4.5deg;
+      }
+    }
+
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="grain"></div>
@@ -291,9 +544,7 @@
     <section class="hero" id="home">
       <div class="wrap hero-grid">
         <div class="hero-copy" data-reveal>
-          <p class="hero-hand">Projects, ideas and experiments,<br>stitched into one point of view.</p>
           <h1>ENO LI<em>Portfolio</em></h1>
-          <p class="hero-lead">我希望招聘方第一眼看到的是我的方法：从用户观察出发，把内容、视觉和体验变成更容易被理解和传播的表达。</p>
           <div class="hero-tags">
             <span>Consumer Insight</span><span>Content Strategy</span><span>Social Commerce</span><span>Visual Storytelling</span><span>Digital Experience</span><span>Performance Review</span>
           </div>
@@ -301,11 +552,6 @@
         </div>
 
         <div class="cover-stage" id="coverStage">
-          <div class="cover-title">
-            <div class="side-text">Different projects reveal different parts of how I think.</div>
-            <h2>Part of me</h2>
-            <div class="side-text right">Ideas, decisions and experiments, assembled over time.</div>
-          </div>
 
           <div class="collage-wrap" id="portraitFrame">
             <div class="collage-grid" aria-label="由不规则照片碎片拼贴形成的人像封面">
