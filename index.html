@@ -982,8 +982,835 @@
       }
     }
 
+  
+    /* =========================================================
+       V10 — EXPANDED HANSCHU CASE
+       Full editorial project canvas inspired by the reference.
+    ========================================================= */
+    :root {
+      --case-display: "Archivo Black", "Arial Black", sans-serif;
+    }
+
+    .project-shelf {
+      gap: 24px;
+    }
+
+    .hanshu-case {
+      position: relative;
+      min-height: 1120px;
+      overflow: hidden;
+      padding: 22px 0 76px;
+      border-top: 1px solid rgba(37,33,38,.12);
+      border-bottom: 1px solid rgba(37,33,38,.12);
+      background:
+        linear-gradient(rgba(37,33,38,.027) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,33,38,.027) 1px, transparent 1px),
+        radial-gradient(circle at 78% 24%, rgba(221,232,240,.32), transparent 25%),
+        radial-gradient(circle at 52% 68%, rgba(229,199,207,.22), transparent 25%),
+        #f8f6f3;
+      background-size: 16px 16px, 16px 16px, auto, auto, auto;
+      scroll-margin-top: 86px;
+    }
+
+    .hanshu-overview {
+      display: grid;
+      grid-template-columns: .68fr 1.32fr;
+      gap: clamp(34px, 5vw, 82px);
+      min-height: 720px;
+      align-items: start;
+    }
+
+    .hanshu-intro {
+      position: relative;
+      z-index: 7;
+      padding-top: 30px;
+    }
+
+    .hanshu-kicker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 26px;
+      font-family: var(--sans);
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: -.02em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .hanshu-kicker i {
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .hanshu-title-row {
+      position: relative;
+    }
+
+    .hanshu-title {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .hanshu-title span {
+      display: block;
+      font-family: var(--case-display);
+      font-size: clamp(4.6rem, 7.5vw, 9.2rem);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .hanshu-title em {
+      display: block;
+      width: max-content;
+      margin-top: 15px;
+      margin-left: 8%;
+      color: var(--rose-deep);
+      font-family: var(--serif);
+      font-size: clamp(4.2rem, 6.9vw, 8.5rem);
+      line-height: .72;
+      letter-spacing: -.065em;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .hanshu-featured-pill {
+      position: absolute;
+      top: 54%;
+      right: -16%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 158px;
+      padding: 12px 18px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background: rgba(248,246,243,.70);
+      font-family: var(--sans);
+      font-size: 8px;
+      line-height: 1.2;
+      letter-spacing: .08em;
+      font-weight: 800;
+      text-transform: uppercase;
+      transform: rotate(-18deg);
+    }
+
+    .hanshu-meta {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 5px 17px;
+      max-width: 410px;
+      margin: 42px 0 0;
+      font-family: var(--sans);
+      font-size: 9px;
+      line-height: 1.45;
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      font-weight: 700;
+    }
+
+    .hanshu-meta dt {
+      font-weight: 900;
+    }
+
+    .hanshu-meta dd {
+      margin: 0;
+    }
+
+    .hanshu-visual {
+      position: relative;
+      min-height: 720px;
+      isolation: isolate;
+    }
+
+    .hanshu-phone,
+    .hanshu-poster,
+    .hanshu-polaroid {
+      transition:
+        translate .35s cubic-bezier(.2,.8,.2,1),
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s ease;
+    }
+
+    .hanshu-phone {
+      position: absolute;
+      width: 214px;
+      height: 445px;
+      padding: 7px;
+      border: 2px solid rgba(37,33,38,.88);
+      border-radius: 35px;
+      background: #fff;
+      box-shadow: 0 28px 55px rgba(37,33,38,.17);
+      transform: rotate(var(--phone-r));
+    }
+
+    .hanshu-phone:hover {
+      z-index: 30;
+      transform: translateY(-9px) rotate(var(--phone-r)) scale(1.02);
+      box-shadow: 0 40px 76px rgba(37,33,38,.22);
+    }
+
+    .hanshu-phone-left {
+      left: 5%;
+      top: 184px;
+      --phone-r: -11deg;
+      z-index: 7;
+    }
+
+    .hanshu-phone-main {
+      left: 39%;
+      top: 119px;
+      width: 240px;
+      height: 495px;
+      --phone-r: 2deg;
+      z-index: 12;
+    }
+
+    .hanshu-phone-right {
+      right: 2%;
+      top: 210px;
+      --phone-r: 9deg;
+      z-index: 8;
+    }
+
+    .hanshu-phone-notch {
+      position: absolute;
+      z-index: 5;
+      top: 14px;
+      left: 50%;
+      width: 62px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(37,33,38,.16);
+      transform: translateX(-50%);
+    }
+
+    .hanshu-screen {
+      height: 100%;
+      overflow: hidden;
+      border-radius: 28px;
+      background: #fff;
+    }
+
+    .hanshu-status {
+      height: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      padding: 0 14px 8px;
+      color: rgba(37,33,38,.70);
+      font-size: 6px;
+      font-weight: 800;
+    }
+
+    .hanshu-profile {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      gap: 7px;
+      align-items: center;
+      padding: 7px 10px 9px;
+      border-top: 1px solid rgba(37,33,38,.05);
+      border-bottom: 1px solid rgba(37,33,38,.05);
+    }
+
+    .hanshu-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 32%, rgba(255,255,255,.94), transparent 18%),
+        linear-gradient(145deg, #e3b8c1, #a87684);
+    }
+
+    .hanshu-avatar-blue {
+      background:
+        radial-gradient(circle at 35% 32%, rgba(255,255,255,.94), transparent 18%),
+        linear-gradient(145deg, #dce8f0, #8293a8);
+    }
+
+    .hanshu-avatar-yellow {
+      background:
+        radial-gradient(circle at 35% 32%, rgba(255,255,255,.94), transparent 18%),
+        linear-gradient(145deg, #f5e9b9, #cca967);
+    }
+
+    .hanshu-profile b {
+      display: block;
+      font-size: 7px;
+      line-height: 1.25;
+    }
+
+    .hanshu-profile small {
+      display: block;
+      margin-top: 2px;
+      color: rgba(37,33,38,.48);
+      font-size: 5px;
+      line-height: 1.2;
+    }
+
+    .hanshu-follow {
+      padding: 4px 7px;
+      border: 1px solid rgba(183,80,94,.50);
+      border-radius: 999px;
+      color: #b7505e;
+      font-size: 5px;
+      font-weight: 800;
+    }
+
+    .hanshu-cover {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      padding: 18px 14px;
+    }
+
+    .hanshu-phone-main .hanshu-cover {
+      height: 252px;
+    }
+
+    .hanshu-cover::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: -37px;
+      top: -34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.40);
+    }
+
+    .hanshu-cover::after {
+      content: "";
+      position: absolute;
+      width: 94px;
+      height: 94px;
+      left: -35px;
+      bottom: -45px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.28);
+    }
+
+    .hanshu-cover-pink {
+      background: linear-gradient(145deg, #f1cad0, #f7e8e1);
+    }
+
+    .hanshu-cover-blue {
+      background: linear-gradient(145deg, #dbe8f2, #bad6e0 58%, #f1df88);
+    }
+
+    .hanshu-cover-yellow {
+      background: linear-gradient(145deg, #f5edc6, #f2d7a7 55%, #dfbec8);
+    }
+
+    .hanshu-cover-kicker {
+      position: relative;
+      z-index: 2;
+      display: block;
+      margin-bottom: 9px;
+      color: rgba(37,33,38,.48);
+      font-size: 5px;
+      line-height: 1.2;
+      letter-spacing: .13em;
+      font-weight: 800;
+    }
+
+    .hanshu-cover strong {
+      position: relative;
+      z-index: 2;
+      display: block;
+      color: #9f707c;
+      font-size: 22px;
+      line-height: .98;
+      letter-spacing: -.075em;
+      font-weight: 900;
+    }
+
+    .hanshu-phone-main .hanshu-cover strong {
+      font-size: 27px;
+    }
+
+    .hanshu-cover p {
+      position: relative;
+      z-index: 2;
+      margin: 9px 0 0;
+      color: rgba(37,33,38,.62);
+      font-size: 6px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .hanshu-bottle {
+      position: absolute;
+      z-index: 3;
+      right: 17px;
+      bottom: 14px;
+      width: 42px;
+      height: 96px;
+      border: 1px solid rgba(37,33,38,.72);
+      border-radius: 9px 9px 12px 12px;
+      background: linear-gradient(180deg, #fff 0 24%, #f5f2ed 24% 100%);
+      box-shadow: 0 10px 18px rgba(37,33,38,.12);
+      transform: rotate(5deg);
+    }
+
+    .hanshu-phone-main .hanshu-bottle {
+      width: 48px;
+      height: 111px;
+    }
+
+    .hanshu-bottle::before {
+      content: "HANSCHU\A BODY SERUM";
+      white-space: pre;
+      position: absolute;
+      inset: 27px 4px auto;
+      padding: 5px 1px;
+      border-top: 1px solid rgba(37,33,38,.55);
+      border-bottom: 1px solid rgba(37,33,38,.55);
+      font-size: 4px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .hanshu-chart {
+      position: absolute;
+      z-index: 3;
+      right: 14px;
+      bottom: 17px;
+      width: 62px;
+      height: 78px;
+      display: flex;
+      align-items: end;
+      gap: 5px;
+      padding: 9px;
+      border: 1px solid rgba(37,33,38,.22);
+      border-radius: 10px;
+      background: rgba(255,255,255,.52);
+      box-shadow: 0 9px 17px rgba(37,33,38,.10);
+      transform: rotate(4deg);
+    }
+
+    .hanshu-chart i {
+      flex: 1;
+      height: var(--h);
+      border-radius: 3px 3px 0 0;
+      background: #9f707c;
+    }
+
+    .hanshu-note-copy {
+      padding: 11px 11px 0;
+    }
+
+    .hanshu-note-copy b {
+      display: block;
+      font-size: 7px;
+      line-height: 1.45;
+    }
+
+    .hanshu-phone-main .hanshu-note-copy b {
+      font-size: 8px;
+    }
+
+    .hanshu-note-copy p {
+      margin: 5px 0 0;
+      color: rgba(37,33,38,.52);
+      font-size: 5.5px;
+      line-height: 1.55;
+    }
+
+    .hanshu-actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 11px 0;
+      color: rgba(37,33,38,.48);
+      font-size: 5px;
+      font-weight: 800;
+    }
+
+    .hanshu-poster {
+      position: absolute;
+      border: 2px solid var(--ink);
+      box-shadow: 0 22px 42px rgba(37,33,38,.14);
+    }
+
+    .hanshu-poster-message {
+      right: 23%;
+      top: 18px;
+      z-index: 4;
+      width: 245px;
+      min-height: 172px;
+      padding: 23px;
+      background: linear-gradient(145deg, #e6bab5, #f4ddc5);
+      transform: rotate(-3deg);
+    }
+
+    .hanshu-poster-message span,
+    .hanshu-poster-data span {
+      display: block;
+      margin-bottom: 9px;
+      font-family: var(--sans);
+      font-size: 8px;
+      letter-spacing: .08em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .hanshu-poster-message strong,
+    .hanshu-poster-data strong {
+      display: block;
+      font-family: var(--case-display);
+      font-size: 31px;
+      line-height: .86;
+      letter-spacing: -.06em;
+    }
+
+    .hanshu-poster-message small {
+      display: block;
+      margin-top: 17px;
+      font-family: var(--sans);
+      font-size: 7px;
+      letter-spacing: .10em;
+      font-weight: 800;
+    }
+
+    .hanshu-poster-data {
+      right: 3%;
+      bottom: 14px;
+      z-index: 3;
+      width: 255px;
+      min-height: 183px;
+      padding: 23px;
+      background: #d5e4e8;
+      transform: rotate(4deg);
+    }
+
+    .hanshu-mini-bars {
+      display: grid;
+      gap: 7px;
+      margin-top: 18px;
+    }
+
+    .hanshu-mini-bars i {
+      display: block;
+      width: calc(var(--bar) * 100%);
+      height: 8px;
+      background: var(--ink);
+    }
+
+    .hanshu-polaroid {
+      position: absolute;
+      left: 2%;
+      bottom: 15px;
+      z-index: 5;
+      width: 210px;
+      padding: 13px 13px 32px;
+      border: 2px solid var(--ink);
+      background: #fff;
+      box-shadow: 0 22px 42px rgba(37,33,38,.14);
+      transform: rotate(7deg);
+    }
+
+    .hanshu-polaroid-art {
+      min-height: 210px;
+      padding: 18px;
+      background: linear-gradient(145deg, #efb9c2, #f4dc87 55%, #acd9dd);
+    }
+
+    .hanshu-polaroid-art span {
+      display: block;
+      font-family: var(--sans);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .hanshu-polaroid-art strong {
+      display: block;
+      margin-top: 48px;
+      font-family: var(--case-display);
+      font-size: 28px;
+      line-height: .9;
+      letter-spacing: -.06em;
+    }
+
+    .hanshu-polaroid > small {
+      display: block;
+      margin-top: 12px;
+      font-family: var(--sans);
+      font-size: 7px;
+      letter-spacing: .08em;
+      font-weight: 800;
+    }
+
+    .hanshu-story {
+      display: grid;
+      grid-template-columns: .32fr 1.68fr;
+      gap: clamp(28px, 5vw, 80px);
+      align-items: start;
+      margin-top: 28px;
+      padding-top: 56px;
+      border-top: 1px solid rgba(37,33,38,.14);
+    }
+
+    .hanshu-story h4 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(4.5rem, 7vw, 8.5rem);
+      line-height: .82;
+      letter-spacing: -.07em;
+      font-style: italic;
+      font-weight: 500;
+      transform: rotate(6deg);
+    }
+
+    .hanshu-story p {
+      max-width: 1040px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 2.55vw, 3.65rem);
+      line-height: 1.04;
+      letter-spacing: -.04em;
+      font-weight: 500;
+    }
+
+    .hanshu-story strong {
+      color: var(--rose-deep);
+      font-weight: 600;
+    }
+
+    .hanshu-case + .project {
+      margin-top: 18px;
+    }
+
+    @media (max-width: 1180px) {
+      .hanshu-overview {
+        grid-template-columns: .74fr 1.26fr;
+      }
+
+      .hanshu-phone {
+        width: 190px;
+        height: 405px;
+      }
+
+      .hanshu-phone-main {
+        width: 214px;
+        height: 455px;
+      }
+
+      .hanshu-poster-message {
+        width: 215px;
+      }
+
+      .hanshu-poster-data {
+        width: 220px;
+      }
+
+      .hanshu-polaroid {
+        width: 185px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hanshu-case {
+        min-height: auto;
+        padding-bottom: 64px;
+      }
+
+      .hanshu-overview {
+        grid-template-columns: 1fr;
+      }
+
+      .hanshu-featured-pill {
+        right: 4%;
+      }
+
+      .hanshu-visual {
+        min-height: 760px;
+        margin-top: 8px;
+      }
+
+      .hanshu-phone-left {
+        left: 4%;
+      }
+
+      .hanshu-phone-main {
+        left: 38%;
+      }
+
+      .hanshu-phone-right {
+        right: 2%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hanshu-case {
+        padding-top: 10px;
+      }
+
+      .hanshu-kicker {
+        font-size: 10px;
+      }
+
+      .hanshu-title span {
+        font-size: clamp(4rem, 18vw, 6.2rem);
+      }
+
+      .hanshu-title em {
+        font-size: clamp(3.7rem, 17vw, 5.8rem);
+      }
+
+      .hanshu-featured-pill {
+        top: 61%;
+        right: 2%;
+        min-width: 116px;
+        padding: 9px 12px;
+        font-size: 6px;
+      }
+
+      .hanshu-meta {
+        grid-template-columns: 78px 1fr;
+        font-size: 7px;
+      }
+
+      .hanshu-visual {
+        min-height: 610px;
+      }
+
+      .hanshu-phone {
+        width: 132px;
+        height: 292px;
+        padding: 5px;
+        border-radius: 24px;
+      }
+
+      .hanshu-screen {
+        border-radius: 19px;
+      }
+
+      .hanshu-phone-main {
+        left: 31%;
+        top: 110px;
+        width: 148px;
+        height: 325px;
+      }
+
+      .hanshu-phone-left {
+        left: -1%;
+        top: 180px;
+      }
+
+      .hanshu-phone-right {
+        right: -1%;
+        top: 192px;
+      }
+
+      .hanshu-cover,
+      .hanshu-phone-main .hanshu-cover {
+        height: 145px;
+        padding: 11px 9px;
+      }
+
+      .hanshu-cover strong,
+      .hanshu-phone-main .hanshu-cover strong {
+        font-size: 15px;
+      }
+
+      .hanshu-bottle,
+      .hanshu-phone-main .hanshu-bottle {
+        right: 9px;
+        bottom: 9px;
+        width: 28px;
+        height: 65px;
+      }
+
+      .hanshu-profile {
+        grid-template-columns: 18px 1fr auto;
+        gap: 5px;
+        padding: 5px 7px 6px;
+      }
+
+      .hanshu-avatar {
+        width: 18px;
+        height: 18px;
+      }
+
+      .hanshu-profile b,
+      .hanshu-note-copy b,
+      .hanshu-phone-main .hanshu-note-copy b {
+        font-size: 5px;
+      }
+
+      .hanshu-profile small,
+      .hanshu-follow,
+      .hanshu-cover-kicker,
+      .hanshu-cover p,
+      .hanshu-note-copy p,
+      .hanshu-actions {
+        font-size: 4px;
+      }
+
+      .hanshu-poster-message {
+        right: 0;
+        top: 8px;
+        width: 155px;
+        min-height: 112px;
+        padding: 14px;
+      }
+
+      .hanshu-poster-message strong,
+      .hanshu-poster-data strong {
+        font-size: 20px;
+      }
+
+      .hanshu-poster-data {
+        right: 0;
+        bottom: 7px;
+        width: 154px;
+        min-height: 120px;
+        padding: 14px;
+      }
+
+      .hanshu-polaroid {
+        left: 0;
+        bottom: 0;
+        width: 136px;
+        padding: 8px 8px 23px;
+      }
+
+      .hanshu-polaroid-art {
+        min-height: 135px;
+        padding: 11px;
+      }
+
+      .hanshu-polaroid-art strong {
+        margin-top: 34px;
+        font-size: 17px;
+      }
+
+      .hanshu-story {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        padding-top: 38px;
+      }
+
+      .hanshu-story h4 {
+        font-size: 4.7rem;
+        transform: rotate(3deg);
+      }
+
+      .hanshu-story p {
+        font-size: 1.65rem;
+        line-height: 1.08;
+      }
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="grain"></div>
@@ -1170,67 +1997,106 @@
         </div>
         <div class="project-shelf">
 
-          <article class="project hanshu-project" id="hanshu-card" data-reveal>
-            <div class="project-info">
-              <div>
-                <div class="project-meta">
-                  <span>01 / Featured Brand Case</span>
-                  <span>2025.12—2026.02</span>
+          <article class="hanshu-case" id="hanshu-card">
+            <div class="hanshu-overview">
+              <div class="hanshu-intro" data-reveal>
+                <div class="hanshu-kicker">
+                  <span>ENO LI</span>
+                  <i></i>
+                  <span>WORK</span>
                 </div>
 
-                <h3 class="project-title">韩束<br>亮白瓶</h3>
+                <div class="hanshu-title-row">
+                  <h3 class="hanshu-title">
+                    <span>HANSCHU</span>
+                    <em>亮白瓶</em>
+                  </h3>
 
-                <p class="project-desc">
-                  以小红书内容营销为核心，从产品卖点、目标用户、达人表达和笔记数据中形成内容判断。
-                  该项目是作品集的重点商业案例。
-                </p>
-
-                <div class="project-tags">
-                  <span>Content Strategy</span>
-                  <span>Social Commerce</span>
-                  <span>Creator Collaboration</span>
-                  <span>Performance Review</span>
+                  <span class="hanshu-featured-pill">
+                    Featured case ↗
+                  </span>
                 </div>
+
+                <dl class="hanshu-meta">
+                  <dt>Year</dt>
+                  <dd>2025.12—2026.02</dd>
+
+                  <dt>Project</dt>
+                  <dd>韩束亮白瓶身体精华</dd>
+
+                  <dt>Role</dt>
+                  <dd>产品营销 / 小红书内容运营</dd>
+
+                  <dt>Disciplines</dt>
+                  <dd>
+                    Content Strategy<br>
+                    Creator Collaboration<br>
+                    Social Commerce<br>
+                    Performance Review
+                  </dd>
+                </dl>
               </div>
 
-              <a class="project-link" href="hanshu.html">
-                Open featured case <span>→</span>
-              </a>
-            </div>
+              <div class="hanshu-visual" id="hanshuVisual" data-reveal>
+                <div class="hanshu-poster hanshu-poster-message" data-depth="2.2">
+                  <span>CONTENT THAT</span>
+                  <strong>FEELS<br>REAL.</strong>
+                  <small>FROM FEATURE TO FEELING</small>
+                </div>
 
-            <div class="project-art hanshu-art">
-              <div class="xhs-phone-stack">
+                <div class="hanshu-poster hanshu-poster-data" data-depth="1.7">
+                  <span>CONTENT REVIEW</span>
+                  <strong>DATA →<br>DIRECTION</strong>
 
-                <div class="xhs-phone xhs-phone-a">
-                  <div class="xhs-phone-notch"></div>
-                  <div class="xhs-screen">
-                    <div class="xhs-status">
+                  <div class="hanshu-mini-bars">
+                    <i style="--bar:.92"></i>
+                    <i style="--bar:.72"></i>
+                    <i style="--bar:.84"></i>
+                    <i style="--bar:.61"></i>
+                  </div>
+                </div>
+
+                <div class="hanshu-polaroid" data-depth="2.8">
+                  <div class="hanshu-polaroid-art">
+                    <span>INSIGHT</span>
+                    <strong>露肤季 ×<br>真实肤感</strong>
+                  </div>
+                  <small>USER LANGUAGE / DAILY SCENE</small>
+                </div>
+
+                <div class="hanshu-phone hanshu-phone-left" data-depth="3.2">
+                  <div class="hanshu-phone-notch"></div>
+
+                  <div class="hanshu-screen">
+                    <div class="hanshu-status">
                       <span>12:01</span>
                       <span>● 5G ▰</span>
                     </div>
 
-                    <div class="xhs-profile">
-                      <span class="xhs-avatar"></span>
+                    <div class="hanshu-profile">
+                      <span class="hanshu-avatar"></span>
+
                       <div>
                         <b>身体护理研究所</b>
                         <small>韩束亮白瓶体验</small>
                       </div>
-                      <span class="xhs-follow">关注</span>
+
+                      <span class="hanshu-follow">关注</span>
                     </div>
 
-                    <div class="xhs-cover xhs-cover-pink">
-                      <span class="xhs-cover-kicker">SUMMER BODY CARE</span>
+                    <div class="hanshu-cover hanshu-cover-pink">
+                      <span class="hanshu-cover-kicker">SUMMER BODY CARE</span>
                       <strong>夏日露肤<br>身体护理</strong>
                       <p>轻薄不黏 · 通勤可用</p>
-                      <span class="xhs-bottle"></span>
+                      <span class="hanshu-bottle"></span>
                     </div>
 
-                    <div class="xhs-note-copy">
+                    <div class="hanshu-note-copy">
                       <b>露肤季前，我会把身体护理提前做起来</b>
-                      <p>从“白不白”转向肤感、使用场景与坚持成本。</p>
+                      <p>从单一亮白卖点，转向肤感、场景与坚持成本。</p>
                     </div>
 
-                    <div class="xhs-actions">
+                    <div class="hanshu-actions">
                       <span>♡ 1.3k</span>
                       <span>☆ 822</span>
                       <span>◌ 46</span>
@@ -1238,36 +2104,39 @@
                   </div>
                 </div>
 
-                <div class="xhs-phone xhs-phone-b">
-                  <div class="xhs-phone-notch"></div>
-                  <div class="xhs-screen">
-                    <div class="xhs-status">
+                <div class="hanshu-phone hanshu-phone-main" data-depth="4.2">
+                  <div class="hanshu-phone-notch"></div>
+
+                  <div class="hanshu-screen">
+                    <div class="hanshu-status">
                       <span>12:01</span>
                       <span>● 5G ▰</span>
                     </div>
 
-                    <div class="xhs-profile">
-                      <span class="xhs-avatar xhs-avatar-blue"></span>
+                    <div class="hanshu-profile">
+                      <span class="hanshu-avatar hanshu-avatar-blue"></span>
+
                       <div>
                         <b>通勤护理日记</b>
                         <small>真实肤感记录</small>
                       </div>
-                      <span class="xhs-follow">关注</span>
+
+                      <span class="hanshu-follow">关注</span>
                     </div>
 
-                    <div class="xhs-cover xhs-cover-blue">
-                      <span class="xhs-cover-kicker">DAILY ROUTINE</span>
+                    <div class="hanshu-cover hanshu-cover-blue">
+                      <span class="hanshu-cover-kicker">DAILY ROUTINE</span>
                       <strong>亮白功能<br>生活场景</strong>
                       <p>快速吸收 · 不黏衣服</p>
-                      <span class="xhs-bottle"></span>
+                      <span class="hanshu-bottle"></span>
                     </div>
 
-                    <div class="xhs-note-copy">
+                    <div class="hanshu-note-copy">
                       <b>让我坚持使用的，是肤感而不是口号</b>
-                      <p>把功能卖点转译成更容易相信的日常体验。</p>
+                      <p>把功能信息转译为更容易相信的日常体验。</p>
                     </div>
 
-                    <div class="xhs-actions">
+                    <div class="hanshu-actions">
                       <span>♡ 2.1k</span>
                       <span>☆ 1.1k</span>
                       <span>◌ 73</span>
@@ -1275,28 +2144,32 @@
                   </div>
                 </div>
 
-                <div class="xhs-phone xhs-phone-c">
-                  <div class="xhs-phone-notch"></div>
-                  <div class="xhs-screen">
-                    <div class="xhs-status">
+                <div class="hanshu-phone hanshu-phone-right" data-depth="3.6">
+                  <div class="hanshu-phone-notch"></div>
+
+                  <div class="hanshu-screen">
+                    <div class="hanshu-status">
                       <span>12:01</span>
                       <span>● 5G ▰</span>
                     </div>
 
-                    <div class="xhs-profile">
-                      <span class="xhs-avatar xhs-avatar-yellow"></span>
+                    <div class="hanshu-profile">
+                      <span class="hanshu-avatar hanshu-avatar-yellow"></span>
+
                       <div>
                         <b>内容复盘笔记</b>
                         <small>高表现内容拆解</small>
                       </div>
-                      <span class="xhs-follow">关注</span>
+
+                      <span class="hanshu-follow">关注</span>
                     </div>
 
-                    <div class="xhs-cover xhs-cover-yellow">
-                      <span class="xhs-cover-kicker">CONTENT REVIEW</span>
+                    <div class="hanshu-cover hanshu-cover-yellow">
+                      <span class="hanshu-cover-kicker">CONTENT REVIEW</span>
                       <strong>高表现笔记<br>内容拆解</strong>
                       <p>选题 × 封面 × 评论反馈</p>
-                      <span class="xhs-chart">
+
+                      <span class="hanshu-chart">
                         <i style="--h:42%"></i>
                         <i style="--h:68%"></i>
                         <i style="--h:88%"></i>
@@ -1304,22 +2177,37 @@
                       </span>
                     </div>
 
-                    <div class="xhs-note-copy">
+                    <div class="hanshu-note-copy">
                       <b>为什么同样讲亮白，有些笔记更容易跑出来？</b>
-                      <p>拆解达人类型、封面表达和评论区真实需求。</p>
+                      <p>拆解达人类型、封面表达与评论区真实问题。</p>
                     </div>
 
-                    <div class="xhs-actions">
+                    <div class="hanshu-actions">
                       <span>♡ 1.8k</span>
                       <span>☆ 964</span>
                       <span>◌ 61</span>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
+
+            <div class="hanshu-story" id="hanshu-story">
+              <h4 data-reveal>Project</h4>
+
+              <p data-reveal>
+                在上美集团韩束亮白瓶身体精华项目中，我参与了
+                <strong>小红书内容营销从策略到执行的完整过程</strong>。
+                围绕 Z 世代在身体护理中的真实需求，我从用户评论、竞品内容和平台反馈中提炼关键关注点，
+                将相对单一的“亮白功效”转化为露肤季、通勤肤感、学生党护理等更具生活代入感的内容场景。
+                在执行阶段，我参与 KOC 铺量、KOL 放大、达人筛选、内容排期、素材沟通及投流配合，
+                并通过曝光、互动、点击、进店 UV、CTR、CPC、CPM 和 CPE 等指标持续复盘笔记表现。
+                通过拆解高表现内容的选题、封面、达人类型与评论反馈，
+                我将数据转化为下一轮达人筛选、内容优化和预算分配的依据。
+              </p>
+            </div>
           </article>
+
 
           <article class="project" id="gender-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>02 / Graduation Campaign</span><span>Digital Experience</span></div><h3 class="project-title serif">Gender</h3><p class="project-desc">围绕 Gender 议题完成毕业项目宣传，并设计制作配套网站。重点展示议题转译、传播概念、网站信息结构与用户浏览体验。</p><div class="project-tags"><span>Campaign Concept</span><span>Website Design</span><span>Information Architecture</span><span>Visual System</span></div></div><a class="project-link" href="#about">View project structure <span>→</span></a></div><div class="project-art"><div class="browser-stack"><div class="browser back"></div><div class="browser front"></div></div></div></article>
           <article class="project" id="poster-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>03 / Visual Campaigns</span><span>Selected Posters</span></div><h3 class="project-title">视觉<br>海报</h3><p class="project-desc">精选三组成熟海报项目，通过主题、受众、创意切口、系列延展与应用场景，呈现视觉艺术训练如何转化为传播表达。</p><div class="project-tags"><span>Art Direction</span><span>Visual Storytelling</span><span>Campaign Key Visual</span><span>Editorial Design</span></div></div><a class="project-link" href="#about">View selected works <span>→</span></a></div><div class="project-art"><div class="poster-grid"><div class="poster"><strong>SOFT<br>CONTROL</strong><span>亲密关系中的隐性控制</span></div><div class="poster"><strong>BUTTER<br>FLY</strong><span>关怀、控制与变化</span></div><div class="poster"><strong>VISUAL<br>LAB</strong><span>身份、情绪与社会议题</span></div></div></div></article>
@@ -1577,5 +2465,36 @@
       revealItems.forEach((item) => observer.observe(item));
     })();
   </script>
+
+  <script>
+    (() => {
+      const visual = document.getElementById("hanshuVisual");
+      if (!visual) return;
+
+      const items = [...visual.querySelectorAll("[data-depth]")];
+      const finePointer = window.matchMedia("(pointer:fine)").matches;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!finePointer || reduceMotion) return;
+
+      visual.addEventListener("pointermove", (event) => {
+        const rect = visual.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+
+        items.forEach((item) => {
+          const depth = Number(item.dataset.depth || 1);
+          item.style.translate = `${x * depth * 3}px ${y * depth * 2.2}px`;
+        });
+      });
+
+      visual.addEventListener("pointerleave", () => {
+        items.forEach((item) => {
+          item.style.translate = "";
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>
