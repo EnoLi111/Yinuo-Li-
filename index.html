@@ -3101,6 +3101,660 @@
       clip-path: none !important;
     }
 
+  
+    /* =========================================================
+       V15 — MAGIC-MIND-INSPIRED HANSCHU + REAL GENDER WEBSITE
+    ========================================================= */
+
+    .hanshu-editorial {
+      position: relative;
+      min-height: 900px;
+      overflow: hidden;
+      border-top: 1px solid rgba(37,33,38,.13);
+      border-bottom: 1px solid rgba(37,33,38,.13);
+      background:
+        linear-gradient(rgba(37,33,38,.024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,33,38,.024) 1px, transparent 1px),
+        #faf8f5;
+      background-size: 16px 16px, 16px 16px, auto;
+      scroll-margin-top: 82px;
+    }
+
+    .hanshu-editorial-layout {
+      position: relative;
+      min-height: 900px;
+      padding: 30px 8px 28px;
+    }
+
+    .he-intro {
+      position: absolute;
+      z-index: 20;
+      left: 0;
+      top: 34px;
+      width: 39%;
+    }
+
+    .he-brandline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: -.03em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .he-brandline i {
+      display: block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .he-title-wrap {
+      position: relative;
+      margin-top: 38px;
+    }
+
+    .he-title-wrap h3 {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .he-title-wrap h3 span {
+      display: block;
+      font-family: "Archivo Black", "Arial Black", sans-serif;
+      font-size: clamp(4.9rem, 7vw, 8.6rem);
+      line-height: .80;
+      letter-spacing: -.085em;
+    }
+
+    .he-title-wrap h3 em {
+      display: block;
+      width: max-content;
+      margin-top: 16px;
+      margin-left: 8%;
+      color: var(--rose-deep);
+      font-family: var(--serif);
+      font-size: clamp(3.8rem, 5.3vw, 6.5rem);
+      line-height: .78;
+      letter-spacing: -.065em;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .he-case-pill {
+      position: absolute;
+      right: -5%;
+      bottom: 19%;
+      min-width: 145px;
+      padding: 10px 18px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background: rgba(250,248,245,.82);
+      font-size: 7px;
+      line-height: 1.2;
+      letter-spacing: .08em;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      transform: rotate(-17deg);
+    }
+
+    .he-meta {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 5px 12px;
+      max-width: 380px;
+      margin: 36px 0 0;
+      font-size: 7px;
+      line-height: 1.45;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .he-meta dt {
+      font-weight: 900;
+    }
+
+    .he-meta dd {
+      margin: 0;
+    }
+
+    .he-story {
+      position: absolute;
+      z-index: 18;
+      left: 0;
+      bottom: 46px;
+      width: 35%;
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .he-story h4 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.7rem, 5vw, 6rem);
+      line-height: .8;
+      letter-spacing: -.07em;
+      font-style: italic;
+      font-weight: 500;
+      transform: rotate(6deg);
+    }
+
+    .he-story p {
+      margin: 56px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.42vw, 1.65rem);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      font-weight: 500;
+    }
+
+    .he-story strong {
+      color: var(--rose-deep);
+      font-weight: 600;
+    }
+
+    .he-collage {
+      position: absolute;
+      z-index: 10;
+      right: -2%;
+      top: 18px;
+      width: 69%;
+      height: 850px;
+      perspective: 1600px;
+      isolation: isolate;
+    }
+
+    .he-product-stage,
+    .he-note-shot,
+    .he-accent-card,
+    .he-caption-card {
+      transition:
+        translate .32s cubic-bezier(.2,.8,.2,1),
+        transform .32s cubic-bezier(.2,.8,.2,1),
+        box-shadow .32s ease;
+    }
+
+    .he-product-stage {
+      position: absolute;
+      z-index: 12;
+      left: 2%;
+      top: 245px;
+      width: 260px;
+      height: 490px;
+      display: grid;
+      place-items: center;
+      transform-style: preserve-3d;
+    }
+
+    .he-product-ring {
+      position: absolute;
+      width: 245px;
+      height: 425px;
+      border: 1px dashed rgba(161,115,131,.26);
+      border-radius: 50%;
+      transform: rotate(-9deg);
+    }
+
+    .he-product-stage img {
+      position: relative;
+      z-index: 4;
+      width: 226px;
+      max-height: 470px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 28px 22px rgba(57,39,43,.22))
+        drop-shadow(0 7px 7px rgba(255,255,255,.72));
+      transform:
+        perspective(1200px)
+        rotateY(-7deg)
+        rotateX(2deg)
+        rotateZ(-3deg)
+        translateZ(25px);
+      animation: heProductFloat 5.8s ease-in-out infinite;
+    }
+
+    .he-product-stage > span {
+      position: absolute;
+      z-index: 7;
+      left: -3px;
+      bottom: 22px;
+      padding: 8px 11px;
+      border: 1px solid rgba(37,33,38,.12);
+      background: rgba(255,255,255,.74);
+      box-shadow: 0 10px 24px rgba(37,33,38,.08);
+      font-size: 5px;
+      letter-spacing: .12em;
+      font-weight: 900;
+      transform: rotate(-5deg);
+    }
+
+    .he-note-shot {
+      position: absolute;
+      display: block;
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      background: #fff;
+      box-shadow: 0 26px 52px rgba(37,33,38,.17);
+    }
+
+    .he-note-shot:hover {
+      z-index: 40;
+      box-shadow: 0 40px 75px rgba(37,33,38,.22);
+    }
+
+    .he-note-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .he-note-shot:hover img {
+      transform: scale(1.025);
+    }
+
+    .he-note-shot > span {
+      position: absolute;
+      z-index: 4;
+      left: 13px;
+      right: 13px;
+      bottom: 13px;
+      display: grid;
+      gap: 4px;
+      padding: 10px 11px;
+      border: 1px solid rgba(255,255,255,.52);
+      background: rgba(249,246,243,.82);
+      box-shadow: 0 9px 24px rgba(25,20,22,.15);
+      backdrop-filter: blur(9px);
+    }
+
+    .he-note-shot small {
+      color: rgba(37,33,38,.49);
+      font-size: 4.5px;
+      letter-spacing: .12em;
+      font-weight: 900;
+    }
+
+    .he-note-shot strong {
+      font-size: 10px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .he-note-shot b {
+      color: var(--rose-deep);
+      font-size: 5px;
+      letter-spacing: .09em;
+    }
+
+    .he-note-pet {
+      z-index: 18;
+      left: 34%;
+      top: 190px;
+      width: 225px;
+      height: 492px;
+      transform: rotate(-4deg);
+    }
+
+    .he-note-pet img {
+      object-position: center top;
+    }
+
+    .he-note-hack {
+      z-index: 16;
+      right: 1%;
+      top: 286px;
+      width: 210px;
+      height: 456px;
+      transform: rotate(7deg);
+    }
+
+    .he-note-hack img {
+      object-position: center top;
+    }
+
+    .he-accent-card {
+      position: absolute;
+      border: 2px solid var(--ink);
+      box-shadow: 0 20px 42px rgba(37,33,38,.13);
+    }
+
+    .he-accent-card small {
+      display: block;
+      color: rgba(37,33,38,.57);
+      font-size: 6px;
+      line-height: 1.2;
+      letter-spacing: .11em;
+      font-weight: 900;
+    }
+
+    .he-accent-card strong {
+      display: block;
+      margin-top: 8px;
+      font-family: "Archivo Black", "Arial Black", sans-serif;
+      font-size: 28px;
+      line-height: .87;
+      letter-spacing: -.06em;
+    }
+
+    .he-accent-main {
+      z-index: 5;
+      right: 18%;
+      top: 15px;
+      width: 225px;
+      min-height: 152px;
+      padding: 21px;
+      background: linear-gradient(145deg, #efc5be, #f2d6bd);
+      transform: rotate(-4deg);
+    }
+
+    .he-accent-data {
+      z-index: 4;
+      right: 0;
+      bottom: 18px;
+      width: 230px;
+      min-height: 170px;
+      padding: 21px;
+      background: #d9e6e8;
+      transform: rotate(4deg);
+    }
+
+    .he-accent-data i {
+      display: block;
+      height: 7px;
+      margin-top: 9px;
+      background: var(--ink);
+    }
+
+    .he-accent-data i:nth-of-type(1) { width: 88%; }
+    .he-accent-data i:nth-of-type(2) { width: 68%; }
+    .he-accent-data i:nth-of-type(3) { width: 54%; }
+
+    .he-caption-card {
+      position: absolute;
+      z-index: 6;
+      left: 18%;
+      bottom: 25px;
+      width: 220px;
+      padding: 12px 14px;
+      border: 2px solid var(--ink);
+      background: linear-gradient(145deg, #f1ca8f, #b9d9d3);
+      box-shadow: 0 20px 42px rgba(37,33,38,.12);
+      transform: rotate(6deg);
+    }
+
+    .he-caption-card span {
+      display: block;
+      font-size: 5px;
+      letter-spacing: .12em;
+      font-weight: 900;
+    }
+
+    .he-caption-card strong {
+      display: block;
+      margin-top: 7px;
+      font-size: 13px;
+      line-height: 1.22;
+    }
+
+    @keyframes heProductFloat {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -9px; }
+    }
+
+    /* Gender live website card */
+    .gender-live-art {
+      display: grid;
+      place-items: center;
+      overflow: visible;
+    }
+
+    .gender-browser-preview {
+      position: relative;
+      display: block;
+      width: min(94%, 760px);
+      overflow: hidden;
+      border: 1px solid rgba(37,33,38,.18);
+      border-radius: 18px;
+      background: #f3eee6;
+      box-shadow: 0 28px 55px rgba(37,33,38,.14);
+      transform: rotate(-1.2deg);
+      transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s ease;
+    }
+
+    .gender-browser-preview:hover {
+      transform: translateY(-8px) rotate(.25deg) scale(1.01);
+      box-shadow: 0 40px 76px rgba(37,33,38,.20);
+    }
+
+    .gender-browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 34px;
+      padding: 0 12px;
+      border-bottom: 1px solid rgba(37,33,38,.10);
+      background: rgba(255,255,255,.72);
+    }
+
+    .gender-browser-bar span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #d0c4b8;
+    }
+
+    .gender-browser-bar span:nth-child(2) {
+      background: #aeb8a3;
+    }
+
+    .gender-browser-bar span:nth-child(3) {
+      background: #c48768;
+    }
+
+    .gender-browser-bar small {
+      margin-left: 9px;
+      color: rgba(37,33,38,.44);
+      font-size: 6px;
+      letter-spacing: .04em;
+    }
+
+    .gender-browser-preview img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 2.01 / 1;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .gender-open-label {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      padding: 9px 12px;
+      border: 1px solid rgba(255,255,255,.56);
+      border-radius: 999px;
+      background: rgba(34,31,28,.68);
+      color: #fff;
+      font-size: 6px;
+      letter-spacing: .10em;
+      font-weight: 900;
+      backdrop-filter: blur(8px);
+    }
+
+    @media (max-width: 1100px) {
+      .hanshu-editorial,
+      .hanshu-editorial-layout {
+        min-height: 980px;
+      }
+
+      .he-intro {
+        width: 42%;
+      }
+
+      .he-collage {
+        width: 66%;
+      }
+
+      .he-note-pet {
+        left: 35%;
+        width: 205px;
+        height: 448px;
+      }
+
+      .he-note-hack {
+        width: 190px;
+        height: 414px;
+      }
+
+      .he-product-stage {
+        width: 225px;
+      }
+
+      .he-product-stage img {
+        width: 205px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .hanshu-editorial {
+        min-height: auto;
+        overflow: visible;
+      }
+
+      .hanshu-editorial-layout {
+        min-height: auto;
+        padding: 40px 18px 34px;
+      }
+
+      .he-intro,
+      .he-story,
+      .he-collage {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        width: 100%;
+      }
+
+      .he-intro {
+        padding-right: 0;
+      }
+
+      .he-story {
+        grid-template-columns: 120px 1fr;
+        margin-top: 35px;
+      }
+
+      .he-story p {
+        margin-top: 30px;
+      }
+
+      .he-collage {
+        height: 800px;
+        margin-top: 38px;
+      }
+
+      .he-product-stage {
+        left: 2%;
+      }
+
+      .he-note-pet {
+        left: 37%;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .he-title-wrap h3 span {
+        font-size: 4.35rem;
+      }
+
+      .he-title-wrap h3 em {
+        margin-left: 3%;
+        font-size: 3.4rem;
+      }
+
+      .he-case-pill {
+        right: 0;
+      }
+
+      .he-story {
+        display: block;
+      }
+
+      .he-story p {
+        margin-top: 24px;
+      }
+
+      .he-collage {
+        height: 720px;
+      }
+
+      .he-product-stage {
+        left: -8%;
+        top: 245px;
+        width: 190px;
+      }
+
+      .he-product-stage img {
+        width: 170px;
+      }
+
+      .he-note-pet {
+        left: 27%;
+        top: 170px;
+        width: 160px;
+        height: 350px;
+      }
+
+      .he-note-hack {
+        right: -5%;
+        top: 310px;
+        width: 145px;
+        height: 316px;
+      }
+
+      .he-accent-main {
+        right: 0;
+        width: 165px;
+        min-height: 112px;
+        padding: 14px;
+      }
+
+      .he-accent-main strong,
+      .he-accent-data strong {
+        font-size: 19px;
+      }
+
+      .he-accent-data {
+        width: 155px;
+        min-height: 120px;
+        padding: 14px;
+      }
+
+      .he-caption-card {
+        left: 8%;
+        width: 160px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .he-product-stage img {
+        animation: none !important;
+      }
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -3286,215 +3940,176 @@
       <div class="wrap">
 <div class="project-shelf">
 
-          <article class="hanshu-onepage" id="hanshu-card">
-            <div class="hanshu-onepage-grid">
+          
+          <article class="hanshu-editorial" id="hanshu-card">
+            <div class="hanshu-editorial-layout">
 
-              <header class="hanshu-onepage-heading" data-reveal>
-                <div class="hanshu-onepage-kicker">
-                  <span>01 / Featured Brand Case</span>
-                  <span>2025.12—2026.02</span>
+              <header class="he-intro" data-reveal>
+                <div class="he-brandline">
+                  <span>ENO LI</span>
+                  <i></i>
+                  <span>WORK</span>
                 </div>
 
-                <h3>
-                  <span>韩束</span>
-                  <em>亮白瓶</em>
-                </h3>
+                <div class="he-title-wrap">
+                  <h3>
+                    <span>HANSCHU</span>
+                    <em>韩束亮白瓶</em>
+                  </h3>
+                  <span class="he-case-pill">Featured case ↗</span>
+                </div>
 
-                <p class="hanshu-onepage-tagline">
-                  从产品功效出发，把身体护理转化为更有代入感、情绪感和传播力的内容场景。
-                </p>
+                <dl class="he-meta">
+                  <dt>Year</dt>
+                  <dd>2025.12—2026.02</dd>
 
-                <dl class="hanshu-onepage-meta">
                   <dt>Role</dt>
                   <dd>产品营销 / 小红书内容运营</dd>
 
-                  <dt>Platform</dt>
-                  <dd>小红书 / Social Commerce</dd>
-
                   <dt>Focus</dt>
-                  <dd>用户洞察 · 内容创新 · 达人协同 · 数据复盘</dd>
+                  <dd>内容策略 · 达人协同 · 数据复盘</dd>
                 </dl>
               </header>
 
-              <section class="hanshu-product-zone" id="hanshuProductZone" data-reveal>
-                <div class="hanshu-product-halo"></div>
-                <div class="hanshu-product-ring ring-one"></div>
-                <div class="hanshu-product-ring ring-two"></div>
-
-                <span class="hanshu-product-label label-top">BRIGHTENING BODY SERUM</span>
-                <span class="hanshu-product-label label-left">BODY CARE</span>
-                <span class="hanshu-product-label label-right">250 ML</span>
-
-                <img
-                  class="hanshu-product-object"
-                  src="hanshu-product-transparent-v2.png"
-                  alt="韩束亮白紧致身体精华液产品图"
-                />
-
-                <div class="hanshu-product-name">
-                  <small>Hero Product</small>
-                  <strong>韩束亮白紧致身体精华液</strong>
-                </div>
-              </section>
-
-              <section class="hanshu-featured-content" data-reveal>
-                <div class="featured-content-label">
-                  <span>Featured Content</span>
-                  <strong>两篇代表性爆文</strong>
-                </div>
-
-                <a
-                  class="featured-phone pet-phone"
-                  href="https://www.xiaohongshu.com/discovery/item/698ac601000000000a02fbd0?source=webshare&amp;xhsshare=pc_web&amp;xsec_token=ABzQWr6ilQzCYmDizqI2RrxmzES3JGzxYOUG3P867WXwU=&amp;xsec_source=pc_share"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="打开宠物陪伴特辑小红书笔记"
-                >
-                  <div class="featured-phone-shell">
-                    <div class="featured-phone-status">
-                      <span>12:01</span>
-                      <span>● 5G ▰</span>
-                    </div>
-
-                    <div class="featured-phone-profile">
-                      <span class="featured-avatar pet-avatar"></span>
-                      <div>
-                        <b>人、不许揍霉头</b>
-                        <small>宠物 × 身体护理</small>
-                      </div>
-                      <span>关注</span>
-                    </div>
-
-                    <div class="featured-phone-cover real-note-cover pet-cover">
-                      <img
-                        src="hanshu-pet-cover.jpg"
-                        alt="韩束宠物陪伴特辑封面：橘猫、玩偶与韩束亮白瓶"
-                      />
-                      <div class="real-cover-badge">
-                        <small>PET × BODY CARE</small>
-                        <strong>宠物陪伴特辑</strong>
-                      </div>
-                      <span class="real-cover-link">OPEN NOTE ↗</span>
-                    </div>
-
-                    <div class="featured-phone-copy">
-                      <b>用宠物视角讲身体护理，让产品进入真实、有趣的生活关系。</b>
-                      <p>宠物拟人化 × 情绪价值 × 清爽保湿体验</p>
-                    </div>
-
-                    <div class="featured-phone-stats">
-                      <span>♡ 爆文</span>
-                      <span>☆ 高互动</span>
-                      <span>↗ VIEW</span>
-                    </div>
-                  </div>
-                </a>
-
-                <a
-                  class="featured-phone hack-phone"
-                  href="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a?source=webshare&amp;xhsshare=pc_web&amp;xsec_token=AB-QJ1E5WLnUlyGA5pqewyy3juKJe6mHAmFVVGsHSKd3c=&amp;xsec_source=pc_share"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="打开年前亮白体膜特辑小红书笔记"
-                >
-                  <div class="featured-phone-shell">
-                    <div class="featured-phone-status">
-                      <span>12:01</span>
-                      <span>● 5G ▰</span>
-                    </div>
-
-                    <div class="featured-phone-profile">
-                      <span class="featured-avatar hack-avatar"></span>
-                      <div>
-                        <b>画饼公司制片</b>
-                        <small>Beauty Hack × Body Care</small>
-                      </div>
-                      <span>关注</span>
-                    </div>
-
-                    <div class="featured-phone-cover real-note-cover hack-cover">
-                      <img
-                        src="hanshu-hack-cover.jpg"
-                        alt="韩束年前亮白体膜特辑封面：手持韩束亮白瓶"
-                      />
-                      <div class="real-cover-badge">
-                        <small>BEAUTY HACK × BODY CARE</small>
-                        <strong>年前亮白体膜特辑</strong>
-                      </div>
-                      <span class="real-cover-link">OPEN NOTE ↗</span>
-                    </div>
-
-                    <div class="featured-phone-copy">
-                      <b>从“年前急救”切入，把亮白功效变成可跟练、低门槛的护理攻略。</b>
-                      <p>年前急救 × 实用步骤 × 功效转译</p>
-                    </div>
-
-                    <div class="featured-phone-stats">
-                      <span>♡ 爆文</span>
-                      <span>☆ 高收藏</span>
-                      <span>↗ VIEW</span>
-                    </div>
-                  </div>
-                </a>
-              </section>
-
-              <section class="hanshu-onepage-overview" data-reveal>
-                <div class="overview-title">
-                  <span>Project Overview</span>
-                  <strong>从“亮白功效”到真实生活场景</strong>
-                </div>
-
+              <section class="he-story" data-reveal>
+                <h4>Project</h4>
                 <p>
-                  在韩束亮白瓶身体精华项目中，我参与了小红书内容营销从策略到执行的完整流程。
-                  基于用户评论、竞品内容和平台反馈，我将相对单一的“亮白功效”转化为露肤季、
-                  通勤肤感、学生党护理、宠物陪伴和年前急救等更具体的内容场景。
-                  同时参与达人筛选、内容排期、KOC 铺量、KOL 放大及投流跟进，
-                  并通过曝光、互动、点击与进店表现持续复盘，为下一轮内容优化和预算分配提供依据。
+                  我参与韩束亮白瓶的小红书内容营销执行，从用户评论与竞品内容中提炼场景，
+                  推进达人筛选、内容排期和投流复盘。两篇代表性爆文分别以
+                  <strong>“宠物陪伴”</strong>和<strong>“年前亮白急救”</strong>为切口，
+                  将功效卖点转化为更有情绪价值与实用性的内容表达。
                 </p>
               </section>
 
-              <section class="hanshu-work-modules" data-reveal>
-                <article>
-                  <span>01 / Insight</span>
-                  <strong>用户洞察</strong>
-                  <p>从评论、竞品和平台反馈中，识别用户对亮白、肤感、局部暗沉和情绪价值的真实关注。</p>
-                </article>
+              <section class="he-collage" id="hanshuCollage" data-reveal>
+                <div class="he-accent-card he-accent-main" data-he-depth="1.2">
+                  <small>CONTENT THAT</small>
+                  <strong>FEELS<br>REAL.</strong>
+                </div>
 
-                <article>
-                  <span>02 / Innovation</span>
-                  <strong>内容创新</strong>
-                  <p>将产品卖点转译为宠物陪伴、年前急救、露肤季和通勤护理等更具传播感的内容场景。</p>
-                </article>
+                <div class="he-accent-card he-accent-data" data-he-depth="1.5">
+                  <small>CONTENT REVIEW</small>
+                  <strong>INSIGHT<br>→ ACTION</strong>
+                  <i></i><i></i><i></i>
+                </div>
 
-                <article>
-                  <span>03 / Execution</span>
-                  <strong>执行协同</strong>
-                  <p>参与达人筛选、内容排期、素材沟通、KOC 铺量、KOL 放大及投流协同。</p>
-                </article>
+                <div class="he-product-stage" data-he-depth="3.6">
+                  <div class="he-product-ring"></div>
+                  <img
+                    src="hanshu-product-transparent-v2.png"
+                    alt="韩束亮白紧致身体精华液产品图"
+                  />
+                  <span>HERO PRODUCT / 250 ML</span>
+                </div>
 
-                <article>
-                  <span>04 / Review</span>
-                  <strong>数据复盘</strong>
-                  <p>围绕曝光、互动、点击和进店表现，拆解高表现笔记并沉淀下一轮优化方向。</p>
-                </article>
+                <a
+                  class="he-note-shot he-note-pet"
+                  href="https://www.xiaohongshu.com/discovery/item/698ac601000000000a02fbd0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-he-depth="4.2"
+                  aria-label="打开宠物陪伴爆文"
+                >
+                  <img
+                    src="hanshu-pet-note-full.jpg"
+                    alt="宠物陪伴主题小红书爆文真实截图"
+                  />
+                  <span>
+                    <small>01 / PET × BODY CARE</small>
+                    <strong>宠物陪伴特辑</strong>
+                    <b>OPEN NOTE ↗</b>
+                  </span>
+                </a>
+
+                <a
+                  class="he-note-shot he-note-hack"
+                  href="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-he-depth="3.8"
+                  aria-label="打开年前亮白急救爆文"
+                >
+                  <img
+                    src="hanshu-hack-note-full.jpg"
+                    alt="年前亮白急救主题小红书爆文真实截图"
+                  />
+                  <span>
+                    <small>02 / BEAUTY HACK</small>
+                    <strong>年前亮白急救</strong>
+                    <b>OPEN NOTE ↗</b>
+                  </span>
+                </a>
+
+                <div class="he-caption-card" data-he-depth="2">
+                  <span>CONTENT LOGIC</span>
+                  <strong>用户语言 → 生活场景 → 表现复盘</strong>
+                </div>
               </section>
-
-              <footer class="hanshu-onepage-flow" data-reveal>
-                <span>User Insight</span>
-                <i>→</i>
-                <span>Content Scene</span>
-                <i>→</i>
-                <span>Emotional Connection</span>
-                <i>→</i>
-                <span>Performance Review</span>
-              </footer>
 
             </div>
           </article>
 
 
 
-          <article class="project" id="gender-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>02 / Graduation Campaign</span><span>Digital Experience</span></div><h3 class="project-title serif">Gender</h3><p class="project-desc">围绕 Gender 议题完成毕业项目宣传，并设计制作配套网站。重点展示议题转译、传播概念、网站信息结构与用户浏览体验。</p><div class="project-tags"><span>Campaign Concept</span><span>Website Design</span><span>Information Architecture</span><span>Visual System</span></div></div><a class="project-link" href="#about">View project structure <span>→</span></a></div><div class="project-art"><div class="browser-stack"><div class="browser back"></div><div class="browser front"></div></div></div></article>
+
+          
+          <article class="project gender-live-card" id="gender-card" data-reveal>
+            <div class="project-info">
+              <div>
+                <div class="project-meta">
+                  <span>02 / Graduation Project</span>
+                  <span>Research × Web Experience</span>
+                </div>
+
+                <h3 class="project-title serif">Visible<br>Hand</h3>
+
+                <p class="project-desc">
+                  围绕职场平等与非正式劳动者的可见性，完成议题研究、叙事结构、
+                  视觉系统与响应式网站设计。
+                </p>
+
+                <div class="project-tags">
+                  <span>Gender at Work</span>
+                  <span>Research Translation</span>
+                  <span>Website Design</span>
+                </div>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://enoli111.github.io/visible-hand/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open live website <span>↗</span>
+              </a>
+            </div>
+
+            <div class="project-art gender-live-art">
+              <a
+                class="gender-browser-preview"
+                href="https://enoli111.github.io/visible-hand/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="打开 Visible Hand Gender 项目网站"
+              >
+                <div class="gender-browser-bar">
+                  <span></span><span></span><span></span>
+                  <small>enoli111.github.io/visible-hand/</small>
+                </div>
+
+                <img
+                  src="gender-visible-hand-cover.jpg"
+                  alt="Visible Hand Gender 项目网站首页"
+                />
+
+                <span class="gender-open-label">
+                  VIEW LIVE PROJECT ↗
+                </span>
+              </a>
+            </div>
+          </article>
+
           <article class="project" id="poster-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>03 / Visual Campaigns</span><span>Selected Posters</span></div><h3 class="project-title">视觉<br>海报</h3><p class="project-desc">精选三组成熟海报项目，通过主题、受众、创意切口、系列延展与应用场景，呈现视觉艺术训练如何转化为传播表达。</p><div class="project-tags"><span>Art Direction</span><span>Visual Storytelling</span><span>Campaign Key Visual</span><span>Editorial Design</span></div></div><a class="project-link" href="#about">View selected works <span>→</span></a></div><div class="project-art"><div class="poster-grid"><div class="poster"><strong>SOFT<br>CONTROL</strong><span>亲密关系中的隐性控制</span></div><div class="poster"><strong>BUTTER<br>FLY</strong><span>关怀、控制与变化</span></div><div class="poster"><strong>VISUAL<br>LAB</strong><span>身份、情绪与社会议题</span></div></div></div></article>
           <article class="project" id="lab-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>04 / Creative Lab</span><span>Interaction & Spatial Work</span></div><h3 class="project-title serif">Creative<br>Lab</h3><p class="project-desc">将交互设计、装置实验与立体构成合并为创意实验室，展示我如何从概念出发，设计观众参与方式、媒介关系与空间体验。</p><div class="project-tags"><span>Interaction Design</span><span>Installation</span><span>Arduino</span><span>Spatial Composition</span></div></div><a class="project-link" href="#about">Explore creative works <span>→</span></a></div><div class="project-art"><div class="creative-stage"><div class="creative-card"><div class="orb"></div><strong>Interactive<br>Work</strong><span>Audience · Trigger · Response</span></div><div class="creative-card"><div class="structure"></div><strong>Spatial<br>Form</strong><span>Material · Balance · Structure</span></div></div></div></article>
         </div>
@@ -3847,6 +4462,37 @@
       zone.addEventListener("pointerleave", () => {
         product.style.transform = "";
         product.style.animationPlayState = "";
+      });
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const collage = document.getElementById("hanshuCollage");
+      if (!collage) return;
+
+      const finePointer = window.matchMedia("(pointer:fine)").matches;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!finePointer || reduceMotion) return;
+
+      const items = [...collage.querySelectorAll("[data-he-depth]")];
+
+      collage.addEventListener("pointermove", (event) => {
+        const rect = collage.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+
+        items.forEach((item) => {
+          const depth = Number(item.dataset.heDepth || 1);
+          item.style.translate = `${x * depth * 2.3}px ${y * depth * 1.8}px`;
+        });
+      });
+
+      collage.addEventListener("pointerleave", () => {
+        items.forEach((item) => {
+          item.style.translate = "";
+        });
       });
     })();
   </script>
