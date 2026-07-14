@@ -1808,6 +1808,387 @@
       }
     }
 
+  
+    /* =========================================================
+       V11 — HANSCHU 3D PRODUCT HERO
+       删除 Selected Work 引导区，突出韩束亮白瓶与产品主体。
+    ========================================================= */
+
+    .work {
+      padding-top: 38px;
+    }
+
+    .project-shelf {
+      gap: 24px;
+    }
+
+    .hanshu-case {
+      min-height: 1135px;
+      padding-top: 12px;
+    }
+
+    .hanshu-overview {
+      grid-template-columns: .63fr 1.37fr;
+      gap: clamp(36px, 5vw, 88px);
+      min-height: 750px;
+    }
+
+    .hanshu-intro {
+      padding-top: 42px;
+    }
+
+    .hanshu-title-cn .hanshu-cn-brand {
+      font-family: var(--serif);
+      font-size: clamp(5.7rem, 8.7vw, 10.8rem);
+      line-height: .78;
+      letter-spacing: -.105em;
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .hanshu-title-cn em {
+      margin-top: 19px;
+      margin-left: 13%;
+      font-size: clamp(4.7rem, 7.2vw, 8.9rem);
+      letter-spacing: -.075em;
+    }
+
+    .hanshu-featured-pill {
+      top: 56%;
+      right: -8%;
+    }
+
+    .hanshu-visual {
+      min-height: 750px;
+      perspective: 1500px;
+      overflow: visible;
+    }
+
+    /* 产品主体 */
+    .hanshu-product-stage {
+      position: absolute;
+      z-index: 16;
+      left: 0;
+      top: 78px;
+      width: 315px;
+      height: 610px;
+      display: grid;
+      place-items: center;
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+
+    .hanshu-product-glow {
+      position: absolute;
+      z-index: 0;
+      left: 50%;
+      top: 52%;
+      width: 265px;
+      height: 390px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,.95), rgba(222,190,198,.35) 43%, transparent 72%);
+      filter: blur(10px);
+      transform: translate(-50%, -50%);
+    }
+
+    .hanshu-product-orbit {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      top: 50%;
+      width: 300px;
+      height: 455px;
+      border: 1px solid rgba(37,33,38,.18);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      animation: hanshuOrbitBreath 7s ease-in-out infinite;
+    }
+
+    .hanshu-product-orbit::before,
+    .hanshu-product-orbit::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border: 1px solid rgba(161,115,131,.18);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hanshu-product-orbit::before {
+      width: 250px;
+      height: 400px;
+    }
+
+    .hanshu-product-orbit::after {
+      width: 335px;
+      height: 505px;
+      border-style: dashed;
+    }
+
+    .orbit-copy {
+      position: absolute;
+      left: 50%;
+      padding: 5px 9px;
+      background: rgba(248,246,243,.82);
+      color: rgba(37,33,38,.54);
+      font-family: var(--sans);
+      font-size: 6px;
+      line-height: 1.2;
+      letter-spacing: .13em;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .orbit-copy-top {
+      top: -9px;
+      transform: translateX(-50%);
+    }
+
+    .orbit-copy-bottom {
+      bottom: -9px;
+      transform: translateX(-50%);
+    }
+
+    .hanshu-product-3d {
+      position: relative;
+      z-index: 4;
+      width: 258px;
+      max-height: 565px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 34px 24px rgba(63,39,43,.20))
+        drop-shadow(0 8px 8px rgba(255,255,255,.70));
+      transform:
+        perspective(1200px)
+        rotateY(-8deg)
+        rotateX(2deg)
+        rotateZ(-2.5deg)
+        translateZ(28px);
+      transform-origin: 50% 56%;
+      transition: transform .22s cubic-bezier(.2,.8,.2,1);
+      animation: hanshuProductFloat 5.8s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .hanshu-product-caption {
+      position: absolute;
+      z-index: 8;
+      left: 6px;
+      bottom: 54px;
+      display: grid;
+      gap: 4px;
+      padding: 11px 14px;
+      border: 1px solid rgba(37,33,38,.12);
+      background: rgba(255,255,255,.68);
+      box-shadow: 0 12px 28px rgba(37,33,38,.08);
+      backdrop-filter: blur(10px);
+      transform: rotate(-4deg);
+    }
+
+    .hanshu-product-caption span {
+      color: rgba(37,33,38,.48);
+      font-family: var(--sans);
+      font-size: 6px;
+      line-height: 1.2;
+      letter-spacing: .13em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .hanshu-product-caption strong {
+      font-family: var(--sans);
+      font-size: 11px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    @keyframes hanshuProductFloat {
+      0%, 100% {
+        translate: 0 0;
+      }
+      50% {
+        translate: 0 -10px;
+      }
+    }
+
+    @keyframes hanshuOrbitBreath {
+      0%, 100% {
+        scale: .98;
+        opacity: .72;
+      }
+      50% {
+        scale: 1.025;
+        opacity: 1;
+      }
+    }
+
+    /* 重新平衡右侧手机与卡片 */
+    .hanshu-phone-main {
+      left: 38%;
+      top: 116px;
+      z-index: 13;
+    }
+
+    .hanshu-phone-right {
+      right: 0;
+      top: 215px;
+      z-index: 9;
+    }
+
+    .hanshu-poster-message {
+      right: 21%;
+      top: 9px;
+      z-index: 4;
+    }
+
+    .hanshu-poster-data {
+      right: 1%;
+      bottom: 12px;
+    }
+
+    .hanshu-polaroid {
+      left: 23%;
+      bottom: 0;
+      width: 182px;
+      z-index: 5;
+      transform: rotate(6deg);
+    }
+
+    .hanshu-polaroid-art {
+      min-height: 175px;
+    }
+
+    @media (max-width: 1180px) {
+      .hanshu-overview {
+        grid-template-columns: .68fr 1.32fr;
+      }
+
+      .hanshu-product-stage {
+        width: 270px;
+      }
+
+      .hanshu-product-3d {
+        width: 225px;
+      }
+
+      .hanshu-phone-main {
+        left: 37%;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .work {
+        padding-top: 26px;
+      }
+
+      .hanshu-overview {
+        grid-template-columns: 1fr;
+      }
+
+      .hanshu-visual {
+        min-height: 765px;
+      }
+
+      .hanshu-product-stage {
+        left: 3%;
+        top: 82px;
+        width: 290px;
+      }
+
+      .hanshu-phone-main {
+        left: 40%;
+      }
+
+      .hanshu-phone-right {
+        right: 1%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hanshu-case {
+        padding-top: 0;
+      }
+
+      .hanshu-title-cn .hanshu-cn-brand {
+        font-size: clamp(4.5rem, 20vw, 6.7rem);
+      }
+
+      .hanshu-title-cn em {
+        margin-left: 7%;
+        font-size: clamp(4rem, 18vw, 6rem);
+      }
+
+      .hanshu-visual {
+        min-height: 675px;
+      }
+
+      .hanshu-product-stage {
+        left: -7%;
+        top: 92px;
+        width: 205px;
+        height: 500px;
+      }
+
+      .hanshu-product-3d {
+        width: 172px;
+        max-height: 450px;
+      }
+
+      .hanshu-product-orbit {
+        width: 195px;
+        height: 360px;
+      }
+
+      .hanshu-product-orbit::before {
+        width: 165px;
+        height: 315px;
+      }
+
+      .hanshu-product-orbit::after {
+        width: 220px;
+        height: 405px;
+      }
+
+      .hanshu-product-caption {
+        left: 13px;
+        bottom: 57px;
+        padding: 8px 9px;
+      }
+
+      .hanshu-product-caption strong {
+        font-size: 8px;
+      }
+
+      .hanshu-phone-main {
+        left: 36%;
+        top: 112px;
+      }
+
+      .hanshu-phone-right {
+        right: -2%;
+        top: 222px;
+      }
+
+      .hanshu-poster-message {
+        right: -1%;
+        top: 5px;
+      }
+
+      .hanshu-polaroid {
+        left: 15%;
+        bottom: 2px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hanshu-product-3d,
+      .hanshu-product-orbit {
+        animation: none !important;
+      }
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -1991,11 +2372,7 @@
 
     <section class="work" id="work">
       <div class="wrap">
-        <div class="section-head" data-reveal>
-          <div><span class="eyebrow">Selected Work / 2025—2026</span><h2>品牌、内容、<br>视觉与体验。</h2></div>
-          <p>整体内容将按品牌营销主线展开：韩束是重点商业案例，Gender 作为毕业课题传播与网站实践，另外通过海报项目和 Creative Lab 展现我的视觉与交互能力。</p>
-        </div>
-        <div class="project-shelf">
+<div class="project-shelf">
 
           <article class="hanshu-case" id="hanshu-card">
             <div class="hanshu-overview">
@@ -2007,8 +2384,8 @@
                 </div>
 
                 <div class="hanshu-title-row">
-                  <h3 class="hanshu-title">
-                    <span>HANSCHU</span>
+                  <h3 class="hanshu-title hanshu-title-cn">
+                    <span class="hanshu-cn-brand">韩束</span>
                     <em>亮白瓶</em>
                   </h3>
 
@@ -2064,43 +2441,23 @@
                   <small>USER LANGUAGE / DAILY SCENE</small>
                 </div>
 
-                <div class="hanshu-phone hanshu-phone-left" data-depth="3.2">
-                  <div class="hanshu-phone-notch"></div>
+                <div class="hanshu-product-stage" data-depth="4.8">
+                  <div class="hanshu-product-glow"></div>
 
-                  <div class="hanshu-screen">
-                    <div class="hanshu-status">
-                      <span>12:01</span>
-                      <span>● 5G ▰</span>
-                    </div>
+                  <div class="hanshu-product-orbit">
+                    <span class="orbit-copy orbit-copy-top">BRIGHTENING BODY SERUM</span>
+                    <span class="orbit-copy orbit-copy-bottom">KANS · BODY CARE · 250ML</span>
+                  </div>
 
-                    <div class="hanshu-profile">
-                      <span class="hanshu-avatar"></span>
+                  <img
+                    class="hanshu-product-3d"
+                    src="hanshu-product-3d.png"
+                    alt="韩束亮白紧致身体精华液立体产品图"
+                  />
 
-                      <div>
-                        <b>身体护理研究所</b>
-                        <small>韩束亮白瓶体验</small>
-                      </div>
-
-                      <span class="hanshu-follow">关注</span>
-                    </div>
-
-                    <div class="hanshu-cover hanshu-cover-pink">
-                      <span class="hanshu-cover-kicker">SUMMER BODY CARE</span>
-                      <strong>夏日露肤<br>身体护理</strong>
-                      <p>轻薄不黏 · 通勤可用</p>
-                      <span class="hanshu-bottle"></span>
-                    </div>
-
-                    <div class="hanshu-note-copy">
-                      <b>露肤季前，我会把身体护理提前做起来</b>
-                      <p>从单一亮白卖点，转向肤感、场景与坚持成本。</p>
-                    </div>
-
-                    <div class="hanshu-actions">
-                      <span>♡ 1.3k</span>
-                      <span>☆ 822</span>
-                      <span>◌ 46</span>
-                    </div>
+                  <div class="hanshu-product-caption">
+                    <span>Hero Product</span>
+                    <strong>亮白紧致身体精华液</strong>
                   </div>
                 </div>
 
@@ -2492,6 +2849,42 @@
         items.forEach((item) => {
           item.style.translate = "";
         });
+      });
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const stage = document.querySelector(".hanshu-product-stage");
+      const product = document.querySelector(".hanshu-product-3d");
+
+      if (!stage || !product) return;
+
+      const finePointer = window.matchMedia("(pointer:fine)").matches;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!finePointer || reduceMotion) return;
+
+      stage.addEventListener("pointermove", (event) => {
+        const rect = stage.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+
+        product.style.animationPlayState = "paused";
+        product.style.transform = `
+          perspective(1200px)
+          rotateY(${-8 + x * 18}deg)
+          rotateX(${2 - y * 12}deg)
+          rotateZ(${-2.5 + x * 2}deg)
+          translateZ(42px)
+          scale(1.025)
+        `;
+      });
+
+      stage.addEventListener("pointerleave", () => {
+        product.style.transform = "";
+        product.style.animationPlayState = "";
       });
     })();
   </script>
