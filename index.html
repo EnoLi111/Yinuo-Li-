@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="李伊诺｜品牌营销、内容策略与视觉传播作品集" />
   <meta name="theme-color" content="#f5f2ef" />
-  <title>ENO LI｜Portfolio</title>
+  <title>ENO LI｜Portfolio · Ripple Edition</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -223,10 +223,53 @@
     @media (max-width:1080px) { .topbar { grid-template-columns:1fr auto; } .nav { display:none; } .hero-grid, .section-head, .project, .featured-head, .case-grid, .about-layout { grid-template-columns:1fr; } .cover-stage { min-height:860px; } .collage-wrap { width:min(530px, 74vw); } .case-copy, .about h2 { position:static; } .facts { grid-template-columns:repeat(2,1fr); } }
     @media (max-width:720px) { body, a, button { cursor:auto; } .cursor-dot, .cursor-ring { display:none; } .wrap { width:min(100% - 34px, 1460px); } .topbar { padding:18px 18px 0; } .brand strong { font-size:18px; } .brand span { font-size:8px; } .status { font-size:7px; padding:9px 11px; } .hero { min-height:auto; padding-top:92px; } .hero-hand { display:none; } .hero h1 { font-size:clamp(4rem, 17vw, 5.8rem); } .hero-lead { font-size:16px; line-height:1.86; } .hero-cta { margin-top:44px; } .cover-stage { min-height:820px; margin-top:16px; } .cover-title { top:0; left:4%; right:4%; } .cover-title h2 { font-size:clamp(3.1rem, 13vw, 4.8rem); } .cover-title .side-text { max-width:70px; font-size:6px; line-height:1.6; } .collage-wrap { width:min(360px, 84vw); margin-top:64px; } .hero-note { width:132px; min-height:116px; padding:16px 14px 14px; } .hero-note h3 { font-size:14px; } .hero-note p { font-size:9px; line-height:1.55; } .hero-note small { font-size:6px; } .hero-note b { display:none; } .hn1 { left:-1%; top:12%; } .hn2 { left:0; bottom:10%; } .hn3 { right:-1%; top:13%; } .hn4 { right:0; bottom:11%; } .hero-bottom { display:none; } .project { min-height:auto; padding:26px; } .project-art { min-height:410px; } .phone { width:132px; height:255px; } .browser { width:90%; height:270px; } .poster-grid { gap:8px; } .poster { padding:12px; } .creative-stage { grid-template-columns:1fr; position:relative; } .creative-card:last-child { transform:rotate(3deg); } .facts { grid-template-columns:1fr; } .step { grid-template-columns:1fr; } .timeline-row { grid-template-columns:1fr; gap:7px; } .contact-row { flex-direction:column; align-items:flex-start; } .copyright { text-align:left; } }
     @media (prefers-reduced-motion:reduce) { *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
+
+
+    /* ==============================================
+       WATER RIPPLE CURSOR EFFECT
+       Cursor movement leaves restrained ripples and
+       click creates a slightly stronger splash.
+    ============================================== */
+    #rippleCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: 1120;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      opacity: .92;
+    }
+
+    .cursor-dot {
+      background:
+        radial-gradient(circle at 34% 28%, rgba(255,255,255,.92) 0 8%, transparent 9%),
+        linear-gradient(145deg, rgba(226,196,206,.96), rgba(171,139,159,.94));
+      box-shadow:
+        0 7px 17px rgba(135,105,125,.18),
+        0 0 0 1px rgba(255,255,255,.45) inset;
+    }
+
+    .cursor-ring {
+      border-color: rgba(145,129,160,.33);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.32) inset,
+        0 7px 24px rgba(126,122,145,.08);
+    }
+
+    .cursor-ring.hover {
+      border-color: rgba(161,115,131,.62);
+      background: rgba(223,231,241,.12);
+    }
+
+    @media (hover:none), (pointer:coarse) {
+      #rippleCanvas { display:none; }
+    }
+
   </style>
 </head>
 <body>
   <div class="grain"></div>
+  <canvas id="rippleCanvas" aria-hidden="true"></canvas>
   <div class="cursor-ring" id="cursorRing"></div>
   <div class="cursor-dot" id="cursorDot"></div>
 
@@ -420,22 +463,248 @@
   </main>
 
   <script>
-    const cursorDot = document.getElementById("cursorDot");
-    const cursorRing = document.getElementById("cursorRing");
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let ringX = mouseX, ringY = mouseY;
-    window.addEventListener("mousemove", (e) => {{ mouseX = e.clientX; mouseY = e.clientY; cursorDot.style.left = mouseX + "px"; cursorDot.style.top = mouseY + "px"; }});
-    function animateRing() {{ ringX += (mouseX - ringX) * 0.18; ringY += (mouseY - ringY) * 0.18; cursorRing.style.left = ringX + "px"; cursorRing.style.top = ringY + "px"; requestAnimationFrame(animateRing); }}
-    animateRing();
-    document.querySelectorAll("a, button, .frag").forEach(el => {{ el.addEventListener("mouseenter", () => {{ cursorDot.classList.add("hover"); cursorRing.classList.add("hover"); }}); el.addEventListener("mouseleave", () => {{ cursorDot.classList.remove("hover"); cursorRing.classList.remove("hover"); }}); }});
-    const stage = document.getElementById("coverStage");
-    const collage = document.getElementById("portraitFrame");
-    const heroNotes = [...document.querySelectorAll(".hero-note")];
-    stage.addEventListener("pointermove", (event) => {{ const rect = stage.getBoundingClientRect(); const x = (event.clientX - rect.left) / rect.width - 0.5; const y = (event.clientY - rect.top) / rect.height - 0.5; collage.style.transform = `rotate(${{x * 1.6}}deg) translate(${{x * 6}}px, ${{-y * 6}}px)`; heroNotes.forEach((note, index) => {{ const depth = (index % 2 + 1) * 4; note.style.translate = `${{x * depth}}px ${{y * depth}}px`; }}); }});
-    stage.addEventListener("pointerleave", () => {{ collage.style.transform = ""; heroNotes.forEach(note => note.style.translate = ""); }});
-    const revealItems = document.querySelectorAll("[data-reveal]");
-    const observer = new IntersectionObserver((entries) => {{ entries.forEach((entry) => {{ if (entry.isIntersecting) {{ entry.target.classList.add("visible"); observer.unobserve(entry.target); }} }}); }}, {{ threshold: .12 }});
-    revealItems.forEach(item => observer.observe(item));
+    (() => {
+      const finePointer = window.matchMedia('(pointer:fine)').matches;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const cursorDot = document.getElementById('cursorDot');
+      const cursorRing = document.getElementById('cursorRing');
+      const canvas = document.getElementById('rippleCanvas');
+      const ctx = canvas.getContext('2d');
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let lastTrailTime = 0;
+      let lastTrailX = mouseX;
+      let lastTrailY = mouseY;
+
+      const ripples = [];
+      const droplets = [];
+
+      function resizeCanvas() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(window.innerWidth * dpr);
+        canvas.height = Math.round(window.innerHeight * dpr);
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function isDarkArea(x, y) {
+        const target = document.elementFromPoint(x, y);
+        return Boolean(target && target.closest('.featured, .contact'));
+      }
+
+      function paletteFor(x, y, alternate = false) {
+        if (isDarkArea(x, y)) {
+          return alternate
+            ? { r: 223, g: 231, b: 241 }
+            : { r: 229, g: 199, b: 207 };
+        }
+        return alternate
+          ? { r: 135, g: 151, b: 176 }
+          : { r: 161, g: 115, b: 131 };
+      }
+
+      function addRipple(x, y, strength = 1, alternate = false) {
+        const color = paletteFor(x, y, alternate);
+        ripples.push({
+          x,
+          y,
+          radius: 3 + Math.random() * 3,
+          speed: 1.05 + strength * .85 + Math.random() * .35,
+          alpha: .24 + strength * .10,
+          decay: .006 + Math.random() * .002,
+          lineWidth: .7 + strength * .65,
+          maxRadius: 38 + strength * 30 + Math.random() * 12,
+          color
+        });
+      }
+
+      function addDroplet(x, y, strength = 1, alternate = false) {
+        const color = paletteFor(x, y, alternate);
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = (.55 + Math.random() * 1.25) * strength;
+        droplets.push({
+          x,
+          y,
+          vx: Math.cos(angle) * velocity,
+          vy: Math.sin(angle) * velocity - .35 * strength,
+          radius: .8 + Math.random() * 1.8 * strength,
+          alpha: .30 + Math.random() * .18,
+          decay: .014 + Math.random() * .01,
+          color
+        });
+      }
+
+      function createTrail(x, y, now) {
+        const distance = Math.hypot(x - lastTrailX, y - lastTrailY);
+        if (now - lastTrailTime < 42 || distance < 5) return;
+
+        addRipple(x, y, .42, Math.random() > .68);
+        if (Math.random() > .42) {
+          addDroplet(x, y, .52, Math.random() > .5);
+        }
+
+        lastTrailTime = now;
+        lastTrailX = x;
+        lastTrailY = y;
+      }
+
+      function createSplash(x, y) {
+        addRipple(x, y, 1.25, false);
+        addRipple(x, y, .92, true);
+        setTimeout(() => addRipple(x, y, .66, Math.random() > .5), 55);
+
+        for (let i = 0; i < 12; i += 1) {
+          addDroplet(x, y, .9 + Math.random() * .55, i % 2 === 0);
+        }
+      }
+
+      function drawRipple(ripple) {
+        const { r, g, b } = ripple.color;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${Math.max(0, ripple.alpha)})`;
+        ctx.lineWidth = ripple.lineWidth;
+        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${Math.max(0, ripple.alpha * .7)})`;
+        ctx.shadowBlur = 7;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(ripple.x, ripple.y, Math.max(1, ripple.radius * .72), 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${Math.max(0, ripple.alpha * .38)})`;
+        ctx.lineWidth = Math.max(.4, ripple.lineWidth * .55);
+        ctx.shadowBlur = 2;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function drawDroplet(drop) {
+        const { r, g, b } = drop.color;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(drop.x, drop.y, Math.max(.2, drop.radius), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.max(0, drop.alpha)})`;
+        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${Math.max(0, drop.alpha * .6)})`;
+        ctx.shadowBlur = 5;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function animateEffects() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+        for (let i = ripples.length - 1; i >= 0; i -= 1) {
+          const ripple = ripples[i];
+          ripple.radius += ripple.speed;
+          ripple.alpha -= ripple.decay;
+          ripple.lineWidth *= .997;
+          drawRipple(ripple);
+          if (ripple.alpha <= 0 || ripple.radius > ripple.maxRadius) {
+            ripples.splice(i, 1);
+          }
+        }
+
+        for (let i = droplets.length - 1; i >= 0; i -= 1) {
+          const drop = droplets[i];
+          drop.x += drop.vx;
+          drop.y += drop.vy;
+          drop.vx *= .985;
+          drop.vy = drop.vy * .985 + .018;
+          drop.alpha -= drop.decay;
+          drop.radius *= .993;
+          drawDroplet(drop);
+          if (drop.alpha <= 0 || drop.radius < .18) {
+            droplets.splice(i, 1);
+          }
+        }
+
+        if (finePointer) {
+          ringX += (mouseX - ringX) * .18;
+          ringY += (mouseY - ringY) * .18;
+          cursorRing.style.left = `${ringX}px`;
+          cursorRing.style.top = `${ringY}px`;
+        }
+
+        requestAnimationFrame(animateEffects);
+      }
+
+      if (finePointer) {
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas, { passive: true });
+
+        window.addEventListener('mousemove', (event) => {
+          mouseX = event.clientX;
+          mouseY = event.clientY;
+          cursorDot.style.left = `${mouseX}px`;
+          cursorDot.style.top = `${mouseY}px`;
+          if (!reduceMotion) createTrail(mouseX, mouseY, performance.now());
+        }, { passive: true });
+
+        window.addEventListener('mousedown', (event) => {
+          if (!reduceMotion) createSplash(event.clientX, event.clientY);
+          cursorDot.style.transform = 'scale(.78)';
+        });
+
+        window.addEventListener('mouseup', () => {
+          cursorDot.style.transform = '';
+        });
+
+        document.querySelectorAll('a, button, .frag').forEach((element) => {
+          element.addEventListener('mouseenter', () => {
+            cursorDot.classList.add('hover');
+            cursorRing.classList.add('hover');
+            if (!reduceMotion) addRipple(mouseX, mouseY, .72, true);
+          });
+          element.addEventListener('mouseleave', () => {
+            cursorDot.classList.remove('hover');
+            cursorRing.classList.remove('hover');
+          });
+        });
+      } else {
+        cursorDot.style.display = 'none';
+        cursorRing.style.display = 'none';
+        canvas.style.display = 'none';
+      }
+
+      animateEffects();
+
+      const stage = document.getElementById('coverStage');
+      const collage = document.getElementById('portraitFrame');
+      const heroNotes = [...document.querySelectorAll('.hero-note')];
+
+      stage.addEventListener('pointermove', (event) => {
+        const rect = stage.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        collage.style.transform = `rotate(${x * 1.6}deg) translate(${x * 6}px, ${-y * 6}px)`;
+        heroNotes.forEach((note, index) => {
+          const depth = (index % 2 + 1) * 4;
+          note.style.translate = `${x * depth}px ${y * depth}px`;
+        });
+      });
+
+      stage.addEventListener('pointerleave', () => {
+        collage.style.transform = '';
+        heroNotes.forEach((note) => { note.style.translate = ''; });
+      });
+
+      const revealItems = document.querySelectorAll('[data-reveal]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      revealItems.forEach((item) => observer.observe(item));
+    })();
   </script>
 </body>
 </html>
