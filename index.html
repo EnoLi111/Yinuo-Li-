@@ -517,6 +517,471 @@
       }
     }
 
+  
+    /* V8 — 保留原滚动样式，仅替换为三句个人品牌表达 */
+    .marquee-track {
+      gap: 0;
+      animation-duration: 32s;
+    }
+
+    .marquee span {
+      padding: 21px 32px;
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5vw, 6.2rem);
+      line-height: .9;
+      letter-spacing: -.038em;
+      white-space: nowrap;
+    }
+
+    .marquee span::after {
+      content: "✦";
+      display: inline-block;
+      margin-left: 34px;
+      color: rgba(37,33,38,.24);
+      font-size: .36em;
+      vertical-align: middle;
+      transform: translateY(-.12em);
+    }
+
+    .marquee em {
+      color: var(--rose-deep);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    @media (max-width: 720px) {
+      .marquee-track {
+        animation-duration: 26s;
+      }
+
+      .marquee span {
+        padding: 16px 22px;
+        font-size: clamp(2rem, 10vw, 3.4rem);
+      }
+
+      .marquee span::after {
+        margin-left: 22px;
+      }
+    }
+
+  
+    /* =========================================================
+       V9 — ONLY THE HANSCHU CARD IS UPDATED
+       Rich Xiaohongshu mobile previews inside the original card.
+    ========================================================= */
+    .hanshu-project {
+      min-height: 640px;
+    }
+
+    .hanshu-art {
+      min-height: 535px;
+      overflow: visible;
+    }
+
+    .xhs-phone-stack {
+      position: absolute;
+      inset: 0;
+    }
+
+    .xhs-phone {
+      position: absolute;
+      width: 190px;
+      height: 390px;
+      padding: 7px;
+      border: 1px solid rgba(38,34,37,.11);
+      border-radius: 33px;
+      background: rgba(255,255,255,.86);
+      box-shadow:
+        0 30px 60px rgba(58,50,55,.16),
+        0 1px 0 rgba(255,255,255,.92) inset;
+      backdrop-filter: blur(8px);
+      transform: rotate(var(--phone-rotate));
+      transition:
+        transform .38s cubic-bezier(.2,.8,.2,1),
+        box-shadow .38s ease;
+    }
+
+    .xhs-phone:hover {
+      z-index: 20;
+      transform: translateY(-10px) rotate(var(--phone-rotate)) scale(1.025);
+      box-shadow:
+        0 42px 80px rgba(58,50,55,.21),
+        0 1px 0 rgba(255,255,255,.94) inset;
+    }
+
+    .xhs-phone-a {
+      left: 3%;
+      top: 78px;
+      --phone-rotate: -9deg;
+      z-index: 3;
+    }
+
+    .xhs-phone-b {
+      left: 35%;
+      top: 34px;
+      --phone-rotate: 3deg;
+      z-index: 6;
+    }
+
+    .xhs-phone-c {
+      right: 1%;
+      top: 83px;
+      --phone-rotate: 9deg;
+      z-index: 4;
+    }
+
+    .xhs-phone-notch {
+      position: absolute;
+      z-index: 5;
+      top: 14px;
+      left: 50%;
+      width: 58px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(37,33,38,.13);
+      transform: translateX(-50%);
+    }
+
+    .xhs-screen {
+      height: 100%;
+      overflow: hidden;
+      border-radius: 27px;
+      background: #fff;
+    }
+
+    .xhs-status {
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      padding: 0 14px 7px;
+      color: rgba(37,33,38,.72);
+      font-size: 6px;
+      font-weight: 700;
+      letter-spacing: .035em;
+    }
+
+    .xhs-profile {
+      display: grid;
+      grid-template-columns: 25px 1fr auto;
+      gap: 7px;
+      align-items: center;
+      padding: 7px 10px 9px;
+      border-top: 1px solid rgba(37,33,38,.055);
+      border-bottom: 1px solid rgba(37,33,38,.055);
+    }
+
+    .xhs-avatar {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 32%, rgba(255,255,255,.92), transparent 18%),
+        linear-gradient(145deg, #e3b8c1, #a87684);
+    }
+
+    .xhs-avatar-blue {
+      background:
+        radial-gradient(circle at 35% 32%, rgba(255,255,255,.92), transparent 18%),
+        linear-gradient(145deg, #dce8f0, #8293a8);
+    }
+
+    .xhs-avatar-yellow {
+      background:
+        radial-gradient(circle at 35% 32%, rgba(255,255,255,.92), transparent 18%),
+        linear-gradient(145deg, #f5e9b9, #cca967);
+    }
+
+    .xhs-profile b {
+      display: block;
+      font-size: 7px;
+      line-height: 1.25;
+    }
+
+    .xhs-profile small {
+      display: block;
+      margin-top: 2px;
+      color: rgba(37,33,38,.48);
+      font-size: 5px;
+      line-height: 1.2;
+    }
+
+    .xhs-follow {
+      padding: 4px 7px;
+      border: 1px solid rgba(183,80,94,.50);
+      border-radius: 999px;
+      color: #b7505e;
+      font-size: 5px;
+      font-weight: 700;
+    }
+
+    .xhs-cover {
+      position: relative;
+      height: 194px;
+      overflow: hidden;
+      padding: 16px 13px;
+    }
+
+    .xhs-cover::before {
+      content: "";
+      position: absolute;
+      width: 108px;
+      height: 108px;
+      right: -35px;
+      top: -31px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.42);
+    }
+
+    .xhs-cover::after {
+      content: "";
+      position: absolute;
+      width: 88px;
+      height: 88px;
+      left: -33px;
+      bottom: -43px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.30);
+    }
+
+    .xhs-cover-pink {
+      background: linear-gradient(145deg, #f1cad0, #f7e8e1);
+    }
+
+    .xhs-cover-blue {
+      background: linear-gradient(145deg, #dbe8f2, #bad6e0 58%, #f1df88);
+    }
+
+    .xhs-cover-yellow {
+      background: linear-gradient(145deg, #f5edc6, #f2d7a7 55%, #dfbec8);
+    }
+
+    .xhs-cover-kicker {
+      position: relative;
+      z-index: 2;
+      display: block;
+      margin-bottom: 9px;
+      color: rgba(37,33,38,.48);
+      font-size: 5px;
+      line-height: 1.2;
+      letter-spacing: .13em;
+      font-weight: 800;
+    }
+
+    .xhs-cover strong {
+      position: relative;
+      z-index: 2;
+      display: block;
+      color: #9f707c;
+      font-size: 21px;
+      line-height: .98;
+      letter-spacing: -.075em;
+      font-weight: 900;
+    }
+
+    .xhs-cover p {
+      position: relative;
+      z-index: 2;
+      margin: 9px 0 0;
+      color: rgba(37,33,38,.62);
+      font-size: 6px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .xhs-bottle {
+      position: absolute;
+      z-index: 3;
+      right: 16px;
+      bottom: 14px;
+      width: 40px;
+      height: 91px;
+      border: 1px solid rgba(37,33,38,.72);
+      border-radius: 9px 9px 12px 12px;
+      background: linear-gradient(180deg, #fff 0 24%, #f5f2ed 24% 100%);
+      box-shadow: 0 10px 18px rgba(37,33,38,.12);
+      transform: rotate(5deg);
+    }
+
+    .xhs-bottle::before {
+      content: "HANSCHU\A BODY SERUM";
+      white-space: pre;
+      position: absolute;
+      inset: 26px 4px auto;
+      padding: 5px 1px;
+      border-top: 1px solid rgba(37,33,38,.55);
+      border-bottom: 1px solid rgba(37,33,38,.55);
+      font-size: 4px;
+      line-height: 1.4;
+      text-align: center;
+      letter-spacing: .04em;
+    }
+
+    .xhs-chart {
+      position: absolute;
+      z-index: 3;
+      right: 14px;
+      bottom: 17px;
+      width: 57px;
+      height: 72px;
+      display: flex;
+      align-items: end;
+      gap: 5px;
+      padding: 9px;
+      border: 1px solid rgba(37,33,38,.22);
+      border-radius: 10px;
+      background: rgba(255,255,255,.52);
+      box-shadow: 0 9px 17px rgba(37,33,38,.10);
+      transform: rotate(4deg);
+    }
+
+    .xhs-chart i {
+      flex: 1;
+      height: var(--h);
+      border-radius: 3px 3px 0 0;
+      background: #9f707c;
+    }
+
+    .xhs-note-copy {
+      padding: 11px 11px 0;
+    }
+
+    .xhs-note-copy b {
+      display: block;
+      font-size: 7px;
+      line-height: 1.45;
+      letter-spacing: -.02em;
+    }
+
+    .xhs-note-copy p {
+      margin: 5px 0 0;
+      color: rgba(37,33,38,.52);
+      font-size: 5.5px;
+      line-height: 1.55;
+    }
+
+    .xhs-actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 11px 0;
+      color: rgba(37,33,38,.48);
+      font-size: 5px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1080px) {
+      .hanshu-art {
+        min-height: 560px;
+      }
+
+      .xhs-phone {
+        width: 180px;
+        height: 372px;
+      }
+
+      .xhs-phone-a {
+        left: 5%;
+      }
+
+      .xhs-phone-b {
+        left: 36%;
+      }
+
+      .xhs-phone-c {
+        right: 4%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hanshu-project {
+        min-height: auto;
+      }
+
+      .hanshu-art {
+        min-height: 455px;
+        margin-top: 20px;
+      }
+
+      .xhs-phone {
+        width: 132px;
+        height: 285px;
+        padding: 5px;
+        border-radius: 24px;
+      }
+
+      .xhs-screen {
+        border-radius: 20px;
+      }
+
+      .xhs-phone-a {
+        left: 0;
+        top: 105px;
+      }
+
+      .xhs-phone-b {
+        left: 29%;
+        top: 28px;
+      }
+
+      .xhs-phone-c {
+        right: 0;
+        top: 116px;
+      }
+
+      .xhs-cover {
+        height: 138px;
+        padding: 11px 9px;
+      }
+
+      .xhs-cover strong {
+        font-size: 15px;
+      }
+
+      .xhs-bottle {
+        width: 28px;
+        height: 65px;
+        right: 9px;
+        bottom: 9px;
+      }
+
+      .xhs-chart {
+        right: 8px;
+        bottom: 10px;
+        width: 41px;
+        height: 51px;
+        padding: 6px;
+        gap: 3px;
+      }
+
+      .xhs-profile {
+        grid-template-columns: 18px 1fr auto;
+        gap: 5px;
+        padding: 5px 7px 6px;
+      }
+
+      .xhs-avatar {
+        width: 18px;
+        height: 18px;
+      }
+
+      .xhs-profile b {
+        font-size: 5px;
+      }
+
+      .xhs-profile small,
+      .xhs-follow,
+      .xhs-cover-kicker,
+      .xhs-cover p,
+      .xhs-note-copy p,
+      .xhs-actions {
+        font-size: 4px;
+      }
+
+      .xhs-note-copy b {
+        font-size: 5px;
+      }
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -684,7 +1149,18 @@
       </div>
     </section>
 
-    <section class="marquee" aria-label="能力关键词"><div class="marquee-track"><span>用户洞察</span><span><em>内容策略</em></span><span>小红书种草</span><span>视觉表达</span><span>数字体验</span><span>数据复盘</span><span>用户洞察</span><span><em>内容策略</em></span><span>小红书种草</span><span>视觉表达</span><span>数字体验</span><span>数据复盘</span></div></section>
+    <section class="marquee" aria-label="ENO 的三句个人品牌表达">
+      <div class="marquee-track">
+        <span><em>Energetic</em> brand storyteller</span>
+        <span>Nurture genuine brand bond</span>
+        <span><em>Open-minded</em> market explorer</span>
+
+        <span><em>Energetic</em> brand storyteller</span>
+        <span>Nurture genuine brand bond</span>
+        <span><em>Open-minded</em> market explorer</span>
+      </div>
+    </section>
+
 
     <section class="work" id="work">
       <div class="wrap">
@@ -693,15 +1169,164 @@
           <p>整体内容将按品牌营销主线展开：韩束是重点商业案例，Gender 作为毕业课题传播与网站实践，另外通过海报项目和 Creative Lab 展现我的视觉与交互能力。</p>
         </div>
         <div class="project-shelf">
-          <article class="project" id="hanshu-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>01 / Featured Brand Case</span><span>2025.12—2026.02</span></div><h3 class="project-title">韩束<br>亮白瓶</h3><p class="project-desc">以小红书内容营销为核心，从产品卖点、目标用户、达人表达和笔记数据中形成内容判断。该项目是作品集的重点商业案例。</p><div class="project-tags"><span>Content Strategy</span><span>Social Commerce</span><span>Creator Collaboration</span><span>Performance Review</span></div></div><a class="project-link" href="#hanshu">Open featured case <span>→</span></a></div><div class="project-art"><div class="phone-stack"><div class="phone a"></div><div class="phone b"></div><div class="phone c"></div></div></div></article>
+
+          <article class="project hanshu-project" id="hanshu-card" data-reveal>
+            <div class="project-info">
+              <div>
+                <div class="project-meta">
+                  <span>01 / Featured Brand Case</span>
+                  <span>2025.12—2026.02</span>
+                </div>
+
+                <h3 class="project-title">韩束<br>亮白瓶</h3>
+
+                <p class="project-desc">
+                  以小红书内容营销为核心，从产品卖点、目标用户、达人表达和笔记数据中形成内容判断。
+                  该项目是作品集的重点商业案例。
+                </p>
+
+                <div class="project-tags">
+                  <span>Content Strategy</span>
+                  <span>Social Commerce</span>
+                  <span>Creator Collaboration</span>
+                  <span>Performance Review</span>
+                </div>
+              </div>
+
+              <a class="project-link" href="hanshu.html">
+                Open featured case <span>→</span>
+              </a>
+            </div>
+
+            <div class="project-art hanshu-art">
+              <div class="xhs-phone-stack">
+
+                <div class="xhs-phone xhs-phone-a">
+                  <div class="xhs-phone-notch"></div>
+                  <div class="xhs-screen">
+                    <div class="xhs-status">
+                      <span>12:01</span>
+                      <span>● 5G ▰</span>
+                    </div>
+
+                    <div class="xhs-profile">
+                      <span class="xhs-avatar"></span>
+                      <div>
+                        <b>身体护理研究所</b>
+                        <small>韩束亮白瓶体验</small>
+                      </div>
+                      <span class="xhs-follow">关注</span>
+                    </div>
+
+                    <div class="xhs-cover xhs-cover-pink">
+                      <span class="xhs-cover-kicker">SUMMER BODY CARE</span>
+                      <strong>夏日露肤<br>身体护理</strong>
+                      <p>轻薄不黏 · 通勤可用</p>
+                      <span class="xhs-bottle"></span>
+                    </div>
+
+                    <div class="xhs-note-copy">
+                      <b>露肤季前，我会把身体护理提前做起来</b>
+                      <p>从“白不白”转向肤感、使用场景与坚持成本。</p>
+                    </div>
+
+                    <div class="xhs-actions">
+                      <span>♡ 1.3k</span>
+                      <span>☆ 822</span>
+                      <span>◌ 46</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="xhs-phone xhs-phone-b">
+                  <div class="xhs-phone-notch"></div>
+                  <div class="xhs-screen">
+                    <div class="xhs-status">
+                      <span>12:01</span>
+                      <span>● 5G ▰</span>
+                    </div>
+
+                    <div class="xhs-profile">
+                      <span class="xhs-avatar xhs-avatar-blue"></span>
+                      <div>
+                        <b>通勤护理日记</b>
+                        <small>真实肤感记录</small>
+                      </div>
+                      <span class="xhs-follow">关注</span>
+                    </div>
+
+                    <div class="xhs-cover xhs-cover-blue">
+                      <span class="xhs-cover-kicker">DAILY ROUTINE</span>
+                      <strong>亮白功能<br>生活场景</strong>
+                      <p>快速吸收 · 不黏衣服</p>
+                      <span class="xhs-bottle"></span>
+                    </div>
+
+                    <div class="xhs-note-copy">
+                      <b>让我坚持使用的，是肤感而不是口号</b>
+                      <p>把功能卖点转译成更容易相信的日常体验。</p>
+                    </div>
+
+                    <div class="xhs-actions">
+                      <span>♡ 2.1k</span>
+                      <span>☆ 1.1k</span>
+                      <span>◌ 73</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="xhs-phone xhs-phone-c">
+                  <div class="xhs-phone-notch"></div>
+                  <div class="xhs-screen">
+                    <div class="xhs-status">
+                      <span>12:01</span>
+                      <span>● 5G ▰</span>
+                    </div>
+
+                    <div class="xhs-profile">
+                      <span class="xhs-avatar xhs-avatar-yellow"></span>
+                      <div>
+                        <b>内容复盘笔记</b>
+                        <small>高表现内容拆解</small>
+                      </div>
+                      <span class="xhs-follow">关注</span>
+                    </div>
+
+                    <div class="xhs-cover xhs-cover-yellow">
+                      <span class="xhs-cover-kicker">CONTENT REVIEW</span>
+                      <strong>高表现笔记<br>内容拆解</strong>
+                      <p>选题 × 封面 × 评论反馈</p>
+                      <span class="xhs-chart">
+                        <i style="--h:42%"></i>
+                        <i style="--h:68%"></i>
+                        <i style="--h:88%"></i>
+                        <i style="--h:60%"></i>
+                      </span>
+                    </div>
+
+                    <div class="xhs-note-copy">
+                      <b>为什么同样讲亮白，有些笔记更容易跑出来？</b>
+                      <p>拆解达人类型、封面表达和评论区真实需求。</p>
+                    </div>
+
+                    <div class="xhs-actions">
+                      <span>♡ 1.8k</span>
+                      <span>☆ 964</span>
+                      <span>◌ 61</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
           <article class="project" id="gender-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>02 / Graduation Campaign</span><span>Digital Experience</span></div><h3 class="project-title serif">Gender</h3><p class="project-desc">围绕 Gender 议题完成毕业项目宣传，并设计制作配套网站。重点展示议题转译、传播概念、网站信息结构与用户浏览体验。</p><div class="project-tags"><span>Campaign Concept</span><span>Website Design</span><span>Information Architecture</span><span>Visual System</span></div></div><a class="project-link" href="#about">View project structure <span>→</span></a></div><div class="project-art"><div class="browser-stack"><div class="browser back"></div><div class="browser front"></div></div></div></article>
           <article class="project" id="poster-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>03 / Visual Campaigns</span><span>Selected Posters</span></div><h3 class="project-title">视觉<br>海报</h3><p class="project-desc">精选三组成熟海报项目，通过主题、受众、创意切口、系列延展与应用场景，呈现视觉艺术训练如何转化为传播表达。</p><div class="project-tags"><span>Art Direction</span><span>Visual Storytelling</span><span>Campaign Key Visual</span><span>Editorial Design</span></div></div><a class="project-link" href="#about">View selected works <span>→</span></a></div><div class="project-art"><div class="poster-grid"><div class="poster"><strong>SOFT<br>CONTROL</strong><span>亲密关系中的隐性控制</span></div><div class="poster"><strong>BUTTER<br>FLY</strong><span>关怀、控制与变化</span></div><div class="poster"><strong>VISUAL<br>LAB</strong><span>身份、情绪与社会议题</span></div></div></div></article>
           <article class="project" id="lab-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>04 / Creative Lab</span><span>Interaction & Spatial Work</span></div><h3 class="project-title serif">Creative<br>Lab</h3><p class="project-desc">将交互设计、装置实验与立体构成合并为创意实验室，展示我如何从概念出发，设计观众参与方式、媒介关系与空间体验。</p><div class="project-tags"><span>Interaction Design</span><span>Installation</span><span>Arduino</span><span>Spatial Composition</span></div></div><a class="project-link" href="#about">Explore creative works <span>→</span></a></div><div class="project-art"><div class="creative-stage"><div class="creative-card"><div class="orb"></div><strong>Interactive<br>Work</strong><span>Audience · Trigger · Response</span></div><div class="creative-card"><div class="structure"></div><strong>Spatial<br>Form</strong><span>Material · Balance · Structure</span></div></div></div></article>
         </div>
       </div>
     </section>
-
-    <section class="featured" id="hanshu"><div class="wrap"><div class="featured-head" data-reveal><div><span class="eyebrow" style="color:rgba(248,246,249,.52)">Featured Case Study</span><h2>韩束亮白瓶<em>小红书内容营销</em></h2></div><p class="featured-intro">这是整套作品集最核心的商业案例。重点不是简单展示爆帖，而是说明我如何从产品、用户、达人和数据中形成传播判断，并将结果转化为下一轮优化方向。</p></div><div class="facts" data-reveal><div class="fact"><b>Project</b><span>韩束亮白瓶身体精华</span></div><div class="fact"><b>Platform</b><span>小红书 / Social Commerce</span></div><div class="fact"><b>Role</b><span>产品营销实习生</span></div><div class="fact"><b>Disciplines</b><span>内容策略 · 达人协同 · 数据复盘</span></div></div><div class="case-grid"><div class="case-copy" data-reveal><h3>从“亮白功效”到“日常露肤场景”。</h3><p>身体精华不是用户天然高频理解的品类。用户不只关心是否有效，也会关注肤感、使用场景、坚持成本与效果感知。</p><p>因此，内容需要从单一功效转向更具代入感的生活情境，并通过达人表达和笔记反馈持续验证方向。</p></div><div class="steps"><article class="step" data-reveal><div class="num">01</div><div><h4>Context｜项目背景</h4><p>梳理产品卖点、平台环境与身体护理品类在小红书上的传播挑战。</p></div></article><article class="step" data-reveal><div class="num">02</div><div><h4>Insight｜用户洞察</h4><p>从评论、竞品与内容反馈中识别用户对肤感、场景与效果感知的真实关注。</p></div></article><article class="step" data-reveal><div class="num">03</div><div><h4>Strategy｜内容与达人策略</h4><p>参与 KOC 铺量、KOL 放量、达人筛选、内容方向沟通与排期协同。</p></div></article><article class="step" data-reveal><div class="num">04</div><div><h4>Outcome｜复盘与优化</h4><p>通过曝光、点击、互动、收藏和进店等指标拆解高表现内容，并沉淀下一轮判断。</p></div></article></div></div></div></section>
 
     <section class="about" id="about"><div class="wrap about-layout"><div data-reveal><span class="eyebrow">About Eno</span><h2>观察。<br>转译。<br>放大。</h2></div><div class="about-copy" data-reveal><p>我是李伊诺，悉尼大学视觉艺术与管理双专业本科生。我关注用户如何描述需求、为什么会停留在一条内容上，以及什么样的表达能让他们愿意继续看下去。</p><p>我的工作方法是：先从用户语言和内容反馈里找到切口，再把洞察转化为内容、视觉和数字体验，最后通过数据表现和用户反馈校准下一次判断。</p><div class="timeline"><div class="timeline-row"><time>2026</time><div><strong>春招 / 秋招作品集</strong><span>目标方向：品牌营销、产品营销、内容营销、小红书运营与用户增长。</span></div></div><div class="timeline-row"><time>2025.12—2026.02</time><div><strong>上美集团｜韩束亮白瓶身体精华</strong><span>参与小红书内容策略、达人协同、KOC/KOL 节奏及阶段性复盘。</span></div></div><div class="timeline-row"><time>Graduation Project</time><div><strong>Gender｜数字传播与网站设计</strong><span>完成议题传播概念、视觉系统、网站结构与数字体验设计。</span></div></div><div class="timeline-row"><time>Creative Practice</time><div><strong>Visual Campaigns & Creative Lab</strong><span>涵盖创意海报、交互设计、装置实验与立体构成作品。</span></div></div><div class="timeline-row"><time>Education</time><div><strong>University of Sydney｜视觉艺术与管理</strong><span>视觉训练建立情绪与叙事敏感度，管理学习补充营销与组织判断。</span></div></div></div></div></div></section>
 
