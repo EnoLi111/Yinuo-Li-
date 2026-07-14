@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="李伊诺｜韩束亮白瓶小红书内容营销项目案例" />
+  <meta name="theme-color" content="#f7f5f2" />
+  <title>韩束亮白瓶｜ENO LI Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --paper:#f7f5f2;
+      --paper-2:#efeae4;
+      --ink:#11100f;
+      --muted:rgba(17,16,15,.58);
+      --line:rgba(17,16,15,.14);
+      --pink:#dfb8bf;
+      --pink-deep:#a46f7b;
+      --yellow:#f3d857;
+      --blue:#bcdde3;
+      --green:#9eb5a0;
+      --orange:#e7a66a;
+      --deep:#221f20;
+
+      --display:"Archivo Black","Arial Black",sans-serif;
+      --serif:"Playfair Display","Noto Serif SC",serif;
+      --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+      --mono:"DM Mono",ui-monospace,monospace;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{
+      margin:0;
+      overflow-x:hidden;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{display:block;max-width:100%}
+
+    .grain{
+      position:fixed;
+      inset:0;
+      z-index:999;
+      pointer-events:none;
+      opacity:.025;
+      mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+
+    .wrap{
+      width:min(1500px,calc(100% - 38px));
+      margin:0 auto;
+    }
+
+    .eyebrow{
+      font-family:var(--mono);
+      font-size:9px;
+      line-height:1.45;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* NAV */
+    .topbar{
+      position:fixed;
+      z-index:100;
+      inset:0 0 auto;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:24px;
+      padding:18px 18px 0;
+      pointer-events:none;
+    }
+
+    .topbar>*{pointer-events:auto}
+
+    .brand{
+      font-family:var(--display);
+      font-size:20px;
+      line-height:1;
+      letter-spacing:-.055em;
+    }
+
+    .brand em{
+      font-family:var(--serif);
+      font-weight:500;
+      font-style:italic;
+    }
+
+    .nav-center{
+      display:flex;
+      gap:28px;
+      font-family:var(--mono);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+
+    .back{
+      justify-self:end;
+      display:inline-flex;
+      align-items:center;
+      gap:13px;
+      padding:10px 15px;
+      border:1px solid var(--ink);
+      border-radius:999px;
+      background:rgba(247,245,242,.75);
+      backdrop-filter:blur(9px);
+      font-family:var(--mono);
+      font-size:8px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      transition:background .2s ease,color .2s ease,transform .2s ease;
+    }
+
+    .back:hover{
+      color:#fff;
+      background:var(--ink);
+      transform:translateY(-2px);
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100svh;
+      padding:118px 0 60px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:.68fr 1.32fr;
+      gap:clamp(36px,6vw,96px);
+      align-items:start;
+    }
+
+    .hero-copy{
+      position:sticky;
+      top:110px;
+      padding-top:20px;
+    }
+
+    .kicker{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:30px;
+      font-family:var(--display);
+      font-size:19px;
+      letter-spacing:-.05em;
+    }
+
+    .kicker::before{
+      content:"";
+      width:12px;height:12px;border-radius:50%;
+      background:var(--ink);
+    }
+
+    .hero h1{
+      margin:0;
+      font-family:var(--display);
+      font-size:clamp(4.8rem,8.6vw,11rem);
+      line-height:.82;
+      letter-spacing:-.085em;
+      text-transform:uppercase;
+    }
+
+    .hero h1 span{
+      display:block;
+      color:var(--pink-deep);
+      font-family:var(--serif);
+      font-style:italic;
+      font-weight:500;
+      letter-spacing:-.055em;
+      text-transform:none;
+      transform:translateX(4%);
+    }
+
+    .meta{
+      display:grid;
+      grid-template-columns:102px 1fr;
+      gap:5px 14px;
+      margin-top:38px;
+      font-family:var(--mono);
+      font-size:8px;
+      line-height:1.45;
+      text-transform:uppercase;
+    }
+
+    .meta dt{font-weight:500}
+    .meta dd{margin:0}
+
+    .hero-visual{
+      position:relative;
+      min-height:760px;
+    }
+
+    .phone{
+      position:absolute;
+      width:232px;
+      aspect-ratio:.49;
+      overflow:hidden;
+      border:2px solid var(--ink);
+      border-radius:35px;
+      background:#fff;
+      box-shadow:0 26px 55px rgba(17,16,15,.16);
+      transform:rotate(var(--r,0deg));
+    }
+
+    .phone::before{
+      content:"";
+      position:absolute;
+      z-index:5;
+      top:9px;left:50%;
+      width:70px;height:18px;
+      border-radius:999px;
+      background:var(--ink);
+      transform:translateX(-50%);
+    }
+
+    .phone-screen{
+      height:100%;
+      padding:34px 12px 12px;
+      background:#fff;
+    }
+
+    .phone-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      height:30px;
+      font-family:var(--mono);
+      font-size:7px;
+      letter-spacing:.04em;
+    }
+
+    .xhs-cover{
+      position:relative;
+      aspect-ratio:.82;
+      overflow:hidden;
+      border-radius:13px;
+      padding:18px;
+      background:var(--cover-bg);
+    }
+
+    .xhs-cover::before{
+      content:"";
+      position:absolute;
+      width:145px;height:145px;
+      right:-42px;top:-28px;
+      border-radius:50%;
+      background:rgba(255,255,255,.55);
+    }
+
+    .xhs-cover::after{
+      content:"";
+      position:absolute;
+      width:120px;height:120px;
+      left:-35px;bottom:-50px;
+      border-radius:50%;
+      background:rgba(255,255,255,.35);
+    }
+
+    .cover-title{
+      position:relative;
+      z-index:2;
+      margin:0;
+      font-size:28px;
+      line-height:.98;
+      letter-spacing:-.07em;
+      font-weight:900;
+    }
+
+    .cover-sub{
+      position:relative;
+      z-index:2;
+      margin-top:10px;
+      font-size:10px;
+      line-height:1.55;
+      font-weight:700;
+    }
+
+    .product-bottle{
+      position:absolute;
+      z-index:2;
+      right:18px;
+      bottom:18px;
+      width:63px;
+      height:142px;
+      border:1.5px solid var(--ink);
+      border-radius:15px 15px 18px 18px;
+      background:linear-gradient(180deg,#fff 0 23%,#f4f1ec 23% 100%);
+      box-shadow:0 14px 20px rgba(17,16,15,.12);
+      transform:rotate(5deg);
+    }
+
+    .product-bottle::before{
+      content:"HANSCHU\A BODY\A SERUM";
+      white-space:pre;
+      position:absolute;
+      inset:34px 7px auto;
+      padding:8px 3px;
+      border-top:1px solid var(--ink);
+      border-bottom:1px solid var(--ink);
+      font-family:var(--mono);
+      font-size:6px;
+      line-height:1.4;
+      text-align:center;
+    }
+
+    .xhs-copy{
+      padding:14px 4px 0;
+    }
+
+    .xhs-copy strong{
+      display:block;
+      font-size:13px;
+      line-height:1.45;
+      letter-spacing:-.03em;
+    }
+
+    .xhs-copy p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:9px;
+      line-height:1.65;
+    }
+
+    .xhs-actions{
+      display:flex;
+      justify-content:space-between;
+      margin-top:12px;
+      color:rgba(17,16,15,.62);
+      font-family:var(--mono);
+      font-size:7px;
+    }
+
+    .p1{left:1%;top:160px;--r:-11deg;z-index:3}
+    .p2{left:31%;top:80px;--r:2deg;z-index:6}
+    .p3{right:5%;top:210px;--r:9deg;z-index:4}
+    .p4{right:28%;bottom:0;--r:-4deg;z-index:5;width:205px}
+
+    .floating-card{
+      position:absolute;
+      overflow:hidden;
+      border:2px solid var(--ink);
+      background:#fff;
+      box-shadow:0 22px 45px rgba(17,16,15,.13);
+      transform:rotate(var(--r,0deg));
+    }
+
+    .floating-card.phone-note{
+      width:220px;
+      padding:12px;
+      aspect-ratio:.78;
+    }
+
+    .floating-card.dashboard{
+      width:330px;
+      padding:20px;
+      background:#f1d8d5;
+    }
+
+    .fc1{right:1%;top:20px;--r:-8deg}
+    .fc2{left:7%;bottom:34px;--r:7deg}
+    .fc3{right:1%;bottom:43px;--r:4deg}
+
+    .mini-cover{
+      height:100%;
+      padding:16px;
+      background:linear-gradient(145deg,#f4c3bd,#f5e58b 48%,#acd8dd);
+    }
+
+    .mini-cover strong{
+      display:block;
+      font-family:var(--display);
+      font-size:25px;
+      line-height:.9;
+      letter-spacing:-.07em;
+    }
+
+    .dashboard h3{
+      margin:0 0 14px;
+      font-family:var(--display);
+      font-size:32px;
+      line-height:.9;
+      letter-spacing:-.07em;
+    }
+
+    .bars{
+      display:grid;
+      gap:9px;
+    }
+
+    .bar{
+      display:grid;
+      grid-template-columns:70px 1fr 28px;
+      gap:8px;
+      align-items:center;
+      font-family:var(--mono);
+      font-size:7px;
+    }
+
+    .bar i{
+      display:block;
+      height:8px;
+      background:var(--ink);
+      transform:scaleX(var(--value));
+      transform-origin:left;
+    }
+
+    /* PROJECT STORY */
+    .story{
+      padding:130px 0 150px;
+      border-top:1px solid var(--line);
+    }
+
+    .story-grid{
+      display:grid;
+      grid-template-columns:.38fr 1.62fr;
+      gap:clamp(30px,5vw,80px);
+      align-items:start;
+    }
+
+    .story-label{
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(4.2rem,7vw,9rem);
+      line-height:.85;
+      letter-spacing:-.07em;
+      font-style:italic;
+      transform:rotate(6deg);
+    }
+
+    .story-copy{
+      max-width:980px;
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(2rem,3.35vw,4.55rem);
+      line-height:1.04;
+      letter-spacing:-.045em;
+      font-weight:500;
+    }
+
+    .story-copy strong{
+      color:var(--pink-deep);
+      font-weight:500;
+    }
+
+    /* ROLE */
+    .role{
+      padding:110px 0 120px;
+      color:#fff;
+      background:var(--deep);
+    }
+
+    .role-head{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:end;
+      margin-bottom:60px;
+    }
+
+    .role h2{
+      margin:0;
+      font-family:var(--display);
+      font-size:clamp(4rem,8vw,10rem);
+      line-height:.8;
+      letter-spacing:-.08em;
+      text-transform:uppercase;
+    }
+
+    .role-head p{
+      margin:0;
+      color:rgba(255,255,255,.7);
+      font-size:16px;
+      line-height:1.9;
+    }
+
+    .role-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .role-card{
+      min-height:250px;
+      padding:24px;
+      background:rgba(255,255,255,.045);
+    }
+
+    .role-card span{
+      display:block;
+      margin-bottom:28px;
+      color:#d9bbc1;
+      font-family:var(--serif);
+      font-size:52px;
+      line-height:.8;
+    }
+
+    .role-card h3{
+      margin:0 0 13px;
+      font-size:18px;
+    }
+
+    .role-card p{
+      margin:0;
+      color:rgba(255,255,255,.64);
+      font-size:13px;
+      line-height:1.8;
+    }
+
+    /* SYSTEM */
+    .system{
+      padding:125px 0 140px;
+    }
+
+    .section-title{
+      display:grid;
+      grid-template-columns:1fr minmax(320px,480px);
+      gap:60px;
+      align-items:end;
+      margin-bottom:66px;
+    }
+
+    .section-title h2{
+      margin:0;
+      font-family:var(--display);
+      font-size:clamp(4.2rem,8vw,10rem);
+      line-height:.8;
+      letter-spacing:-.08em;
+      text-transform:uppercase;
+    }
+
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.85;
+    }
+
+    .system-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+    }
+
+    .system-card{
+      position:relative;
+      min-height:520px;
+      overflow:hidden;
+      padding:30px;
+      border:1px solid var(--line);
+      background:#eee7e2;
+    }
+
+    .system-card:nth-child(2){background:#dce8ea}
+
+    .system-card h3{
+      position:relative;
+      z-index:3;
+      margin:0;
+      font-family:var(--serif);
+      font-size:54px;
+      line-height:.9;
+      letter-spacing:-.05em;
+      font-style:italic;
+    }
+
+    .content-pill{
+      position:absolute;
+      padding:11px 15px;
+      border:1px solid var(--ink);
+      border-radius:999px;
+      background:#fff;
+      font-family:var(--mono);
+      font-size:8px;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      transform:rotate(var(--r));
+    }
+
+    .cp1{left:9%;top:28%;--r:-6deg}
+    .cp2{left:35%;top:47%;--r:4deg}
+    .cp3{right:9%;top:25%;--r:7deg}
+    .cp4{right:18%;bottom:16%;--r:-4deg}
+    .cp5{left:14%;bottom:16%;--r:5deg}
+
+    .metric-list{
+      position:absolute;
+      inset:145px 32px 32px;
+      display:grid;
+      align-content:center;
+      gap:13px;
+    }
+
+    .metric-row{
+      display:grid;
+      grid-template-columns:110px 1fr;
+      gap:15px;
+      align-items:center;
+      padding-bottom:12px;
+      border-bottom:1px solid rgba(17,16,15,.22);
+      font-family:var(--mono);
+      font-size:8px;
+      text-transform:uppercase;
+    }
+
+    .metric-row b{
+      display:block;
+      height:18px;
+      background:var(--ink);
+      transform:scaleX(var(--value));
+      transform-origin:left;
+    }
+
+    footer{
+      padding:60px 0 80px;
+      border-top:1px solid var(--line);
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:flex-end;
+    }
+
+    .footer-row strong{
+      font-family:var(--display);
+      font-size:clamp(2.5rem,5vw,6rem);
+      letter-spacing:-.06em;
+      line-height:.85;
+    }
+
+    .footer-row div{
+      text-align:right;
+      color:var(--muted);
+      font-family:var(--mono);
+      font-size:8px;
+      line-height:1.7;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    [data-reveal]{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .75s ease,transform .75s ease;
+    }
+
+    [data-reveal].visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:1100px){
+      .topbar{grid-template-columns:1fr auto}
+      .nav-center{display:none}
+      .hero-grid,.story-grid,.role-head,.section-title,.system-grid{grid-template-columns:1fr}
+      .hero-copy{position:relative;top:auto}
+      .hero-visual{min-height:760px}
+      .role-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(max-width:720px){
+      .wrap{width:min(100% - 26px,1500px)}
+      .topbar{padding:14px 13px 0}
+      .brand{font-size:16px}
+      .back{padding:8px 11px;font-size:7px}
+      .hero{padding-top:92px}
+      .hero h1{font-size:clamp(4.2rem,20vw,6.6rem)}
+      .meta{grid-template-columns:88px 1fr}
+      .hero-visual{min-height:680px;margin-top:25px}
+      .phone{width:150px;border-radius:25px}
+      .p1{left:0;top:180px}
+      .p2{left:25%;top:60px}
+      .p3{right:0;top:235px}
+      .p4{display:none}
+      .floating-card.phone-note{width:140px}
+      .floating-card.dashboard{width:230px}
+      .fc1{right:0;top:5px}
+      .fc2{left:2%;bottom:20px}
+      .fc3{right:0;bottom:10px}
+      .story{padding:90px 0}
+      .story-label{font-size:4.5rem}
+      .story-copy{font-size:2.05rem}
+      .role{padding:90px 0}
+      .role-grid{grid-template-columns:1fr}
+      .section-title h2,.role h2{font-size:4.4rem}
+      .system{padding:90px 0}
+      .system-card{min-height:440px}
+      .footer-row{align-items:flex-start;flex-direction:column}
+      .footer-row div{text-align:left}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">ENO LI <em>Portfolio</em></a>
+    <nav class="nav-center">
+      <a href="#project">Project</a>
+      <a href="#role">Role</a>
+      <a href="#system">System</a>
+    </nav>
+    <a class="back" href="index.html">Back to work <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="project">
+      <div class="wrap hero-grid">
+        <div class="hero-copy" data-reveal>
+          <div class="kicker">ENO LI · WORK</div>
+          <h1>HANSCHU<span>Brightening Body Serum</span></h1>
+
+          <dl class="meta">
+            <dt>Year</dt><dd>2025.12—2026.02</dd>
+            <dt>Project</dt><dd>韩束亮白瓶身体精华</dd>
+            <dt>Role</dt><dd>产品营销 / 小红书内容运营</dd>
+            <dt>Disciplines</dt>
+            <dd>
+              Content Strategy<br>
+              Creator Collaboration<br>
+              Social Commerce<br>
+              Performance Review
+            </dd>
+          </dl>
+        </div>
+
+        <div class="hero-visual" data-reveal>
+          <div class="phone p1">
+            <div class="phone-screen">
+              <div class="phone-top"><span>12:01</span><span>◉ 5G ▰</span></div>
+              <div class="xhs-cover" style="--cover-bg:linear-gradient(145deg,#f5c7c6,#f6e8d4)">
+                <h3 class="cover-title">露肤季<br>身体也要亮</h3>
+                <div class="cover-sub">轻薄不粘 · 通勤可用</div>
+                <div class="product-bottle"></div>
+              </div>
+              <div class="xhs-copy">
+                <strong>夏天露肤前，我会把身体护理提前做起来</strong>
+                <p>从“白不白”转向肤感、坚持成本和真实生活场景。</p>
+                <div class="xhs-actions"><span>♡ 1.3k</span><span>☆ 822</span><span>◌ 46</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone p2">
+            <div class="phone-screen">
+              <div class="phone-top"><span>12:01</span><span>◉ 5G ▰</span></div>
+              <div class="xhs-cover" style="--cover-bg:linear-gradient(145deg,#bcdde3,#f3d857)">
+                <h3 class="cover-title">通勤党<br>亮白计划</h3>
+                <div class="cover-sub">不黏衣服 · 快速吸收</div>
+                <div class="product-bottle"></div>
+              </div>
+              <div class="xhs-copy">
+                <strong>真正让我坚持用下去的，是肤感而不是口号</strong>
+                <p>通过使用情境，将产品卖点转译成用户更容易相信的体验。</p>
+                <div class="xhs-actions"><span>♡ 2.1k</span><span>☆ 1.1k</span><span>◌ 73</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone p3">
+            <div class="phone-screen">
+              <div class="phone-top"><span>12:01</span><span>◉ 5G ▰</span></div>
+              <div class="xhs-cover" style="--cover-bg:linear-gradient(145deg,#d9c8df,#efc4b7)">
+                <h3 class="cover-title">高表现<br>笔记拆解</h3>
+                <div class="cover-sub">场景 × 封面 × 评论反馈</div>
+                <div class="product-bottle"></div>
+              </div>
+              <div class="xhs-copy">
+                <strong>为什么同样讲亮白，有些笔记更容易跑出来？</strong>
+                <p>拆解选题、封面、达人类型与评论区真实问题。</p>
+                <div class="xhs-actions"><span>♡ 1.8k</span><span>☆ 964</span><span>◌ 61</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone p4">
+            <div class="phone-screen">
+              <div class="phone-top"><span>12:01</span><span>◉ 5G ▰</span></div>
+              <div class="xhs-cover" style="--cover-bg:linear-gradient(145deg,#9eb5a0,#f4e5be)">
+                <h3 class="cover-title">学生党<br>身体精华</h3>
+                <div class="cover-sub">高性价比 · 日常护理</div>
+                <div class="product-bottle"></div>
+              </div>
+              <div class="xhs-copy">
+                <strong>把身体护理做成一件没有负担的小事</strong>
+                <p>匹配人群语境，而不是只重复功能卖点。</p>
+                <div class="xhs-actions"><span>♡ 975</span><span>☆ 601</span><span>◌ 38</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-card phone-note fc1">
+            <div class="mini-cover">
+              <strong>CONTENT<br>THAT<br>FEELS<br>REAL.</strong>
+            </div>
+          </div>
+
+          <div class="floating-card phone-note fc2">
+            <div class="mini-cover" style="background:linear-gradient(145deg,#f2b4bb,#edcf7b 55%,#d5c2e0)">
+              <strong>FROM<br>FEATURE<br>TO<br>FEELING.</strong>
+            </div>
+          </div>
+
+          <div class="floating-card dashboard fc3">
+            <h3>CONTENT<br>REVIEW</h3>
+            <div class="bars">
+              <div class="bar"><span>Exposure</span><i style="--value:.92"></i><b>92</b></div>
+              <div class="bar"><span>Engagement</span><i style="--value:.74"></i><b>74</b></div>
+              <div class="bar"><span>CTR</span><i style="--value:.62"></i><b>62</b></div>
+              <div class="bar"><span>Store UV</span><i style="--value:.68"></i><b>68</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap story-grid">
+        <h2 class="story-label" data-reveal>Project</h2>
+
+        <p class="story-copy" data-reveal>
+          在上美集团韩束亮白瓶身体精华项目中，我主要负责
+          <strong>小红书内容营销的整案执行与协同推进</strong>。
+          围绕 Z 世代的身体护理需求，我参与竞品与用户反馈整理，
+          将“亮白功效”转译为更具代入感的露肤场景、肤感体验与日常使用理由；
+          同时对接代理商与达人资源，参与 KOC 铺量、KOL 放大、
+          内容排期及投流配合，并建立覆盖曝光、互动、点击、进店与内容效率的复盘框架。
+          通过持续拆解高表现笔记的选题、封面、达人类型和评论反馈，
+          我将数据转化为可复用的内容判断，为后续达人筛选、素材优化与预算分配提供依据。
+        </p>
+      </div>
+    </section>
+
+    <section class="role" id="role">
+      <div class="wrap">
+        <div class="role-head" data-reveal>
+          <h2>MY ROLE</h2>
+          <p>
+            我的工作并不是单纯“发布内容”，而是在品牌、达人、代理商与平台数据之间建立一套可持续优化的协作逻辑。
+          </p>
+        </div>
+
+        <div class="role-grid">
+          <article class="role-card" data-reveal>
+            <span>01</span>
+            <h3>用户与竞品洞察</h3>
+            <p>整理用户评论、竞品表达与平台内容趋势，识别用户对亮白、肤感、香味和使用场景的真实关注。</p>
+          </article>
+
+          <article class="role-card" data-reveal>
+            <span>02</span>
+            <h3>内容与达人协同</h3>
+            <p>参与 KOC/KOL 分层、达人筛选、选题方向、内容排期与素材沟通，推动内容从策略进入执行。</p>
+          </article>
+
+          <article class="role-card" data-reveal>
+            <span>03</span>
+            <h3>投流与过程跟进</h3>
+            <p>跟进内容发布、投流配合与阶段表现，关注不同笔记、人群和关键词组合的消耗及反馈。</p>
+          </article>
+
+          <article class="role-card" data-reveal>
+            <span>04</span>
+            <h3>数据复盘与优化</h3>
+            <p>围绕曝光、互动、进店 UV、CTR、CPC、CPM、CPE 等指标拆解高表现笔记，沉淀下一轮内容判断。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="system" id="system">
+      <div class="wrap">
+        <div class="section-title" data-reveal>
+          <h2>CONTENT SYSTEM</h2>
+          <p>
+            将零散内容变成可复用的方法：从用户语言出发，建立内容场景、达人类型、表现指标与复盘动作之间的关系。
+          </p>
+        </div>
+
+        <div class="system-grid">
+          <article class="system-card" data-reveal>
+            <h3>Content<br>Territories</h3>
+            <span class="content-pill cp1">露肤季亮白</span>
+            <span class="content-pill cp2">通勤肤感</span>
+            <span class="content-pill cp3">学生党护理</span>
+            <span class="content-pill cp4">敏感肌表达</span>
+            <span class="content-pill cp5">高表现笔记拆解</span>
+          </article>
+
+          <article class="system-card" data-reveal>
+            <h3>Review<br>Framework</h3>
+            <div class="metric-list">
+              <div class="metric-row"><span>Exposure</span><b style="--value:.96"></b></div>
+              <div class="metric-row"><span>Engagement</span><b style="--value:.78"></b></div>
+              <div class="metric-row"><span>CTR</span><b style="--value:.66"></b></div>
+              <div class="metric-row"><span>CPC / CPE</span><b style="--value:.58"></b></div>
+              <div class="metric-row"><span>Store UV</span><b style="--value:.72"></b></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <strong>NEXT:<br>GENDER</strong>
+      <div>
+        ENO LI PORTFOLIO · 2026<br>
+        MARKETING × VISUAL COMMUNICATION
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const items=document.querySelectorAll("[data-reveal]");
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.12});
+    items.forEach(item=>observer.observe(item));
+
+    const visual=document.querySelector(".hero-visual");
+    const phones=[...document.querySelectorAll(".phone,.floating-card")];
+
+    visual.addEventListener("pointermove",(event)=>{
+      const rect=visual.getBoundingClientRect();
+      const x=(event.clientX-rect.left)/rect.width-.5;
+      const y=(event.clientY-rect.top)/rect.height-.5;
+
+      phones.forEach((item,index)=>{
+        const depth=(index%4+1)*2.2;
+        item.style.translate=`${x*depth}px ${y*depth}px`;
+      });
+    });
+
+    visual.addEventListener("pointerleave",()=>{
+      phones.forEach(item=>item.style.translate="");
+    });
+  </script>
+</body>
+</html>
