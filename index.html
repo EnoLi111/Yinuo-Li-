@@ -3755,6 +3755,678 @@
       }
     }
 
+  
+    /* =========================================================
+       V16 — CLICK BOTTLE / ROTATE / REVEAL / TYPE
+    ========================================================= */
+
+    .hanshu-interactive {
+      position: relative;
+      min-height: 880px;
+      overflow: hidden;
+      border-top: 1px solid rgba(37,33,38,.12);
+      border-bottom: 1px solid rgba(37,33,38,.12);
+      background:
+        linear-gradient(rgba(37,33,38,.024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,33,38,.024) 1px, transparent 1px),
+        radial-gradient(circle at 38% 37%, rgba(229,199,207,.18), transparent 24%),
+        radial-gradient(circle at 76% 42%, rgba(220,231,239,.18), transparent 24%),
+        #faf8f5;
+      background-size: 16px 16px, 16px 16px, auto, auto, auto;
+      scroll-margin-top: 82px;
+    }
+
+    .hi-layout {
+      position: relative;
+      min-height: 880px;
+      padding: 34px 12px 30px;
+    }
+
+    /* Left-top metadata */
+    .hi-meta {
+      position: absolute;
+      z-index: 20;
+      left: 0;
+      top: 34px;
+      width: 300px;
+    }
+
+    .hi-brandline {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: -.02em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .hi-brandline i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .hi-meta dl {
+      display: grid;
+      grid-template-columns: 66px 1fr;
+      gap: 7px 12px;
+      margin: 30px 0 0;
+      font-size: 7px;
+      line-height: 1.55;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .hi-meta dt {
+      color: rgba(37,33,38,.52);
+      font-weight: 900;
+    }
+
+    .hi-meta dd {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* Product stage */
+    .hi-product-area {
+      position: absolute;
+      z-index: 14;
+      left: 24%;
+      top: 95px;
+      width: 360px;
+      height: 575px;
+      perspective: 1500px;
+      transform-style: preserve-3d;
+    }
+
+    .hi-bottle-button {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      outline: none;
+      background: transparent;
+      cursor: pointer;
+      perspective: 1500px;
+      transform-style: preserve-3d;
+    }
+
+    .hi-bottle-button:focus-visible {
+      outline: 1px dashed var(--rose-deep);
+      outline-offset: 6px;
+    }
+
+    .hi-bottle-orbit {
+      position: absolute;
+      z-index: 0;
+      width: 270px;
+      height: 455px;
+      border: 1px dashed rgba(161,115,131,.23);
+      border-radius: 50%;
+      transform: rotate(-8deg);
+      transition:
+        opacity .45s ease,
+        scale .45s ease;
+    }
+
+    .hi-bottle-orbit::before {
+      content: "";
+      position: absolute;
+      inset: 35px 28px;
+      border: 1px solid rgba(161,115,131,.14);
+      border-radius: 50%;
+    }
+
+    .hi-bottle {
+      position: relative;
+      z-index: 5;
+      width: 205px;
+      max-height: 490px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 28px 23px rgba(57,39,43,.22))
+        drop-shadow(0 7px 7px rgba(255,255,255,.72));
+      transform:
+        perspective(1300px)
+        rotateY(-7deg)
+        rotateX(2deg)
+        rotateZ(-2deg)
+        translateZ(24px);
+      transform-origin: 50% 55%;
+      transition:
+        filter .28s ease,
+        scale .28s ease;
+      animation: hiIdleFloat 5.6s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .hi-bottle-button:hover .hi-bottle {
+      scale: 1.035;
+      filter:
+        drop-shadow(0 36px 28px rgba(57,39,43,.27))
+        drop-shadow(0 8px 8px rgba(255,255,255,.75));
+    }
+
+    .hi-bottle-button:hover .hi-bottle-orbit {
+      scale: 1.025;
+      opacity: 1;
+    }
+
+    .hi-click-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      display: grid;
+      gap: 4px;
+      min-width: 150px;
+      padding: 8px 11px;
+      border: 1px solid rgba(37,33,38,.14);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 24px rgba(37,33,38,.07);
+      color: rgba(37,33,38,.55);
+      font-size: 6px;
+      line-height: 1.25;
+      letter-spacing: .12em;
+      font-weight: 900;
+      text-align: center;
+      transform: translateX(-50%) rotate(-3deg);
+      backdrop-filter: blur(8px);
+      transition:
+        opacity .35s ease,
+        translate .35s ease;
+    }
+
+    .hi-click-hint small {
+      color: rgba(37,33,38,.65);
+      font-size: 8px;
+      letter-spacing: .02em;
+      font-weight: 600;
+    }
+
+    /* Brand appears from behind the bottle */
+    .hi-brand-reveal {
+      position: absolute;
+      z-index: 2;
+      left: -190px;
+      top: 160px;
+      width: 310px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(82px);
+      transition:
+        opacity .68s ease .45s,
+        transform .82s cubic-bezier(.2,.8,.2,1) .45s;
+    }
+
+    .hi-brand-reveal span {
+      display: block;
+      font-family: var(--serif);
+      font-size: clamp(4.2rem, 5.5vw, 6.6rem);
+      line-height: .72;
+      letter-spacing: -.11em;
+      font-weight: 600;
+    }
+
+    .hi-brand-reveal em {
+      display: block;
+      width: max-content;
+      margin-top: 15px;
+      margin-left: 18%;
+      color: var(--rose-deep);
+      font-family: var(--serif);
+      font-size: clamp(3.4rem, 4.3vw, 5.1rem);
+      line-height: .75;
+      letter-spacing: -.07em;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .hanshu-interactive.is-activated .hi-brand-reveal {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .hanshu-interactive.is-activated .hi-click-hint {
+      opacity: 0;
+      translate: 0 9px;
+    }
+
+    .hanshu-interactive.is-activated .hi-bottle {
+      animation: hiBottleSpin 1.48s cubic-bezier(.2,.75,.15,1) both;
+    }
+
+    .hanshu-interactive.is-activated .hi-bottle-orbit {
+      animation: hiOrbitPulse 1.48s ease both;
+    }
+
+    /* Typing panel */
+    .hi-typing-panel {
+      position: absolute;
+      z-index: 22;
+      left: 0;
+      bottom: 34px;
+      width: min(500px, 42%);
+      min-height: 280px;
+      padding: 18px 20px 20px;
+      border-top: 1px solid rgba(37,33,38,.14);
+      opacity: 0;
+      transform: translateY(18px);
+      pointer-events: none;
+      transition:
+        opacity .55s ease 1.05s,
+        transform .62s ease 1.05s;
+    }
+
+    .hanshu-interactive.is-activated .hi-typing-panel {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .hi-typing-heading {
+      display: grid;
+      gap: 5px;
+      margin-bottom: 16px;
+    }
+
+    .hi-typing-heading span {
+      color: rgba(37,33,38,.44);
+      font-size: 6px;
+      line-height: 1.25;
+      letter-spacing: .13em;
+      font-weight: 900;
+    }
+
+    .hi-typing-heading strong {
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.05;
+      letter-spacing: -.035em;
+      font-weight: 600;
+    }
+
+    .hi-typing-output {
+      display: grid;
+      gap: 10px;
+      color: rgba(37,33,38,.74);
+      font-family: var(--cn);
+      font-size: 11px;
+      line-height: 1.72;
+      letter-spacing: .004em;
+    }
+
+    .hi-typing-output p {
+      position: relative;
+      margin: 0;
+      padding-left: 13px;
+    }
+
+    .hi-typing-output p::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--rose-deep);
+      font-weight: 900;
+    }
+
+    .hi-type-caret {
+      display: inline-block;
+      width: 1px;
+      height: 13px;
+      margin: 3px 0 0 13px;
+      background: var(--rose-deep);
+      opacity: 0;
+    }
+
+    .hi-type-caret.is-visible {
+      opacity: 1;
+      animation: hiCaretBlink .72s steps(1) infinite;
+    }
+
+    /* Two real screenshots, only simple phone borders */
+    .hi-notes {
+      position: absolute;
+      z-index: 18;
+      right: 1%;
+      top: 95px;
+      width: 44%;
+      height: 690px;
+      perspective: 1400px;
+    }
+
+    .hi-phone {
+      position: absolute;
+      display: block;
+      width: 245px;
+      height: 565px;
+      transition:
+        transform .34s cubic-bezier(.2,.8,.2,1),
+        filter .34s ease;
+    }
+
+    .hi-phone-pet {
+      left: 2%;
+      top: 15px;
+      z-index: 8;
+      transform: rotate(-4deg);
+    }
+
+    .hi-phone-hack {
+      right: 1%;
+      top: 95px;
+      z-index: 7;
+      transform: rotate(5deg);
+    }
+
+    .hi-phone:hover {
+      z-index: 30;
+      filter: drop-shadow(0 28px 26px rgba(37,33,38,.20));
+    }
+
+    .hi-phone-pet:hover {
+      transform: translateY(-10px) rotate(-2deg) scale(1.012);
+    }
+
+    .hi-phone-hack:hover {
+      transform: translateY(-10px) rotate(3deg) scale(1.012);
+    }
+
+    .hi-phone-shell {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 7px solid #1b191d;
+      border-radius: 34px;
+      background: #1b191d;
+      box-shadow:
+        0 24px 46px rgba(37,33,38,.17),
+        0 0 0 1px rgba(255,255,255,.12) inset;
+    }
+
+    .hi-phone-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 26px;
+    }
+
+    .hi-phone-speaker {
+      position: absolute;
+      z-index: 5;
+      top: 10px;
+      left: 50%;
+      width: 56px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(238,238,240,.80);
+      transform: translateX(-50%);
+      box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+
+    .hi-home-indicator {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 10px;
+      width: 74px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.88);
+      transform: translateX(-50%);
+    }
+
+    .hi-open-note {
+      position: absolute;
+      z-index: 10;
+      right: 13px;
+      bottom: 15px;
+      padding: 7px 9px;
+      border: 1px solid rgba(255,255,255,.50);
+      border-radius: 999px;
+      background: rgba(22,19,22,.72);
+      color: #fff;
+      font-size: 5px;
+      line-height: 1.2;
+      letter-spacing: .10em;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(5px);
+      transition:
+        opacity .28s ease,
+        transform .28s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .hi-phone:hover .hi-open-note {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes hiIdleFloat {
+      0%, 100% {
+        translate: 0 0;
+      }
+      50% {
+        translate: 0 -8px;
+      }
+    }
+
+    @keyframes hiBottleSpin {
+      0% {
+        transform:
+          perspective(1300px)
+          rotateY(-7deg)
+          rotateX(2deg)
+          rotateZ(-2deg)
+          translateZ(24px);
+      }
+      38% {
+        transform:
+          perspective(1300px)
+          rotateY(185deg)
+          rotateX(1deg)
+          rotateZ(1deg)
+          translateZ(54px)
+          scale(1.035);
+      }
+      72% {
+        transform:
+          perspective(1300px)
+          rotateY(390deg)
+          rotateX(2deg)
+          rotateZ(-1deg)
+          translateZ(44px);
+      }
+      100% {
+        transform:
+          perspective(1300px)
+          rotateY(533deg)
+          rotateX(2deg)
+          rotateZ(-2deg)
+          translateZ(28px);
+      }
+    }
+
+    @keyframes hiOrbitPulse {
+      0%, 100% {
+        scale: 1;
+        opacity: .72;
+      }
+      50% {
+        scale: 1.12;
+        opacity: 1;
+      }
+    }
+
+    @keyframes hiCaretBlink {
+      0%, 48% { opacity: 1; }
+      49%, 100% { opacity: 0; }
+    }
+
+    @media (max-width: 1180px) {
+      .hi-product-area {
+        left: 22%;
+        width: 320px;
+      }
+
+      .hi-notes {
+        width: 46%;
+      }
+
+      .hi-phone {
+        width: 218px;
+        height: 510px;
+      }
+
+      .hi-phone-hack {
+        top: 85px;
+      }
+
+      .hi-typing-panel {
+        width: 44%;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .hanshu-interactive,
+      .hi-layout {
+        min-height: 1210px;
+      }
+
+      .hi-meta {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+      }
+
+      .hi-product-area {
+        left: 1%;
+        top: 215px;
+        width: 42%;
+      }
+
+      .hi-brand-reveal {
+        left: -20px;
+      }
+
+      .hi-notes {
+        top: 215px;
+        right: 0;
+        width: 58%;
+      }
+
+      .hi-phone {
+        width: 205px;
+        height: 475px;
+      }
+
+      .hi-phone-pet {
+        left: 0;
+      }
+
+      .hi-phone-hack {
+        right: 0;
+      }
+
+      .hi-typing-panel {
+        left: 0;
+        bottom: 45px;
+        width: 100%;
+        min-height: 270px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .hanshu-interactive,
+      .hi-layout {
+        min-height: 1510px;
+      }
+
+      .hi-layout {
+        padding: 30px 16px;
+      }
+
+      .hi-product-area {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: 560px;
+        margin-top: 34px;
+      }
+
+      .hi-brand-reveal {
+        left: 5%;
+        top: 175px;
+      }
+
+      .hi-brand-reveal span {
+        font-size: 4rem;
+      }
+
+      .hi-brand-reveal em {
+        font-size: 3.2rem;
+      }
+
+      .hi-notes {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        height: 620px;
+        margin-top: 14px;
+      }
+
+      .hi-phone {
+        width: 177px;
+        height: 420px;
+      }
+
+      .hi-phone-pet {
+        left: 0;
+      }
+
+      .hi-phone-hack {
+        right: 0;
+        top: 115px;
+      }
+
+      .hi-typing-panel {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        min-height: 310px;
+        margin-top: 20px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hi-bottle {
+        animation: none !important;
+      }
+
+      .hanshu-interactive.is-activated .hi-bottle {
+        animation: none !important;
+      }
+
+      .hi-brand-reveal,
+      .hi-typing-panel {
+        transition-duration: .01ms !important;
+      }
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -3941,113 +4613,108 @@
 <div class="project-shelf">
 
           
-          <article class="hanshu-editorial" id="hanshu-card">
-            <div class="hanshu-editorial-layout">
+          
+          <article class="hanshu-interactive" id="hanshu-card">
+            <div class="hi-layout">
 
-              <header class="he-intro" data-reveal>
-                <div class="he-brandline">
+              <header class="hi-meta" data-reveal>
+                <div class="hi-brandline">
                   <span>ENO LI</span>
                   <i></i>
                   <span>WORK</span>
                 </div>
 
-                <div class="he-title-wrap">
-                  <h3>
-                    <span>HANSCHU</span>
-                    <em>韩束亮白瓶</em>
-                  </h3>
-                  <span class="he-case-pill">Featured case ↗</span>
-                </div>
-
-                <dl class="he-meta">
-                  <dt>Year</dt>
-                  <dd>2025.12—2026.02</dd>
+                <dl>
+                  <dt>Project</dt>
+                  <dd>韩束亮白瓶身体精华</dd>
 
                   <dt>Role</dt>
                   <dd>产品营销 / 小红书内容运营</dd>
 
-                  <dt>Focus</dt>
-                  <dd>内容策略 · 达人协同 · 数据复盘</dd>
+                  <dt>Time</dt>
+                  <dd>2025.12—2026.02</dd>
                 </dl>
               </header>
 
-              <section class="he-story" data-reveal>
-                <h4>Project</h4>
-                <p>
-                  我参与韩束亮白瓶的小红书内容营销执行，从用户评论与竞品内容中提炼场景，
-                  推进达人筛选、内容排期和投流复盘。两篇代表性爆文分别以
-                  <strong>“宠物陪伴”</strong>和<strong>“年前亮白急救”</strong>为切口，
-                  将功效卖点转化为更有情绪价值与实用性的内容表达。
-                </p>
+              <section class="hi-product-area" id="hanshuBottleArea" data-reveal>
+                <div class="hi-brand-reveal" aria-hidden="true">
+                  <span>韩束</span>
+                  <em>亮白瓶</em>
+                </div>
+
+                <button
+                  class="hi-bottle-button"
+                  id="hanshuBottleButton"
+                  type="button"
+                  aria-label="点击韩束产品，查看项目经历"
+                  aria-expanded="false"
+                >
+                  <span class="hi-bottle-orbit"></span>
+
+                  <img
+                    class="hi-bottle"
+                    src="hanshu-product-transparent-v2.png"
+                    alt="韩束亮白紧致身体精华液"
+                  />
+
+                  <span class="hi-click-hint">
+                    CLICK THE BOTTLE
+                    <small>点击产品，查看项目经历</small>
+                  </span>
+                </button>
               </section>
 
-              <section class="he-collage" id="hanshuCollage" data-reveal>
-                <div class="he-accent-card he-accent-main" data-he-depth="1.2">
-                  <small>CONTENT THAT</small>
-                  <strong>FEELS<br>REAL.</strong>
+              <section class="hi-typing-panel" id="hanshuTypingPanel" aria-live="polite">
+                <div class="hi-typing-heading">
+                  <span>PROJECT EXPERIENCE</span>
+                  <strong>小红书产品营销 Campaign</strong>
                 </div>
 
-                <div class="he-accent-card he-accent-data" data-he-depth="1.5">
-                  <small>CONTENT REVIEW</small>
-                  <strong>INSIGHT<br>→ ACTION</strong>
-                  <i></i><i></i><i></i>
-                </div>
+                <div class="hi-typing-output" id="hanshuTypingOutput"></div>
+                <span class="hi-type-caret" id="hanshuTypeCaret" aria-hidden="true"></span>
+              </section>
 
-                <div class="he-product-stage" data-he-depth="3.6">
-                  <div class="he-product-ring"></div>
-                  <img
-                    src="hanshu-product-transparent-v2.png"
-                    alt="韩束亮白紧致身体精华液产品图"
-                  />
-                  <span>HERO PRODUCT / 250 ML</span>
-                </div>
-
+              <section class="hi-notes" data-reveal>
                 <a
-                  class="he-note-shot he-note-pet"
+                  class="hi-phone hi-phone-pet"
                   href="https://www.xiaohongshu.com/discovery/item/698ac601000000000a02fbd0"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-he-depth="4.2"
-                  aria-label="打开宠物陪伴爆文"
+                  aria-label="打开宠物陪伴主题小红书爆文"
                 >
-                  <img
-                    src="hanshu-pet-note-full.jpg"
-                    alt="宠物陪伴主题小红书爆文真实截图"
-                  />
-                  <span>
-                    <small>01 / PET × BODY CARE</small>
-                    <strong>宠物陪伴特辑</strong>
-                    <b>OPEN NOTE ↗</b>
+                  <span class="hi-phone-shell">
+                    <span class="hi-phone-speaker"></span>
+                    <img
+                      src="hanshu-pet-note-full.jpg"
+                      alt="宠物陪伴主题小红书爆文完整截图"
+                    />
+                    <span class="hi-home-indicator"></span>
                   </span>
+                  <span class="hi-open-note">OPEN NOTE ↗</span>
                 </a>
 
                 <a
-                  class="he-note-shot he-note-hack"
+                  class="hi-phone hi-phone-hack"
                   href="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-he-depth="3.8"
-                  aria-label="打开年前亮白急救爆文"
+                  aria-label="打开年前亮白急救主题小红书爆文"
                 >
-                  <img
-                    src="hanshu-hack-note-full.jpg"
-                    alt="年前亮白急救主题小红书爆文真实截图"
-                  />
-                  <span>
-                    <small>02 / BEAUTY HACK</small>
-                    <strong>年前亮白急救</strong>
-                    <b>OPEN NOTE ↗</b>
+                  <span class="hi-phone-shell">
+                    <span class="hi-phone-speaker"></span>
+                    <img
+                      src="hanshu-hack-note-full.jpg"
+                      alt="年前亮白急救主题小红书爆文完整截图"
+                    />
+                    <span class="hi-home-indicator"></span>
                   </span>
+                  <span class="hi-open-note">OPEN NOTE ↗</span>
                 </a>
-
-                <div class="he-caption-card" data-he-depth="2">
-                  <span>CONTENT LOGIC</span>
-                  <strong>用户语言 → 生活场景 → 表现复盘</strong>
-                </div>
               </section>
 
             </div>
           </article>
+
 
 
 
@@ -4494,6 +5161,97 @@
           item.style.translate = "";
         });
       });
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const section = document.getElementById("hanshu-card");
+      const button = document.getElementById("hanshuBottleButton");
+      const output = document.getElementById("hanshuTypingOutput");
+      const caret = document.getElementById("hanshuTypeCaret");
+
+      if (!section || !button || !output || !caret) return;
+
+      const lines = [
+        "参与韩束亮白瓶身体精华在小红书平台的产品营销 Campaign 规划，结合目标用户与使用场景制定阶段性内容策略。",
+        "基于曝光、点击、互动等核心数据指标对内容表现进行复盘分析，提炼有效内容类型并优化后续传播方向。",
+        "对接代理商与达人合作方，协助推进达人筛选、内容策划与发布排期，推动内容种草与产品曝光。",
+        "支持 KOC 铺量及后续 KOL 放量策略制定，参与达人筛选标准与内容执行方案设计。"
+      ];
+
+      let hasPlayed = false;
+      let typingToken = 0;
+
+      const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+      async function typeLine(text, paragraph, token) {
+        for (const char of text) {
+          if (token !== typingToken) return false;
+          paragraph.textContent += char;
+
+          const delay =
+            char === "，" || char === "。" ? 125 :
+            char === "、" ? 80 :
+            char === " " ? 20 :
+            34;
+
+          await sleep(delay);
+        }
+        return true;
+      }
+
+      async function playTyping() {
+        const token = ++typingToken;
+        output.innerHTML = "";
+        caret.classList.add("is-visible");
+
+        await sleep(1400);
+
+        for (const line of lines) {
+          if (token !== typingToken) return;
+
+          const paragraph = document.createElement("p");
+          output.appendChild(paragraph);
+
+          const completed = await typeLine(line, paragraph, token);
+          if (!completed) return;
+
+          await sleep(290);
+        }
+
+        if (token === typingToken) {
+          await sleep(360);
+          caret.classList.remove("is-visible");
+        }
+      }
+
+      function activate() {
+        if (hasPlayed) {
+          section.classList.remove("is-activated");
+          button.setAttribute("aria-expanded", "false");
+          output.innerHTML = "";
+          caret.classList.remove("is-visible");
+          typingToken++;
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              section.classList.add("is-activated");
+              button.setAttribute("aria-expanded", "true");
+              playTyping();
+            });
+          });
+          return;
+        }
+
+        hasPlayed = true;
+        section.classList.add("is-activated");
+        button.setAttribute("aria-expanded", "true");
+        playTyping();
+      }
+
+      button.addEventListener("click", activate);
     })();
   </script>
 
