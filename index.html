@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="李伊诺｜品牌营销、内容策略与视觉传播作品集" />
   <meta name="theme-color" content="#f5f2ef" />
-  <title>ENO LI｜Portfolio V19</title>
+  <title>ENO LI｜Portfolio V20</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -6199,6 +6199,1357 @@
       display: none !important;
     }
 
+  
+    /* =========================================================
+       V20 — NORMALIZED PROJECT SCALE
+    ========================================================= */
+
+    .project-shelf {
+      width:min(1320px, calc(100% - 48px));
+      margin-inline:auto;
+      gap:18px;
+    }
+
+    .project.gender-live-card {
+      min-height:680px;
+      padding:44px 48px;
+      grid-template-columns:minmax(260px,.72fr) minmax(480px,1.28fr);
+      gap:44px;
+      align-items:center;
+    }
+
+    .gender-live-card .project-title {
+      font-size:clamp(4.2rem, 6.2vw, 6.8rem);
+      line-height:.82;
+    }
+
+    .gender-live-card .project-desc {
+      max-width:390px;
+      font-size:13px;
+      line-height:1.78;
+    }
+
+    .gender-live-art {
+      min-height:500px;
+    }
+
+    /* =========================================================
+       V20 — 12-POSTER TRANSPARENT ARCHIVE
+    ========================================================= */
+
+    body.p20-layer-open {
+      overflow:hidden;
+    }
+
+    .p20-poster-project {
+      position:relative;
+      min-height:790px;
+      overflow:hidden;
+      border-top:1px solid rgba(37,33,38,.12);
+      border-bottom:1px solid rgba(37,33,38,.12);
+      background:
+        linear-gradient(rgba(37,33,38,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,33,38,.022) 1px, transparent 1px),
+        radial-gradient(circle at 76% 44%, rgba(187,28,28,.10), transparent 28%),
+        radial-gradient(circle at 24% 34%, rgba(229,199,207,.17), transparent 25%),
+        #faf8f5;
+      background-size:16px 16px,16px 16px,auto,auto,auto;
+      scroll-margin-top:64px;
+    }
+
+    .p20-poster-stage {
+      position:relative;
+      min-height:790px;
+      padding:42px 38px 30px;
+      isolation:isolate;
+    }
+
+    .p20-poster-info {
+      position:absolute;
+      z-index:15;
+      left:38px;
+      top:42px;
+      width:min(410px,35%);
+    }
+
+    .p20-project-kicker {
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      color:rgba(37,33,38,.48);
+      font-size:7px;
+      line-height:1.35;
+      letter-spacing:.13em;
+      font-weight:900;
+    }
+
+    .p20-poster-title {
+      margin:66px 0 0;
+      line-height:.69;
+      font-weight:600;
+    }
+
+    .p20-poster-title span {
+      display:block;
+      font-family:var(--serif);
+      font-size:clamp(4.5rem,6.4vw,7.4rem);
+      letter-spacing:-.095em;
+    }
+
+    .p20-poster-title em {
+      display:block;
+      width:max-content;
+      margin:20px 0 0 11%;
+      color:#b51e1e;
+      font-family:var(--serif);
+      font-size:clamp(3.7rem,5.3vw,6.1rem);
+      letter-spacing:-.07em;
+      font-style:italic;
+    }
+
+    .p20-poster-description {
+      max-width:390px;
+      margin:46px 0 0;
+      color:rgba(37,33,38,.69);
+      font-size:12px;
+      line-height:1.82;
+    }
+
+    .p20-project-meta {
+      display:grid;
+      grid-template-columns:68px 1fr;
+      gap:6px 13px;
+      max-width:380px;
+      margin:26px 0 0;
+      font-size:7px;
+      line-height:1.48;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+    }
+
+    .p20-project-meta dt {
+      color:rgba(37,33,38,.43);
+      font-weight:900;
+    }
+
+    .p20-project-meta dd {
+      margin:0;
+      font-weight:700;
+    }
+
+    .p20-pouch {
+      position:absolute;
+      z-index:8;
+      right:3%;
+      top:42px;
+      width:min(630px,56%);
+      height:660px;
+      border:0;
+      padding:0;
+      background:transparent;
+      cursor:pointer;
+      perspective:1600px;
+      transform-style:preserve-3d;
+    }
+
+    .p20-pouch-ground {
+      position:absolute;
+      z-index:0;
+      left:15%;
+      right:8%;
+      bottom:26px;
+      height:64px;
+      border-radius:50%;
+      background:rgba(50,25,28,.18);
+      filter:blur(26px);
+      transform:rotate(-3deg);
+      transition:.35s ease;
+    }
+
+    .p20-poster-stack {
+      position:absolute;
+      z-index:3;
+      left:15%;
+      top:17px;
+      width:68%;
+      height:81%;
+      transform-style:preserve-3d;
+    }
+
+    .p20-bag-poster {
+      position:absolute;
+      left:50%;
+      bottom:30px;
+      width:205px;
+      aspect-ratio:2/3;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.78);
+      background:#fff;
+      box-shadow:0 23px 36px rgba(44,25,28,.16);
+      transform:
+        translate3d(calc(-50% + var(--p20-x)),var(--p20-y),calc(var(--p20-z)*10px))
+        rotate(var(--p20-r));
+      transform-origin:50% 95%;
+      transition:transform .68s cubic-bezier(.18,.84,.2,1);
+    }
+
+    .p20-bag-poster img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .p20-pouch-back {
+      position:absolute;
+      z-index:2;
+      inset:7% 5% 2% 8%;
+      border:1px solid rgba(255,255,255,.72);
+      border-radius:38px 38px 28px 28px;
+      background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(214,226,231,.12));
+      box-shadow:0 30px 58px rgba(49,31,37,.12);
+      backdrop-filter:blur(7px);
+      transform:rotate(-2deg) translateZ(-15px);
+    }
+
+    .p20-pouch-front {
+      position:absolute;
+      z-index:10;
+      inset:10% 1% 0 4%;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.88);
+      border-radius:35px 35px 28px 28px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.40),rgba(255,255,255,.07) 43%,rgba(204,220,225,.15)),
+        rgba(235,241,243,.12);
+      box-shadow:
+        0 32px 68px rgba(55,33,39,.15),
+        0 0 0 1px rgba(255,255,255,.32) inset;
+      backdrop-filter:blur(3px) saturate(.9);
+      transform:rotate(1deg) translateZ(40px);
+      transition:.5s cubic-bezier(.18,.84,.2,1);
+    }
+
+    .p20-pouch-front::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 15% 15%,rgba(255,255,255,.67),transparent 20%),
+        linear-gradient(105deg,transparent 25%,rgba(255,255,255,.29) 43%,transparent 56%);
+      mix-blend-mode:screen;
+      opacity:.72;
+      pointer-events:none;
+    }
+
+    .p20-pouch-shine {
+      position:absolute;
+      background:rgba(255,255,255,.29);
+      filter:blur(2px);
+    }
+
+    .p20-shine-one {
+      left:9%;
+      top:-8%;
+      width:12%;
+      height:92%;
+      transform:rotate(18deg);
+    }
+
+    .p20-shine-two {
+      right:16%;
+      top:10%;
+      width:5%;
+      height:64%;
+      transform:rotate(-11deg);
+      opacity:.55;
+    }
+
+    .p20-pouch-zip {
+      position:absolute;
+      z-index:6;
+      left:4%;
+      right:4%;
+      top:20px;
+      height:16px;
+      border-radius:999px;
+      background:repeating-linear-gradient(90deg,#cbc6c0 0 5px,#f0ece7 5px 8px);
+      box-shadow:0 4px 9px rgba(36,27,29,.12);
+    }
+
+    .p20-pouch-zip i {
+      position:absolute;
+      left:65%;
+      top:-7px;
+      width:28px;
+      height:29px;
+      border:4px solid #b7b0aa;
+      border-radius:10px 10px 15px 15px;
+      background:rgba(245,242,238,.8);
+      transform:rotate(7deg);
+    }
+
+    .p20-pouch-zip b {
+      position:absolute;
+      left:calc(65% + 11px);
+      top:17px;
+      width:7px;
+      height:32px;
+      border-radius:999px;
+      background:#aaa39e;
+      transform:rotate(7deg);
+    }
+
+    .p20-pouch-label {
+      position:absolute;
+      z-index:7;
+      left:8%;
+      bottom:8%;
+      display:grid;
+      gap:4px;
+      min-width:220px;
+      padding:15px 17px;
+      border:1px solid rgba(37,33,38,.20);
+      background:rgba(250,247,243,.72);
+      box-shadow:0 11px 25px rgba(42,28,31,.10);
+      text-align:left;
+      transform:rotate(-3deg);
+      backdrop-filter:blur(9px);
+    }
+
+    .p20-pouch-label small {
+      color:rgba(37,33,38,.47);
+      font-size:6px;
+      letter-spacing:.14em;
+      font-weight:900;
+    }
+
+    .p20-pouch-label strong {
+      color:#b51e1e;
+      font-family:var(--serif);
+      font-size:27px;
+      line-height:.92;
+      letter-spacing:-.04em;
+    }
+
+    .p20-pouch-label span {
+      font-size:6px;
+      letter-spacing:.09em;
+      font-weight:800;
+    }
+
+    .p20-pouch-count {
+      position:absolute;
+      z-index:7;
+      right:7%;
+      bottom:8%;
+      display:grid;
+      place-items:center;
+      width:82px;
+      height:82px;
+      border:1px solid rgba(37,33,38,.18);
+      border-radius:50%;
+      background:rgba(181,30,30,.89);
+      color:#fff;
+      box-shadow:0 14px 31px rgba(65,27,32,.16);
+      transform:rotate(5deg);
+    }
+
+    .p20-pouch-count strong {
+      font-family:var(--serif);
+      font-size:32px;
+      line-height:.78;
+    }
+
+    .p20-pouch-count small {
+      margin-top:-16px;
+      font-size:5px;
+      letter-spacing:.13em;
+      font-weight:900;
+    }
+
+    .p20-open-hint {
+      position:absolute;
+      z-index:20;
+      right:7%;
+      top:0;
+      display:grid;
+      gap:3px;
+      min-width:170px;
+      padding:9px 12px;
+      border:1px solid rgba(37,33,38,.14);
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      color:rgba(37,33,38,.62);
+      box-shadow:0 9px 22px rgba(37,33,38,.07);
+      font-size:6px;
+      letter-spacing:.12em;
+      font-weight:900;
+      text-align:center;
+      transform:rotate(4deg);
+      backdrop-filter:blur(9px);
+    }
+
+    .p20-open-hint small {
+      font-size:7px;
+      letter-spacing:.01em;
+      font-weight:600;
+    }
+
+    .p20-pouch:hover .p20-pouch-front {
+      transform:rotate(.2deg) translate3d(0,-10px,62px);
+      box-shadow:0 43px 83px rgba(55,33,39,.19);
+    }
+
+    .p20-pouch:hover .p20-pouch-ground {
+      opacity:.78;
+      scale:1.05;
+    }
+
+    .p20-pouch:hover .p20-bag-poster-1 {
+      transform:translate3d(calc(-50% - 103px),15px,60px) rotate(-14deg);
+    }
+
+    .p20-pouch:hover .p20-bag-poster-2 {
+      transform:translate3d(calc(-50% + 98px),24px,70px) rotate(11deg);
+    }
+
+    .p20-pouch:hover .p20-bag-poster-3 {
+      transform:translate3d(calc(-50% - 55px),-12px,80px) rotate(-6deg);
+    }
+
+    .p20-pouch:hover .p20-bag-poster-4 {
+      transform:translate3d(calc(-50% + 67px),0,90px) rotate(8deg);
+    }
+
+    .p20-pouch:hover .p20-bag-poster-5 {
+      transform:translate3d(calc(-50% - 20px),-36px,100px) rotate(-8deg);
+    }
+
+    .p20-pouch:hover .p20-bag-poster-6 {
+      transform:translate3d(calc(-50% + 33px),-42px,112px) rotate(4deg);
+    }
+
+    .p20-poster-footnote {
+      position:absolute;
+      left:38px;
+      bottom:26px;
+      margin:0;
+      color:rgba(37,33,38,.38);
+      font-size:6px;
+      letter-spacing:.13em;
+      font-weight:900;
+    }
+
+    /* Poster archive — reliable fullscreen layer */
+    .p20-archive-modal {
+      position:fixed;
+      z-index:3000;
+      inset:0;
+      visibility:hidden;
+      opacity:0;
+      pointer-events:none;
+      transition:visibility .3s ease,opacity .3s ease;
+    }
+
+    .p20-archive-modal.is-open {
+      visibility:visible;
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .p20-archive-backdrop {
+      position:absolute;
+      inset:0;
+      background:rgba(28,14,17,.58);
+      backdrop-filter:blur(15px);
+    }
+
+    .p20-archive-panel {
+      position:absolute;
+      inset:12px;
+      overflow:auto;
+      overscroll-behavior:contain;
+      border:1px solid rgba(255,255,255,.31);
+      border-radius:26px;
+      background:
+        linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px),
+        #a91d1d;
+      background-size:18px 18px;
+      color:#fff;
+      box-shadow:0 34px 86px rgba(20,9,11,.38);
+      transform:translateY(16px) scale(.99);
+      transition:transform .38s cubic-bezier(.18,.84,.2,1);
+    }
+
+    .p20-archive-modal.is-open .p20-archive-panel {
+      transform:translateY(0) scale(1);
+    }
+
+    .p20-archive-toolbar,
+    .p20-viewer-toolbar {
+      position:sticky;
+      z-index:30;
+      top:0;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:16px;
+      padding:15px 20px;
+      background:rgba(157,24,24,.91);
+      border-bottom:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(12px);
+    }
+
+    .p20-return-button,
+    .p20-toolbar-close,
+    .p20-viewer-toolbar button,
+    .p20-archive-footer button {
+      width:max-content;
+      border:1px solid rgba(255,255,255,.46);
+      border-radius:999px;
+      padding:9px 13px;
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      font-size:7px;
+      letter-spacing:.08em;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .p20-toolbar-close {
+      justify-self:end;
+    }
+
+    .p20-toolbar-title {
+      display:grid;
+      justify-items:center;
+      gap:2px;
+    }
+
+    .p20-toolbar-title small {
+      color:rgba(255,255,255,.60);
+      font-size:5px;
+      letter-spacing:.12em;
+      font-weight:900;
+    }
+
+    .p20-toolbar-title strong {
+      font-size:11px;
+    }
+
+    .p20-archive-heading {
+      display:grid;
+      grid-template-columns:1fr minmax(280px,430px);
+      gap:50px;
+      align-items:end;
+      padding:36px 34px 26px;
+    }
+
+    .p20-archive-heading h2 {
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(4rem,6.4vw,7.5rem);
+      line-height:.70;
+      letter-spacing:-.08em;
+      font-weight:600;
+    }
+
+    .p20-archive-heading h2 em {
+      display:block;
+      margin:19px 0 0 8%;
+      color:#f1d1d1;
+      font-style:italic;
+    }
+
+    .p20-archive-heading p {
+      margin:0;
+      color:rgba(255,255,255,.74);
+      font-size:11px;
+      line-height:1.75;
+    }
+
+    .p20-archive-grid {
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:28px 20px;
+      padding:20px 34px 48px;
+    }
+
+    .p20-archive-card {
+      min-width:0;
+      border:0;
+      padding:0;
+      background:transparent;
+      color:#fff;
+      text-align:left;
+      cursor:zoom-in;
+      opacity:0;
+      transform:translateY(15px);
+    }
+
+    .p20-archive-modal.is-open .p20-archive-card {
+      animation:p20CardIn .46s cubic-bezier(.18,.84,.2,1) forwards;
+      animation-delay:calc(var(--p20-delay)*24ms + 100ms);
+    }
+
+    .p20-archive-image {
+      display:block;
+      overflow:hidden;
+      aspect-ratio:2/3;
+      border:1px solid rgba(255,255,255,.45);
+      background:#fff;
+      box-shadow:0 18px 31px rgba(34,10,14,.23);
+      transition:.32s cubic-bezier(.18,.84,.2,1);
+    }
+
+    .p20-archive-image img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.4s cubic-bezier(.18,.84,.2,1);
+    }
+
+    .p20-archive-card:hover .p20-archive-image {
+      transform:translateY(-7px) rotate(-.7deg) scale(1.012);
+      box-shadow:0 28px 43px rgba(34,10,14,.31);
+    }
+
+    .p20-archive-card:hover img {
+      transform:scale(1.022);
+    }
+
+    .p20-archive-caption {
+      display:grid;
+      gap:5px;
+      margin-top:10px;
+    }
+
+    .p20-archive-caption small {
+      color:rgba(255,255,255,.55);
+      font-size:5px;
+      letter-spacing:.11em;
+      font-weight:900;
+    }
+
+    .p20-archive-caption strong {
+      font-size:8px;
+      line-height:1.36;
+      font-weight:800;
+    }
+
+    .p20-archive-footer {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 34px 32px;
+      color:rgba(255,255,255,.57);
+      font-size:6px;
+      letter-spacing:.12em;
+      font-weight:900;
+    }
+
+    /* Full poster viewer */
+    .p20-poster-viewer {
+      position:fixed;
+      z-index:3040;
+      inset:0;
+      visibility:hidden;
+      opacity:0;
+      pointer-events:none;
+      background:rgba(22,9,12,.90);
+      backdrop-filter:blur(19px);
+      transition:.28s ease;
+    }
+
+    .p20-poster-viewer.is-open {
+      visibility:visible;
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .p20-viewer-backdrop {
+      position:absolute;
+      inset:0;
+    }
+
+    .p20-viewer-toolbar {
+      position:absolute;
+      z-index:10;
+      inset:0 0 auto;
+      background:rgba(31,12,15,.70);
+    }
+
+    .p20-viewer-toolbar span {
+      justify-self:center;
+      color:#fff;
+      font-size:8px;
+      letter-spacing:.12em;
+      font-weight:900;
+    }
+
+    .p20-viewer-toolbar button:last-child {
+      justify-self:end;
+    }
+
+    .p20-viewer-stage {
+      position:absolute;
+      inset:72px 18px 18px;
+      display:grid;
+      grid-template-columns:55px minmax(0,1fr) 55px;
+      align-items:center;
+      justify-items:center;
+      gap:16px;
+    }
+
+    .p20-viewer-nav {
+      display:grid;
+      place-items:center;
+      width:44px;
+      height:44px;
+      border:1px solid rgba(255,255,255,.43);
+      border-radius:50%;
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .p20-viewer-figure {
+      display:grid;
+      grid-template-columns:minmax(280px,520px) minmax(200px,300px);
+      gap:28px;
+      align-items:end;
+      max-width:880px;
+      margin:0;
+    }
+
+    .p20-viewer-figure > img {
+      width:100%;
+      max-height:calc(100vh - 115px);
+      object-fit:contain;
+      background:#fff;
+      box-shadow:0 35px 74px rgba(0,0,0,.41);
+    }
+
+    .p20-viewer-figure figcaption {
+      display:grid;
+      gap:12px;
+      padding-bottom:24px;
+      color:#fff;
+    }
+
+    .p20-viewer-figure figcaption small {
+      color:rgba(255,255,255,.53);
+      font-size:6px;
+      letter-spacing:.12em;
+      font-weight:900;
+    }
+
+    .p20-viewer-figure figcaption strong {
+      font-family:var(--serif);
+      font-size:clamp(2.6rem,4vw,4.3rem);
+      line-height:.86;
+      letter-spacing:-.05em;
+      font-weight:600;
+    }
+
+    /* =========================================================
+       V20 — CREATIVE LAB WITH REAL WORKS
+    ========================================================= */
+
+    .p20-creative-project {
+      position:relative;
+      min-height:780px;
+      overflow:hidden;
+      border-top:1px solid rgba(37,33,38,.12);
+      border-bottom:1px solid rgba(37,33,38,.12);
+      background:
+        linear-gradient(rgba(37,33,38,.022) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(37,33,38,.022) 1px,transparent 1px),
+        radial-gradient(circle at 68% 40%,rgba(183,222,226,.16),transparent 25%),
+        radial-gradient(circle at 35% 70%,rgba(229,199,207,.20),transparent 26%),
+        #f7f5f2;
+      background-size:16px 16px,16px 16px,auto,auto,auto;
+      scroll-margin-top:64px;
+    }
+
+    .p20-creative-stage {
+      position:relative;
+      min-height:780px;
+      padding:42px 38px 30px;
+      isolation:isolate;
+    }
+
+    .p20-creative-info {
+      position:absolute;
+      z-index:20;
+      left:38px;
+      top:42px;
+      width:min(385px,33%);
+    }
+
+    .p20-creative-title {
+      margin:69px 0 0;
+      font-family:var(--serif);
+      font-size:clamp(4.3rem,6.1vw,7rem);
+      line-height:.72;
+      letter-spacing:-.08em;
+      font-weight:600;
+    }
+
+    .p20-creative-title em {
+      display:block;
+      width:max-content;
+      margin:20px 0 0 20%;
+      color:var(--rose-deep);
+      font-style:italic;
+    }
+
+    .p20-creative-description {
+      max-width:360px;
+      margin:48px 0 0;
+      color:rgba(37,33,38,.69);
+      font-size:12px;
+      line-height:1.82;
+    }
+
+    .p20-creative-index {
+      display:grid;
+      gap:8px;
+      margin-top:30px;
+      color:rgba(37,33,38,.55);
+      font-size:7px;
+      letter-spacing:.10em;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    .p20-creative-gallery {
+      position:absolute;
+      z-index:10;
+      right:1%;
+      top:40px;
+      width:64%;
+      height:680px;
+      perspective:1600px;
+      transform-style:preserve-3d;
+    }
+
+    .p20-work-card {
+      position:absolute;
+      border:0;
+      padding:0;
+      background:transparent;
+      text-align:left;
+      cursor:pointer;
+      perspective:1400px;
+      transform-style:preserve-3d;
+      transition:transform .45s cubic-bezier(.18,.84,.2,1),filter .45s ease;
+    }
+
+    .p20-work-interactive {
+      left:1%;
+      top:4%;
+      z-index:6;
+      width:66%;
+      transform:rotate(-2.6deg) translateZ(10px);
+    }
+
+    .p20-work-spatial {
+      right:1%;
+      bottom:0;
+      z-index:9;
+      width:34%;
+      transform:rotate(4deg) translateZ(45px);
+    }
+
+    .p20-work-frame {
+      position:relative;
+      display:block;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.78);
+      background:rgba(255,255,255,.50);
+      box-shadow:
+        0 27px 58px rgba(46,38,44,.16),
+        0 0 0 10px rgba(255,255,255,.32);
+      backdrop-filter:blur(8px);
+    }
+
+    .p20-work-interactive .p20-work-frame {
+      aspect-ratio:1.27/1;
+      padding:10px;
+    }
+
+    .p20-work-spatial .p20-work-frame {
+      aspect-ratio:.61/1;
+      padding:9px;
+    }
+
+    .p20-work-frame::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(115deg,rgba(255,255,255,.30),transparent 34%,rgba(255,255,255,.12));
+      pointer-events:none;
+      mix-blend-mode:screen;
+    }
+
+    .p20-work-frame img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .6s cubic-bezier(.18,.84,.2,1);
+    }
+
+    .p20-work-interactive img {
+      object-position:center;
+    }
+
+    .p20-work-spatial img {
+      object-position:center top;
+    }
+
+    .p20-work-label {
+      position:absolute;
+      z-index:6;
+      display:grid;
+      gap:4px;
+      min-width:190px;
+      padding:13px 15px;
+      border:1px solid rgba(37,33,38,.19);
+      background:rgba(250,248,245,.83);
+      box-shadow:0 12px 27px rgba(43,34,40,.10);
+      backdrop-filter:blur(10px);
+    }
+
+    .p20-work-interactive .p20-work-label {
+      left:7%;
+      bottom:-34px;
+      transform:rotate(2deg);
+    }
+
+    .p20-work-spatial .p20-work-label {
+      right:4%;
+      bottom:5%;
+      transform:rotate(-3deg);
+    }
+
+    .p20-work-label small {
+      color:rgba(37,33,38,.45);
+      font-size:5px;
+      letter-spacing:.12em;
+      font-weight:900;
+    }
+
+    .p20-work-label strong {
+      font-family:var(--serif);
+      font-size:25px;
+      line-height:.9;
+      letter-spacing:-.03em;
+    }
+
+    .p20-work-label span {
+      color:rgba(37,33,38,.59);
+      font-size:6px;
+      letter-spacing:.08em;
+      font-weight:700;
+    }
+
+    .p20-work-card:hover {
+      z-index:30;
+      filter:drop-shadow(0 31px 28px rgba(37,33,38,.17));
+    }
+
+    .p20-work-interactive:hover {
+      transform:rotate(-.5deg) translate3d(-5px,-13px,90px) scale(1.025);
+    }
+
+    .p20-work-spatial:hover {
+      transform:rotate(1deg) translate3d(-5px,-14px,115px) scale(1.04);
+    }
+
+    .p20-work-card:hover img {
+      transform:scale(1.025);
+    }
+
+    .p20-creative-footnote {
+      position:absolute;
+      left:38px;
+      bottom:25px;
+      margin:0;
+      color:rgba(37,33,38,.38);
+      font-size:6px;
+      letter-spacing:.13em;
+      font-weight:900;
+    }
+
+    /* Creative work fullscreen */
+    .p20-creative-modal {
+      position:fixed;
+      z-index:3100;
+      inset:0;
+      visibility:hidden;
+      opacity:0;
+      pointer-events:none;
+      transition:.3s ease;
+    }
+
+    .p20-creative-modal.is-open {
+      visibility:visible;
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .p20-creative-modal-backdrop {
+      position:absolute;
+      inset:0;
+      background:rgba(29,24,30,.68);
+      backdrop-filter:blur(17px);
+    }
+
+    .p20-creative-modal-panel {
+      position:absolute;
+      inset:12px;
+      overflow:auto;
+      border:1px solid rgba(255,255,255,.34);
+      border-radius:26px;
+      background:
+        linear-gradient(rgba(37,33,38,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(37,33,38,.028) 1px,transparent 1px),
+        #f5f2ef;
+      background-size:16px 16px;
+      box-shadow:0 34px 86px rgba(20,15,22,.32);
+      transform:translateY(16px) scale(.99);
+      transition:.38s cubic-bezier(.18,.84,.2,1);
+    }
+
+    .p20-creative-modal.is-open .p20-creative-modal-panel {
+      transform:translateY(0) scale(1);
+    }
+
+    .p20-creative-modal-toolbar {
+      position:sticky;
+      z-index:20;
+      top:0;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:14px;
+      padding:14px 18px;
+      border-bottom:1px solid rgba(37,33,38,.10);
+      background:rgba(245,242,239,.88);
+      backdrop-filter:blur(12px);
+    }
+
+    .p20-creative-modal-toolbar button {
+      width:max-content;
+      border:1px solid rgba(37,33,38,.18);
+      border-radius:999px;
+      padding:9px 13px;
+      background:rgba(255,255,255,.63);
+      color:var(--ink);
+      font-size:7px;
+      letter-spacing:.08em;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .p20-creative-modal-toolbar button:last-child {
+      justify-self:end;
+    }
+
+    .p20-creative-modal-toolbar span {
+      color:rgba(37,33,38,.51);
+      font-size:6px;
+      letter-spacing:.12em;
+      font-weight:900;
+    }
+
+    .p20-creative-modal-content {
+      display:grid;
+      grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);
+      gap:46px;
+      align-items:center;
+      min-height:calc(100vh - 76px);
+      padding:34px 46px 42px;
+    }
+
+    .p20-creative-modal-content figure {
+      display:grid;
+      place-items:center;
+      min-width:0;
+      margin:0;
+    }
+
+    .p20-creative-modal-content figure img {
+      width:100%;
+      max-height:calc(100vh - 150px);
+      object-fit:contain;
+      filter:drop-shadow(0 29px 34px rgba(37,33,38,.18));
+    }
+
+    .p20-creative-modal-copy {
+      display:grid;
+      gap:15px;
+      align-content:center;
+    }
+
+    .p20-creative-modal-copy > small {
+      color:rgba(37,33,38,.43);
+      font-size:7px;
+      letter-spacing:.14em;
+      font-weight:900;
+    }
+
+    .p20-creative-modal-copy h2 {
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(4rem,6vw,6.8rem);
+      line-height:.73;
+      letter-spacing:-.07em;
+      font-weight:600;
+    }
+
+    .p20-creative-modal-copy em {
+      color:var(--rose-deep);
+      font-family:var(--serif);
+      font-size:24px;
+      line-height:1;
+    }
+
+    .p20-creative-modal-copy p {
+      max-width:430px;
+      margin:7px 0 0;
+      color:rgba(37,33,38,.70);
+      font-size:13px;
+      line-height:1.85;
+    }
+
+    .p20-creative-modal-tags {
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-top:9px;
+    }
+
+    .p20-creative-modal-tags span {
+      padding:8px 10px;
+      border:1px solid rgba(37,33,38,.13);
+      border-radius:999px;
+      background:rgba(255,255,255,.46);
+      color:rgba(37,33,38,.65);
+      font-size:6px;
+      letter-spacing:.08em;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    @keyframes p20CardIn {
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    @media (max-width:1020px) {
+      .project.gender-live-card {
+        grid-template-columns:1fr;
+      }
+
+      .p20-poster-project,
+      .p20-poster-stage {
+        min-height:1120px;
+      }
+
+      .p20-poster-info,
+      .p20-creative-info {
+        position:relative;
+        left:auto;
+        top:auto;
+        width:100%;
+      }
+
+      .p20-pouch {
+        right:4%;
+        top:440px;
+        width:92%;
+        height:610px;
+      }
+
+      .p20-creative-project,
+      .p20-creative-stage {
+        min-height:1120px;
+      }
+
+      .p20-creative-gallery {
+        top:420px;
+        right:2%;
+        width:96%;
+        height:630px;
+      }
+
+      .p20-archive-grid {
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width:680px) {
+      .project-shelf {
+        width:min(100% - 28px,1320px);
+      }
+
+      .project.gender-live-card {
+        min-height:auto;
+        padding:30px 20px;
+      }
+
+      .p20-poster-project,
+      .p20-poster-stage {
+        min-height:1000px;
+      }
+
+      .p20-poster-stage,
+      .p20-creative-stage {
+        padding:30px 16px 24px;
+      }
+
+      .p20-poster-title span,
+      .p20-creative-title {
+        font-size:4rem;
+      }
+
+      .p20-poster-title em,
+      .p20-creative-title em {
+        font-size:3.25rem;
+      }
+
+      .p20-pouch {
+        right:0;
+        top:405px;
+        width:100%;
+        height:520px;
+      }
+
+      .p20-bag-poster {
+        width:145px;
+      }
+
+      .p20-pouch-label {
+        min-width:175px;
+        padding:12px 13px;
+      }
+
+      .p20-pouch-count {
+        width:65px;
+        height:65px;
+      }
+
+      .p20-poster-footnote,
+      .p20-creative-footnote {
+        display:none;
+      }
+
+      .p20-archive-panel,
+      .p20-creative-modal-panel {
+        inset:5px;
+        border-radius:18px;
+      }
+
+      .p20-archive-toolbar,
+      .p20-viewer-toolbar,
+      .p20-creative-modal-toolbar {
+        grid-template-columns:1fr auto;
+      }
+
+      .p20-toolbar-title,
+      .p20-creative-modal-toolbar span {
+        display:none;
+      }
+
+      .p20-archive-heading {
+        grid-template-columns:1fr;
+        padding:28px 18px 20px;
+      }
+
+      .p20-archive-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:21px 12px;
+        padding:12px 18px 36px;
+      }
+
+      .p20-archive-footer {
+        padding-inline:18px;
+      }
+
+      .p20-viewer-stage {
+        grid-template-columns:38px minmax(0,1fr) 38px;
+        inset:67px 6px 8px;
+        gap:5px;
+      }
+
+      .p20-viewer-nav {
+        width:34px;
+        height:34px;
+      }
+
+      .p20-viewer-figure {
+        grid-template-columns:1fr;
+      }
+
+      .p20-viewer-figure figcaption {
+        display:none;
+      }
+
+      .p20-creative-project,
+      .p20-creative-stage {
+        min-height:1050px;
+      }
+
+      .p20-creative-gallery {
+        top:395px;
+        right:0;
+        width:100%;
+        height:580px;
+      }
+
+      .p20-work-interactive {
+        left:2%;
+        width:79%;
+      }
+
+      .p20-work-spatial {
+        right:0;
+        width:43%;
+      }
+
+      .p20-work-label {
+        min-width:155px;
+      }
+
+      .p20-creative-modal-content {
+        grid-template-columns:1fr;
+        gap:24px;
+        padding:25px 18px 34px;
+      }
+
+      .p20-creative-modal-content figure img {
+        max-height:56vh;
+      }
+
+      .p20-creative-modal-copy h2 {
+        font-size:3.6rem;
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .p20-bag-poster,
+      .p20-pouch-front,
+      .p20-work-card,
+      .p20-archive-panel,
+      .p20-creative-modal-panel {
+        transition-duration:.01ms !important;
+      }
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -6591,32 +7942,33 @@
           </article>
 
           
-          <article class="poster-archive-project" id="poster-card" data-reveal>
-            <div class="pa-project-stage">
+          
+          <article class="p20-poster-project" id="poster-card" data-reveal>
+            <div class="p20-poster-stage">
 
-              <header class="pa-project-info">
-                <div class="pa-project-kicker">
+              <header class="p20-poster-info">
+                <div class="p20-project-kicker">
                   <span>03 / VISUAL CAMPAIGN</span>
-                  <span>33 POSTERS · ONE SERIES</span>
+                  <span>12 SELECTED POSTERS</span>
                 </div>
 
-                <h3 class="pa-project-title">
+                <h3 class="p20-poster-title">
                   <span>SOFT</span>
                   <em>CONTROL</em>
                 </h3>
 
-                <p class="pa-project-description">
+                <p class="p20-poster-description">
                   围绕友情测试、亲密关系控制与社会比较焦虑，
-                  以三组核心文案展开 11 轮视觉语言实验，
-                  形成一套完整的系列海报档案。
+                  从完整系列中精选 12 张海报，以摄影、拼贴和字体实验
+                  展示同一议题在不同视觉语言中的变化。
                 </p>
 
-                <dl class="pa-project-meta">
+                <dl class="p20-project-meta">
                   <dt>Role</dt>
                   <dd>Art Direction / Poster Design</dd>
 
                   <dt>System</dt>
-                  <dd>11 Visual Routes × 3 Messages</dd>
+                  <dd>4 Visual Routes × 3 Messages</dd>
 
                   <dt>Medium</dt>
                   <dd>Photography / Collage / Typography</dd>
@@ -6624,104 +7976,172 @@
               </header>
 
               <button
-                class="pa-pouch"
+                class="p20-pouch"
                 id="posterArchiveTrigger"
                 type="button"
-                aria-label="打开 Soft Control 海报档案"
+                aria-label="打开 Soft Control 精选海报档案"
                 aria-expanded="false"
               >
-                <span class="pa-pouch-ground"></span>
+                <span class="p20-pouch-ground"></span>
 
-                <span class="pa-poster-stack">
+                <span class="p20-poster-stack">
                   
                 <span
-                  class="pa-bag-poster pa-bag-poster-1"
-                  style="--pa-r:-9deg; --pa-x:-80px; --pa-y:42px; --pa-z:0;"
+                  class="p20-bag-poster p20-bag-poster-1"
+                  style="--p20-r:-11deg; --p20-x:-82px; --p20-y:45px; --p20-z:1;"
                 >
-                  <img src="soft-control-poster-01.jpg" alt="Soft Control 海报系列预览 1" />
+                  <img src="soft-control-selected-01.jpg" alt="Soft Control 精选海报预览 1" />
                 </span>
         
                 <span
-                  class="pa-bag-poster pa-bag-poster-2"
-                  style="--pa-r:6deg; --pa-x:78px; --pa-y:55px; --pa-z:1;"
+                  class="p20-bag-poster p20-bag-poster-2"
+                  style="--p20-r:8deg; --p20-x:78px; --p20-y:50px; --p20-z:2;"
                 >
-                  <img src="soft-control-poster-05.jpg" alt="Soft Control 海报系列预览 5" />
+                  <img src="soft-control-selected-04.jpg" alt="Soft Control 精选海报预览 4" />
                 </span>
         
                 <span
-                  class="pa-bag-poster pa-bag-poster-3"
-                  style="--pa-r:-3deg; --pa-x:-45px; --pa-y:13px; --pa-z:2;"
+                  class="p20-bag-poster p20-bag-poster-3"
+                  style="--p20-r:-5deg; --p20-x:-45px; --p20-y:10px; --p20-z:3;"
                 >
-                  <img src="soft-control-poster-09.jpg" alt="Soft Control 海报系列预览 9" />
+                  <img src="soft-control-selected-07.jpg" alt="Soft Control 精选海报预览 7" />
                 </span>
         
                 <span
-                  class="pa-bag-poster pa-bag-poster-4"
-                  style="--pa-r:8deg; --pa-x:58px; --pa-y:24px; --pa-z:3;"
+                  class="p20-bag-poster p20-bag-poster-4"
+                  style="--p20-r:7deg; --p20-x:55px; --p20-y:18px; --p20-z:4;"
                 >
-                  <img src="soft-control-poster-13.jpg" alt="Soft Control 海报系列预览 13" />
+                  <img src="soft-control-selected-10.jpg" alt="Soft Control 精选海报预览 10" />
                 </span>
         
                 <span
-                  class="pa-bag-poster pa-bag-poster-5"
-                  style="--pa-r:-6deg; --pa-x:-20px; --pa-y:-6px; --pa-z:4;"
+                  class="p20-bag-poster p20-bag-poster-5"
+                  style="--p20-r:-7deg; --p20-x:-16px; --p20-y:-15px; --p20-z:5;"
                 >
-                  <img src="soft-control-poster-20.jpg" alt="Soft Control 海报系列预览 20" />
+                  <img src="soft-control-selected-02.jpg" alt="Soft Control 精选海报预览 2" />
                 </span>
         
                 <span
-                  class="pa-bag-poster pa-bag-poster-6"
-                  style="--pa-r:3deg; --pa-x:30px; --pa-y:4px; --pa-z:5;"
+                  class="p20-bag-poster p20-bag-poster-6"
+                  style="--p20-r:3deg; --p20-x:27px; --p20-y:-28px; --p20-z:6;"
                 >
-                  <img src="soft-control-poster-26.jpg" alt="Soft Control 海报系列预览 26" />
-                </span>
-        
-                <span
-                  class="pa-bag-poster pa-bag-poster-7"
-                  style="--pa-r:-1deg; --pa-x:0px; --pa-y:-18px; --pa-z:6;"
-                >
-                  <img src="soft-control-poster-31.jpg" alt="Soft Control 海报系列预览 31" />
+                  <img src="soft-control-selected-11.jpg" alt="Soft Control 精选海报预览 11" />
                 </span>
         
                 </span>
 
-                <span class="pa-pouch-back"></span>
+                <span class="p20-pouch-back"></span>
 
-                <span class="pa-pouch-front">
-                  <span class="pa-pouch-reflection pa-pouch-reflection-one"></span>
-                  <span class="pa-pouch-reflection pa-pouch-reflection-two"></span>
+                <span class="p20-pouch-front">
+                  <span class="p20-pouch-shine p20-shine-one"></span>
+                  <span class="p20-pouch-shine p20-shine-two"></span>
 
-                  <span class="pa-pouch-zipper">
-                    <i></i>
-                    <b></b>
+                  <span class="p20-pouch-zip">
+                    <i></i><b></b>
                   </span>
 
-                  <span class="pa-pouch-label">
+                  <span class="p20-pouch-label">
                     <small>POSTER ARCHIVE</small>
                     <strong>SOFT CONTROL</strong>
                     <span>SELECTED WORKS / 2024—2026</span>
                   </span>
 
-                  <span class="pa-pouch-count">
-                    <strong>33</strong>
+                  <span class="p20-pouch-count">
+                    <strong>12</strong>
                     <small>POSTERS</small>
                   </span>
                 </span>
 
-                <span class="pa-open-hint">
+                <span class="p20-open-hint">
                   OPEN THE ARCHIVE
-                  <small>点击打开透明海报收纳袋</small>
+                  <small>点击查看 12 张精选海报</small>
                 </span>
               </button>
 
-              <p class="pa-project-footnote">
+              <p class="p20-poster-footnote">
                 REAL FRIENDS DON’T TEST YOU · LOVE IS NOT A DEMAND · YOU’RE FALLING BEHIND
               </p>
 
             </div>
           </article>
 
-          <article class="project" id="lab-card" data-reveal><div class="project-info"><div><div class="project-meta"><span>04 / Creative Lab</span><span>Interaction & Spatial Work</span></div><h3 class="project-title serif">Creative<br>Lab</h3><p class="project-desc">将交互设计、装置实验与立体构成合并为创意实验室，展示我如何从概念出发，设计观众参与方式、媒介关系与空间体验。</p><div class="project-tags"><span>Interaction Design</span><span>Installation</span><span>Arduino</span><span>Spatial Composition</span></div></div><a class="project-link" href="#contact">Contact for full works <span>→</span></a></div><div class="project-art"><div class="creative-stage"><div class="creative-card"><div class="orb"></div><strong>Interactive<br>Work</strong><span>Audience · Trigger · Response</span></div><div class="creative-card"><div class="structure"></div><strong>Spatial<br>Form</strong><span>Material · Balance · Structure</span></div></div></div></article>
+
+          
+          <article class="p20-creative-project" id="lab-card" data-reveal>
+            <div class="p20-creative-stage">
+
+              <header class="p20-creative-info">
+                <div class="p20-project-kicker">
+                  <span>04 / CREATIVE LAB</span>
+                  <span>2 SELECTED WORKS</span>
+                </div>
+
+                <h3 class="p20-creative-title">
+                  CREATIVE
+                  <em>LAB</em>
+                </h3>
+
+                <p class="p20-creative-description">
+                  从互动触发到材料构成，探索观众、媒介与空间之间的关系。
+                  点击作品可查看完整画面与项目说明。
+                </p>
+
+                <div class="p20-creative-index">
+                  <span>01 Interaction & Arduino</span>
+                  <span>02 Spatial Composition</span>
+                </div>
+              </header>
+
+              <div class="p20-creative-gallery">
+
+                <button
+                  class="p20-work-card p20-work-interactive"
+                  type="button"
+                  data-creative-index="0"
+                  aria-label="查看 Butterfly 互动装置项目"
+                >
+                  <span class="p20-work-frame">
+                    <img
+                      src="creative-butterfly-installation.jpg"
+                      alt="Butterfly 互动装置设计草图"
+                    />
+                  </span>
+
+                  <span class="p20-work-label">
+                    <small>01 / INTERACTIVE INSTALLATION</small>
+                    <strong>BUTTERFLY</strong>
+                    <span>Care · Control · Trigger</span>
+                  </span>
+                </button>
+
+                <button
+                  class="p20-work-card p20-work-spatial"
+                  type="button"
+                  data-creative-index="1"
+                  aria-label="查看立体构成作品"
+                >
+                  <span class="p20-work-frame">
+                    <img
+                      src="creative-spatial-composition.jpg"
+                      alt="透明材料与彩色亚克力构成的立体作品"
+                    />
+                  </span>
+
+                  <span class="p20-work-label">
+                    <small>02 / SPATIAL COMPOSITION</small>
+                    <strong>FRAGILE FORM</strong>
+                    <span>Material · Light · Structure</span>
+                  </span>
+                </button>
+
+              </div>
+
+              <p class="p20-creative-footnote">
+                CLICK A WORK TO ENTER THE CREATIVE LAB
+              </p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -7344,771 +8764,435 @@
   </script>
 
 
+  
+
+
+  
+
+
   <div
-    class="pa-modal"
+    class="p20-archive-modal"
     id="posterArchiveModal"
     role="dialog"
     aria-modal="true"
     aria-labelledby="posterArchiveTitle"
     aria-hidden="true"
   >
-    <div class="pa-modal-backdrop" data-pa-close></div>
+    <div class="p20-archive-backdrop" data-p20-archive-close></div>
 
-    <div class="pa-modal-panel">
-      <header class="pa-modal-header">
-        <div>
-          <small>VISUAL CAMPAIGN / 33 POSTERS / ONE SERIES</small>
-          <h2 id="posterArchiveTitle">SOFT CONTROL<br><em>POSTER ARCHIVE</em></h2>
+    <section class="p20-archive-panel">
+      <header class="p20-archive-toolbar">
+        <button
+          class="p20-return-button"
+          id="posterArchiveReturn"
+          type="button"
+          data-p20-archive-close
+        >
+          ← 返回作品集
+        </button>
+
+        <div class="p20-toolbar-title">
+          <small>SOFT CONTROL / SELECTED POSTERS</small>
+          <strong id="posterArchiveTitle">12 张精选海报</strong>
         </div>
 
-        <button class="pa-modal-close" type="button" data-pa-close aria-label="关闭海报档案">
+        <button
+          class="p20-toolbar-close"
+          type="button"
+          data-p20-archive-close
+          aria-label="关闭海报档案"
+        >
           CLOSE ×
         </button>
       </header>
 
-      <div class="pa-modal-intro">
+      <div class="p20-archive-heading">
+        <h2>POSTER<br><em>ARCHIVE</em></h2>
         <p>
-          三组核心信息在不同摄影、拼贴、字体与材料语言中被反复重构。
-          点击任意海报即可放大查看，使用左右方向键切换。
+          四条视觉路线分别回应友情条件化、亲密关系控制与社会比较焦虑。
+          点击海报可放大，查看后可返回列表或直接返回作品集。
         </p>
-
-        <div class="pa-theme-index">
-          <span>01 Friendship</span>
-          <span>02 Love</span>
-          <span>03 Social Comparison</span>
-        </div>
       </div>
 
-      <div class="pa-archive-grid" id="posterArchiveGrid">
+      <div class="p20-archive-grid" id="posterArchiveGrid">
         
-              <button
-                class="pa-archive-card" style="--pa-i:0"
-                type="button"
-                data-poster-index="0"
-                aria-label="查看第 1 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-01.jpg"
-                    alt="Soft Control Route 01 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="0"
+              aria-label="放大查看海报 1"
+              style="--p20-delay:0;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-01.jpg" alt="Soft Control Route 01 — REAL FRIENDS DON’T TEST YOU." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 01 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 01 / FRIENDSHIP</small>
+                <strong>REAL FRIENDS DON’T TEST YOU.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:1"
-                type="button"
-                data-poster-index="1"
-                aria-label="查看第 2 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-02.jpg"
-                    alt="Soft Control Route 01 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="1"
+              aria-label="放大查看海报 2"
+              style="--p20-delay:1;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-02.jpg" alt="Soft Control Route 01 — LOVE IS NOT A DEMAND." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 01 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 01 / LOVE</small>
+                <strong>LOVE IS NOT A DEMAND.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:2"
-                type="button"
-                data-poster-index="2"
-                aria-label="查看第 3 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-03.jpg"
-                    alt="Soft Control Route 01 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="2"
+              aria-label="放大查看海报 3"
+              style="--p20-delay:2;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-03.jpg" alt="Soft Control Route 01 — YOU’RE FALLING BEHIND." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 01 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 01 / SOCIAL COMPARISON</small>
+                <strong>YOU’RE FALLING BEHIND.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:3"
-                type="button"
-                data-poster-index="3"
-                aria-label="查看第 4 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-04.jpg"
-                    alt="Soft Control Route 02 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="3"
+              aria-label="放大查看海报 4"
+              style="--p20-delay:3;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-04.jpg" alt="Soft Control Route 02 — REAL FRIENDS DON’T TEST YOU." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 02 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 02 / FRIENDSHIP</small>
+                <strong>REAL FRIENDS DON’T TEST YOU.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:4"
-                type="button"
-                data-poster-index="4"
-                aria-label="查看第 5 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-05.jpg"
-                    alt="Soft Control Route 02 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="4"
+              aria-label="放大查看海报 5"
+              style="--p20-delay:4;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-05.jpg" alt="Soft Control Route 02 — LOVE IS NOT A DEMAND." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 02 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 02 / LOVE</small>
+                <strong>LOVE IS NOT A DEMAND.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:5"
-                type="button"
-                data-poster-index="5"
-                aria-label="查看第 6 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-06.jpg"
-                    alt="Soft Control Route 02 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="5"
+              aria-label="放大查看海报 6"
+              style="--p20-delay:5;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-06.jpg" alt="Soft Control Route 02 — YOU’RE FALLING BEHIND." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 02 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 02 / SOCIAL COMPARISON</small>
+                <strong>YOU’RE FALLING BEHIND.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:6"
-                type="button"
-                data-poster-index="6"
-                aria-label="查看第 7 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-07.jpg"
-                    alt="Soft Control Route 03 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="6"
+              aria-label="放大查看海报 7"
+              style="--p20-delay:6;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-07.jpg" alt="Soft Control Route 03 — REAL FRIENDS DON’T TEST YOU." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 03 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 03 / FRIENDSHIP</small>
+                <strong>REAL FRIENDS DON’T TEST YOU.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:7"
-                type="button"
-                data-poster-index="7"
-                aria-label="查看第 8 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-08.jpg"
-                    alt="Soft Control Route 03 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="7"
+              aria-label="放大查看海报 8"
+              style="--p20-delay:7;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-08.jpg" alt="Soft Control Route 03 — LOVE IS NOT A DEMAND." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 03 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 03 / LOVE</small>
+                <strong>LOVE IS NOT A DEMAND.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:8"
-                type="button"
-                data-poster-index="8"
-                aria-label="查看第 9 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-09.jpg"
-                    alt="Soft Control Route 03 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="8"
+              aria-label="放大查看海报 9"
+              style="--p20-delay:8;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-09.jpg" alt="Soft Control Route 03 — YOU’RE FALLING BEHIND." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 03 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 03 / SOCIAL COMPARISON</small>
+                <strong>YOU’RE FALLING BEHIND.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:9"
-                type="button"
-                data-poster-index="9"
-                aria-label="查看第 10 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-10.jpg"
-                    alt="Soft Control Route 04 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="9"
+              aria-label="放大查看海报 10"
+              style="--p20-delay:9;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-10.jpg" alt="Soft Control Route 04 — REAL FRIENDS DON’T TEST YOU." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 04 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 04 / FRIENDSHIP</small>
+                <strong>REAL FRIENDS DON’T TEST YOU.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:10"
-                type="button"
-                data-poster-index="10"
-                aria-label="查看第 11 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-11.jpg"
-                    alt="Soft Control Route 04 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="10"
+              aria-label="放大查看海报 11"
+              style="--p20-delay:10;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-11.jpg" alt="Soft Control Route 04 — LOVE IS NOT A DEMAND." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 04 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 04 / LOVE</small>
+                <strong>LOVE IS NOT A DEMAND.</strong>
+              </span>
+            </button>
         
-              <button
-                class="pa-archive-card" style="--pa-i:11"
-                type="button"
-                data-poster-index="11"
-                aria-label="查看第 12 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-12.jpg"
-                    alt="Soft Control Route 04 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
+            <button
+              class="p20-archive-card"
+              type="button"
+              data-poster-index="11"
+              aria-label="放大查看海报 12"
+              style="--p20-delay:11;"
+            >
+              <span class="p20-archive-image">
+                <img src="soft-control-selected-12.jpg" alt="Soft Control Route 04 — YOU’RE FALLING BEHIND." loading="lazy" />
+              </span>
 
-                <span class="pa-archive-caption">
-                  <small>ROUTE 04 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:12"
-                type="button"
-                data-poster-index="12"
-                aria-label="查看第 13 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-13.jpg"
-                    alt="Soft Control Route 05 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 05 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:13"
-                type="button"
-                data-poster-index="13"
-                aria-label="查看第 14 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-14.jpg"
-                    alt="Soft Control Route 05 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 05 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:14"
-                type="button"
-                data-poster-index="14"
-                aria-label="查看第 15 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-15.jpg"
-                    alt="Soft Control Route 05 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 05 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:15"
-                type="button"
-                data-poster-index="15"
-                aria-label="查看第 16 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-16.jpg"
-                    alt="Soft Control Route 06 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 06 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:16"
-                type="button"
-                data-poster-index="16"
-                aria-label="查看第 17 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-17.jpg"
-                    alt="Soft Control Route 06 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 06 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:17"
-                type="button"
-                data-poster-index="17"
-                aria-label="查看第 18 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-18.jpg"
-                    alt="Soft Control Route 06 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 06 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:18"
-                type="button"
-                data-poster-index="18"
-                aria-label="查看第 19 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-19.jpg"
-                    alt="Soft Control Route 07 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 07 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:19"
-                type="button"
-                data-poster-index="19"
-                aria-label="查看第 20 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-20.jpg"
-                    alt="Soft Control Route 07 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 07 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:20"
-                type="button"
-                data-poster-index="20"
-                aria-label="查看第 21 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-21.jpg"
-                    alt="Soft Control Route 07 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 07 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:21"
-                type="button"
-                data-poster-index="21"
-                aria-label="查看第 22 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-22.jpg"
-                    alt="Soft Control Route 08 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 08 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:22"
-                type="button"
-                data-poster-index="22"
-                aria-label="查看第 23 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-23.jpg"
-                    alt="Soft Control Route 08 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 08 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:23"
-                type="button"
-                data-poster-index="23"
-                aria-label="查看第 24 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-24.jpg"
-                    alt="Soft Control Route 08 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 08 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:24"
-                type="button"
-                data-poster-index="24"
-                aria-label="查看第 25 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-25.jpg"
-                    alt="Soft Control Route 09 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 09 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:25"
-                type="button"
-                data-poster-index="25"
-                aria-label="查看第 26 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-26.jpg"
-                    alt="Soft Control Route 09 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 09 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:26"
-                type="button"
-                data-poster-index="26"
-                aria-label="查看第 27 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-27.jpg"
-                    alt="Soft Control Route 09 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 09 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:27"
-                type="button"
-                data-poster-index="27"
-                aria-label="查看第 28 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-28.jpg"
-                    alt="Soft Control Route 10 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 10 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:28"
-                type="button"
-                data-poster-index="28"
-                aria-label="查看第 29 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-29.jpg"
-                    alt="Soft Control Route 10 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 10 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:29"
-                type="button"
-                data-poster-index="29"
-                aria-label="查看第 30 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-30.jpg"
-                    alt="Soft Control Route 10 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 10 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:30"
-                type="button"
-                data-poster-index="30"
-                aria-label="查看第 31 张海报：REAL FRIENDS DON’T TEST YOU."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-31.jpg"
-                    alt="Soft Control Route 11 — REAL FRIENDS DON’T TEST YOU."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 11 / FRIENDSHIP</small>
-                  <strong>REAL FRIENDS DON’T TEST YOU.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:31"
-                type="button"
-                data-poster-index="31"
-                aria-label="查看第 32 张海报：LOVE IS NOT A DEMAND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-32.jpg"
-                    alt="Soft Control Route 11 — LOVE IS NOT A DEMAND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 11 / LOVE</small>
-                  <strong>LOVE IS NOT A DEMAND.</strong>
-                </span>
-              </button>
-        
-              <button
-                class="pa-archive-card" style="--pa-i:32"
-                type="button"
-                data-poster-index="32"
-                aria-label="查看第 33 张海报：YOU’RE FALLING BEHIND."
-              >
-                <span class="pa-archive-image">
-                  <img
-                    src="soft-control-poster-33.jpg"
-                    alt="Soft Control Route 11 — YOU’RE FALLING BEHIND."
-                    loading="lazy"
-                  />
-                </span>
-
-                <span class="pa-archive-caption">
-                  <small>ROUTE 11 / SOCIAL COMPARISON</small>
-                  <strong>YOU’RE FALLING BEHIND.</strong>
-                </span>
-              </button>
+              <span class="p20-archive-caption">
+                <small>ROUTE 04 / SOCIAL COMPARISON</small>
+                <strong>YOU’RE FALLING BEHIND.</strong>
+              </span>
+            </button>
         
       </div>
-    </div>
 
-    <div class="pa-viewer" id="posterViewer" aria-hidden="true">
-      <button class="pa-viewer-backdrop" type="button" data-viewer-close aria-label="关闭海报大图"></button>
+      <footer class="p20-archive-footer">
+        <button type="button" data-p20-archive-close>← 返回刚刚的页面</button>
+        <span>12 SELECTED POSTERS · SOFT CONTROL</span>
+      </footer>
+    </section>
 
-      <div class="pa-viewer-stage">
-        <button class="pa-viewer-close" type="button" data-viewer-close aria-label="关闭海报大图">
-          CLOSE ×
-        </button>
+    <div class="p20-poster-viewer" id="posterViewer" aria-hidden="true">
+      <div class="p20-viewer-backdrop"></div>
 
-        <button class="pa-viewer-nav pa-viewer-prev" id="posterViewerPrev" type="button" aria-label="上一张海报">
+      <header class="p20-viewer-toolbar">
+        <button id="posterViewerBack" type="button">← 返回海报列表</button>
+        <span id="posterViewerCounter">01 / 12</span>
+        <button id="posterViewerCloseAll" type="button">返回作品集 ×</button>
+      </header>
+
+      <div class="p20-viewer-stage">
+        <button
+          class="p20-viewer-nav p20-viewer-prev"
+          id="posterViewerPrev"
+          type="button"
+          aria-label="上一张"
+        >
           ←
         </button>
 
-        <figure class="pa-viewer-figure">
-          <img id="posterViewerImage" src="soft-control-poster-01.jpg" alt="Soft Control 海报大图" />
+        <figure class="p20-viewer-figure">
+          <img
+            id="posterViewerImage"
+            src="soft-control-selected-01.jpg"
+            alt="Soft Control 海报大图"
+          />
 
           <figcaption>
             <small id="posterViewerRoute">ROUTE 01 / FRIENDSHIP</small>
             <strong id="posterViewerTitle">REAL FRIENDS DON’T TEST YOU.</strong>
-            <span id="posterViewerCounter">01 / 33</span>
           </figcaption>
         </figure>
 
-        <button class="pa-viewer-nav pa-viewer-next" id="posterViewerNext" type="button" aria-label="下一张海报">
+        <button
+          class="p20-viewer-nav p20-viewer-next"
+          id="posterViewerNext"
+          type="button"
+          aria-label="下一张"
+        >
           →
         </button>
       </div>
     </div>
   </div>
 
+  <div
+    class="p20-creative-modal"
+    id="creativeWorkModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="creativeModalTitle"
+    aria-hidden="true"
+  >
+    <div class="p20-creative-modal-backdrop" data-p20-creative-close></div>
+
+    <section class="p20-creative-modal-panel">
+      <header class="p20-creative-modal-toolbar">
+        <button type="button" data-p20-creative-close>← 返回作品集</button>
+        <span id="creativeModalNumber">01 / INTERACTIVE INSTALLATION</span>
+        <button type="button" data-p20-creative-close>CLOSE ×</button>
+      </header>
+
+      <div class="p20-creative-modal-content">
+        <figure>
+          <img
+            id="creativeModalImage"
+            src="creative-butterfly-installation.jpg"
+            alt="Creative Lab 作品大图"
+          />
+        </figure>
+
+        <div class="p20-creative-modal-copy">
+          <small>CREATIVE LAB</small>
+          <h2 id="creativeModalTitle">BUTTERFLY</h2>
+          <em id="creativeModalSubtitle">Care becomes a trigger.</em>
+          <p id="creativeModalDescription"></p>
+          <div id="creativeModalTags" class="p20-creative-modal-tags"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
 
   <script>
     (() => {
-      const posterData = [{"src": "soft-control-poster-01.jpg", "route": "ROUTE 01 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-02.jpg", "route": "ROUTE 01 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-03.jpg", "route": "ROUTE 01 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-04.jpg", "route": "ROUTE 02 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-05.jpg", "route": "ROUTE 02 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-06.jpg", "route": "ROUTE 02 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-07.jpg", "route": "ROUTE 03 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-08.jpg", "route": "ROUTE 03 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-09.jpg", "route": "ROUTE 03 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-10.jpg", "route": "ROUTE 04 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-11.jpg", "route": "ROUTE 04 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-12.jpg", "route": "ROUTE 04 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-13.jpg", "route": "ROUTE 05 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-14.jpg", "route": "ROUTE 05 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-15.jpg", "route": "ROUTE 05 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-16.jpg", "route": "ROUTE 06 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-17.jpg", "route": "ROUTE 06 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-18.jpg", "route": "ROUTE 06 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-19.jpg", "route": "ROUTE 07 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-20.jpg", "route": "ROUTE 07 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-21.jpg", "route": "ROUTE 07 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-22.jpg", "route": "ROUTE 08 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-23.jpg", "route": "ROUTE 08 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-24.jpg", "route": "ROUTE 08 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-25.jpg", "route": "ROUTE 09 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-26.jpg", "route": "ROUTE 09 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-27.jpg", "route": "ROUTE 09 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-28.jpg", "route": "ROUTE 10 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-29.jpg", "route": "ROUTE 10 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-30.jpg", "route": "ROUTE 10 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-poster-31.jpg", "route": "ROUTE 11 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-poster-32.jpg", "route": "ROUTE 11 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-poster-33.jpg", "route": "ROUTE 11 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}];
+      const posterData = [{"src": "soft-control-selected-01.jpg", "route": "ROUTE 01 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-selected-02.jpg", "route": "ROUTE 01 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-selected-03.jpg", "route": "ROUTE 01 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-selected-04.jpg", "route": "ROUTE 02 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-selected-05.jpg", "route": "ROUTE 02 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-selected-06.jpg", "route": "ROUTE 02 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-selected-07.jpg", "route": "ROUTE 03 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-selected-08.jpg", "route": "ROUTE 03 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-selected-09.jpg", "route": "ROUTE 03 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-selected-10.jpg", "route": "ROUTE 04 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-selected-11.jpg", "route": "ROUTE 04 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-selected-12.jpg", "route": "ROUTE 04 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}];
+      const creativeData = [{"src": "creative-butterfly-installation.jpg", "number": "01 / INTERACTIVE INSTALLATION", "title": "BUTTERFLY", "subtitle": "Care becomes a trigger.", "description": "以活体植物、摄影、数字蝴蝶动画与 Arduino 触发系统组成互动装置。观众通过浇水激活屏幕中的蝴蝶，使“照料”同时成为一种控制行为，由此讨论关怀、操纵与自然之间的边界。", "tags": ["Photography", "Arduino", "Digital Animation", "Audience Interaction"]}, {"src": "creative-spatial-composition.jpg", "number": "02 / SPATIAL COMPOSITION", "title": "FRAGILE FORM", "subtitle": "Soft material, rigid structure.", "description": "以蕾丝、透明薄膜、珠饰与彩色亚克力模块搭建立体形态，研究柔软与硬质材料、透明与反射、秩序与生长之间的关系。作品通过光线穿透和材料叠加产生不断变化的视觉层次。", "tags": ["Material Study", "Spatial Form", "Light", "Installation"]}];
 
-      const trigger = document.getElementById("posterArchiveTrigger");
-      const modal = document.getElementById("posterArchiveModal");
-      const grid = document.getElementById("posterArchiveGrid");
-      const viewer = document.getElementById("posterViewer");
+      let savedScrollY = 0;
+      let currentPoster = 0;
+
+      const body = document.body;
+
+      const archiveTrigger = document.getElementById("posterArchiveTrigger");
+      const archiveModal = document.getElementById("posterArchiveModal");
+      const archiveGrid = document.getElementById("posterArchiveGrid");
+      const posterViewer = document.getElementById("posterViewer");
+
       const viewerImage = document.getElementById("posterViewerImage");
       const viewerRoute = document.getElementById("posterViewerRoute");
       const viewerTitle = document.getElementById("posterViewerTitle");
       const viewerCounter = document.getElementById("posterViewerCounter");
-      const previousButton = document.getElementById("posterViewerPrev");
-      const nextButton = document.getElementById("posterViewerNext");
 
-      if (!trigger || !modal || !grid || !viewer) return;
+      const viewerPrev = document.getElementById("posterViewerPrev");
+      const viewerNext = document.getElementById("posterViewerNext");
+      const viewerBack = document.getElementById("posterViewerBack");
+      const viewerCloseAll = document.getElementById("posterViewerCloseAll");
 
-      let currentPoster = 0;
+      const creativeModal = document.getElementById("creativeWorkModal");
+      const creativeImage = document.getElementById("creativeModalImage");
+      const creativeNumber = document.getElementById("creativeModalNumber");
+      const creativeTitle = document.getElementById("creativeModalTitle");
+      const creativeSubtitle = document.getElementById("creativeModalSubtitle");
+      const creativeDescription = document.getElementById("creativeModalDescription");
+      const creativeTags = document.getElementById("creativeModalTags");
+
+      const lockPage = () => {
+        savedScrollY = window.scrollY;
+        body.classList.add("p20-layer-open");
+        body.style.position = "fixed";
+        body.style.top = `-${savedScrollY}px`;
+        body.style.left = "0";
+        body.style.right = "0";
+      };
+
+      const unlockPage = () => {
+        body.classList.remove("p20-layer-open");
+        body.style.position = "";
+        body.style.top = "";
+        body.style.left = "";
+        body.style.right = "";
+        window.scrollTo({ top: savedScrollY, behavior: "instant" });
+      };
 
       const openArchive = () => {
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        trigger.setAttribute("aria-expanded", "true");
-        document.body.classList.add("pa-modal-open");
+        if (!archiveModal) return;
+        lockPage();
+        archiveModal.classList.add("is-open");
+        archiveModal.setAttribute("aria-hidden", "false");
+        archiveTrigger?.setAttribute("aria-expanded", "true");
+        archiveModal.querySelector(".p20-archive-panel")?.scrollTo(0, 0);
+      };
+
+      const closeViewer = () => {
+        if (!posterViewer) return;
+        posterViewer.classList.remove("is-open");
+        posterViewer.setAttribute("aria-hidden", "true");
       };
 
       const closeArchive = () => {
+        if (!archiveModal) return;
         closeViewer();
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-        trigger.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("pa-modal-open");
+        archiveModal.classList.remove("is-open");
+        archiveModal.setAttribute("aria-hidden", "true");
+        archiveTrigger?.setAttribute("aria-expanded", "false");
+        unlockPage();
+
+        window.requestAnimationFrame(() => {
+          document.getElementById("poster-card")?.scrollIntoView({
+            block: "center",
+            behavior: "instant"
+          });
+        });
       };
 
-      const renderViewer = () => {
+      const renderPoster = () => {
         const poster = posterData[currentPoster];
         viewerImage.src = poster.src;
         viewerImage.alt = `Soft Control ${poster.route} — ${poster.title}`;
@@ -8118,83 +9202,124 @@
           `${String(currentPoster + 1).padStart(2, "0")} / ${String(posterData.length).padStart(2, "0")}`;
       };
 
-      const openViewer = (index) => {
+      const openPoster = (index) => {
         currentPoster = Number(index) || 0;
-        renderViewer();
-        viewer.classList.add("is-open");
-        viewer.setAttribute("aria-hidden", "false");
+        renderPoster();
+        posterViewer.classList.add("is-open");
+        posterViewer.setAttribute("aria-hidden", "false");
       };
 
-      const closeViewer = () => {
-        viewer.classList.remove("is-open");
-        viewer.setAttribute("aria-hidden", "true");
-      };
-
-      const moveViewer = (direction) => {
+      const movePoster = (direction) => {
         currentPoster =
           (currentPoster + direction + posterData.length) % posterData.length;
 
         viewerImage.animate(
           [
             { opacity: 1, transform: "translateX(0) scale(1)" },
-            { opacity: 0, transform: `translateX(${direction * -28}px) scale(.985)` }
+            { opacity: 0, transform: `translateX(${direction * -25}px) scale(.985)` }
           ],
-          { duration: 160, easing: "ease-in", fill: "forwards" }
+          { duration: 145, easing: "ease-in", fill: "forwards" }
         ).finished.then(() => {
-          renderViewer();
+          renderPoster();
           viewerImage.animate(
             [
-              { opacity: 0, transform: `translateX(${direction * 28}px) scale(.985)` },
+              { opacity: 0, transform: `translateX(${direction * 25}px) scale(.985)` },
               { opacity: 1, transform: "translateX(0) scale(1)" }
             ],
-            { duration: 260, easing: "cubic-bezier(.18,.84,.2,1)", fill: "forwards" }
+            { duration: 235, easing: "cubic-bezier(.18,.84,.2,1)", fill: "forwards" }
           );
         });
       };
 
-      trigger.addEventListener("click", openArchive);
+      archiveTrigger?.addEventListener("click", openArchive);
 
-      modal.querySelectorAll("[data-pa-close]").forEach((button) => {
+      archiveModal?.querySelectorAll("[data-p20-archive-close]").forEach((button) => {
         button.addEventListener("click", closeArchive);
       });
 
-      viewer.querySelectorAll("[data-viewer-close]").forEach((button) => {
-        button.addEventListener("click", closeViewer);
-      });
-
-      grid.addEventListener("click", (event) => {
+      archiveGrid?.addEventListener("click", (event) => {
         const card = event.target.closest("[data-poster-index]");
         if (!card) return;
-        openViewer(card.dataset.posterIndex);
+        openPoster(card.dataset.posterIndex);
       });
 
-      previousButton.addEventListener("click", () => moveViewer(-1));
-      nextButton.addEventListener("click", () => moveViewer(1));
+      viewerPrev?.addEventListener("click", () => movePoster(-1));
+      viewerNext?.addEventListener("click", () => movePoster(1));
+      viewerBack?.addEventListener("click", closeViewer);
+      viewerCloseAll?.addEventListener("click", closeArchive);
+
+      let posterTouchX = 0;
+      posterViewer?.addEventListener("touchstart", (event) => {
+        posterTouchX = event.changedTouches[0].clientX;
+      }, { passive: true });
+
+      posterViewer?.addEventListener("touchend", (event) => {
+        const delta = event.changedTouches[0].clientX - posterTouchX;
+        if (Math.abs(delta) < 42) return;
+        movePoster(delta > 0 ? -1 : 1);
+      }, { passive: true });
+
+      const openCreative = (index) => {
+        const work = creativeData[Number(index) || 0];
+
+        creativeImage.src = work.src;
+        creativeImage.alt = work.title;
+        creativeNumber.textContent = work.number;
+        creativeTitle.textContent = work.title;
+        creativeSubtitle.textContent = work.subtitle;
+        creativeDescription.textContent = work.description;
+        creativeTags.innerHTML = "";
+
+        work.tags.forEach((tag) => {
+          const span = document.createElement("span");
+          span.textContent = tag;
+          creativeTags.appendChild(span);
+        });
+
+        lockPage();
+        creativeModal.classList.add("is-open");
+        creativeModal.setAttribute("aria-hidden", "false");
+        creativeModal.querySelector(".p20-creative-modal-panel")?.scrollTo(0, 0);
+      };
+
+      const closeCreative = () => {
+        creativeModal.classList.remove("is-open");
+        creativeModal.setAttribute("aria-hidden", "true");
+        unlockPage();
+
+        window.requestAnimationFrame(() => {
+          document.getElementById("lab-card")?.scrollIntoView({
+            block: "center",
+            behavior: "instant"
+          });
+        });
+      };
+
+      document.querySelectorAll("[data-creative-index]").forEach((card) => {
+        card.addEventListener("click", () => openCreative(card.dataset.creativeIndex));
+      });
+
+      creativeModal?.querySelectorAll("[data-p20-creative-close]").forEach((button) => {
+        button.addEventListener("click", closeCreative);
+      });
 
       document.addEventListener("keydown", (event) => {
-        if (viewer.classList.contains("is-open")) {
-          if (event.key === "ArrowLeft") moveViewer(-1);
-          if (event.key === "ArrowRight") moveViewer(1);
+        if (posterViewer?.classList.contains("is-open")) {
+          if (event.key === "ArrowLeft") movePoster(-1);
+          if (event.key === "ArrowRight") movePoster(1);
           if (event.key === "Escape") closeViewer();
           return;
         }
 
-        if (modal.classList.contains("is-open") && event.key === "Escape") {
-          closeArchive();
+        if (archiveModal?.classList.contains("is-open")) {
+          if (event.key === "Escape") closeArchive();
+          return;
+        }
+
+        if (creativeModal?.classList.contains("is-open") && event.key === "Escape") {
+          closeCreative();
         }
       });
-
-      let touchStartX = 0;
-
-      viewer.addEventListener("touchstart", (event) => {
-        touchStartX = event.changedTouches[0].clientX;
-      }, { passive: true });
-
-      viewer.addEventListener("touchend", (event) => {
-        const delta = event.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(delta) < 42) return;
-        moveViewer(delta > 0 ? -1 : 1);
-      }, { passive: true });
     })();
   </script>
 
