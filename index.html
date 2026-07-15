@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="李伊诺｜品牌营销、内容策略与视觉传播作品集" />
   <meta name="theme-color" content="#f5f2ef" />
-  <title>ENO LI｜Portfolio · Ripple Edition</title>
+  <title>ENO LI｜Portfolio V17</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -4427,6 +4427,784 @@
       }
     }
 
+  
+    /* =========================================================
+       V17 — LAYERED HERO ASSETS + THREE-NOTE PHONE CLUSTER
+    ========================================================= */
+
+    .v17-hanshu {
+      position: relative;
+      min-height: 900px;
+      overflow: hidden;
+      border-top: 1px solid rgba(37,33,38,.12);
+      border-bottom: 1px solid rgba(37,33,38,.12);
+      background:
+        linear-gradient(rgba(37,33,38,.024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,33,38,.024) 1px, transparent 1px),
+        radial-gradient(circle at 35% 40%, rgba(229,199,207,.20), transparent 23%),
+        radial-gradient(circle at 78% 40%, rgba(220,231,239,.17), transparent 25%),
+        #faf8f5;
+      background-size: 16px 16px, 16px 16px, auto, auto, auto;
+      scroll-margin-top: 82px;
+    }
+
+    .v17-stage {
+      position: relative;
+      min-height: 900px;
+      padding: 34px 8px 28px;
+      isolation: isolate;
+    }
+
+    .v17-meta {
+      position: absolute;
+      z-index: 25;
+      left: 0;
+      top: 34px;
+      width: 290px;
+    }
+
+    .v17-brandline {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: -.02em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .v17-brandline i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .v17-meta dl {
+      display: grid;
+      grid-template-columns: 66px 1fr;
+      gap: 7px 12px;
+      margin: 28px 0 0;
+      font-size: 7px;
+      line-height: 1.55;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .v17-meta dt {
+      color: rgba(37,33,38,.50);
+      font-weight: 900;
+    }
+
+    .v17-meta dd {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* Brand title positioned farther left */
+    .v17-brand-title {
+      position: absolute;
+      z-index: 5;
+      left: 1.5%;
+      top: 225px;
+      width: 305px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(96px);
+      transition:
+        opacity .62s ease .35s,
+        transform .82s cubic-bezier(.18,.84,.2,1) .35s;
+    }
+
+    .v17-brand-title span {
+      display: block;
+      font-family: var(--serif);
+      font-size: clamp(4.1rem, 5.1vw, 6.1rem);
+      line-height: .72;
+      letter-spacing: -.11em;
+      font-weight: 600;
+    }
+
+    .v17-brand-title em {
+      display: block;
+      width: max-content;
+      margin-top: 14px;
+      margin-left: 12%;
+      color: var(--rose-deep);
+      font-family: var(--serif);
+      font-size: clamp(3.25rem, 4.05vw, 4.8rem);
+      line-height: .75;
+      letter-spacing: -.07em;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .v17-hanshu.is-activated .v17-brand-title {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Layered hero product */
+    .v17-hero-zone {
+      position: absolute;
+      z-index: 17;
+      left: 23%;
+      top: 88px;
+      width: 330px;
+      height: 600px;
+      perspective: 1600px;
+      transform-style: preserve-3d;
+      transition: left .8s cubic-bezier(.18,.84,.2,1);
+    }
+
+    .v17-hanshu.is-activated .v17-hero-zone {
+      left: 27%;
+    }
+
+    .v17-product-button {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      perspective: 1600px;
+      transform-style: preserve-3d;
+    }
+
+    .v17-product-button:focus-visible {
+      outline: 1px dashed var(--rose-deep);
+      outline-offset: 8px;
+    }
+
+    .v17-hero-glow {
+      position: absolute;
+      z-index: 0;
+      width: 245px;
+      height: 420px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 45% 40%, rgba(255,255,255,.92), rgba(229,199,207,.27) 42%, transparent 72%);
+      filter: blur(12px);
+      transition: scale .35s ease, opacity .35s ease;
+    }
+
+    .v17-orbit {
+      position: absolute;
+      z-index: 1;
+      border-radius: 50%;
+      pointer-events: none;
+      transition:
+        scale .42s ease,
+        opacity .42s ease,
+        rotate .42s ease;
+    }
+
+    .v17-orbit-one {
+      width: 245px;
+      height: 440px;
+      border: 1px solid rgba(161,115,131,.15);
+      rotate: -8deg;
+    }
+
+    .v17-orbit-two {
+      width: 292px;
+      height: 505px;
+      border: 1px dashed rgba(161,115,131,.22);
+      rotate: 8deg;
+    }
+
+    .v17-product-stack {
+      position: relative;
+      z-index: 5;
+      display: block;
+      width: 185px;
+      height: 525px;
+      perspective: 1500px;
+      transform-style: preserve-3d;
+      transform:
+        perspective(1400px)
+        rotateX(var(--v17-rx, 2deg))
+        rotateY(var(--v17-ry, -7deg))
+        rotateZ(-2deg)
+        translateZ(25px);
+      transform-origin: 50% 55%;
+      transition:
+        transform .25s cubic-bezier(.2,.8,.2,1),
+        scale .25s ease;
+      animation: v17HeroFloat 5.8s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .v17-product-button:hover .v17-product-stack {
+      scale: 1.035;
+    }
+
+    .v17-product-button:hover .v17-hero-glow {
+      scale: 1.07;
+      opacity: 1;
+    }
+
+    .v17-product-button:hover .v17-orbit-one {
+      scale: 1.025;
+      rotate: -12deg;
+    }
+
+    .v17-product-button:hover .v17-orbit-two {
+      scale: 1.045;
+      rotate: 13deg;
+    }
+
+    .v17-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      transform-origin: 50% 55%;
+    }
+
+    .v17-layer-shadow {
+      z-index: 0;
+      opacity: .68;
+      filter: blur(2px);
+      transform: translate3d(18px, 25px, -38px) scale(.98);
+    }
+
+    .v17-layer-base {
+      z-index: 3;
+      transform: translateZ(18px);
+      filter: drop-shadow(0 22px 17px rgba(59,39,45,.13));
+    }
+
+    .v17-layer-edge {
+      z-index: 5;
+      opacity: .78;
+      transform: translateZ(38px);
+      mix-blend-mode: screen;
+    }
+
+    .v17-layer-highlight {
+      z-index: 6;
+      opacity: .72;
+      transform: translate3d(var(--v17-hx, 0px), var(--v17-hy, 0px), 54px);
+      mix-blend-mode: screen;
+      transition: transform .25s ease;
+    }
+
+    .v17-specular-sweep {
+      position: absolute;
+      z-index: 7;
+      left: 43%;
+      top: 10%;
+      width: 22%;
+      height: 75%;
+      border-radius: 50%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.54), transparent);
+      filter: blur(8px);
+      opacity: .26;
+      transform: translateZ(65px) rotate(5deg);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      animation: v17Specular 4.8s ease-in-out infinite;
+    }
+
+    .v17-click-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 1px;
+      display: grid;
+      gap: 4px;
+      min-width: 154px;
+      padding: 8px 11px;
+      border: 1px solid rgba(37,33,38,.13);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 24px rgba(37,33,38,.07);
+      color: rgba(37,33,38,.52);
+      font-size: 6px;
+      line-height: 1.25;
+      letter-spacing: .12em;
+      font-weight: 900;
+      text-align: center;
+      transform: translateX(-50%) rotate(-3deg);
+      backdrop-filter: blur(8px);
+      transition:
+        opacity .34s ease,
+        translate .34s ease;
+    }
+
+    .v17-click-hint small {
+      color: rgba(37,33,38,.64);
+      font-size: 8px;
+      letter-spacing: .02em;
+      font-weight: 600;
+    }
+
+    .v17-hanshu.is-activated .v17-click-hint {
+      opacity: 0;
+      translate: 0 8px;
+    }
+
+    .v17-product-stack.is-showcasing {
+      animation: v17ProductShowcase 1.45s cubic-bezier(.2,.72,.16,1) both;
+    }
+
+    /* Typing experience */
+    .v17-typing-panel {
+      position: absolute;
+      z-index: 26;
+      left: 0;
+      bottom: 30px;
+      width: min(500px, 43%);
+      min-height: 290px;
+      padding: 17px 18px 18px;
+      border-top: 1px solid rgba(37,33,38,.14);
+      opacity: 0;
+      transform: translateY(17px);
+      pointer-events: none;
+      transition:
+        opacity .52s ease .95s,
+        transform .60s ease .95s;
+    }
+
+    .v17-hanshu.is-activated .v17-typing-panel {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .v17-typing-heading {
+      display: grid;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+
+    .v17-typing-heading span {
+      color: rgba(37,33,38,.42);
+      font-size: 6px;
+      line-height: 1.25;
+      letter-spacing: .13em;
+      font-weight: 900;
+    }
+
+    .v17-typing-heading strong {
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.05;
+      letter-spacing: -.035em;
+      font-weight: 600;
+    }
+
+    .v17-typing-output {
+      display: grid;
+      gap: 8px;
+      color: rgba(37,33,38,.73);
+      font-family: var(--cn);
+      font-size: 10.5px;
+      line-height: 1.68;
+      letter-spacing: .003em;
+    }
+
+    .v17-typing-output p {
+      position: relative;
+      margin: 0;
+      padding-left: 13px;
+    }
+
+    .v17-typing-output p::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--rose-deep);
+      font-weight: 900;
+    }
+
+    .v17-type-caret {
+      display: inline-block;
+      width: 1px;
+      height: 13px;
+      margin: 3px 0 0 13px;
+      background: var(--rose-deep);
+      opacity: 0;
+    }
+
+    .v17-type-caret.is-visible {
+      opacity: 1;
+      animation: v17CaretBlink .72s steps(1) infinite;
+    }
+
+    /* Three-phone cluster */
+    .v17-phone-cluster {
+      position: absolute;
+      z-index: 20;
+      right: -1%;
+      top: 98px;
+      width: 53%;
+      height: 690px;
+      perspective: 1600px;
+      transform-style: preserve-3d;
+    }
+
+    .v17-phone {
+      position: absolute;
+      display: block;
+      transform-style: preserve-3d;
+      transition:
+        transform .42s cubic-bezier(.18,.84,.2,1),
+        filter .42s ease,
+        opacity .42s ease;
+      will-change: transform;
+    }
+
+    .v17-phone-left {
+      left: 0;
+      top: 92px;
+      z-index: 6;
+      width: 178px;
+      height: 410px;
+      transform: translateZ(-25px) rotateY(8deg) rotateZ(-7deg);
+    }
+
+    .v17-phone-center {
+      left: 31%;
+      top: 18px;
+      z-index: 12;
+      width: 218px;
+      height: 505px;
+      transform: translateZ(45px) rotateY(0deg) rotateZ(0deg);
+    }
+
+    .v17-phone-right {
+      right: 0;
+      top: 104px;
+      z-index: 7;
+      width: 178px;
+      height: 410px;
+      transform: translateZ(-20px) rotateY(-8deg) rotateZ(7deg);
+    }
+
+    .v17-phone-shell {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 7px solid #19181c;
+      border-radius: 34px;
+      background: #19181c;
+      box-shadow:
+        0 24px 45px rgba(37,33,38,.16),
+        0 0 0 1px rgba(255,255,255,.11) inset;
+    }
+
+    .v17-phone-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 25px;
+      transition: transform .48s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .v17-dynamic-island {
+      position: absolute;
+      z-index: 5;
+      top: 10px;
+      left: 50%;
+      width: 55px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(238,238,240,.82);
+      transform: translateX(-50%);
+      box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+
+    .v17-home-bar {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 9px;
+      width: 70px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.90);
+      transform: translateX(-50%);
+    }
+
+    .v17-open-note {
+      position: absolute;
+      z-index: 10;
+      right: 13px;
+      bottom: 15px;
+      padding: 7px 9px;
+      border: 1px solid rgba(255,255,255,.50);
+      border-radius: 999px;
+      background: rgba(22,19,22,.74);
+      color: #fff;
+      font-size: 5px;
+      line-height: 1.2;
+      letter-spacing: .10em;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(5px);
+      transition:
+        opacity .28s ease,
+        transform .28s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .v17-phone:hover {
+      z-index: 40;
+      filter: drop-shadow(0 31px 29px rgba(37,33,38,.22));
+    }
+
+    .v17-phone:hover .v17-phone-shell img {
+      transform: scale(1.018);
+    }
+
+    .v17-phone:hover .v17-open-note {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .v17-phone-cluster[data-active="left"] .v17-phone-left {
+      transform: translate3d(24px,-18px,95px) rotateY(0deg) rotateZ(-1deg) scale(1.075);
+    }
+
+    .v17-phone-cluster[data-active="left"] .v17-phone-center {
+      transform: translate3d(42px,12px,-25px) rotateY(-6deg) rotateZ(2deg) scale(.95);
+      opacity: .77;
+    }
+
+    .v17-phone-cluster[data-active="left"] .v17-phone-right {
+      transform: translate3d(32px,12px,-45px) rotateY(-11deg) rotateZ(9deg) scale(.92);
+      opacity: .67;
+    }
+
+    .v17-phone-cluster[data-active="center"] .v17-phone-center {
+      transform: translate3d(0,-18px,125px) rotateY(0deg) rotateZ(0deg) scale(1.075);
+    }
+
+    .v17-phone-cluster[data-active="center"] .v17-phone-left {
+      transform: translate3d(-24px,15px,-45px) rotateY(11deg) rotateZ(-9deg) scale(.92);
+      opacity: .68;
+    }
+
+    .v17-phone-cluster[data-active="center"] .v17-phone-right {
+      transform: translate3d(28px,16px,-45px) rotateY(-11deg) rotateZ(9deg) scale(.92);
+      opacity: .68;
+    }
+
+    .v17-phone-cluster[data-active="right"] .v17-phone-right {
+      transform: translate3d(-24px,-18px,95px) rotateY(0deg) rotateZ(1deg) scale(1.075);
+    }
+
+    .v17-phone-cluster[data-active="right"] .v17-phone-center {
+      transform: translate3d(-44px,12px,-25px) rotateY(6deg) rotateZ(-2deg) scale(.95);
+      opacity: .77;
+    }
+
+    .v17-phone-cluster[data-active="right"] .v17-phone-left {
+      transform: translate3d(-32px,12px,-45px) rotateY(11deg) rotateZ(-9deg) scale(.92);
+      opacity: .67;
+    }
+
+    @keyframes v17HeroFloat {
+      0%,100% { translate: 0 0; }
+      50% { translate: 0 -8px; }
+    }
+
+    @keyframes v17Specular {
+      0%,100% { translate: -13px 0; opacity: .15; }
+      50% { translate: 17px -3px; opacity: .38; }
+    }
+
+    @keyframes v17ProductShowcase {
+      0% {
+        transform: perspective(1400px) rotateX(2deg) rotateY(-7deg) rotateZ(-2deg) translateZ(25px);
+      }
+      24% {
+        transform: perspective(1400px) rotateX(-1deg) rotateY(17deg) rotateZ(1deg) translateZ(58px) scale(1.055);
+      }
+      50% {
+        transform: perspective(1400px) rotateX(3deg) rotateY(-14deg) rotateZ(-1deg) translateZ(48px) scale(1.035);
+      }
+      74% {
+        transform: perspective(1400px) rotateX(1deg) rotateY(8deg) rotateZ(1deg) translateZ(43px) scale(1.025);
+      }
+      100% {
+        transform: perspective(1400px) rotateX(2deg) rotateY(-5deg) rotateZ(-2deg) translateZ(28px);
+      }
+    }
+
+    @keyframes v17CaretBlink {
+      0%,48% { opacity: 1; }
+      49%,100% { opacity: 0; }
+    }
+
+    @media (max-width: 1180px) {
+      .v17-hero-zone {
+        left: 21%;
+        width: 305px;
+      }
+
+      .v17-hanshu.is-activated .v17-hero-zone {
+        left: 25%;
+      }
+
+      .v17-phone-cluster {
+        width: 54%;
+      }
+
+      .v17-phone-left,
+      .v17-phone-right {
+        width: 158px;
+        height: 370px;
+      }
+
+      .v17-phone-center {
+        width: 196px;
+        height: 460px;
+      }
+    }
+
+    @media (max-width: 930px) {
+      .v17-hanshu,
+      .v17-stage {
+        min-height: 1260px;
+      }
+
+      .v17-meta {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+      }
+
+      .v17-brand-title {
+        top: 250px;
+      }
+
+      .v17-hero-zone {
+        left: 25%;
+        top: 210px;
+      }
+
+      .v17-hanshu.is-activated .v17-hero-zone {
+        left: 30%;
+      }
+
+      .v17-phone-cluster {
+        top: 220px;
+        right: 0;
+        width: 58%;
+      }
+
+      .v17-typing-panel {
+        left: 0;
+        bottom: 38px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .v17-hanshu,
+      .v17-stage {
+        min-height: 1780px;
+      }
+
+      .v17-stage {
+        padding: 30px 15px;
+      }
+
+      .v17-brand-title {
+        left: 0;
+        top: 245px;
+      }
+
+      .v17-brand-title span {
+        font-size: 3.9rem;
+      }
+
+      .v17-brand-title em {
+        font-size: 3.05rem;
+      }
+
+      .v17-hero-zone,
+      .v17-hanshu.is-activated .v17-hero-zone {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: 590px;
+        margin-top: 40px;
+      }
+
+      .v17-product-stack {
+        width: 175px;
+        height: 500px;
+      }
+
+      .v17-phone-cluster {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        height: 690px;
+        margin-top: 15px;
+      }
+
+      .v17-phone-left,
+      .v17-phone-right {
+        width: 145px;
+        height: 340px;
+      }
+
+      .v17-phone-center {
+        left: 26%;
+        width: 176px;
+        height: 420px;
+      }
+
+      .v17-phone-left {
+        left: -1%;
+        top: 80px;
+      }
+
+      .v17-phone-right {
+        right: -1%;
+        top: 95px;
+      }
+
+      .v17-typing-panel {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 25px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .v17-product-stack,
+      .v17-specular-sweep {
+        animation: none !important;
+      }
+
+      .v17-brand-title,
+      .v17-typing-panel,
+      .v17-hero-zone,
+      .v17-phone {
+        transition-duration: .01ms !important;
+      }
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -4614,11 +5392,12 @@
 
           
           
-          <article class="hanshu-interactive" id="hanshu-card">
-            <div class="hi-layout">
+          
+          <article class="v17-hanshu" id="hanshu-card">
+            <div class="v17-stage">
 
-              <header class="hi-meta" data-reveal>
-                <div class="hi-brandline">
+              <header class="v17-meta" data-reveal>
+                <div class="v17-brandline">
                   <span>ENO LI</span>
                   <i></i>
                   <span>WORK</span>
@@ -4636,84 +5415,131 @@
                 </dl>
               </header>
 
-              <section class="hi-product-area" id="hanshuBottleArea" data-reveal>
-                <div class="hi-brand-reveal" aria-hidden="true">
-                  <span>韩束</span>
-                  <em>亮白瓶</em>
-                </div>
+              <section class="v17-brand-title" aria-hidden="true">
+                <span>韩束</span>
+                <em>亮白瓶</em>
+              </section>
 
+              <section class="v17-hero-zone" id="v17HeroZone" data-reveal>
                 <button
-                  class="hi-bottle-button"
-                  id="hanshuBottleButton"
+                  class="v17-product-button"
+                  id="v17ProductButton"
                   type="button"
                   aria-label="点击韩束产品，查看项目经历"
                   aria-expanded="false"
                 >
-                  <span class="hi-bottle-orbit"></span>
+                  <span class="v17-orbit v17-orbit-one"></span>
+                  <span class="v17-orbit v17-orbit-two"></span>
+                  <span class="v17-hero-glow"></span>
 
-                  <img
-                    class="hi-bottle"
-                    src="hanshu-product-transparent-v2.png"
-                    alt="韩束亮白紧致身体精华液"
-                  />
+                  <span class="v17-product-stack" id="v17ProductStack">
+                    <img
+                      class="v17-layer v17-layer-shadow"
+                      src="hanshu-hero-shadow.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                    <img
+                      class="v17-layer v17-layer-base"
+                      src="hanshu-hero-base.png"
+                      alt="韩束亮白紧致身体精华液"
+                    />
+                    <img
+                      class="v17-layer v17-layer-edge"
+                      src="hanshu-hero-edge.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                    <img
+                      class="v17-layer v17-layer-highlight"
+                      src="hanshu-hero-highlight.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                    <span class="v17-specular-sweep" aria-hidden="true"></span>
+                  </span>
 
-                  <span class="hi-click-hint">
+                  <span class="v17-click-hint">
                     CLICK THE BOTTLE
                     <small>点击产品，查看项目经历</small>
                   </span>
                 </button>
               </section>
 
-              <section class="hi-typing-panel" id="hanshuTypingPanel" aria-live="polite">
-                <div class="hi-typing-heading">
+              <section class="v17-typing-panel" id="v17TypingPanel" aria-live="polite">
+                <div class="v17-typing-heading">
                   <span>PROJECT EXPERIENCE</span>
                   <strong>小红书产品营销 Campaign</strong>
                 </div>
 
-                <div class="hi-typing-output" id="hanshuTypingOutput"></div>
-                <span class="hi-type-caret" id="hanshuTypeCaret" aria-hidden="true"></span>
+                <div class="v17-typing-output" id="v17TypingOutput"></div>
+                <span class="v17-type-caret" id="v17TypeCaret" aria-hidden="true"></span>
               </section>
 
-              <section class="hi-notes" data-reveal>
+              <section class="v17-phone-cluster" id="v17PhoneCluster" data-reveal>
+
                 <a
-                  class="hi-phone hi-phone-pet"
+                  class="v17-phone v17-phone-left"
+                  data-phone="left"
                   href="https://www.xiaohongshu.com/discovery/item/698ac601000000000a02fbd0"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="打开宠物陪伴主题小红书爆文"
+                  aria-label="打开宠物陪伴主题小红书笔记"
                 >
-                  <span class="hi-phone-shell">
-                    <span class="hi-phone-speaker"></span>
+                  <span class="v17-phone-shell">
+                    <span class="v17-dynamic-island"></span>
                     <img
-                      src="hanshu-pet-note-full.jpg"
-                      alt="宠物陪伴主题小红书爆文完整截图"
+                      src="hanshu-note-pet-v17.jpg"
+                      alt="宠物陪伴主题小红书爆文截图"
                     />
-                    <span class="hi-home-indicator"></span>
+                    <span class="v17-home-bar"></span>
                   </span>
-                  <span class="hi-open-note">OPEN NOTE ↗</span>
+                  <span class="v17-open-note">OPEN NOTE ↗</span>
                 </a>
 
                 <a
-                  class="hi-phone hi-phone-hack"
-                  href="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a"
+                  class="v17-phone v17-phone-center"
+                  data-phone="center"
+                  href="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a?source=webshare&amp;xhsshare=pc_web&amp;xsec_token=ABY7h-p44g530tWZnOHySB0REijZdZSoZ3887p3Oj7ed4=&amp;xsec_source=pc_share"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="打开年前亮白急救主题小红书爆文"
+                  aria-label="打开又白又嫩的野路子小红书笔记"
                 >
-                  <span class="hi-phone-shell">
-                    <span class="hi-phone-speaker"></span>
+                  <span class="v17-phone-shell">
+                    <span class="v17-dynamic-island"></span>
                     <img
-                      src="hanshu-hack-note-full.jpg"
-                      alt="年前亮白急救主题小红书爆文完整截图"
+                      src="hanshu-note-hack-v17.jpg"
+                      alt="又白又嫩的野路子小红书爆文截图"
                     />
-                    <span class="hi-home-indicator"></span>
+                    <span class="v17-home-bar"></span>
                   </span>
-                  <span class="hi-open-note">OPEN NOTE ↗</span>
+                  <span class="v17-open-note">OPEN NOTE ↗</span>
                 </a>
+
+                <a
+                  class="v17-phone v17-phone-right"
+                  data-phone="right"
+                  href="http://xhslink.com/o/5BDbyRKL4q2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="打开从手指缝白到脚趾缝小红书笔记"
+                >
+                  <span class="v17-phone-shell">
+                    <span class="v17-dynamic-island"></span>
+                    <img
+                      src="hanshu-note-proof-v17.jpg"
+                      alt="从手指缝白到脚趾缝小红书爆文截图"
+                    />
+                    <span class="v17-home-bar"></span>
+                  </span>
+                  <span class="v17-open-note">OPEN NOTE ↗</span>
+                </a>
+
               </section>
 
             </div>
           </article>
+
 
 
 
@@ -5252,6 +6078,151 @@
       }
 
       button.addEventListener("click", activate);
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const section = document.getElementById("hanshu-card");
+      const heroZone = document.getElementById("v17HeroZone");
+      const productButton = document.getElementById("v17ProductButton");
+      const productStack = document.getElementById("v17ProductStack");
+      const output = document.getElementById("v17TypingOutput");
+      const caret = document.getElementById("v17TypeCaret");
+      const cluster = document.getElementById("v17PhoneCluster");
+
+      if (!section || !heroZone || !productButton || !productStack || !output || !caret) return;
+
+      const lines = [
+        "参与韩束亮白瓶身体精华在小红书平台的产品营销 Campaign 规划，结合目标用户与使用场景制定阶段性内容策略。",
+        "基于曝光、点击、互动等核心数据指标对内容表现进行复盘分析，提炼有效内容类型并优化后续传播方向。",
+        "对接代理商与达人合作方，协助推进达人筛选、内容策划与发布排期，推动内容种草与产品曝光。",
+        "支持 KOC 铺量及后续 KOL 放量策略制定，参与达人筛选标准与内容执行方案设计。"
+      ];
+
+      const finePointer = window.matchMedia("(pointer:fine)").matches;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      let typingToken = 0;
+
+      const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+      async function typeLine(text, paragraph, token) {
+        for (const char of text) {
+          if (token !== typingToken) return false;
+          paragraph.textContent += char;
+
+          const delay =
+            char === "，" || char === "。" ? 112 :
+            char === "、" ? 75 :
+            char === " " ? 18 :
+            32;
+
+          await sleep(delay);
+        }
+        return true;
+      }
+
+      async function playTyping() {
+        const token = ++typingToken;
+        output.innerHTML = "";
+        caret.classList.add("is-visible");
+
+        await sleep(reduceMotion ? 20 : 1120);
+
+        for (const line of lines) {
+          if (token !== typingToken) return;
+
+          const paragraph = document.createElement("p");
+          output.appendChild(paragraph);
+
+          if (reduceMotion) {
+            paragraph.textContent = line;
+          } else {
+            const complete = await typeLine(line, paragraph, token);
+            if (!complete) return;
+          }
+
+          await sleep(reduceMotion ? 10 : 235);
+        }
+
+        if (token === typingToken) {
+          await sleep(reduceMotion ? 10 : 300);
+          caret.classList.remove("is-visible");
+        }
+      }
+
+      function restartInteraction() {
+        typingToken++;
+        output.innerHTML = "";
+        caret.classList.remove("is-visible");
+
+        section.classList.remove("is-activated");
+        productStack.classList.remove("is-showcasing");
+        productButton.setAttribute("aria-expanded", "false");
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            section.classList.add("is-activated");
+            productStack.classList.add("is-showcasing");
+            productButton.setAttribute("aria-expanded", "true");
+            playTyping();
+          });
+        });
+      }
+
+      productButton.addEventListener("click", restartInteraction);
+
+      productStack.addEventListener("animationend", (event) => {
+        if (event.animationName === "v17ProductShowcase") {
+          productStack.classList.remove("is-showcasing");
+        }
+      });
+
+      if (finePointer && !reduceMotion) {
+        heroZone.addEventListener("pointermove", (event) => {
+          if (productStack.classList.contains("is-showcasing")) return;
+
+          const rect = heroZone.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width - .5;
+          const y = (event.clientY - rect.top) / rect.height - .5;
+
+          productStack.style.setProperty("--v17-ry", `${-7 + x * 15}deg`);
+          productStack.style.setProperty("--v17-rx", `${2 - y * 10}deg`);
+          productStack.style.setProperty("--v17-hx", `${x * 10}px`);
+          productStack.style.setProperty("--v17-hy", `${y * 7}px`);
+        });
+
+        heroZone.addEventListener("pointerleave", () => {
+          productStack.style.removeProperty("--v17-ry");
+          productStack.style.removeProperty("--v17-rx");
+          productStack.style.removeProperty("--v17-hx");
+          productStack.style.removeProperty("--v17-hy");
+        });
+      }
+
+      if (cluster) {
+        const phones = [...cluster.querySelectorAll("[data-phone]")];
+
+        phones.forEach((phone) => {
+          phone.addEventListener("pointerenter", () => {
+            cluster.dataset.active = phone.dataset.phone;
+          });
+
+          phone.addEventListener("pointerleave", () => {
+            cluster.removeAttribute("data-active");
+          });
+
+          phone.addEventListener("pointerdown", () => {
+            phone.style.scale = ".985";
+          });
+
+          phone.addEventListener("pointerup", () => {
+            phone.style.scale = "";
+          });
+        });
+      }
     })();
   </script>
 
