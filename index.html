@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="李伊诺｜品牌营销、内容策略与视觉传播作品集" />
   <meta name="theme-color" content="#f5f2ef" />
-  <title>ENO LI｜Portfolio V21</title>
+  <title>ENO LI｜Portfolio V22</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -7552,988 +7552,662 @@
 
   
     /* =========================================================
-       V21 — HANSHU IMMERSIVE BRAND CASE
+       V22 — FLAT EDITORIAL HANSHU
+       Isa-style moving collage, without 3D rotation.
     ========================================================= */
 
-    .h21-case {
+    .e22-hanshu {
       position: relative;
-      min-height: 870px;
+      min-height: 910px;
       overflow: hidden;
-      border-top: 1px solid rgba(37,33,38,.12);
-      border-bottom: 1px solid rgba(37,33,38,.12);
+      border-top: 1px solid rgba(37,33,38,.11);
+      border-bottom: 1px solid rgba(37,33,38,.11);
       background:
-        linear-gradient(rgba(37,33,38,.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(37,33,38,.022) 1px, transparent 1px),
-        radial-gradient(circle at 44% 37%, rgba(232,202,210,.25), transparent 23%),
-        radial-gradient(circle at 78% 44%, rgba(205,221,235,.22), transparent 27%),
-        radial-gradient(circle at 62% 75%, rgba(244,222,178,.15), transparent 19%),
-        #faf8f5;
-      background-size: 16px 16px, 16px 16px, auto, auto, auto, auto;
-      scroll-margin-top: 64px;
+        linear-gradient(rgba(37,33,38,.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,33,38,.026) 1px, transparent 1px),
+        radial-gradient(circle at 37% 43%, rgba(232,203,210,.16), transparent 25%),
+        radial-gradient(circle at 76% 56%, rgba(211,226,234,.16), transparent 26%),
+        #fbfaf7;
+      background-size: 16px 16px, 16px 16px, auto, auto, auto;
+      scroll-margin-top: 56px;
     }
 
-    .h21-stage {
+    .e22-hanshu-stage {
       position: relative;
-      min-height: 870px;
-      padding: 36px 34px 30px;
+      min-height: 910px;
+      padding: 29px 32px 34px;
       isolation: isolate;
     }
 
-    .h21-meta {
-      position: absolute;
-      z-index: 30;
-      inset: 35px auto auto 34px;
-      width: 360px;
-    }
-
-    .h21-brandline {
-      display: flex;
-      justify-content: space-between;
-      gap: 22px;
-      color: rgba(37,33,38,.45);
-      font-size: 7px;
-      line-height: 1.3;
-      letter-spacing: .13em;
-      font-weight: 900;
-    }
-
-    .h21-meta dl {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 6px 13px;
-      margin: 25px 0 0;
-      font-size: 7px;
-      line-height: 1.5;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-    }
-
-    .h21-meta dt {
-      color: rgba(37,33,38,.43);
-      font-weight: 900;
-    }
-
-    .h21-meta dd {
-      margin: 0;
-      font-weight: 720;
-    }
-
-    .h21-copy {
-      position: absolute;
-      z-index: 24;
-      left: 34px;
-      top: 184px;
-      width: min(410px, 31%);
-    }
-
-    .h21-eyebrow {
-      margin: 0 0 18px;
-      color: rgba(37,33,38,.46);
-      font-size: 7px;
-      letter-spacing: .14em;
-      font-weight: 900;
-    }
-
-    .h21-title {
-      margin: 0;
-      line-height: .67;
-      font-weight: 600;
-    }
-
-    .h21-title span {
-      display: block;
-      font-family: var(--serif);
-      font-size: clamp(4.9rem, 6.2vw, 7.25rem);
-      letter-spacing: -.11em;
-    }
-
-    .h21-title em {
-      display: block;
-      width: max-content;
-      margin: 22px 0 0 12%;
-      color: var(--rose-deep);
-      font-family: var(--serif);
-      font-size: clamp(3.75rem, 4.8vw, 5.65rem);
-      letter-spacing: -.075em;
-      font-style: italic;
-    }
-
-    .h21-intro {
-      max-width: 385px;
-      margin: 42px 0 0;
-      color: rgba(37,33,38,.69);
-      font-size: 12px;
-      line-height: 1.86;
-    }
-
-    .h21-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 23px;
-    }
-
-    .h21-tags span {
-      padding: 7px 9px;
-      border: 1px solid rgba(37,33,38,.12);
-      border-radius: 999px;
-      background: rgba(255,255,255,.47);
-      color: rgba(37,33,38,.58);
-      font-size: 6px;
-      letter-spacing: .08em;
-      font-weight: 850;
-      text-transform: uppercase;
-    }
-
-    .h21-start {
-      display: inline-grid;
-      gap: 4px;
-      margin-top: 24px;
-      border: 0;
-      border-bottom: 1px solid rgba(37,33,38,.55);
-      padding: 0 0 8px;
-      background: transparent;
-      color: var(--ink);
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .h21-start span {
-      color: rgba(37,33,38,.50);
-      font-size: 7px;
-      line-height: 1.3;
-    }
-
-    .h21-start b {
-      font-size: 8px;
-      letter-spacing: .12em;
-    }
-
-    .h21-experience {
-      position: absolute;
-      left: 0;
-      top: 455px;
-      width: 100%;
-      min-height: 270px;
-      padding: 16px 16px 17px;
-      border: 1px solid rgba(37,33,38,.10);
-      background: rgba(255,255,255,.52);
-      box-shadow: 0 21px 48px rgba(57,43,49,.08);
-      opacity: 0;
-      transform: translateY(18px);
-      pointer-events: none;
-      backdrop-filter: blur(11px);
-      transition:
-        opacity .5s ease .45s,
-        transform .58s cubic-bezier(.18,.84,.2,1) .45s;
-    }
-
-    .h21-case.is-open .h21-experience {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .h21-experience-head {
-      display: grid;
-      gap: 4px;
-      margin-bottom: 13px;
-    }
-
-    .h21-experience-head small {
-      color: rgba(37,33,38,.43);
-      font-size: 6px;
-      letter-spacing: .13em;
-      font-weight: 900;
-    }
-
-    .h21-experience-head strong {
-      font-family: var(--serif);
-      font-size: 18px;
-      letter-spacing: -.025em;
-      font-weight: 600;
-    }
-
-    .h21-typing {
-      display: grid;
-      gap: 8px;
-      color: rgba(37,33,38,.70);
-      font-size: 10px;
-      line-height: 1.66;
-    }
-
-    .h21-typing p {
-      position: relative;
-      margin: 0;
-      padding-left: 12px;
-    }
-
-    .h21-typing p::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--rose-deep);
-      font-weight: 900;
-    }
-
-    .h21-caret {
-      display: inline-block;
-      width: 1px;
-      height: 12px;
-      margin: 4px 0 0 12px;
-      background: var(--rose-deep);
-      opacity: 0;
-    }
-
-    .h21-caret.is-visible {
-      opacity: 1;
-      animation: h21Caret .72s steps(1) infinite;
-    }
-
-    .h21-product-zone {
-      position: absolute;
-      z-index: 18;
-      left: 33%;
-      top: 58px;
-      width: 300px;
-      height: 745px;
-      perspective: 1700px;
-      transform-style: preserve-3d;
-    }
-
-    .h21-product {
-      position: absolute;
-      inset: 0;
-      border: 0;
-      padding: 0;
-      background: transparent;
-      cursor: pointer;
-      perspective: 1700px;
-      transform-style: preserve-3d;
-    }
-
-    .h21-product:focus-visible {
-      outline: 1px dashed var(--rose-deep);
-      outline-offset: 7px;
-    }
-
-    .h21-glow {
-      position: absolute;
-      z-index: 0;
-      left: 50%;
-      top: 38%;
-      width: 260px;
-      height: 475px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 47% 43%, rgba(255,255,255,.96), rgba(232,201,211,.31) 41%, transparent 72%);
-      filter: blur(13px);
-      transform: translate(-50%,-50%);
-      transition: .4s ease;
-    }
-
-    .h21-orbit {
-      position: absolute;
-      z-index: 1;
-      left: 50%;
-      top: 40%;
-      border-radius: 50%;
-      transform: translate(-50%,-50%);
-      pointer-events: none;
-      transition: .45s cubic-bezier(.18,.84,.2,1);
-    }
-
-    .h21-orbit-a {
-      width: 255px;
-      height: 500px;
-      border: 1px solid rgba(162,114,131,.16);
-      rotate: -9deg;
-    }
-
-    .h21-orbit-b {
-      width: 302px;
-      height: 585px;
-      border: 1px dashed rgba(162,114,131,.21);
-      rotate: 8deg;
-    }
-
-    .h21-orbit-c {
-      width: 218px;
-      height: 430px;
-      border: 1px dotted rgba(119,151,174,.22);
-      rotate: 17deg;
-    }
-
-    .h21-pedestal {
-      position: absolute;
-      z-index: 2;
-      left: 50%;
-      bottom: 96px;
-      width: 210px;
-      height: 48px;
-      border-radius: 50%;
-      background:
-        radial-gradient(ellipse at center, rgba(255,255,255,.76), rgba(209,220,229,.31) 54%, transparent 72%);
-      box-shadow:
-        0 24px 34px rgba(49,32,38,.16),
-        0 0 0 1px rgba(255,255,255,.45) inset;
-      filter: blur(.3px);
-      transform: translateX(-50%) rotateX(69deg);
-    }
-
-    .h21-product-stack {
-      position: absolute;
-      z-index: 8;
-      left: 50%;
-      top: 46px;
-      width: 205px;
-      height: 610px;
-      transform-style: preserve-3d;
-      transform:
-        translateX(-50%)
-        perspective(1500px)
-        rotateX(var(--h21-rx, 1deg))
-        rotateY(var(--h21-ry, -7deg))
-        rotateZ(-1.5deg)
-        translateZ(38px);
-      transform-origin: 50% 54%;
-      transition: transform .24s cubic-bezier(.2,.8,.2,1);
-      animation: h21Float 5.6s ease-in-out infinite;
-      will-change: transform;
-    }
-
-    .h21-layer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      pointer-events: none;
-      transform-origin: 50% 54%;
-    }
-
-    .h21-shadow {
-      z-index: 0;
-      opacity: .59;
-      filter: blur(2.4px);
-      transform: translate3d(22px,30px,-48px) scale(.98);
-    }
-
-    .h21-base {
-      z-index: 3;
-      transform: translateZ(18px);
-      filter:
-        drop-shadow(0 25px 18px rgba(57,37,43,.13))
-        saturate(1.03)
-        contrast(1.02);
-    }
-
-    .h21-edge {
-      z-index: 5;
-      opacity: .80;
-      mix-blend-mode: screen;
-      transform: translateZ(43px);
-    }
-
-    .h21-highlight {
-      z-index: 6;
-      opacity: .75;
-      mix-blend-mode: screen;
-      transform: translate3d(var(--h21-hx,0px),var(--h21-hy,0px),62px);
-      transition: transform .22s ease;
-    }
-
-    .h21-light-sweep {
-      position: absolute;
-      z-index: 7;
-      left: 37%;
-      top: 9%;
-      width: 21%;
-      height: 77%;
-      border-radius: 50%;
-      background: linear-gradient(90deg,transparent,rgba(255,255,255,.61),transparent);
-      filter: blur(8px);
-      opacity: .26;
-      transform: translateZ(74px) rotate(5deg);
-      mix-blend-mode: screen;
-      animation: h21Sweep 4.5s ease-in-out infinite;
-    }
-
-    .h21-product-label {
+    .e22-hanshu-header {
       position: absolute;
       z-index: 20;
-      left: 50%;
-      bottom: 31px;
-      display: grid;
-      gap: 2px;
-      min-width: 190px;
-      padding: 11px 14px;
-      border: 1px solid rgba(37,33,38,.13);
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 13px 28px rgba(37,33,38,.08);
-      text-align: left;
-      transform: translateX(-50%) rotate(-2deg);
-      backdrop-filter: blur(10px);
+      left: 32px;
+      top: 27px;
+      width: 390px;
     }
 
-    .h21-product-label small {
-      color: rgba(37,33,38,.42);
-      font-size: 5px;
-      letter-spacing: .13em;
-      font-weight: 900;
+    .e22-brandline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 8px;
+      letter-spacing: -.02em;
     }
 
-    .h21-product-label strong {
-      color: var(--rose-deep);
-      font-family: var(--serif);
-      font-size: 21px;
-      line-height: .95;
-      font-weight: 600;
+    .e22-brandline span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ink);
     }
 
-    .h21-product-label span {
-      color: rgba(37,33,38,.56);
-      font-size: 6px;
-      letter-spacing: .04em;
+    .e22-hanshu-title {
+      margin: 45px 0 0;
+      line-height: .69;
       font-weight: 700;
     }
 
-    .h21-product:hover .h21-product-stack {
-      transform:
-        translateX(-50%)
-        perspective(1500px)
-        rotateX(var(--h21-rx, 1deg))
-        rotateY(var(--h21-ry, -7deg))
-        rotateZ(-.5deg)
-        translateZ(72px)
-        scale(1.025);
+    .e22-hanshu-title span {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(5.5rem, 7.3vw, 8.25rem);
+      line-height: .76;
+      letter-spacing: -.095em;
+      font-weight: 900;
     }
 
-    .h21-product:hover .h21-orbit-a {
-      scale: 1.035;
-      rotate: -14deg;
-    }
-
-    .h21-product:hover .h21-orbit-b {
-      scale: 1.055;
-      rotate: 13deg;
-    }
-
-    .h21-product:hover .h21-orbit-c {
-      scale: .97;
-      rotate: 22deg;
-    }
-
-    .h21-product:hover .h21-glow {
-      scale: 1.08;
-    }
-
-    .h21-product-stack.is-showing {
-      animation: h21Showcase 1.35s cubic-bezier(.18,.84,.2,1) both;
-    }
-
-    .h21-method {
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      gap: 7px;
+    .e22-hanshu-title em {
+      display: block;
       width: max-content;
-      transform: translateX(-50%);
-      color: rgba(37,33,38,.45);
-      font-size: 5px;
-      letter-spacing: .06em;
-      font-weight: 820;
+      margin: 22px 0 0 17%;
+      color: var(--rose-deep);
+      font-family: var(--serif);
+      font-size: clamp(3.8rem, 5vw, 5.8rem);
+      line-height: .75;
+      letter-spacing: -.075em;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .e22-hanshu-meta {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 5px 12px;
+      margin: 50px 0 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 7px;
+      line-height: 1.38;
       text-transform: uppercase;
     }
 
-    .h21-method span {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .h21-method b {
-      color: var(--rose-deep);
-      font-size: 5px;
-    }
-
-    .h21-method i {
-      width: 15px;
-      height: 1px;
-      background: rgba(37,33,38,.18);
-    }
-
-    .h21-notes {
-      position: absolute;
-      z-index: 22;
-      right: 1.3%;
-      top: 51px;
-      width: 42%;
-      height: 760px;
-      perspective: 1700px;
-      transform-style: preserve-3d;
-    }
-
-    .h21-notes-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 20px;
-      margin: 0 16px;
-    }
-
-    .h21-notes-head div {
-      display: grid;
-      gap: 4px;
-    }
-
-    .h21-notes-head small {
-      color: rgba(37,33,38,.42);
-      font-size: 6px;
-      letter-spacing: .13em;
+    .e22-hanshu-meta dt {
+      color: rgba(37,33,38,.50);
       font-weight: 900;
     }
 
-    .h21-notes-head strong {
-      font-family: var(--serif);
-      font-size: 22px;
-      letter-spacing: -.025em;
-      font-weight: 600;
+    .e22-hanshu-meta dd {
+      margin: 0;
+      font-weight: 800;
     }
 
-    .h21-notes-head > span {
-      color: rgba(37,33,38,.45);
-      font-size: 7px;
-      letter-spacing: .10em;
-      font-weight: 900;
-    }
-
-    .h21-deck {
-      position: relative;
-      height: 620px;
-      margin-top: 19px;
-      perspective: 1700px;
-      transform-style: preserve-3d;
-    }
-
-    .h21-note-card {
+    .e22-product {
       position: absolute;
-      left: 50%;
-      top: 8px;
-      width: 228px;
-      height: 570px;
-      border: 0;
-      padding: 0;
-      background: transparent;
-      cursor: pointer;
-      transform-style: preserve-3d;
-      transform-origin: 50% 50%;
-      transition:
-        transform .68s cubic-bezier(.18,.84,.2,1),
-        opacity .52s ease,
-        filter .52s ease;
+      z-index: 8;
+      left: 32.5%;
+      top: 205px;
+      width: 190px;
+      margin: 0;
+      transform:
+        translate(
+          calc(var(--e22-x, 0px) * var(--e22-depth, .3)),
+          calc(var(--e22-y, 0px) * var(--e22-depth, .3))
+        )
+        rotate(-5.5deg);
+      transition: transform .24s ease-out;
       will-change: transform;
     }
 
-    .h21-note-card[data-note-state="current"] {
-      z-index: 12;
-      opacity: 1;
-      filter: none;
-      transform:
-        translateX(-50%)
-        translateZ(95px)
-        rotateY(0)
-        rotateZ(0)
-        scale(1);
-    }
-
-    .h21-note-card[data-note-state="next"] {
-      z-index: 7;
-      opacity: .63;
-      filter: saturate(.78) brightness(.96);
-      transform:
-        translateX(-10%)
-        translateZ(-120px)
-        rotateY(-39deg)
-        rotateZ(5deg)
-        scale(.78);
-    }
-
-    .h21-note-card[data-note-state="prev"] {
-      z-index: 6;
-      opacity: .56;
-      filter: saturate(.72) brightness(.94);
-      transform:
-        translateX(-90%)
-        translateZ(-145px)
-        rotateY(39deg)
-        rotateZ(-5deg)
-        scale(.76);
-    }
-
-    .h21-note-card.is-opening {
-      animation: h21OpenNote .46s cubic-bezier(.18,.84,.2,1) both;
-    }
-
-    .h21-phone-shell {
-      position: relative;
+    .e22-product img {
       display: block;
       width: 100%;
-      height: 488px;
-      overflow: hidden;
-      border: 8px solid #17171d;
-      border-radius: 39px;
-      background: #17171d;
-      box-shadow:
-        0 34px 62px rgba(32,25,31,.20),
-        0 0 0 1px rgba(255,255,255,.15) inset;
-      transform: translateZ(38px);
+      filter: drop-shadow(0 22px 17px rgba(42,28,34,.15));
     }
 
-    .h21-phone-shell img {
+    .e22-flat-card {
+      position: absolute;
+      z-index: 7;
+      display: grid;
+      gap: 7px;
+      width: 210px;
+      padding: 19px 18px;
+      border: 2px solid var(--ink);
+      background: #efc0b5;
+      box-shadow: 0 18px 29px rgba(43,32,38,.09);
+      transform:
+        translate(
+          calc(var(--e22-x, 0px) * var(--e22-depth, .18)),
+          calc(var(--e22-y, 0px) * var(--e22-depth, .18))
+        )
+        rotate(var(--card-rotate));
+      transition: transform .24s ease-out;
+      will-change: transform;
+    }
+
+    .e22-flat-card small {
+      font-size: 6px;
+      letter-spacing: .12em;
+      font-weight: 900;
+    }
+
+    .e22-flat-card strong {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 21px;
+      line-height: .86;
+      letter-spacing: -.045em;
+      font-weight: 900;
+    }
+
+    .e22-card-one {
+      --card-rotate: -4deg;
+      right: 5.2%;
+      top: 80px;
+    }
+
+    .e22-card-two {
+      --card-rotate: 3.5deg;
+      left: 46%;
+      bottom: 34px;
+      background: linear-gradient(135deg,#f4d991,#cfe5dd);
+    }
+
+    .e22-phone-collage {
+      position: absolute;
+      z-index: 15;
+      right: 1.6%;
+      top: 95px;
+      width: 59%;
+      height: 690px;
+    }
+
+    .e22-phone {
+      position: absolute;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      transform:
+        translate(
+          calc(var(--e22-x, 0px) * var(--e22-depth, .3)),
+          calc(var(--e22-y, 0px) * var(--e22-depth, .3))
+        )
+        rotate(var(--phone-rotate));
+      transition:
+        transform .28s ease-out,
+        filter .28s ease-out;
+      will-change: transform;
+    }
+
+    .e22-phone-main {
+      --phone-rotate: -2.3deg;
+      z-index: 8;
+      left: 29%;
+      top: 84px;
+      width: 250px;
+    }
+
+    .e22-phone-secondary {
+      --phone-rotate: 4.4deg;
+      z-index: 5;
+      right: 0;
+      top: 135px;
+      width: 218px;
+    }
+
+    .e22-phone-tertiary {
+      --phone-rotate: -8deg;
+      z-index: 4;
+      left: 2%;
+      top: 240px;
+      width: 185px;
+    }
+
+    .e22-phone-shell {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: .48 / 1;
+      border: 7px solid #17171d;
+      border-radius: 35px;
+      background: #17171d;
+      box-shadow: 0 25px 42px rgba(35,27,32,.20);
+    }
+
+    .e22-phone-shell img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
     }
 
-    .h21-speaker {
+    .e22-phone-light {
+      border-color: #f5f4f2;
+      background: #f5f4f2;
+      box-shadow:
+        0 25px 42px rgba(35,27,32,.17),
+        0 0 0 1px rgba(37,33,38,.08) inset;
+    }
+
+    .e22-speaker {
       position: absolute;
       z-index: 4;
       left: 50%;
       top: 9px;
-      width: 51px;
-      height: 6px;
+      width: 50px;
+      height: 5px;
       border-radius: 999px;
-      background: #b6b6bc;
-      box-shadow: 0 1px 1px rgba(255,255,255,.22) inset;
+      background: #c0c0c5;
       transform: translateX(-50%);
     }
 
-    .h21-homebar {
+    .e22-homebar {
       position: absolute;
       z-index: 4;
       left: 50%;
-      bottom: 9px;
-      width: 72px;
+      bottom: 8px;
+      width: 68px;
       height: 4px;
       border-radius: 999px;
       background: rgba(255,255,255,.84);
       transform: translateX(-50%);
     }
 
-    .h21-phone-light {
-      border-color: #f4f3f1;
-      background: #f4f3f1;
-      box-shadow:
-        0 34px 62px rgba(32,25,31,.18),
-        0 0 0 1px rgba(37,33,38,.11) inset;
+    .e22-phone-light .e22-homebar {
+      background: rgba(37,33,38,.72);
     }
 
-    .h21-phone-light .h21-speaker {
-      background: #c8c8c8;
-    }
-
-    .h21-phone-light .h21-homebar {
-      background: rgba(37,33,38,.74);
-    }
-
-    .h21-note-caption {
+    .e22-note-label {
       position: absolute;
-      z-index: 5;
-      left: 10px;
-      right: -14px;
-      bottom: 1px;
+      z-index: 6;
+      left: 6%;
+      bottom: -38px;
       display: grid;
       gap: 4px;
-      min-height: 85px;
-      padding: 12px 14px;
-      border: 1px solid rgba(37,33,38,.16);
-      background: rgba(250,248,245,.86);
-      box-shadow: 0 15px 31px rgba(42,34,39,.12);
-      text-align: left;
-      transform: translateZ(64px) rotate(-2deg);
-      backdrop-filter: blur(10px);
+      min-width: 176px;
+      padding: 11px 13px;
+      border: 1px solid rgba(37,33,38,.15);
+      background: rgba(250,248,245,.88);
+      box-shadow: 0 12px 27px rgba(42,32,37,.10);
+      transform: rotate(-1.5deg);
+      backdrop-filter: blur(8px);
     }
 
-    .h21-note-caption small {
-      color: rgba(37,33,38,.42);
+    .e22-note-label small {
+      color: rgba(37,33,38,.45);
       font-size: 5px;
-      letter-spacing: .12em;
+      letter-spacing: .11em;
       font-weight: 900;
     }
 
-    .h21-note-caption strong {
+    .e22-note-label strong {
       font-family: var(--serif);
-      font-size: 20px;
-      line-height: .95;
-      letter-spacing: -.025em;
+      font-size: 18px;
+      line-height: .94;
       font-weight: 600;
     }
 
-    .h21-note-caption span {
-      color: rgba(37,33,38,.56);
+    .e22-open-label {
+      position: absolute;
+      z-index: 8;
+      left: 50%;
+      top: 47%;
+      width: max-content;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(24,21,24,.87);
+      color: #fff;
       font-size: 6px;
-      line-height: 1.4;
-      letter-spacing: .025em;
-      font-weight: 700;
+      letter-spacing: .08em;
+      font-weight: 900;
+      opacity: 0;
+      transform: translate(-50%,-42%);
+      transition: .25s ease;
+      pointer-events: none;
     }
 
-    .h21-note-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 18px;
-      margin-top: 3px;
+    .e22-phone:hover {
+      z-index: 30;
+      filter: drop-shadow(0 18px 22px rgba(37,33,38,.16));
+      transform:
+        translate(
+          calc(var(--e22-x, 0px) * var(--e22-depth, .3)),
+          calc(var(--e22-y, 0px) * var(--e22-depth, .3) - 10px)
+        )
+        rotate(calc(var(--phone-rotate) + 1deg))
+        scale(1.018);
     }
 
-    .h21-note-controls > button {
+    .e22-phone:hover .e22-open-label {
+      opacity: 1;
+      transform: translate(-50%,-50%);
+    }
+
+    .e22-project-copy {
+      position: absolute;
+      z-index: 18;
+      left: 32px;
+      bottom: 34px;
+      display: grid;
+      grid-template-columns: 155px 360px;
+      gap: 26px;
+      align-items: start;
+      max-width: 560px;
+    }
+
+    .e22-project-copy h4 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 65px;
+      line-height: .82;
+      letter-spacing: -.055em;
+      font-style: italic;
+      font-weight: 500;
+      transform: rotate(5deg);
+    }
+
+    .e22-project-copy p {
+      margin: 5px 0 0;
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.35;
+      letter-spacing: -.025em;
+    }
+
+    .e22-project-copy mark {
+      padding: 0 .05em;
+      background: transparent;
+      color: var(--rose-deep);
+    }
+
+    /* Scroll reveal: editorial pieces enter from different directions. */
+    .e22-hanshu:not(.is-visible) .e22-hanshu-header,
+    .e22-hanshu:not(.is-visible) .e22-project-copy {
+      opacity: 0;
+      transform: translateX(-18px);
+    }
+
+    .e22-hanshu:not(.is-visible) .e22-product {
+      opacity: 0;
+      translate: 0 25px;
+    }
+
+    .e22-hanshu:not(.is-visible) .e22-phone,
+    .e22-hanshu:not(.is-visible) .e22-flat-card {
+      opacity: 0;
+      translate: 18px 16px;
+    }
+
+    .e22-hanshu .e22-hanshu-header,
+    .e22-hanshu .e22-project-copy,
+    .e22-hanshu .e22-product,
+    .e22-hanshu .e22-phone,
+    .e22-hanshu .e22-flat-card {
+      transition:
+        opacity .65s ease,
+        translate .75s cubic-bezier(.18,.84,.2,1),
+        transform .28s ease-out;
+    }
+
+    /* =========================================================
+       V22 — CREATIVE VIDEO
+    ========================================================= */
+
+    .e22-video-frame {
+      isolation: isolate;
+    }
+
+    .e22-video-poster,
+    .e22-inline-video {
+      position: absolute;
+      inset: 9px;
+      width: calc(100% - 18px) !important;
+      height: calc(100% - 18px) !important;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .e22-inline-video {
+      z-index: 2;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .e22-video-work:hover .e22-inline-video {
+      opacity: 1;
+    }
+
+    .e22-video-badge {
+      position: absolute;
+      z-index: 6;
+      left: 18px;
+      top: 18px;
+      padding: 7px 9px;
+      border: 1px solid rgba(255,255,255,.55);
+      background: rgba(20,18,21,.76);
+      color: #fff;
+      font-size: 6px;
+      letter-spacing: .10em;
+      font-weight: 900;
+      backdrop-filter: blur(7px);
+    }
+
+    .e22-play-icon {
+      position: absolute;
+      z-index: 6;
+      left: 50%;
+      top: 50%;
       display: grid;
       place-items: center;
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(37,33,38,.15);
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,.68);
       border-radius: 50%;
-      background: rgba(255,255,255,.52);
-      color: var(--ink);
-      font-size: 15px;
-      cursor: pointer;
-      transition: .24s ease;
+      background: rgba(20,18,21,.54);
+      color: #fff;
+      font-size: 14px;
+      transform: translate(-50%,-50%);
+      backdrop-filter: blur(8px);
+      transition: .28s ease;
     }
 
-    .h21-note-controls > button:hover {
-      transform: scale(1.08);
-      background: rgba(255,255,255,.84);
+    .e22-video-work:hover .e22-play-icon {
+      opacity: 0;
+      scale: .85;
     }
 
-    .h21-dots {
-      display: flex;
-      align-items: center;
-      gap: 7px;
+    .e22-creative-media {
+      position: relative;
+      min-height: 480px;
     }
 
-    .h21-dots button {
-      width: 5px;
-      height: 5px;
-      border: 0;
-      border-radius: 50%;
-      padding: 0;
-      background: rgba(37,33,38,.22);
-      cursor: pointer;
-      transition: .25s ease;
+    .e22-creative-media > img,
+    .e22-creative-media > video,
+    .e22-video-fallback {
+      width: 100%;
+      max-height: calc(100vh - 150px);
+      object-fit: contain;
+      filter: drop-shadow(0 29px 34px rgba(37,33,38,.18));
     }
 
-    .h21-dots button.is-active {
-      width: 18px;
-      border-radius: 999px;
-      background: var(--rose-deep);
+    .e22-creative-media > video {
+      background: #151418;
     }
 
-    .h21-note-hint {
-      margin: 10px 0 0;
-      color: rgba(37,33,38,.40);
-      font-size: 6px;
-      letter-spacing: .04em;
+    .e22-video-fallback {
+      position: relative;
+    }
+
+    .e22-video-fallback img {
+      display: block;
+      width: 100%;
+      max-height: calc(100vh - 190px);
+      object-fit: contain;
+    }
+
+    .e22-video-fallback p {
+      margin: 11px 0 0;
+      color: rgba(37,33,38,.58);
+      font-size: 9px;
       text-align: center;
     }
 
-    @keyframes h21Float {
-      0%,100% { translate: 0 0; }
-      50% { translate: 0 -10px; }
-    }
-
-    @keyframes h21Sweep {
-      0%,100% { translate: -14px 0; opacity: .18; }
-      50% { translate: 17px 0; opacity: .39; }
-    }
-
-    @keyframes h21Showcase {
-      0% {
-        transform: translateX(-50%) perspective(1500px) rotateX(1deg) rotateY(-7deg) translateZ(38px);
-      }
-      30% {
-        transform: translateX(-50%) perspective(1500px) rotateX(-2deg) rotateY(14deg) translateZ(90px) scale(1.045);
-      }
-      63% {
-        transform: translateX(-50%) perspective(1500px) rotateX(2deg) rotateY(-10deg) translateZ(72px) scale(1.025);
-      }
-      100% {
-        transform: translateX(-50%) perspective(1500px) rotateX(1deg) rotateY(-7deg) translateZ(38px);
-      }
-    }
-
-    @keyframes h21OpenNote {
-      0% { transform: translateX(-50%) translateZ(95px) rotateY(0) scale(1); }
-      55% { transform: translateX(-50%) translateZ(180px) rotateY(-7deg) scale(1.08); }
-      100% { transform: translateX(-50%) translateZ(95px) rotateY(0) scale(1); }
-    }
-
-    @keyframes h21Caret {
-      0%,49% { opacity: 1; }
-      50%,100% { opacity: 0; }
-    }
-
-    @media (max-width: 1180px) {
-      .h21-case,
-      .h21-stage {
-        min-height: 1150px;
+    @media (max-width: 1120px) {
+      .e22-hanshu,
+      .e22-hanshu-stage {
+        min-height: 1160px;
       }
 
-      .h21-copy {
-        width: 36%;
+      .e22-phone-collage {
+        top: 600px;
+        right: 2%;
+        width: 64%;
+        height: 500px;
       }
 
-      .h21-product-zone {
-        left: 40%;
+      .e22-phone-main {
+        width: 196px;
       }
 
-      .h21-notes {
-        top: 770px;
-        right: 3%;
-        width: 54%;
-        height: 350px;
+      .e22-phone-secondary {
+        width: 172px;
       }
 
-      .h21-deck {
-        height: 270px;
+      .e22-phone-tertiary {
+        width: 150px;
       }
 
-      .h21-note-card {
-        width: 155px;
-        height: 270px;
+      .e22-product {
+        left: 54%;
+        top: 180px;
       }
 
-      .h21-phone-shell {
-        height: 235px;
-        border-width: 5px;
-        border-radius: 25px;
+      .e22-card-one {
+        right: 4%;
+        top: 315px;
       }
 
-      .h21-note-caption {
-        display: none;
+      .e22-card-two {
+        left: 8%;
+        bottom: 28px;
       }
 
-      .h21-notes-head {
-        margin-inline: 3px;
-      }
-
-      .h21-note-controls {
-        position: absolute;
-        right: 0;
-        bottom: 2px;
-      }
-
-      .h21-note-hint {
-        display: none;
+      .e22-project-copy {
+        bottom: 280px;
       }
     }
 
-    @media (max-width: 850px) {
-      .h21-case,
-      .h21-stage {
-        min-height: 1510px;
+    @media (max-width: 760px) {
+      .e22-hanshu,
+      .e22-hanshu-stage {
+        min-height: 1450px;
       }
 
-      .h21-stage {
-        padding: 30px 17px 24px;
+      .e22-hanshu-stage {
+        padding: 24px 16px 30px;
       }
 
-      .h21-meta,
-      .h21-copy {
+      .e22-hanshu-header {
         position: relative;
         inset: auto;
         width: 100%;
       }
 
-      .h21-meta {
-        width: 100%;
+      .e22-hanshu-title span {
+        font-size: 4.7rem;
       }
 
-      .h21-copy {
-        margin-top: 58px;
+      .e22-hanshu-title em {
+        font-size: 3.35rem;
       }
 
-      .h21-title span {
-        font-size: 4.6rem;
+      .e22-hanshu-meta {
+        max-width: 360px;
       }
 
-      .h21-title em {
-        font-size: 3.65rem;
-      }
-
-      .h21-experience {
-        position: relative;
-        top: auto;
-        margin-top: 22px;
-      }
-
-      .h21-product-zone {
+      .e22-product {
         left: 50%;
-        top: 650px;
-        width: 290px;
-        transform: translateX(-50%);
+        top: 470px;
+        width: 158px;
+        transform:
+          translateX(-50%)
+          translate(
+            calc(var(--e22-x, 0px) * var(--e22-depth, .3)),
+            calc(var(--e22-y, 0px) * var(--e22-depth, .3))
+          )
+          rotate(-4deg);
       }
 
-      .h21-notes {
-        top: 1240px;
+      .e22-flat-card {
+        width: 165px;
+      }
+
+      .e22-card-one {
+        right: 2%;
+        top: 515px;
+      }
+
+      .e22-card-two {
+        left: 2%;
+        bottom: 270px;
+      }
+
+      .e22-phone-collage {
+        top: 735px;
         right: 0;
         width: 100%;
-        height: 250px;
+        height: 460px;
       }
 
-      .h21-notes-head {
-        margin-inline: 0;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .h21-case,
-      .h21-stage {
-        min-height: 1430px;
+      .e22-phone-main {
+        left: 34%;
+        width: 176px;
       }
 
-      .h21-title span {
-        font-size: 4rem;
+      .e22-phone-secondary {
+        width: 145px;
       }
 
-      .h21-title em {
-        font-size: 3.2rem;
+      .e22-phone-tertiary {
+        width: 130px;
       }
 
-      .h21-intro {
-        font-size: 11px;
+      .e22-note-label {
+        display: none;
       }
 
-      .h21-product-zone {
-        top: 625px;
-        scale: .88;
+      .e22-project-copy {
+        left: 16px;
+        right: 16px;
+        bottom: 32px;
+        grid-template-columns: 90px 1fr;
+        max-width: none;
       }
 
-      .h21-notes {
-        top: 1170px;
+      .e22-project-copy h4 {
+        font-size: 44px;
       }
 
-      .h21-note-card {
-        width: 132px;
-      }
-
-      .h21-phone-shell {
-        height: 210px;
-      }
-
-      .h21-note-controls {
-        right: 50%;
-        transform: translateX(50%);
+      .e22-project-copy p {
+        font-size: 12px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .h21-product-stack,
-      .h21-light-sweep,
-      .h21-note-card {
-        animation: none !important;
+      .e22-phone,
+      .e22-product,
+      .e22-flat-card,
+      .e22-inline-video {
         transition-duration: .01ms !important;
       }
     }
@@ -8720,227 +8394,149 @@
           
           
           
-          <article class="h21-case" id="hanshu-card" data-reveal>
-            <div class="h21-stage">
+          <article class="e22-hanshu" id="hanshu-card" data-reveal>
+            <div class="e22-hanshu-stage" id="e22HanshuStage">
 
-              <header class="h21-meta">
-                <div class="h21-brandline">
-                  <span>01 / FEATURED BRAND CASE</span>
-                  <span>2025.12—2026.02</span>
+              <header class="e22-hanshu-header">
+                <div class="e22-brandline">
+                  <strong>ENO LI</strong>
+                  <span></span>
+                  <strong>WORK</strong>
                 </div>
 
-                <dl>
-                  <dt>Project</dt>
-                  <dd>韩束亮白紧致身体精华</dd>
-
-                  <dt>Role</dt>
-                  <dd>产品营销 / 小红书内容运营</dd>
-
-                  <dt>Focus</dt>
-                  <dd>Content Strategy / Creator Collaboration / Performance Review</dd>
-                </dl>
-              </header>
-
-              <section class="h21-copy">
-                <p class="h21-eyebrow">FROM FUNCTION TO LIVED MOMENTS</p>
-
-                <h3 class="h21-title">
-                  <span>韩束</span>
+                <h3 class="e22-hanshu-title">
+                  <span>HANSHU</span>
                   <em>亮白瓶</em>
                 </h3>
 
-                <p class="h21-intro">
-                  从用户语言与真实使用场景出发，把相对单一的“亮白功效”
-                  转化为更有代入感、情绪价值与传播力的内容表达。
-                </p>
+                <dl class="e22-hanshu-meta">
+                  <dt>YEAR</dt>
+                  <dd>2025.12—2026.02</dd>
 
-                <div class="h21-tags" aria-label="项目能力标签">
-                  <span>User Insight</span>
-                  <span>Social Commerce</span>
-                  <span>Creator System</span>
-                  <span>Data Review</span>
-                </div>
+                  <dt>PROJECT</dt>
+                  <dd>韩束亮白紧致身体精华</dd>
 
-                <button
-                  class="h21-start"
-                  id="h21Start"
-                  type="button"
-                  aria-expanded="false"
+                  <dt>ROLE</dt>
+                  <dd>产品营销 / 小红书内容运营</dd>
+
+                  <dt>DISCIPLINES</dt>
+                  <dd>
+                    CONTENT STRATEGY<br>
+                    CREATOR COLLABORATION<br>
+                    SOCIAL COMMERCE<br>
+                    PERFORMANCE REVIEW
+                  </dd>
+                </dl>
+              </header>
+
+              <figure class="e22-product e22-move" data-e22-depth="0.34">
+                <img
+                  src="hanshu-hero-base.png"
+                  alt="韩束亮白紧致身体精华液"
+                />
+              </figure>
+
+              <aside class="e22-flat-card e22-card-one e22-move" data-e22-depth="0.19">
+                <small>CONTENT DIRECTION</small>
+                <strong>FROM FUNCTION<br>TO REAL LIFE</strong>
+              </aside>
+
+              <aside class="e22-flat-card e22-card-two e22-move" data-e22-depth="0.13">
+                <small>CONTENT LOGIC</small>
+                <strong>USER LANGUAGE<br>DAILY SCENES<br>DATA REVIEW</strong>
+              </aside>
+
+              <section class="e22-phone-collage" aria-label="韩束三篇小红书代表内容">
+
+                <a
+                  class="e22-phone e22-phone-main e22-move"
+                  data-e22-depth="0.48"
+                  href="https://www.xiaohongshu.com/discovery/item/698ac601000000000a02fbd0?source=webshare&xhsshare=pc_web&xsec_token=AByT4LKUIqW7KCjq4dJMV_sK7kglpcJH2pIEh-5au9Lgk=&xsec_source=pc_share"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="打开宠物陪伴特辑"
                 >
-                  <span>点击产品展开项目</span>
-                  <b>START CASE ↗</b>
-                </button>
-
-                <section class="h21-experience" id="h21Experience" aria-live="polite">
-                  <div class="h21-experience-head">
-                    <small>PROJECT EXPERIENCE</small>
-                    <strong>小红书产品营销 Campaign</strong>
-                  </div>
-
-                  <div class="h21-typing" id="h21Typing"></div>
-                  <span class="h21-caret" id="h21Caret" aria-hidden="true"></span>
-                </section>
-              </section>
-
-              <section class="h21-product-zone" id="h21ProductZone">
-                <button
-                  class="h21-product"
-                  id="h21Product"
-                  type="button"
-                  aria-label="点击韩束亮白瓶查看项目经历"
-                  aria-expanded="false"
-                >
-                  <span class="h21-orbit h21-orbit-a"></span>
-                  <span class="h21-orbit h21-orbit-b"></span>
-                  <span class="h21-orbit h21-orbit-c"></span>
-                  <span class="h21-glow"></span>
-                  <span class="h21-pedestal"></span>
-
-                  <span class="h21-product-stack" id="h21ProductStack">
+                  <span class="e22-phone-shell">
+                    <span class="e22-speaker"></span>
                     <img
-                      class="h21-layer h21-shadow"
-                      src="hanshu-hero-shadow.png"
-                      alt=""
-                      aria-hidden="true"
+                      src="hanshu-note-pet-v17.jpg"
+                      alt="宠物陪伴特辑小红书笔记截图"
                     />
-                    <img
-                      class="h21-layer h21-base"
-                      src="hanshu-hero-base.png"
-                      alt="韩束亮白紧致身体精华液"
-                    />
-                    <img
-                      class="h21-layer h21-edge"
-                      src="hanshu-hero-edge.png"
-                      alt=""
-                      aria-hidden="true"
-                    />
-                    <img
-                      class="h21-layer h21-highlight"
-                      src="hanshu-hero-highlight.png"
-                      alt=""
-                      aria-hidden="true"
-                    />
-                    <span class="h21-light-sweep" aria-hidden="true"></span>
+                    <span class="e22-homebar"></span>
                   </span>
 
-                  <span class="h21-product-label">
-                    <small>HERO PRODUCT</small>
-                    <strong>body:肤</strong>
-                    <span>250g · Brightening Body Essence</span>
+                  <span class="e22-note-label">
+                    <small>01 / PET × BODY CARE</small>
+                    <strong>宠物陪伴特辑</strong>
                   </span>
-                </button>
 
-                <div class="h21-method">
-                  <span><b>01</b>User language</span>
-                  <i></i>
-                  <span><b>02</b>Life scene</span>
-                  <i></i>
-                  <span><b>03</b>Creator fit</span>
-                  <i></i>
-                  <span><b>04</b>Review loop</span>
-                </div>
+                  <span class="e22-open-label">OPEN ON XIAOHONGSHU ↗</span>
+                </a>
+
+                <a
+                  class="e22-phone e22-phone-secondary e22-move"
+                  data-e22-depth="0.31"
+                  href="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a?source=webshare&xhsshare=pc_web&xsec_token=ABY7h-p44g530tWZnOHySB0REijZdZSoZ3887p3Oj7ed4=&xsec_source=pc_share"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="打开年前亮白急救"
+                >
+                  <span class="e22-phone-shell">
+                    <span class="e22-speaker"></span>
+                    <img
+                      src="hanshu-note-hack-v17.jpg"
+                      alt="年前亮白急救小红书笔记截图"
+                    />
+                    <span class="e22-homebar"></span>
+                  </span>
+
+                  <span class="e22-note-label">
+                    <small>02 / BEAUTY HACK</small>
+                    <strong>年前亮白急救</strong>
+                  </span>
+
+                  <span class="e22-open-label">OPEN ON XIAOHONGSHU ↗</span>
+                </a>
+
+                <a
+                  class="e22-phone e22-phone-tertiary e22-move"
+                  data-e22-depth="0.23"
+                  href="http://xhslink.com/o/5BDbyRKL4q2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="打开从手指缝白到脚趾缝"
+                >
+                  <span class="e22-phone-shell e22-phone-light">
+                    <span class="e22-speaker"></span>
+                    <img
+                      src="hanshu-note-proof-v17.jpg"
+                      alt="从手指缝白到脚趾缝小红书笔记截图"
+                    />
+                    <span class="e22-homebar"></span>
+                  </span>
+
+                  <span class="e22-note-label">
+                    <small>03 / USER PROOF</small>
+                    <strong>从手指缝白到脚趾缝</strong>
+                  </span>
+
+                  <span class="e22-open-label">OPEN ON XIAOHONGSHU ↗</span>
+                </a>
+
               </section>
 
-              <section class="h21-notes" aria-label="三篇代表性小红书笔记">
-                <header class="h21-notes-head">
-                  <div>
-                    <small>REPRESENTATIVE NOTES</small>
-                    <strong>三篇内容切口</strong>
-                  </div>
+              <section class="e22-project-copy">
+                <h4>Project</h4>
 
-                  <span id="h21Counter">01 / 03</span>
-                </header>
-
-                <div class="h21-deck" id="h21Deck">
-
-                  <button
-                    class="h21-note-card"
-                    type="button"
-                    data-note-index="0"
-                    data-note-state="current"
-                    data-note-url="https://www.xiaohongshu.com/discovery/item/698ac601000000000a02fbd0?source=webshare&xhsshare=pc_web&xsec_token=AByT4LKUIqW7KCjq4dJMV_sK7kglpcJH2pIEh-5au9Lgk=&xsec_source=pc_share"
-                    aria-label="宠物陪伴特辑"
-                  >
-                    <span class="h21-phone-shell">
-                      <span class="h21-speaker"></span>
-                      <img
-                        src="hanshu-note-pet-v17.jpg"
-                        alt="宠物陪伴主题小红书爆文截图"
-                      />
-                      <span class="h21-homebar"></span>
-                    </span>
-
-                    <span class="h21-note-caption">
-                      <small>01 / PET × BODY CARE</small>
-                      <strong>宠物陪伴特辑</strong>
-                      <span>情绪价值 × 陪伴场景 × 产品植入</span>
-                    </span>
-                  </button>
-
-                  <button
-                    class="h21-note-card"
-                    type="button"
-                    data-note-index="1"
-                    data-note-state="next"
-                    data-note-url="https://www.xiaohongshu.com/discovery/item/6984069b0000000028021b8a?source=webshare&xhsshare=pc_web&xsec_token=ABY7h-p44g530tWZnOHySB0REijZdZSoZ3887p3Oj7ed4=&xsec_source=pc_share"
-                    aria-label="年前亮白急救"
-                  >
-                    <span class="h21-phone-shell">
-                      <span class="h21-speaker"></span>
-                      <img
-                        src="hanshu-note-hack-v17.jpg"
-                        alt="又白又嫩的野路子小红书爆文截图"
-                      />
-                      <span class="h21-homebar"></span>
-                    </span>
-
-                    <span class="h21-note-caption">
-                      <small>02 / BEAUTY HACK</small>
-                      <strong>年前亮白急救</strong>
-                      <span>节日前置 × 攻略感 × 功效具象化</span>
-                    </span>
-                  </button>
-
-                  <button
-                    class="h21-note-card"
-                    type="button"
-                    data-note-index="2"
-                    data-note-state="prev"
-                    data-note-url="http://xhslink.com/o/5BDbyRKL4q2"
-                    aria-label="从手指缝白到脚趾缝"
-                  >
-                    <span class="h21-phone-shell h21-phone-light">
-                      <span class="h21-speaker"></span>
-                      <img
-                        src="hanshu-note-proof-v17.jpg"
-                        alt="从手指缝白到脚趾缝小红书爆文截图"
-                      />
-                      <span class="h21-homebar"></span>
-                    </span>
-
-                    <span class="h21-note-caption">
-                      <small>03 / USER PROOF</small>
-                      <strong>从手指缝白到脚趾缝</strong>
-                      <span>身体细节 × 效果反馈 × 用户实证</span>
-                    </span>
-                  </button>
-
-                </div>
-
-                <div class="h21-note-controls">
-                  <button id="h21Prev" type="button" aria-label="上一篇笔记">←</button>
-
-                  <div class="h21-dots" id="h21Dots" aria-label="笔记切换">
-                    <button class="is-active" type="button" data-dot-index="0" aria-label="查看第一篇"></button>
-                    <button type="button" data-dot-index="1" aria-label="查看第二篇"></button>
-                    <button type="button" data-dot-index="2" aria-label="查看第三篇"></button>
-                  </div>
-
-                  <button id="h21Next" type="button" aria-label="下一篇笔记">→</button>
-                </div>
-
-                <p class="h21-note-hint">
-                  点击侧边卡片切换，点击正面手机打开小红书笔记
+                <p>
+                  在上美集团韩束亮白瓶身体精华项目中，我参与了
+                  <mark>小红书内容营销从策略到执行的完整流程</mark>。
+                  围绕目标用户对身体护理、肤感、使用场景与功效的真实关注，
+                  我将相对单一的“亮白”卖点转化为
+                  <mark>宠物陪伴、节前急救、身体细节</mark>
+                  等更具生活代入感的内容方向，并参与达人筛选、内容排期与投流协同。
+                  通过曝光、点击、互动和进店等数据持续复盘内容表现，
+                  为后续达人类型、选题方向和预算分配提供依据。
                 </p>
               </section>
 
@@ -9137,7 +8733,8 @@
 
 
           
-          <article class="p20-creative-project" id="lab-card" data-reveal>
+          
+          <article class="p20-creative-project e22-creative-project" id="lab-card" data-reveal>
             <div class="p20-creative-stage">
 
               <header class="p20-creative-info">
@@ -9158,11 +8755,11 @@
 
                 <div class="p20-creative-index">
                   <span>01 Interaction & Arduino</span>
-                  <span>02 Spatial Composition</span>
+                  <span>02 Spatial Composition / Video</span>
                 </div>
               </header>
 
-              <div class="p20-creative-gallery">
+              <div class="p20-creative-gallery e22-creative-gallery">
 
                 <button
                   class="p20-work-card p20-work-interactive"
@@ -9185,16 +8782,32 @@
                 </button>
 
                 <button
-                  class="p20-work-card p20-work-spatial"
+                  class="p20-work-card p20-work-spatial e22-video-work"
                   type="button"
                   data-creative-index="1"
-                  aria-label="查看立体构成作品"
+                  aria-label="查看立体构成视频"
                 >
-                  <span class="p20-work-frame">
+                  <span class="p20-work-frame e22-video-frame">
                     <img
+                      class="e22-video-poster"
                       src="fragile-form-spatial-composition.jpg"
-                      alt="透明材料与彩色亚克力构成的立体作品"
+                      alt="立体构成作品视频封面"
                     />
+
+                    <video
+                      class="e22-inline-video"
+                      muted
+                      loop
+                      playsinline
+                      preload="metadata"
+                      poster="fragile-form-spatial-composition.jpg"
+                      aria-label="立体构成作品视频预览"
+                    >
+                      <source src="fragile-form-video.mp4" type="video/mp4">
+                    </video>
+
+                    <span class="e22-video-badge">VIDEO · 02</span>
+                    <span class="e22-play-icon">▶</span>
                   </span>
 
                   <span class="p20-work-label">
@@ -9211,6 +8824,7 @@
               </p>
             </div>
           </article>
+
 
         </div>
       </div>
@@ -9466,372 +9080,22 @@
     })();
   </script>
 
-  <script>
-    (() => {
-      const visual = document.getElementById("hanshuVisual");
-      if (!visual) return;
+  
 
-      const items = [...visual.querySelectorAll("[data-depth]")];
-      const finePointer = window.matchMedia("(pointer:fine)").matches;
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      if (!finePointer || reduceMotion) return;
+  
 
-      visual.addEventListener("pointermove", (event) => {
-        const rect = visual.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
 
-        items.forEach((item) => {
-          const depth = Number(item.dataset.depth || 1);
-          item.style.translate = `${x * depth * 3}px ${y * depth * 2.2}px`;
-        });
-      });
+  
 
-      visual.addEventListener("pointerleave", () => {
-        items.forEach((item) => {
-          item.style.translate = "";
-        });
-      });
-    })();
-  </script>
 
+  
 
-  <script>
-    (() => {
-      const stage = document.querySelector(".hanshu-product-stage");
-      const product = document.querySelector(".hanshu-product-3d");
 
-      if (!stage || !product) return;
+  
 
-      const finePointer = window.matchMedia("(pointer:fine)").matches;
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      if (!finePointer || reduceMotion) return;
-
-      stage.addEventListener("pointermove", (event) => {
-        const rect = stage.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-
-        product.style.animationPlayState = "paused";
-        product.style.transform = `
-          perspective(1200px)
-          rotateY(${-8 + x * 18}deg)
-          rotateX(${2 - y * 12}deg)
-          rotateZ(${-2.5 + x * 2}deg)
-          translateZ(42px)
-          scale(1.025)
-        `;
-      });
-
-      stage.addEventListener("pointerleave", () => {
-        product.style.transform = "";
-        product.style.animationPlayState = "";
-      });
-    })();
-  </script>
-
-
-  <script>
-    (() => {
-      const zone = document.getElementById("hanshuProductZone");
-      const product = zone?.querySelector(".hanshu-product-object");
-      if (!zone || !product) return;
-
-      const finePointer = window.matchMedia("(pointer:fine)").matches;
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!finePointer || reduceMotion) return;
-
-      zone.addEventListener("pointermove", (event) => {
-        const rect = zone.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-
-        product.style.animationPlayState = "paused";
-        product.style.transform = `
-          perspective(1200px)
-          rotateY(${-8 + x * 18}deg)
-          rotateX(${2 - y * 12}deg)
-          rotateZ(${-2 + x * 2}deg)
-          translateZ(45px)
-          scale(1.025)
-        `;
-      });
-
-      zone.addEventListener("pointerleave", () => {
-        product.style.transform = "";
-        product.style.animationPlayState = "";
-      });
-    })();
-  </script>
-
-
-  <script>
-    (() => {
-      const collage = document.getElementById("hanshuCollage");
-      if (!collage) return;
-
-      const finePointer = window.matchMedia("(pointer:fine)").matches;
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!finePointer || reduceMotion) return;
-
-      const items = [...collage.querySelectorAll("[data-he-depth]")];
-
-      collage.addEventListener("pointermove", (event) => {
-        const rect = collage.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-
-        items.forEach((item) => {
-          const depth = Number(item.dataset.heDepth || 1);
-          item.style.translate = `${x * depth * 2.3}px ${y * depth * 1.8}px`;
-        });
-      });
-
-      collage.addEventListener("pointerleave", () => {
-        items.forEach((item) => {
-          item.style.translate = "";
-        });
-      });
-    })();
-  </script>
-
-
-  <script>
-    (() => {
-      const section = document.getElementById("hanshu-card");
-      const button = document.getElementById("hanshuBottleButton");
-      const output = document.getElementById("hanshuTypingOutput");
-      const caret = document.getElementById("hanshuTypeCaret");
-
-      if (!section || !button || !output || !caret) return;
-
-      const lines = [
-        "参与韩束亮白瓶身体精华在小红书平台的产品营销 Campaign 规划，结合目标用户与使用场景制定阶段性内容策略。",
-        "基于曝光、点击、互动等核心数据指标对内容表现进行复盘分析，提炼有效内容类型并优化后续传播方向。",
-        "对接代理商与达人合作方，协助推进达人筛选、内容策划与发布排期，推动内容种草与产品曝光。",
-        "支持 KOC 铺量及后续 KOL 放量策略制定，参与达人筛选标准与内容执行方案设计。"
-      ];
-
-      let hasPlayed = false;
-      let typingToken = 0;
-
-      const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-      async function typeLine(text, paragraph, token) {
-        for (const char of text) {
-          if (token !== typingToken) return false;
-          paragraph.textContent += char;
-
-          const delay =
-            char === "，" || char === "。" ? 125 :
-            char === "、" ? 80 :
-            char === " " ? 20 :
-            34;
-
-          await sleep(delay);
-        }
-        return true;
-      }
-
-      async function playTyping() {
-        const token = ++typingToken;
-        output.innerHTML = "";
-        caret.classList.add("is-visible");
-
-        await sleep(1400);
-
-        for (const line of lines) {
-          if (token !== typingToken) return;
-
-          const paragraph = document.createElement("p");
-          output.appendChild(paragraph);
-
-          const completed = await typeLine(line, paragraph, token);
-          if (!completed) return;
-
-          await sleep(290);
-        }
-
-        if (token === typingToken) {
-          await sleep(360);
-          caret.classList.remove("is-visible");
-        }
-      }
-
-      function activate() {
-        if (hasPlayed) {
-          section.classList.remove("is-activated");
-          button.setAttribute("aria-expanded", "false");
-          output.innerHTML = "";
-          caret.classList.remove("is-visible");
-          typingToken++;
-
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              section.classList.add("is-activated");
-              button.setAttribute("aria-expanded", "true");
-              playTyping();
-            });
-          });
-          return;
-        }
-
-        hasPlayed = true;
-        section.classList.add("is-activated");
-        button.setAttribute("aria-expanded", "true");
-        playTyping();
-      }
-
-      button.addEventListener("click", activate);
-    })();
-  </script>
-
-
-  <script>
-    (() => {
-      const section = document.getElementById("hanshu-card");
-      const heroZone = document.getElementById("v17HeroZone");
-      const productButton = document.getElementById("v17ProductButton");
-      const productStack = document.getElementById("v17ProductStack");
-      const output = document.getElementById("v17TypingOutput");
-      const caret = document.getElementById("v17TypeCaret");
-      const cluster = document.getElementById("v17PhoneCluster");
-
-      if (!section || !heroZone || !productButton || !productStack || !output || !caret) return;
-
-      const lines = [
-        "参与韩束亮白瓶身体精华在小红书平台的产品营销 Campaign 规划，结合目标用户与使用场景制定阶段性内容策略。",
-        "基于曝光、点击、互动等核心数据指标对内容表现进行复盘分析，提炼有效内容类型并优化后续传播方向。",
-        "对接代理商与达人合作方，协助推进达人筛选、内容策划与发布排期，推动内容种草与产品曝光。",
-        "支持 KOC 铺量及后续 KOL 放量策略制定，参与达人筛选标准与内容执行方案设计。"
-      ];
-
-      const finePointer = window.matchMedia("(pointer:fine)").matches;
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      let typingToken = 0;
-
-      const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-      async function typeLine(text, paragraph, token) {
-        for (const char of text) {
-          if (token !== typingToken) return false;
-          paragraph.textContent += char;
-
-          const delay =
-            char === "，" || char === "。" ? 112 :
-            char === "、" ? 75 :
-            char === " " ? 18 :
-            32;
-
-          await sleep(delay);
-        }
-        return true;
-      }
-
-      async function playTyping() {
-        const token = ++typingToken;
-        output.innerHTML = "";
-        caret.classList.add("is-visible");
-
-        await sleep(reduceMotion ? 20 : 1120);
-
-        for (const line of lines) {
-          if (token !== typingToken) return;
-
-          const paragraph = document.createElement("p");
-          output.appendChild(paragraph);
-
-          if (reduceMotion) {
-            paragraph.textContent = line;
-          } else {
-            const complete = await typeLine(line, paragraph, token);
-            if (!complete) return;
-          }
-
-          await sleep(reduceMotion ? 10 : 235);
-        }
-
-        if (token === typingToken) {
-          await sleep(reduceMotion ? 10 : 300);
-          caret.classList.remove("is-visible");
-        }
-      }
-
-      function restartInteraction() {
-        typingToken++;
-        output.innerHTML = "";
-        caret.classList.remove("is-visible");
-
-        section.classList.remove("is-activated");
-        productStack.classList.remove("is-showcasing");
-        productButton.setAttribute("aria-expanded", "false");
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            section.classList.add("is-activated");
-            productStack.classList.add("is-showcasing");
-            productButton.setAttribute("aria-expanded", "true");
-            playTyping();
-          });
-        });
-      }
-
-      productButton.addEventListener("click", restartInteraction);
-
-      productStack.addEventListener("animationend", (event) => {
-        if (event.animationName === "v17ProductShowcase") {
-          productStack.classList.remove("is-showcasing");
-        }
-      });
-
-      if (finePointer && !reduceMotion) {
-        heroZone.addEventListener("pointermove", (event) => {
-          if (productStack.classList.contains("is-showcasing")) return;
-
-          const rect = heroZone.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - .5;
-          const y = (event.clientY - rect.top) / rect.height - .5;
-
-          productStack.style.setProperty("--v17-ry", `${-7 + x * 15}deg`);
-          productStack.style.setProperty("--v17-rx", `${2 - y * 10}deg`);
-          productStack.style.setProperty("--v17-hx", `${x * 10}px`);
-          productStack.style.setProperty("--v17-hy", `${y * 7}px`);
-        });
-
-        heroZone.addEventListener("pointerleave", () => {
-          productStack.style.removeProperty("--v17-ry");
-          productStack.style.removeProperty("--v17-rx");
-          productStack.style.removeProperty("--v17-hx");
-          productStack.style.removeProperty("--v17-hy");
-        });
-      }
-
-      if (cluster) {
-        const phones = [...cluster.querySelectorAll("[data-phone]")];
-
-        phones.forEach((phone) => {
-          phone.addEventListener("pointerenter", () => {
-            cluster.dataset.active = phone.dataset.phone;
-          });
-
-          phone.addEventListener("pointerleave", () => {
-            cluster.removeAttribute("data-active");
-          });
-
-          phone.addEventListener("pointerdown", () => {
-            phone.style.scale = ".985";
-          });
-
-          phone.addEventListener("pointerup", () => {
-            phone.style.scale = "";
-          });
-        });
-      }
-    })();
-  </script>
+  
 
 
   
@@ -10142,6 +9406,7 @@
     </div>
   </div>
 
+  
   <div
     class="p20-creative-modal"
     id="creativeWorkModal"
@@ -10160,12 +9425,38 @@
       </header>
 
       <div class="p20-creative-modal-content">
-        <figure>
+        <figure class="e22-creative-media">
           <img
             id="creativeModalImage"
             src="butterfly-installation.jpg"
             alt="Creative Lab 作品大图"
           />
+
+          <video
+            id="creativeModalVideo"
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="fragile-form-spatial-composition.jpg"
+            aria-label="立体构成作品视频"
+            hidden
+          >
+            <source
+              id="creativeModalVideoSource"
+              src="fragile-form-video.mp4"
+              type="video/mp4"
+            />
+          </video>
+
+          <div class="e22-video-fallback" id="creativeVideoFallback" hidden>
+            <img
+              src="fragile-form-spatial-composition.jpg"
+              alt="立体构成作品静态封面"
+            />
+            <p>上传 fragile-form-video.mp4 后，这里会自动显示视频。</p>
+          </div>
         </figure>
 
         <div class="p20-creative-modal-copy">
@@ -10180,10 +9471,11 @@
   </div>
 
 
+
   <script>
     (() => {
       const posterData = [{"src": "soft-control-1.jpg", "route": "ROUTE 01 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-2.jpg", "route": "ROUTE 01 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-3.jpg", "route": "ROUTE 01 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-4.jpg", "route": "ROUTE 02 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-5.jpg", "route": "ROUTE 02 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-6.jpg", "route": "ROUTE 02 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-7.jpg", "route": "ROUTE 03 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-8.jpg", "route": "ROUTE 03 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-9.jpg", "route": "ROUTE 03 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}, {"src": "soft-control-10.jpg", "route": "ROUTE 04 / FRIENDSHIP", "title": "REAL FRIENDS DON’T TEST YOU."}, {"src": "soft-control-11.jpg", "route": "ROUTE 04 / LOVE", "title": "LOVE IS NOT A DEMAND."}, {"src": "soft-control-12.jpg", "route": "ROUTE 04 / SOCIAL COMPARISON", "title": "YOU’RE FALLING BEHIND."}];
-      const creativeData = [{"src": "butterfly-installation.jpg", "number": "01 / INTERACTIVE INSTALLATION", "title": "BUTTERFLY", "subtitle": "Care becomes a trigger.", "description": "以活体植物、摄影、数字蝴蝶动画与 Arduino 触发系统组成互动装置。观众通过浇水激活屏幕中的蝴蝶，使“照料”同时成为一种控制行为，由此讨论关怀、操纵与自然之间的边界。", "tags": ["Photography", "Arduino", "Digital Animation", "Audience Interaction"]}, {"src": "fragile-form-spatial-composition.jpg", "number": "02 / SPATIAL COMPOSITION", "title": "FRAGILE FORM", "subtitle": "Soft material, rigid structure.", "description": "以蕾丝、透明薄膜、珠饰与彩色亚克力模块搭建立体形态，研究柔软与硬质材料、透明与反射、秩序与生长之间的关系。作品通过光线穿透和材料叠加产生不断变化的视觉层次。", "tags": ["Material Study", "Spatial Form", "Light", "Installation"]}];
+      const creativeData = [{"type": "image", "src": "butterfly-installation.jpg", "number": "01 / INTERACTIVE INSTALLATION", "title": "BUTTERFLY", "subtitle": "Care becomes a trigger.", "description": "以活体植物、摄影、数字蝴蝶动画与 Arduino 触发系统组成互动装置。观众通过浇水激活屏幕中的蝴蝶，使“照料”同时成为一种控制行为，由此讨论关怀、操纵与自然之间的边界。", "tags": ["Photography", "Arduino", "Digital Animation", "Audience Interaction"]}, {"type": "video", "src": "fragile-form-video.mp4", "poster": "fragile-form-spatial-composition.jpg", "number": "02 / SPATIAL COMPOSITION", "title": "FRAGILE FORM", "subtitle": "Material changes with movement and light.", "description": "以蕾丝、透明薄膜、珠饰与彩色亚克力模块搭建立体形态，研究柔软与硬质材料、透明与反射、秩序与生长之间的关系。视频用于展示观众移动视角下，作品表面反光、透光与空间层次的变化。", "tags": ["Material Study", "Spatial Form", "Light", "Video"]}];
 
       let savedScrollY = 0;
       let currentPoster = 0;
@@ -10207,6 +9499,9 @@
 
       const creativeModal = document.getElementById("creativeWorkModal");
       const creativeImage = document.getElementById("creativeModalImage");
+      const creativeVideo = document.getElementById("creativeModalVideo");
+      const creativeVideoSource = document.getElementById("creativeModalVideoSource");
+      const creativeVideoFallback = document.getElementById("creativeVideoFallback");
       const creativeNumber = document.getElementById("creativeModalNumber");
       const creativeTitle = document.getElementById("creativeModalTitle");
       const creativeSubtitle = document.getElementById("creativeModalSubtitle");
@@ -10332,8 +9627,6 @@
       const openCreative = (index) => {
         const work = creativeData[Number(index) || 0];
 
-        creativeImage.src = work.src;
-        creativeImage.alt = work.title;
         creativeNumber.textContent = work.number;
         creativeTitle.textContent = work.title;
         creativeSubtitle.textContent = work.subtitle;
@@ -10346,6 +9639,34 @@
           creativeTags.appendChild(span);
         });
 
+        creativeImage.hidden = true;
+        creativeVideo.hidden = true;
+        creativeVideoFallback.hidden = true;
+        creativeVideo.pause();
+
+        if (work.type === "video") {
+          creativeVideo.poster = work.poster || "";
+          creativeVideoSource.src = work.src;
+          creativeVideo.load();
+          creativeVideo.hidden = false;
+
+          const showVideoFallback = () => {
+            creativeVideo.hidden = true;
+            creativeVideoFallback.hidden = false;
+          };
+
+          creativeVideo.onerror = showVideoFallback;
+          creativeVideoSource.onerror = showVideoFallback;
+
+          creativeVideo.play().catch(() => {
+            // Controls remain available when autoplay is blocked.
+          });
+        } else {
+          creativeImage.src = work.src;
+          creativeImage.alt = work.title;
+          creativeImage.hidden = false;
+        }
+
         lockPage();
         creativeModal.classList.add("is-open");
         creativeModal.setAttribute("aria-hidden", "false");
@@ -10353,6 +9674,7 @@
       };
 
       const closeCreative = () => {
+        creativeVideo?.pause();
         creativeModal.classList.remove("is-open");
         creativeModal.setAttribute("aria-hidden", "true");
         unlockPage();
@@ -10396,200 +9718,68 @@
 
   <script>
     (() => {
+      const stage = document.getElementById("e22HanshuStage");
       const section = document.getElementById("hanshu-card");
-      const startButton = document.getElementById("h21Start");
-      const productButton = document.getElementById("h21Product");
-      const productZone = document.getElementById("h21ProductZone");
-      const productStack = document.getElementById("h21ProductStack");
-      const typing = document.getElementById("h21Typing");
-      const caret = document.getElementById("h21Caret");
-
-      const deck = document.getElementById("h21Deck");
-      const cards = deck ? [...deck.querySelectorAll("[data-note-index]")] : [];
-      const dots = [...document.querySelectorAll("[data-dot-index]")];
-      const counter = document.getElementById("h21Counter");
-      const previous = document.getElementById("h21Prev");
-      const next = document.getElementById("h21Next");
-
-      if (!section || !productButton || !productStack || !typing || !caret) return;
-
-      const lines = [
-        "参与韩束亮白瓶身体精华在小红书平台的产品营销 Campaign 规划，结合目标用户与使用场景制定阶段性内容策略。",
-        "基于曝光、点击、互动等核心数据指标对内容表现进行复盘分析，提炼有效内容类型并优化后续传播方向。",
-        "对接代理商与达人合作方，协助推进达人筛选、内容策划与发布排期，推动内容种草与产品曝光。",
-        "支持 KOC 铺量及后续 KOL 放量策略制定，参与达人筛选标准与内容执行方案设计。"
-      ];
-
+      const movingItems = stage ? [...stage.querySelectorAll(".e22-move")] : [];
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const finePointer = window.matchMedia("(pointer:fine)").matches;
 
-      let typeToken = 0;
-      let current = 0;
+      if (section && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              section.classList.add("is-visible");
+              observer.disconnect();
+            }
+          });
+        }, { threshold: .17 });
 
-      const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-      async function typeText(text, node, token) {
-        for (const character of text) {
-          if (token !== typeToken) return false;
-
-          node.textContent += character;
-
-          const delay =
-            character === "。" || character === "，" ? 72 :
-            character === "、" ? 54 :
-            character === " " ? 12 :
-            22;
-
-          await wait(delay);
-        }
-
-        return true;
+        observer.observe(section);
+      } else {
+        section?.classList.add("is-visible");
       }
 
-      async function playTyping() {
-        const token = ++typeToken;
-        typing.innerHTML = "";
-        caret.classList.add("is-visible");
+      if (stage && finePointer && !reduceMotion) {
+        stage.addEventListener("pointermove", (event) => {
+          const rect = stage.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width - .5) * 18;
+          const y = ((event.clientY - rect.top) / rect.height - .5) * 14;
 
-        await wait(reduceMotion ? 10 : 520);
-
-        for (const line of lines) {
-          if (token !== typeToken) return;
-
-          const paragraph = document.createElement("p");
-          typing.appendChild(paragraph);
-
-          if (reduceMotion) {
-            paragraph.textContent = line;
-          } else {
-            const finished = await typeText(line, paragraph, token);
-            if (!finished) return;
-          }
-
-          await wait(reduceMotion ? 5 : 120);
-        }
-
-        if (token === typeToken) {
-          caret.classList.remove("is-visible");
-        }
-      }
-
-      function openCase() {
-        section.classList.add("is-open");
-        productButton.setAttribute("aria-expanded", "true");
-        startButton?.setAttribute("aria-expanded", "true");
-
-        productStack.classList.remove("is-showing");
-        void productStack.offsetWidth;
-        productStack.classList.add("is-showing");
-
-        playTyping();
-      }
-
-      productButton.addEventListener("click", openCase);
-      startButton?.addEventListener("click", openCase);
-
-      productStack.addEventListener("animationend", (event) => {
-        if (event.animationName === "h21Showcase") {
-          productStack.classList.remove("is-showing");
-        }
-      });
-
-      if (finePointer && !reduceMotion && productZone) {
-        productZone.addEventListener("pointermove", (event) => {
-          if (productStack.classList.contains("is-showing")) return;
-
-          const rect = productZone.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - .5;
-          const y = (event.clientY - rect.top) / rect.height - .5;
-
-          productStack.style.setProperty("--h21-ry", `${-7 + x * 17}deg`);
-          productStack.style.setProperty("--h21-rx", `${1 - y * 9}deg`);
-          productStack.style.setProperty("--h21-hx", `${x * 13}px`);
-          productStack.style.setProperty("--h21-hy", `${y * 8}px`);
+          movingItems.forEach((item) => {
+            item.style.setProperty("--e22-x", `${x}px`);
+            item.style.setProperty("--e22-y", `${y}px`);
+          });
         });
 
-        productZone.addEventListener("pointerleave", () => {
-          productStack.style.removeProperty("--h21-ry");
-          productStack.style.removeProperty("--h21-rx");
-          productStack.style.removeProperty("--h21-hx");
-          productStack.style.removeProperty("--h21-hy");
+        stage.addEventListener("pointerleave", () => {
+          movingItems.forEach((item) => {
+            item.style.removeProperty("--e22-x");
+            item.style.removeProperty("--e22-y");
+          });
         });
       }
 
-      function renderDeck(index) {
-        current = (index + cards.length) % cards.length;
+      const inlineVideo = document.querySelector(".e22-inline-video");
+      const videoWork = document.querySelector(".e22-video-work");
 
-        cards.forEach((card, cardIndex) => {
-          let state = "hidden";
+      if (inlineVideo && videoWork) {
+        const fallbackToPoster = () => {
+          inlineVideo.style.display = "none";
+        };
 
-          if (cardIndex === current) {
-            state = "current";
-          } else if (cardIndex === (current + 1) % cards.length) {
-            state = "next";
-          } else if (cardIndex === (current - 1 + cards.length) % cards.length) {
-            state = "prev";
-          }
+        inlineVideo.addEventListener("error", fallbackToPoster);
 
-          card.dataset.noteState = state;
-          card.setAttribute("aria-pressed", String(state === "current"));
-        });
+        if (finePointer && !reduceMotion) {
+          videoWork.addEventListener("mouseenter", () => {
+            inlineVideo.play().catch(() => {});
+          });
 
-        dots.forEach((dot, dotIndex) => {
-          dot.classList.toggle("is-active", dotIndex === current);
-        });
-
-        if (counter) {
-          counter.textContent = `${String(current + 1).padStart(2, "0")} / ${String(cards.length).padStart(2, "0")}`;
+          videoWork.addEventListener("mouseleave", () => {
+            inlineVideo.pause();
+            inlineVideo.currentTime = 0;
+          });
         }
       }
-
-      cards.forEach((card, cardIndex) => {
-        card.addEventListener("click", () => {
-          if (cardIndex !== current) {
-            renderDeck(cardIndex);
-            return;
-          }
-
-          const url = card.dataset.noteUrl;
-          card.classList.remove("is-opening");
-          void card.offsetWidth;
-          card.classList.add("is-opening");
-
-          window.setTimeout(() => {
-            window.open(url, "_blank", "noopener,noreferrer");
-          }, reduceMotion ? 0 : 360);
-        });
-
-        card.addEventListener("animationend", (event) => {
-          if (event.animationName === "h21OpenNote") {
-            card.classList.remove("is-opening");
-          }
-        });
-      });
-
-      previous?.addEventListener("click", () => renderDeck(current - 1));
-      next?.addEventListener("click", () => renderDeck(current + 1));
-
-      dots.forEach((dot) => {
-        dot.addEventListener("click", () => {
-          renderDeck(Number(dot.dataset.dotIndex));
-        });
-      });
-
-      let touchStartX = 0;
-
-      deck?.addEventListener("touchstart", (event) => {
-        touchStartX = event.changedTouches[0].clientX;
-      }, { passive: true });
-
-      deck?.addEventListener("touchend", (event) => {
-        const delta = event.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(delta) < 42) return;
-        renderDeck(current + (delta < 0 ? 1 : -1));
-      }, { passive: true });
-
-      renderDeck(0);
     })();
   </script>
 
