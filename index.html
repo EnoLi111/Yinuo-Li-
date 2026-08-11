@@ -191,6 +191,62 @@
     .home-note{animation:none!important}
   }
 
+
+  /* === HOME REFINEMENT V3: tighter portrait + tighter project notes === */
+  .home-stage{
+    min-height:720px;
+  }
+  .portrait{
+    left:7%!important;
+    top:0!important;
+    width:min(610px,88%)!important;
+    aspect-ratio:1086/1448;
+    margin:0!important;
+  }
+  .portrait-fragment{
+    border:0!important;
+    outline:0!important;
+    box-shadow:0 4px 12px rgba(35,28,31,.055)!important;
+  }
+  .home-note{
+    width:170px!important;
+    min-height:116px!important;
+    padding:17px 17px 16px!important;
+  }
+  .note-hs{left:2%!important;top:23%!important;--r:-4.2deg}
+  .note-gender{right:1%!important;top:15%!important;--r:3deg}
+  .note-about{left:4%!important;bottom:8%!important;--r:2.4deg}
+  .note-poster{right:2%!important;bottom:9%!important;--r:-3deg}
+
+  /* Make Xiaohongshu cards visibly clickable. */
+  .hanshu-phone{position:relative}
+  .hanshu-phone::after{
+    content:'OPEN NOTE ↗';
+    position:absolute;
+    right:10px;
+    bottom:10px;
+    z-index:4;
+    padding:7px 9px;
+    border-radius:999px;
+    background:rgba(20,18,19,.78);
+    color:#fff;
+    font:800 7px/1 var(--cn-sans);
+    letter-spacing:.10em;
+    backdrop-filter:blur(7px);
+    pointer-events:none;
+    opacity:.88;
+  }
+  .hanshu-phone:hover::after{opacity:1}
+
+  @media(max-width:1050px){
+    .portrait{left:5%!important;width:90%!important}
+    .home-note{width:158px!important}
+    .note-hs{left:0!important}
+    .note-gender{right:0!important}
+    .note-about{left:1%!important}
+    .note-poster{right:0!important}
+  }
+
 </style>
 </head>
 <body>
@@ -247,25 +303,23 @@ const archive=document.querySelector('#posterArchiveModal'),grid=document.queryS
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const collage=document.querySelector('#portraitCollage');
   if(collage){const pieces=[
-[14,5,20,11,3],[31,3,15,14,5],[45,5,20,12,4],[64,7,18,12,3],
-[9,18,18,15,2],[25,16,17,17,6],[40,18,14,15,7],[53,16,17,17,6],[69,19,17,15,3],
-[6,33,20,16,2],[23,32,17,17,6],[38,31,15,18,8],[51,32,16,17,7],[66,33,19,16,4],
-[10,49,17,15,3],[25,48,15,17,6],[39,49,15,16,8],[52,48,17,17,7],[68,49,16,16,4],
-[15,64,19,15,3],[32,63,15,17,5],[46,64,15,16,6],[59,63,18,17,5],
-[20,78,19,13,3],[38,79,16,13,4],[53,78,20,14,3]
+[4,2,22,16,3],[25,1,23,17,5],[47,3,20,15,4],[66,2,29,17,3],
+[2,17,18,19,2],[19,17,20,19,6],[38,18,17,18,7],[54,17,20,19,6],[73,18,25,18,3],
+[1,35,17,20,2],[17,35,18,20,6],[34,35,16,20,8],[49,35,16,20,8],[64,35,17,20,7],[80,35,18,20,4],
+[3,54,20,21,3],[22,54,18,21,6],[39,54,16,21,8],[54,54,19,21,7],[72,54,25,21,4],
+[6,74,22,24,3],[27,74,20,24,5],[46,74,17,24,6],[62,74,18,24,5],[79,74,17,24,3]
 ],offsets=[
-[-2,-2,-.34],[1,-3,.22],[0,-1,-.18],[2,-2,.31],
-[-2,1,.24],[1,-1,-.20],[-1,-2,.12],[2,0,-.16],[-1,2,.26],
-[1,-1,-.28],[-2,1,.16],[1,-1,-.10],[-1,1,.14],[2,-1,-.22],
-[-1,2,.20],[1,0,-.15],[0,-1,.08],[-1,1,-.13],[2,-1,.18],
-[1,1,-.19],[-1,0,.13],[0,-1,-.08],[1,1,.16],
-[-1,2,.19],[1,-1,-.15],[-2,1,.18]
-],tapes=new Set([0,3,9,25]);pieces.forEach(([x,y,w,h,z],i)=>{const [dx,dy,rot]=offsets[i],fragment=document.createElement('span'),px=x/(100-w)*100||0,py=y/(100-h)*100||0;fragment.className='portrait-fragment'+(tapes.has(i)?' is-taped':'');fragment.style.cssText=`left:${x}%;top:${y}%;width:calc(${w}% - 1.5px);height:calc(${h}% - 1.5px);z-index:${z};background-size:${10000/w}% ${10000/h}%;background-position:${px}% ${py}%;--dx:${dx}px;--dy:${dy}px;--rot:${rot}deg;--tape-rot:${i%3-1}deg;--depth:${1+i%2}`;collage.append(fragment)});if(!reduce&&matchMedia('(pointer:fine)').matches){let frame=0;collage.addEventListener('pointermove',e=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const r=collage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;collage.querySelectorAll('.portrait-fragment').forEach(f=>{const d=+f.style.getPropertyValue('--depth');f.style.translate=`${x*d*1.5}px ${y*d*1.5}px`})})});collage.addEventListener('pointerleave',()=>collage.querySelectorAll('.portrait-fragment').forEach(f=>f.style.translate='0 0'))}}
+[-1,-1,-.22],[1,-2,.16],[0,-1,-.12],[1,-1,.20],
+[-1,1,.15],[1,-1,-.12],[-1,-1,.08],[1,0,-.10],[-1,1,.16],
+[1,-1,-.16],[-1,1,.10],[1,-1,-.06],[-1,1,.07],[1,-1,-.12],[-1,1,.14],
+[-1,1,.12],[1,0,-.09],[0,-1,.05],[-1,1,-.08],[1,-1,.12],
+[-1,1,.13],[1,-1,-.10],[-1,0,.06],[1,1,-.08],[-1,0,.11]
+],tapes=new Set([0,3,15,24]);pieces.forEach(([x,y,w,h,z],i)=>{const [dx,dy,rot]=offsets[i],fragment=document.createElement('span'),px=x/(100-w)*100||0,py=y/(100-h)*100||0;fragment.className='portrait-fragment'+(tapes.has(i)?' is-taped':'');fragment.style.cssText=`left:${x}%;top:${y}%;width:calc(${w}% - .35px);height:calc(${h}% - .35px);z-index:${z};background-size:${10000/w}% ${10000/h}%;background-position:${px}% ${py}%;--dx:${dx}px;--dy:${dy}px;--rot:${rot}deg;--tape-rot:${i%3-1}deg;--depth:${1+i%2}`;collage.append(fragment)});if(!reduce&&matchMedia('(pointer:fine)').matches){let frame=0;collage.addEventListener('pointermove',e=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const r=collage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;collage.querySelectorAll('.portrait-fragment').forEach(f=>{const d=+f.style.getPropertyValue('--depth');f.style.translate=`${x*d*1.5}px ${y*d*1.5}px`})})});collage.addEventListener('pointerleave',()=>collage.querySelectorAll('.portrait-fragment').forEach(f=>f.style.translate='0 0'))}}
   const hsStage=document.querySelector('#hanshuStage'),toggle=document.querySelector('#hanshuCaseToggle'),cluster=document.querySelector('#hanshuCasesCluster'),summary=document.querySelector('.hanshu-summary'),cases=cluster?[...cluster.querySelectorAll('.hanshu-case')]:[],prev=document.querySelector('#hanshuPrevCase'),next=document.querySelector('#hanshuNextCase'),counter=document.querySelector('#hanshuCaseCount');let caseOpen=false,currentCase=0;
   const activeCopy=document.querySelector('#hanshuActiveCopy');
-  const renderCoverFlow=index=>{if(!cases.length)return;currentCase=(index+cases.length)%cases.length;cases.forEach((item,i)=>{const rel=(i-currentCase+cases.length)%cases.length,phone=item.querySelector('.hanshu-phone'),active=i===currentCase;item.classList.toggle('is-active',active);item.classList.toggle('is-next',rel===1);item.classList.toggle('is-prev',rel===cases.length-1);item.setAttribute('aria-current',active?'true':'false');phone?.setAttribute('tabindex',caseOpen&&active?'0':'-1')});if(counter)counter.textContent=`${String(currentCase+1).padStart(2,'0')} / ${String(cases.length).padStart(2,'0')}`;const copy=cases[currentCase]?.querySelector('.hanshu-case-copy');if(activeCopy&&copy)activeCopy.innerHTML=`<small>${copy.querySelector('small')?.textContent||''}</small><h4>${copy.querySelector('h4')?.textContent||''}</h4><p>${copy.querySelector('p')?.textContent||''}</p>`};
+  const renderCoverFlow=index=>{if(!cases.length)return;currentCase=(index+cases.length)%cases.length;cases.forEach((item,i)=>{const rel=(i-currentCase+cases.length)%cases.length,phone=item.querySelector('.hanshu-phone'),active=i===currentCase;item.classList.toggle('is-active',active);item.classList.toggle('is-next',rel===1);item.classList.toggle('is-prev',rel===cases.length-1);item.setAttribute('aria-current',active?'true':'false');phone?.setAttribute('tabindex',caseOpen?'0':'-1')});if(counter)counter.textContent=`${String(currentCase+1).padStart(2,'0')} / ${String(cases.length).padStart(2,'0')}`;const copy=cases[currentCase]?.querySelector('.hanshu-case-copy');if(activeCopy&&copy)activeCopy.innerHTML=`<small>${copy.querySelector('small')?.textContent||''}</small><h4>${copy.querySelector('h4')?.textContent||''}</h4><p>${copy.querySelector('p')?.textContent||''}</p>`};
   const setCasesOpen=open=>{if(!hsStage||!toggle||!cluster)return;caseOpen=open;hsStage.classList.toggle('hanshu-case-open',open);cluster.classList.toggle('is-open',open);cluster.setAttribute('aria-hidden',String(!open));cluster.setAttribute('tabindex',open?'0':'-1');toggle.setAttribute('aria-expanded',String(open));const visual=document.querySelector('#hanshuProduct canvas')||document.querySelector('#hanshuFallback');if(visual&&!reduce)visual.animate([{transform:'scale(1)'},{transform:'scale(1.035)'},{transform:'scale(1)'}],{duration:600,easing:'cubic-bezier(.22,1,.36,1)'});renderCoverFlow(currentCase)};
-  if(toggle&&cluster){let dragX=0,wheelLock=false;cases.forEach((item,i)=>{const phone=item.querySelector('.hanshu-phone');phone?.setAttribute('tabindex','-1');phone?.setAttribute('data-cursor','VIEW');phone?.addEventListener('click',e=>{if(!caseOpen||i!==currentCase){e.preventDefault();if(caseOpen)renderCoverFlow(i)}})});toggle.addEventListener('click',()=>setCasesOpen(!caseOpen));toggle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setCasesOpen(!caseOpen)}});prev?.addEventListener('click',e=>{e.stopPropagation();renderCoverFlow(currentCase-1)});next?.addEventListener('click',e=>{e.stopPropagation();renderCoverFlow(currentCase+1)});cluster.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();renderCoverFlow(currentCase-1)}else if(e.key==='ArrowRight'){e.preventDefault();renderCoverFlow(currentCase+1)}});cluster.addEventListener('pointerdown',e=>{dragX=e.clientX;cluster.setPointerCapture?.(e.pointerId)});cluster.addEventListener('pointerup',e=>{const delta=e.clientX-dragX;if(Math.abs(delta)>35)renderCoverFlow(currentCase+(delta<0?1:-1))});cluster.addEventListener('click',e=>{if(!caseOpen||e.target!==cluster)return;const hit=cases.find(item=>{if(item.classList.contains('is-active'))return false;const r=item.getBoundingClientRect();return e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom});if(hit)renderCoverFlow(cases.indexOf(hit))});cluster.addEventListener('wheel',e=>{if(!caseOpen||wheelLock||Math.abs(e.deltaX)+Math.abs(e.deltaY)<8)return;e.preventDefault();wheelLock=true;renderCoverFlow(currentCase+(e.deltaX+e.deltaY>0?1:-1));setTimeout(()=>wheelLock=false,420)},{passive:false});renderCoverFlow(0)}
+  if(toggle&&cluster){let dragX=0,wheelLock=false;cases.forEach((item,i)=>{const phone=item.querySelector('.hanshu-phone');phone?.setAttribute('tabindex','-1');phone?.setAttribute('data-cursor','VIEW');phone?.addEventListener('click',()=>{if(caseOpen&&i!==currentCase)renderCoverFlow(i)})});toggle.addEventListener('click',()=>setCasesOpen(!caseOpen));toggle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setCasesOpen(!caseOpen)}});prev?.addEventListener('click',e=>{e.stopPropagation();renderCoverFlow(currentCase-1)});next?.addEventListener('click',e=>{e.stopPropagation();renderCoverFlow(currentCase+1)});cluster.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();renderCoverFlow(currentCase-1)}else if(e.key==='ArrowRight'){e.preventDefault();renderCoverFlow(currentCase+1)}});cluster.addEventListener('pointerdown',e=>{dragX=e.clientX;cluster.setPointerCapture?.(e.pointerId)});cluster.addEventListener('pointerup',e=>{const delta=e.clientX-dragX;if(Math.abs(delta)>35)renderCoverFlow(currentCase+(delta<0?1:-1))});cluster.addEventListener('click',e=>{if(!caseOpen||e.target!==cluster)return;const hit=cases.find(item=>{if(item.classList.contains('is-active'))return false;const r=item.getBoundingClientRect();return e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom});if(hit)renderCoverFlow(cases.indexOf(hit))});cluster.addEventListener('wheel',e=>{if(!caseOpen||wheelLock||Math.abs(e.deltaX)+Math.abs(e.deltaY)<8)return;e.preventDefault();wheelLock=true;renderCoverFlow(currentCase+(e.deltaX+e.deltaY>0?1:-1));setTimeout(()=>wheelLock=false,420)},{passive:false});renderCoverFlow(0)}
 })();
 </script>
 <script>
