@@ -6,7 +6,7 @@
   <title>ENO LI — A Living Creative Archive</title>
   <link rel="preload" href="avatar-cover.jpg" as="image"><link rel="preload" href="assets/models/hanshu-bottle.glb" as="fetch" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
   <style>
   /* GLOBAL STYLES */
@@ -615,6 +615,134 @@
   #home.eno-home-v5 .home-note,
   #home.eno-home-v5 .thought-note{
     animation:none!important;
+  }
+}
+
+
+/* =========================================================
+   HOME V6 — composition correction + handwritten project titles
+   ========================================================= */
+#home.eno-home-v5{
+  grid-template-columns:minmax(310px,.82fr) minmax(540px,1.18fr);
+  gap:clamp(22px,3.2vw,48px);
+}
+#home.eno-home-v5 .home-stage{
+  min-height:750px;
+}
+
+/* Make the editorial title smaller and bind it to the portrait */
+#home.eno-home-v5 .pieces-heading{
+  left:52%;
+  top:34px;
+  width:min(500px,68%);
+}
+#home.eno-home-v5 .pieces-heading h2{
+  font-size:clamp(40px,4.25vw,70px);
+  line-height:.9;
+  letter-spacing:-.048em;
+}
+#home.eno-home-v5 .pieces-caption{
+  margin-top:9px;
+  gap:11px;
+  font-size:11px;
+}
+#home.eno-home-v5 .pieces-caption i{
+  width:32px;
+}
+
+/* Pull portrait back toward the visual center */
+#home.eno-home-v5 .portrait{
+  left:43%;
+  top:126px;
+  width:min(470px,61%);
+}
+
+/* Project notes sit around the portrait instead of drifting to page edges */
+#home.eno-home-v5 .note-hs{
+  left:18%;
+  top:30%;
+}
+#home.eno-home-v5 .note-gender{
+  right:4%;
+  top:25%;
+}
+#home.eno-home-v5 .note-about{
+  left:17%;
+  bottom:10%;
+}
+#home.eno-home-v5 .note-poster{
+  right:5%;
+  bottom:11%;
+}
+
+/* Main titles on ALL four project notes become handwritten.
+   English uses Caveat; Chinese Han Shu uses Ma Shan Zheng. */
+#home.eno-home-v5 .home-note strong{
+  margin:10px 0 14px;
+  font-family:"Caveat","Ma Shan Zheng","STKaiti","KaiTi",cursive;
+  font-size:25px;
+  font-weight:600;
+  line-height:1.05;
+  letter-spacing:.005em;
+}
+#home.eno-home-v5 .note-hs strong{
+  font-family:"Ma Shan Zheng","STKaiti","KaiTi",cursive;
+  font-size:24px;
+  font-weight:400;
+  letter-spacing:.02em;
+}
+
+/* Keep metadata rational so the handwriting becomes the personality layer */
+#home.eno-home-v5 .home-note small,
+#home.eno-home-v5 .home-note span{
+  font-family:var(--sans);
+}
+
+/* Slightly reduce decorative thought notes so they don't compete with project cards */
+#home.eno-home-v5 .thought-note{
+  width:110px;
+  min-height:82px;
+  padding:13px 12px;
+  font-size:17px;
+}
+#home.eno-home-v5 .thought-1{left:5%;top:8%}
+#home.eno-home-v5 .thought-2{right:3%;top:9%}
+#home.eno-home-v5 .thought-3{left:1%;top:55%}
+#home.eno-home-v5 .thought-4{right:1%;top:56%}
+
+@media(max-width:1120px){
+  #home.eno-home-v5{
+    grid-template-columns:minmax(280px,.78fr) minmax(470px,1.22fr);
+    gap:26px;
+  }
+  #home.eno-home-v5 .pieces-heading{
+    left:50%;
+    width:min(450px,70%);
+  }
+  #home.eno-home-v5 .portrait{
+    left:43%;
+    width:62%;
+  }
+  #home.eno-home-v5 .note-hs{left:14%}
+  #home.eno-home-v5 .note-about{left:13%}
+}
+@media(max-width:700px){
+  #home.eno-home-v5{
+    grid-template-columns:1fr;
+  }
+  #home.eno-home-v5 .pieces-heading{
+    left:auto;
+    width:100%;
+  }
+  #home.eno-home-v5 .pieces-heading h2{
+    font-size:48px;
+  }
+  #home.eno-home-v5 .portrait{
+    left:50%;
+    width:min(430px,88vw);
+  }
+  #home.eno-home-v5 .home-note strong{
+    font-size:25px;
   }
 }
 
