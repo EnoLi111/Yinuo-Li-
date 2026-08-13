@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>韩束瓶子模型测试</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body { background: radial-gradient(circle at 50% 35%, #faf7f5 0, #e8e1dd 72%, #d8cfca 100%); }
+    canvas { display: block; width: 100%; height: 100%; }
+    #status {
+      position: fixed;
+      left: 20px;
+      bottom: 18px;
+      z-index: 1;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: #4b403b;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 6px 24px rgba(57, 40, 31, 0.08);
+      font: 12px/1.4 system-ui, sans-serif;
+      backdrop-filter: blur(8px);
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="status">正在加载模型…</div>
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    const status = document.querySelector('#status');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(34, innerWidth / innerHeight, 0.01, 1000);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    document.body.prepend(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+
+    scene.add(new THREE.HemisphereLight(0xfff8f2, 0x625b63, 1.65));
+
+    const keyLight = new THREE.DirectionalLight(0xffeee4, 4.2);
+    keyLight.position.set(4, 6, 5);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.set(2048, 2048);
+    keyLight.shadow.bias = -0.0002;
+    keyLight.shadow.radius = 5;
+    scene.add(keyLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffd8d6, 3.2);
+    rimLight.position.set(-5, 3.5, -4);
+    scene.add(rimLight);
+
+    const fillLight = new THREE.DirectionalLight(0xd9e4ff, 1.1);
+    fillLight.position.set(-3, 1, 4);
+    scene.add(fillLight);
+
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/libs/draco/');
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
+    loader.load(
+      './assets/models/hanshu-bottle.glb',
+      ({ scene: model }) => {
+        model.traverse((node) => {
+          if (!node.isMesh) return;
+          node.castShadow = true;
+          node.receiveShadow = true;
+          // 不替换 node.material，以保留 GLB 原有材质。
+        });
+
+        scene.add(model);
+        model.updateMatrixWorld(true);
+
+        const initialBox = new THREE.Box3().setFromObject(model);
+        const center = initialBox.getCenter(new THREE.Vector3());
+        model.position.sub(center);
+        model.updateMatrixWorld(true);
+
+        const box = new THREE.Box3().setFromObject(model);
+        const size = box.getSize(new THREE.Vector3());
+        const maxSize = Math.max(size.x, size.y, size.z);
+        const halfFov = THREE.MathUtils.degToRad(camera.fov * 0.5);
+        const fitHeightDistance = (size.y * 0.5) / Math.tan(halfFov);
+        const fitWidthDistance = (size.x * 0.5) / (Math.tan(halfFov) * camera.aspect);
+        const distance = Math.max(fitHeightDistance, fitWidthDistance, maxSize) * 1.35;
+
+        camera.near = Math.max(maxSize / 1000, 0.001);
+        camera.far = Math.max(distance * 20, 100);
+        camera.position.set(distance * 0.42, size.y * 0.08, distance);
+        camera.updateProjectionMatrix();
+        controls.target.set(0, 0, 0);
+        controls.minDistance = distance * 0.35;
+        controls.maxDistance = distance * 4;
+        controls.update();
+
+        const floorY = box.min.y - maxSize * 0.015;
+        const shadow = new THREE.Mesh(
+          new THREE.CircleGeometry(maxSize * 0.72, 64),
+          new THREE.ShadowMaterial({ color: 0x4c3530, opacity: 0.2 })
+        );
+        shadow.rotation.x = -Math.PI / 2;
+        shadow.position.y = floorY;
+        shadow.receiveShadow = true;
+        scene.add(shadow);
+
+        const shadowExtent = maxSize * 1.5;
+        Object.assign(keyLight.shadow.camera, {
+          left: -shadowExtent,
+          right: shadowExtent,
+          top: shadowExtent,
+          bottom: -shadowExtent,
+          near: 0.01,
+          far: maxSize * 12
+        });
+        keyLight.shadow.camera.updateProjectionMatrix();
+        status.textContent = '加载完成 · 拖动旋转 · 滚轮缩放';
+      },
+      (event) => {
+        if (event.total) status.textContent = `正在加载模型… ${Math.round(event.loaded / event.total * 100)}%`;
+      },
+      (error) => {
+        console.error(error);
+        status.textContent = '模型加载失败，请查看控制台';
+      }
+    );
+
+    function render() {
+      controls.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(render);
+    }
+    render();
+
+    addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+  </script>
+</body>
+</html>
