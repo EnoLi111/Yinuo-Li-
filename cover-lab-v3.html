@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENO LI — Cover Lab v3 Complete</title>
+<style>
+:root{
+  --bg:#e8eceb; --ink:#1d1d1d; --paper:#f7f5ef;
+  --pink:#e8b5c8; --green:#dde7cf; --peach:#efd5c4; --cream:#e7e1d3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+body{
+  overflow-x:hidden;
+  background-image:
+    linear-gradient(rgba(255,255,255,.25),rgba(255,255,255,.25)),
+    linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.03) 1px,transparent 1px);
+  background-size:auto,24px 24px,24px 24px;
+}
+.cover{position:relative;min-height:100vh;overflow:hidden;padding:34px 4vw 42px}
+.nav{position:absolute;right:4vw;top:26px;z-index:50;display:flex;gap:28px;font-size:11px;font-weight:700;letter-spacing:.08em}
+.nav a{color:inherit;text-decoration:none}
+.headline{position:absolute;top:28px;left:50%;transform:translateX(-50%);z-index:20;text-align:center;width:100%;pointer-events:none}
+.headline .small{font-size:11px;letter-spacing:.20em;color:#535150;margin-bottom:6px}
+.headline h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(58px,7vw,100px);line-height:.95;font-weight:400;letter-spacing:-.045em}
+.headline .sub{margin-top:9px;font-family:Georgia,"Times New Roman",serif;font-size:13px;color:#666;letter-spacing:.04em}
+.stage{position:relative;width:min(92vw,1120px);height:min(86vh,820px);min-height:690px;margin:74px auto 0}
+.portrait-wrap{position:absolute;left:50%;top:53%;transform:translate(-50%,-50%);width:520px;height:650px;z-index:10}
+.paper-back{position:absolute;inset:-14px;background:rgba(247,245,239,.92);box-shadow:0 24px 50px rgba(37,34,31,.12),0 5px 12px rgba(37,34,31,.08);transform:rotate(-.3deg)}
+.paper-back::before,.paper-back::after{content:"";position:absolute;top:-10px;width:70px;height:18px;background:rgba(226,212,177,.74);box-shadow:0 2px 4px rgba(60,52,43,.10)}
+.paper-back::before{left:86px;transform:rotate(-4deg)}
+.paper-back::after{right:88px;transform:rotate(3deg)}
+.portrait{position:absolute;inset:0}
+.piece{
+  position:absolute;overflow:hidden;border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 10px 18px rgba(45,39,35,.12),0 2px 5px rgba(45,39,35,.07);
+  transform:translate(var(--dx,0px),var(--dy,0px)) rotate(var(--r,0deg));
+  transform-origin:center;background:#eee;will-change:transform;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s ease;
+}
+.piece::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(60,52,47,.04),inset 0 -8px 14px rgba(60,52,47,.025)}
+.piece .photo{
+  position:absolute;inset:0;background-image:url("avatar-cover.jpg");background-repeat:no-repeat;
+  background-size:520px 650px;background-position:calc(-1px * var(--sx)) calc(-1px * var(--sy));transform:scale(1.002)
+}
+.p1{left:20px;top:8px;width:116px;height:112px;--sx:20;--sy:8;--dx:-3px;--dy:1px;--r:-1.2deg}
+.p2{left:140px;top:0;width:132px;height:126px;--sx:140;--sy:0;--dx:2px;--dy:-2px;--r:.8deg}
+.p3{left:276px;top:6px;width:102px;height:112px;--sx:276;--sy:6;--dx:-1px;--dy:2px;--r:-.5deg}
+.p4{left:382px;top:16px;width:116px;height:136px;--sx:382;--sy:16;--dx:3px;--dy:0;--r:1.1deg}
+.p5{left:0;top:124px;width:124px;height:134px;--sx:0;--sy:124;--dx:-3px;--dy:2px;--r:.8deg}
+.p6{left:128px;top:130px;width:146px;height:146px;--sx:128;--sy:130;--dx:1px;--dy:0;--r:-.25deg}
+.p7{left:278px;top:126px;width:122px;height:150px;--sx:278;--sy:126;--dx:0;--dy:1px;--r:.15deg}
+.p8{left:404px;top:158px;width:108px;height:132px;--sx:404;--sy:158;--dx:3px;--dy:-2px;--r:-1deg}
+.p9{left:18px;top:264px;width:108px;height:154px;--sx:18;--sy:264;--dx:-2px;--dy:1px;--r:-.7deg}
+.p10{left:130px;top:282px;width:142px;height:152px;--sx:130;--sy:282;--dx:0;--dy:0;--r:.2deg}
+.p11{left:276px;top:282px;width:120px;height:158px;--sx:276;--sy:282;--dx:1px;--dy:-1px;--r:-.15deg}
+.p12{left:400px;top:298px;width:112px;height:152px;--sx:400;--sy:298;--dx:3px;--dy:2px;--r:.9deg}
+.p13{left:8px;top:424px;width:128px;height:134px;--sx:8;--sy:424;--dx:-3px;--dy:0;--r:1deg}
+.p14{left:140px;top:438px;width:124px;height:160px;--sx:140;--sy:438;--dx:2px;--dy:2px;--r:-.5deg}
+.p15{left:268px;top:448px;width:142px;height:150px;--sx:268;--sy:448;--dx:-1px;--dy:-1px;--r:.6deg}
+.p16{left:414px;top:462px;width:96px;height:142px;--sx:414;--sy:462;--dx:3px;--dy:1px;--r:-1.2deg}
+.p17{left:66px;top:564px;width:132px;height:78px;--sx:66;--sy:564;--dx:-2px;--dy:0;--r:-.7deg}
+.p18{left:204px;top:606px;width:118px;height:38px;--sx:204;--sy:606;--dx:1px;--dy:-2px;--r:.3deg}
+.p19{left:330px;top:604px;width:104px;height:40px;--sx:330;--sy:604;--dx:-1px;--dy:1px;--r:-.4deg}
+.note{
+  position:absolute;width:182px;min-height:130px;padding:20px 20px 18px;z-index:30;
+  display:flex;flex-direction:column;justify-content:center;color:#282625;text-decoration:none;
+  border:1px solid rgba(255,255,255,.58);box-shadow:0 15px 28px rgba(50,42,38,.15),0 3px 8px rgba(50,42,38,.08);
+  transform-origin:50% 4%;will-change:transform
+}
+.note::before{
+  content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(var(--tape-r,0deg));
+  width:58px;height:18px;background:rgba(228,215,183,.76);box-shadow:0 2px 4px rgba(60,52,44,.10);border:1px solid rgba(255,255,255,.35)
+}
+.note::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.32),transparent 38%),repeating-linear-gradient(0deg,rgba(80,64,57,.028) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+.note small,.note strong,.note span{position:relative;z-index:2}
+.note small{font-size:10px;font-weight:800;letter-spacing:.10em;margin-bottom:13px}
+.note strong{font-size:23px;line-height:1.04;letter-spacing:-.035em}
+.note span{font-size:10px;font-weight:800;letter-spacing:.06em;margin-top:13px}
+.n1{left:30px;top:178px;background:var(--pink);--base-r:-4deg;--tape-r:4deg;transform:rotate(var(--base-r));animation:breeze1 6.2s ease-in-out infinite}
+.n2{right:28px;top:164px;background:var(--green);--base-r:3deg;--tape-r:-4deg;transform:rotate(var(--base-r));animation:breeze2 7.1s ease-in-out infinite}
+.n3{right:42px;bottom:86px;background:var(--peach);--base-r:-2.5deg;--tape-r:3deg;transform:rotate(var(--base-r));animation:breeze3 6.8s ease-in-out infinite}
+.n4{left:50px;bottom:68px;background:var(--cream);--base-r:2deg;--tape-r:-2deg;transform:rotate(var(--base-r));animation:breeze4 7.5s ease-in-out infinite}
+@keyframes breeze1{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-2.9deg) translateY(-2px)}}
+@keyframes breeze2{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(4deg) translateY(-2px)}}
+@keyframes breeze3{0%,100%{transform:rotate(-2.5deg) translateY(0)}50%{transform:rotate(-1.5deg) translateY(-2.5px)}}
+@keyframes breeze4{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(.9deg) translateY(-2px)}}
+.bottom-copy{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:15;font-family:Georgia,"Times New Roman",serif;font-size:13px;color:#67615d;letter-spacing:.04em;white-space:nowrap}
+@media(max-width:900px){
+  .stage{width:100%;height:820px}
+  .portrait-wrap{transform:translate(-50%,-50%) scale(.84)}
+  .n1{left:0}.n2{right:0}.n3{right:2px}.n4{left:4px}
+}
+@media(max-width:680px){
+  .nav{display:none}.headline{top:22px}.headline h1{font-size:52px}.stage{margin-top:82px;height:760px}
+  .portrait-wrap{transform:translate(-50%,-50%) scale(.68)}
+  .note{width:145px;min-height:106px;padding:15px}
+  .note strong{font-size:17px}.note small,.note span{font-size:8px}
+  .n1{top:174px;left:-8px}.n2{top:160px;right:-8px}.n3{right:-4px;bottom:84px}.n4{left:-4px;bottom:68px}
+}
+</style>
+</head>
+<body>
+<main class="cover">
+  <nav class="nav">
+    <a href="#">ARCHIVE</a><a href="#">WORK</a><a href="#">ABOUT</a><a href="#">CONTACT</a>
+  </nav>
+
+  <header class="headline">
+    <div class="small">A LIVING CREATIVE ARCHIVE · 2026</div>
+    <h1>Part of me</h1>
+    <div class="sub">Fragments of identity, stitched by time.</div>
+  </header>
+
+  <section class="stage">
+    <div class="portrait-wrap" id="portraitWrap">
+      <div class="paper-back"></div>
+      <div class="portrait">
+        <div class="piece p1"><div class="photo"></div></div>
+        <div class="piece p2"><div class="photo"></div></div>
+        <div class="piece p3"><div class="photo"></div></div>
+        <div class="piece p4"><div class="photo"></div></div>
+        <div class="piece p5"><div class="photo"></div></div>
+        <div class="piece p6"><div class="photo"></div></div>
+        <div class="piece p7"><div class="photo"></div></div>
+        <div class="piece p8"><div class="photo"></div></div>
+        <div class="piece p9"><div class="photo"></div></div>
+        <div class="piece p10"><div class="photo"></div></div>
+        <div class="piece p11"><div class="photo"></div></div>
+        <div class="piece p12"><div class="photo"></div></div>
+        <div class="piece p13"><div class="photo"></div></div>
+        <div class="piece p14"><div class="photo"></div></div>
+        <div class="piece p15"><div class="photo"></div></div>
+        <div class="piece p16"><div class="photo"></div></div>
+        <div class="piece p17"><div class="photo"></div></div>
+        <div class="piece p18"><div class="photo"></div></div>
+        <div class="piece p19"><div class="photo"></div></div>
+      </div>
+    </div>
+
+    <a class="note n1" href="#hanshu"><small>01 / BRAND CONTENT</small><strong>韩束亮白瓶</strong><span>ENTER PROJECT ↘</span></a>
+    <a class="note n2" href="#visible-hand"><small>02 / GRADUATION PROJECT</small><strong>Visible Hand</strong><span>ENTER PROJECT ↘</span></a>
+    <a class="note n3" href="#soft-control"><small>03 / POSTER ARCHIVE</small><strong>Soft Control</strong><span>ENTER PROJECT ↘</span></a>
+    <a class="note n4" href="#about"><small>04 / PROFILE</small><strong>About Eno</strong><span>READ PROFILE ↘</span></a>
+
+    <div class="bottom-copy">MOVE AROUND THE PORTRAIT</div>
+  </section>
+</main>
+
+<script>
+const portraitWrap=document.getElementById("portraitWrap");
+const pieces=[...document.querySelectorAll(".piece")];
+
+pieces.forEach(piece=>{
+  const s=getComputedStyle(piece);
+  piece.dataset.dx=parseFloat(s.getPropertyValue("--dx"))||0;
+  piece.dataset.dy=parseFloat(s.getPropertyValue("--dy"))||0;
+  piece.dataset.r=parseFloat(s.getPropertyValue("--r"))||0;
+});
+
+portraitWrap.addEventListener("pointermove",e=>{
+  const rect=portraitWrap.getBoundingClientRect();
+  const mx=e.clientX-rect.left;
+  const my=e.clientY-rect.top;
+
+  pieces.forEach(piece=>{
+    const pr=piece.getBoundingClientRect();
+    const cx=pr.left-rect.left+pr.width/2;
+    const cy=pr.top-rect.top+pr.height/2;
+    const dx=cx-mx,dy=cy-my;
+    const dist=Math.hypot(dx,dy);
+    const radius=170;
+    const influence=Math.max(0,1-dist/radius);
+    const len=Math.max(1,dist);
+    const push=7*influence;
+    const px=Number(piece.dataset.dx)+dx/len*push;
+    const py=Number(piece.dataset.dy)+dy/len*push;
+    const rot=Number(piece.dataset.r)+(dx>0?.65:-.65)*influence;
+    const scale=1+.018*influence;
+
+    piece.style.transform=`translate(${px}px,${py}px) rotate(${rot}deg) scale(${scale})`;
+    piece.style.boxShadow=`0 ${10+influence*5}px ${18+influence*10}px rgba(45,39,35,${.12+influence*.05}),0 2px 5px rgba(45,39,35,.07)`;
+  });
+});
+
+portraitWrap.addEventListener("pointerleave",()=>{
+  pieces.forEach(piece=>{
+    piece.style.transform=`translate(${piece.dataset.dx}px,${piece.dataset.dy}px) rotate(${piece.dataset.r}deg) scale(1)`;
+    piece.style.boxShadow=`0 10px 18px rgba(45,39,35,.12),0 2px 5px rgba(45,39,35,.07)`;
+  });
+});
+</script>
+</body>
+</html>
