@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ENO LI — Cover Lab v2</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <style>
+    :root{
+      --paper:#f3f1ec;
+      --ink:#171619;
+      --rose:#bd8296;
+      --grid:rgba(24,21,21,.045);
+      --shadow:rgba(56,45,41,.16);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+    body{
+      overflow-x:hidden;
+      background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+      background-size:18px 18px;
+    }
+    #home-cover{
+      position:relative;min-height:100vh;overflow:hidden;padding:34px 5vw 42px;
+      display:grid;grid-template-columns:minmax(340px,.84fr) minmax(680px,1.16fr);align-items:center;gap:20px;isolation:isolate;
+    }
+    #home-cover::before{
+      content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+      background:radial-gradient(circle at 71% 43%,rgba(255,255,255,.78),transparent 33%),radial-gradient(circle at 19% 29%,rgba(255,255,255,.36),transparent 27%);
+    }
+    .topnav{position:absolute;top:25px;right:5vw;z-index:100;display:flex;gap:27px;font-size:10px;font-weight:800;letter-spacing:.09em}
+    .topnav a{color:inherit;text-decoration:none}
+    .copy{position:relative;z-index:4;max-width:575px;padding-left:1vw}
+    .eyebrow{margin:0 0 17px;font-size:11px;font-weight:800;letter-spacing:.18em}
+    .title{margin:0;font-size:clamp(78px,8.1vw,142px);line-height:.78;letter-spacing:-.078em;font-weight:800}
+    .portfolio{display:block;margin:23px 0 0 90px;color:var(--rose);font-family:Georgia,"Times New Roman",serif;font-size:.48em;line-height:1;letter-spacing:-.045em;font-weight:400;font-style:italic}
+    .intro{margin:38px 0 0;max-width:500px;font-size:15px;line-height:1.92;font-weight:500}
+    .process{margin:26px 0 0;font-size:10px;line-height:1.65;font-weight:800;letter-spacing:.07em}
+    .visual{min-height:770px;position:relative;display:flex;align-items:center;justify-content:center;z-index:3}
+    .archive-board{position:relative;width:790px;height:740px;transform:translateX(12px)}
+    .signature{position:absolute;top:18px;left:20px;z-index:50;font-family:"Brush Script MT","Segoe Script",cursive;font-size:27px;transform:rotate(-5deg)}
+
+    /* interactive portrait only */
+    .portrait-shell{position:absolute;left:132px;top:53px;width:520px;height:625px;z-index:12;filter:drop-shadow(0 16px 25px rgba(58,45,41,.11))}
+    .portrait-paper{position:absolute;inset:-7px;background:#f8f6f1;box-shadow:0 18px 34px rgba(57,44,40,.12),0 3px 8px rgba(57,44,40,.09);transform:rotate(-.35deg)}
+    .portrait-canvas-wrap{position:absolute;inset:0;overflow:visible;touch-action:none;cursor:crosshair}
+    #portraitCanvas{display:block;width:100%;height:100%;overflow:visible}
+    .portrait-canvas-wrap::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.13),transparent 28%,transparent 70%,rgba(255,255,255,.05));mix-blend-mode:screen}
+    .portrait-hint{position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);font-size:9px;font-weight:800;letter-spacing:.12em;opacity:.42;white-space:nowrap;pointer-events:none}
+
+    /* real-paper notes */
+    .note{position:absolute;z-index:35;width:182px;min-height:132px;padding:23px 22px 20px;display:flex;flex-direction:column;justify-content:center;color:#292627;text-decoration:none;border:1px solid rgba(255,255,255,.62);box-shadow:0 14px 27px rgba(56,44,41,.15),0 3px 7px rgba(56,44,41,.09);transform-origin:50% 5%;overflow:visible;will-change:transform}
+    .note::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;background:repeating-linear-gradient(0deg,rgba(65,48,43,.035) 0 1px,transparent 1px 3px),linear-gradient(120deg,rgba(255,255,255,.48),transparent 38%,rgba(75,54,47,.045));mix-blend-mode:multiply}
+    .note::after{content:"";position:absolute;left:16%;width:68%;bottom:-8px;height:18px;z-index:-1;border-radius:50%;background:rgba(52,39,36,.12);filter:blur(8px)}
+    .note small,.note strong,.note span{position:relative;z-index:2}
+    .note small{margin-bottom:14px;font-size:9px;font-weight:800;letter-spacing:.10em}
+    .note strong{font-size:23px;line-height:1;letter-spacing:-.035em}
+    .note span{margin-top:14px;font-size:9px;font-weight:800;letter-spacing:.06em}
+    .note-tape{position:absolute;z-index:6;top:-9px;left:50%;width:58px;height:18px;margin-left:-29px;background:rgba(227,214,181,.74);border:1px solid rgba(255,255,255,.32);box-shadow:0 1px 4px rgba(67,52,43,.14);transform:rotate(var(--tape-r,0deg));pointer-events:none}
+    .n1{left:1px;top:110px;background:#eabcc9;--base-r:-4;--tape-r:4deg;transform:rotate(-4deg)}
+    .n2{right:-5px;top:100px;background:#dfe8d5;--base-r:3.2;--tape-r:-4deg;transform:rotate(3.2deg)}
+    .n3{right:7px;bottom:31px;background:#efd5c5;--base-r:-2.6;--tape-r:3deg;transform:rotate(-2.6deg)}
+    .n4{left:37px;bottom:8px;background:#e4dfd3;--base-r:2;--tape-r:-2deg;transform:rotate(2deg)}
+    .free-tape{position:absolute;z-index:28;width:64px;height:19px;background:linear-gradient(90deg,rgba(233,221,190,.73),rgba(244,235,211,.9),rgba(224,210,177,.7));box-shadow:0 2px 4px rgba(75,59,48,.10);border:1px solid rgba(255,255,255,.32);opacity:.86}
+    .t1{left:252px;top:43px;transform:rotate(-3deg)}
+    .t2{right:95px;top:286px;width:52px;transform:rotate(7deg)}
+    .t3{left:161px;bottom:111px;width:59px;transform:rotate(4deg)}
+
+    @media(max-width:1180px){#home-cover{grid-template-columns:1fr;padding-top:105px}.copy{padding-left:5vw}.visual{min-height:700px}.archive-board{transform:scale(.9);transform-origin:center top}}
+    @media(max-width:760px){#home-cover{display:block;padding:92px 18px 42px}.copy{padding:0}.topnav{display:none}.intro{font-size:14px}.visual{min-height:590px;margin-top:38px}.archive-board{position:absolute;left:50%;width:790px;transform:translateX(-50%) scale(.66);transform-origin:center top}}
+  </style>
+</head>
+<body>
+  <main id="home-cover">
+    <nav class="topnav" aria-label="Primary">
+      <a href="#">ARCHIVE</a><a href="#">WORK</a><a href="#">ABOUT</a><a href="#">CONTACT</a>
+    </nav>
+
+    <section class="copy">
+      <p class="eyebrow">A LIVING CREATIVE ARCHIVE · 2026</p>
+      <h1 class="title">ENO LI<span class="portfolio">Portfolio</span></h1>
+      <p class="intro">在用户洞察、内容策略与视觉表达之间，观察真实需求，并将它转译为可被感知的创意体验。</p>
+      <p class="process">OBSERVE → TRANSLATE → CREATE → REVIEW<br>观察 → 转译 → 创作 → 复盘</p>
+    </section>
+
+    <section class="visual" aria-label="Interactive portrait collage">
+      <div class="archive-board">
+        <div class="signature">ENO LI</div>
+
+        <div class="portrait-shell">
+          <div class="portrait-paper"></div>
+          <div class="portrait-canvas-wrap"><canvas id="portraitCanvas"></canvas></div>
+          <div class="portrait-hint">MOVE AROUND THE PORTRAIT</div>
+        </div>
+
+        <div class="free-tape t1"></div><div class="free-tape t2"></div><div class="free-tape t3"></div>
+
+        <a class="note n1" href="#hanshu-card"><i class="note-tape"></i><small>01 / BRAND CONTENT</small><strong>韩束亮白瓶</strong><span>ENTER PROJECT ↘</span></a>
+        <a class="note n2" href="#visible-hand"><i class="note-tape"></i><small>02 / GRADUATION PROJECT</small><strong>Visible Hand</strong><span>ENTER PROJECT ↘</span></a>
+        <a class="note n3" href="#soft-control"><i class="note-tape"></i><small>03 / POSTER ARCHIVE</small><strong>Soft Control</strong><span>ENTER PROJECT ↘</span></a>
+        <a class="note n4" href="#about"><i class="note-tape"></i><small>04 / PROFILE</small><strong>About Eno</strong><span>READ PROFILE ↘</span></a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* CodePen idea adapted to the portrait only.
+       Key difference: irregular, tightly packed photo-paper tiles instead of a uniform grid. */
+    const canvas = document.querySelector('#portraitCanvas');
+    const ctx = canvas.getContext('2d', {alpha:true});
+    const CW = 900, CH = 1080;
+    canvas.width = CW; canvas.height = CH;
+
+    // Change only this path if the portrait file name changes.
+    const PORTRAIT_SRC = 'avatar-cover.jpg';
+
+    const pointer = {x:CW*.5,y:CH*.48,radius:360};
+    const xTo = gsap.quickTo(pointer,'x',{duration:.9,ease:'expo.out'});
+    const yTo = gsap.quickTo(pointer,'y',{duration:.9,ease:'expo.out'});
+
+    const img = new Image();
+    img.src = PORTRAIT_SRC;
+
+    const tiles = [
+      {x:18,y:10,w:164,h:150,r:-1.0},{x:188,y:0,w:206,h:165,r:.5},{x:400,y:9,w:170,h:156,r:-.4},{x:576,y:19,w:154,h:188,r:.9},{x:736,y:39,w:148,h:196,r:-.7},
+      {x:0,y:171,w:176,h:188,r:.7},{x:182,y:173,w:224,h:206,r:-.25},{x:412,y:169,w:198,h:214,r:.15},{x:616,y:214,w:164,h:183,r:-.55},{x:786,y:246,w:105,h:174,r:.75},
+      {x:24,y:365,w:160,h:224,r:-.5},{x:190,y:385,w:216,h:215,r:.1},{x:412,y:389,w:181,h:222,r:-.08},{x:599,y:404,w:188,h:221,r:.55},{x:793,y:426,w:100,h:209,r:-.8},
+      {x:8,y:596,w:188,h:190,r:.7},{x:202,y:607,w:193,h:223,r:-.35},{x:401,y:618,w:214,h:213,r:.35},{x:621,y:634,w:175,h:208,r:-.55},{x:802,y:646,w:89,h:199,r:.85},
+      {x:56,y:792,w:183,h:190,r:-.6},{x:245,y:837,w:194,h:214,r:.35},{x:445,y:839,w:180,h:219,r:-.3},{x:631,y:847,w:180,h:212,r:.65}
+    ];
+
+    function coverFit(image,w,h){
+      const ir=image.width/image.height, br=w/h; let sw,sh,sx,sy;
+      if(ir>br){sh=image.height;sw=sh*br;sx=(image.width-sw)/2;sy=0}
+      else{sw=image.width;sh=sw/br;sx=0;sy=(image.height-sh)/2}
+      return {sx,sy,sw,sh};
+    }
+
+    let fit;
+    function intensity(tile){
+      const cx=tile.x+tile.w/2, cy=tile.y+tile.h/2;
+      const d=Math.hypot(cx-pointer.x,cy-pointer.y);
+      const t=1-Math.min(1,d/pointer.radius);
+      return t*t*(3-2*t);
+    }
+
+    function drawTile(tile){
+      const k=intensity(tile), cx=tile.x+tile.w/2, cy=tile.y+tile.h/2;
+      const dx=cx-pointer.x, dy=cy-pointer.y, len=Math.max(1,Math.hypot(dx,dy));
+      const push=6.5*k, tx=dx/len*push, ty=dy/len*push;
+      const crop=.18*k;
+      const sx0=fit.sx+fit.sw*(tile.x/CW), sy0=fit.sy+fit.sh*(tile.y/CH);
+      const sw0=fit.sw*(tile.w/CW), sh0=fit.sh*(tile.h/CH);
+      const sx=sx0+sw0*crop*.5, sy=sy0+sh0*crop*.5, sw=sw0*(1-crop), sh=sh0*(1-crop);
+
+      ctx.save();
+      ctx.translate(cx+tx,cy+ty);
+      ctx.rotate((tile.r+k*(dx>0?.55:-.55))*Math.PI/180);
+      const sc=1+k*.018; ctx.scale(sc,sc);
+      const x=-tile.w/2,y=-tile.h/2;
+
+      ctx.shadowColor=`rgba(55,43,39,${.12+k*.07})`;
+      ctx.shadowBlur=16+k*8; ctx.shadowOffsetX=3+k*2; ctx.shadowOffsetY=7+k*4;
+      ctx.fillStyle='#f7f4ee'; ctx.fillRect(x-2,y-2,tile.w+4,tile.h+4);
+
+      ctx.beginPath();ctx.rect(x,y,tile.w,tile.h);ctx.clip();
+      ctx.shadowColor='transparent';
+      ctx.drawImage(img,sx,sy,sw,sh,x,y,tile.w,tile.h);
+      ctx.strokeStyle='rgba(255,255,255,.65)';ctx.lineWidth=2;ctx.strokeRect(x+.75,y+.75,tile.w-1.5,tile.h-1.5);
+      ctx.restore();
+    }
+
+    let raf=0, running=false;
+    function render(){ctx.clearRect(0,0,CW,CH);tiles.forEach(drawTile);if(running)raf=requestAnimationFrame(render)}
+    function start(){if(running)return;running=true;render()}
+    function stop(){running=false;if(raf)cancelAnimationFrame(raf);raf=0}
+
+    function pointerPos(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*CW,y:(e.clientY-r.top)/r.height*CH}}
+    canvas.addEventListener('pointermove',e=>{const p=pointerPos(e);xTo(p.x);yTo(p.y)});
+    canvas.addEventListener('pointerleave',()=>{xTo(CW*.5);yTo(CH*.48)});
+
+    img.onload=()=>{fit=coverFit(img,CW,CH);start()};
+    img.onerror=()=>console.error('Portrait image failed to load:',PORTRAIT_SRC);
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else if(img.complete&&fit)start()});
+
+    // Subtle breeze only on the four notes.
+    gsap.utils.toArray('.note').forEach((note,i)=>{
+      const base=parseFloat(getComputedStyle(note).getPropertyValue('--base-r'))||0;
+      gsap.to(note,{y:i%2?-2.2:2.6,rotation:base+(i%2?.45:-.5),duration:5.6+i*.85,ease:'sine.inOut',repeat:-1,yoyo:true,delay:i*.55});
+      note.addEventListener('mouseenter',()=>gsap.to(note,{y:-5,rotation:base,scale:1.018,duration:.35,ease:'power2.out',overwrite:'auto'}));
+      note.addEventListener('mouseleave',()=>gsap.to(note,{scale:1,duration:.45,ease:'power2.out',overwrite:'auto'}));
+    });
+  </script>
+</body>
+</html>
