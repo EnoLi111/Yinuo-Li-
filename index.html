@@ -663,7 +663,7 @@
 }
 
 </style>
-  <!-- v14 checkpoint: v13 copy + Hanshu left thinking block + typography refinement -->
+  <!-- v15 checkpoint: v14 + resilient critical-only loader + 9s fail-open -->
 </head>
 <body class="archive-loading">
 <div class="archive-loader" id="archiveLoader" role="status" aria-live="polite" aria-label="Preparing Eno's archive">
@@ -672,7 +672,7 @@
   <div class="archive-loader-bottom">
     <div class="archive-loader-rule" aria-hidden="true"><i id="archiveLoaderBar"></i></div>
     <p class="archive-loader-status" id="archiveLoaderStatus">PREPARING THE ARCHIVE</p>
-    <p class="archive-loader-detail" id="archiveLoaderDetail">CORE EXPERIENCE · LOADING</p>
+    <p class="archive-loader-detail" id="archiveLoaderDetail">OPENING EXPERIENCE · LOADING</p>
     <button class="archive-loader-retry" id="archiveLoaderRetry" type="button">RETRY LOADING ↻</button>
   </div>
 </div>
@@ -829,6 +829,57 @@
 <div class="archive-modal" id="posterArchiveModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="archiveTitle"><div class="archive-toolbar"><button id="archiveClose">← 返回文件袋</button><strong id="archiveTitle">SOFT CONTROL / 12 POSTERS</strong><span>ARCHIVE 2027</span></div><section class="archive-scene" id="archiveScene" aria-label="Soft Control 交互式海报档案"><div class="archive-stage" id="archiveStage"><div class="archive-camera" id="archiveCamera"><div class="archive-ambient" id="archiveAmbient"><div class="archive-orbit" id="archiveOrbit"><div class="archive-ring" id="archiveRing"></div></div></div></div><p class="archive-instruction" id="archiveInstruction">OPEN THE ARCHIVE</p></div></section></div>
 <div class="poster-viewer" id="posterViewer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Soft Control 海报详情"><div class="viewer-backdrop" id="viewerBackdrop"></div><div class="poster-detail-card" id="posterDetailCard"><img id="viewerImage" src="soft-control-1.jpg" alt="Soft Control 海报大图"></div><button class="viewer-close" id="viewerClose" aria-label="关闭海报预览">CLOSE ×</button><button class="viewer-prev" id="viewerPrev" aria-label="上一张">←</button><span class="viewer-count" id="viewerCount">01 / 12</span><button class="viewer-next" id="viewerNext" aria-label="下一张">→</button></div>
 <!-- GLOBAL INTERACTIONS -->
+
+<script>
+/* V15 EARLY WATCHDOG
+   Runs before external JS. If a CDN request stalls, the portfolio still opens. */
+(()=>{
+  window.__ENO_V15_BOOT_AT__=performance.now();
+  window.__ENO_FAIL_OPEN__=false;
+
+  const loader=document.querySelector('#archiveLoader');
+  const number=document.querySelector('#archiveLoaderNumber');
+  const status=document.querySelector('#archiveLoaderStatus');
+  const detail=document.querySelector('#archiveLoaderDetail');
+
+  if(number) number.textContent='1%';
+  if(loader) loader.style.setProperty('--loader-progress','1%');
+
+  const releaseSite=()=>{
+    if(window.__ENO_ARCHIVE_READY__) return;
+    window.__ENO_FAIL_OPEN__=true;
+    window.__ENO_ARCHIVE_READY__=true;
+
+    document.body.classList.remove(
+      'archive-loading',
+      'eno-intro-active',
+      'eno-intro-reveal'
+    );
+
+    if(loader){
+      loader.classList.add('is-ready');
+      setTimeout(()=>loader.remove(),700);
+    }
+
+    const intro=document.querySelector('#enoIntro');
+    if(intro){
+      intro.hidden=true;
+      intro.setAttribute('aria-hidden','true');
+    }
+
+    window.dispatchEvent(new Event('eno:archive-ready'));
+    window.dispatchEvent(new Event('eno:archive-fail-open'));
+  };
+
+  /* Never let a recruiter stare at 0% forever. */
+  window.__ENO_FAIL_OPEN_TIMER__=setTimeout(()=>{
+    if(status) status.textContent='OPENING THE ARCHIVE';
+    if(detail) detail.textContent='NETWORK FALLBACK · READY';
+    releaseSite();
+  },9000);
+})();
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script>
@@ -891,37 +942,190 @@ if(typeof gsap==='undefined'){
 })();
 </script>
 <script>
-/* Real loading gate: do not release Intro until core local assets are genuinely ready. */
+/* V15 READY GATE
+   Only opening-critical assets block entry.
+   Everything deeper in the portfolio warms in the background. */
 (()=>{
-  const loader=document.querySelector('#archiveLoader'),number=document.querySelector('#archiveLoaderNumber'),bar=document.querySelector('#archiveLoaderBar'),status=document.querySelector('#archiveLoaderStatus'),detail=document.querySelector('#archiveLoaderDetail'),retry=document.querySelector('#archiveLoaderRetry');
-  if(!loader)return;
+  const loader=document.querySelector('#archiveLoader');
+  const number=document.querySelector('#archiveLoaderNumber');
+  const status=document.querySelector('#archiveLoaderStatus');
+  const detail=document.querySelector('#archiveLoaderDetail');
+  if(!loader||window.__ENO_FAIL_OPEN__)return;
+
   window.__ENO_ARCHIVE_READY__=false;
-  const weights={core:8,portrait:8,idleVideo:10,openVideo:10,capsule:18,hanshu:22,bgm:10,cases:6,posters:8};
-  const done=new Set();let actual=0,shown=0,target=0,failed=false;
-  const labels={core:'CORE SYSTEMS',portrait:'V6 PORTRAIT',idleVideo:'INTRO IDLE VIDEO',openVideo:'INTRO OPEN VIDEO',capsule:'CAPSULE 3D',hanshu:'HANSHU 3D',bgm:'BGM BUFFER',cases:'HANSHU CASES',posters:'SOFT CONTROL'};
-  const renderProgress=()=>{shown+=(target-shown)*.14;if(Math.abs(target-shown)<.08)shown=target;const value=Math.max(0,Math.min(100,Math.floor(shown)));number.textContent=`${value}%`;loader.style.setProperty('--loader-progress',`${shown.toFixed(2)}%`);if(shown<target-.05)requestAnimationFrame(renderProgress)};
-  const complete=name=>{if(done.has(name)||failed)return;done.add(name);actual+=weights[name]||0;target=Math.min(100,actual);detail.textContent=`${labels[name]||name} · READY`;requestAnimationFrame(renderProgress)};
-  const fail=(name,error)=>{if(failed)return;failed=true;console.error('[Archive Loader]',name,error);loader.classList.add('has-error');status.textContent='ASSET FAILED';detail.textContent=`${labels[name]||name} · RETRY`;retry.focus()};
-  retry.addEventListener('click',()=>location.reload());
-  const waitEvent=(okEvent,errorEvent,name,timeout=30000)=>new Promise((resolve,reject)=>{let timer;const cleanup=()=>{clearTimeout(timer);removeEventListener(okEvent,onOk);removeEventListener(errorEvent,onError)};const onOk=()=>{cleanup();resolve()};const onError=()=>{cleanup();reject(new Error(errorEvent))};addEventListener(okEvent,onOk,{once:true});addEventListener(errorEvent,onError,{once:true});timer=setTimeout(()=>{cleanup();reject(new Error(`${name} timeout`))},timeout)});
-  const fetchWarm=async url=>{const response=await fetch(url,{cache:'force-cache'});if(!response.ok)throw new Error(`${url} ${response.status}`);await response.arrayBuffer()};
-  const decodeImage=url=>new Promise((resolve,reject)=>{const img=new Image();img.decoding='async';img.onload=()=>{const p=img.decode?.();p?.then(resolve).catch(()=>resolve())||resolve()};img.onerror=()=>reject(new Error(`image failed: ${url}`));img.src=url});
-  const prepareMedia=async(el,url,event='canplay')=>{await fetchWarm(url);el.preload='auto';el.load();if(el.readyState>=3)return;await new Promise((resolve,reject)=>{let timer;const cleanup=()=>{clearTimeout(timer);el.removeEventListener(event,onReady);el.removeEventListener('error',onError)};const onReady=()=>{cleanup();resolve()};const onError=()=>{cleanup();reject(new Error(`media failed: ${url}`))};el.addEventListener(event,onReady,{once:true});el.addEventListener('error',onError,{once:true});timer=setTimeout(()=>{cleanup();el.readyState>=2?resolve():reject(new Error(`media timeout: ${url}`))},16000)})};
-  const task=(name,promise)=>promise.then(()=>complete(name)).catch(error=>fail(name,error));
-  const idle=document.querySelector('#enoIntroIdle'),open=document.querySelector('#enoIntroOpen'),audio=document.querySelector('#portfolioBgm');
-  task('core',Promise.resolve().then(()=>{if(!window.gsap||!window.ScrollTrigger)throw new Error('GSAP core unavailable')}));
-  task('portrait',decodeImage('assets/images/home-cover-v6-portrait.jpg'));
-  task('idleVideo',prepareMedia(idle,'assets/video/eno-machine-idle.mp4','canplay'));
-  task('openVideo',prepareMedia(open,'assets/video/eno-machine-open.mp4','canplay'));
-  task('bgm',prepareMedia(audio,'assets/audio/portfolio-bgm.m4a','canplay'));
-  task('cases',Promise.all(['hanshu-note-pet-v17.jpg','hanshu-note-hack-v17.jpg','hanshu-note-proof-v17.jpg'].map(decodeImage)));
-  task('posters',Promise.all([
-    Promise.all(Array.from({length:12},(_,i)=>decodeImage(`soft-control-${i+1}.jpg`))),
-    waitEvent('eno:soft-control-dom-ready','eno:soft-control-dom-error','soft-control-dom',30000)
-  ]));
-  task('capsule',waitEvent('eno:intro-model-ready','eno:intro-model-error','capsule'));
-  task('hanshu',waitEvent('eno:hanshu-model-ready','eno:hanshu-model-error','hanshu'));
-  const finishCheck=()=>{if(failed)return;if(done.size<Object.keys(weights).length){setTimeout(finishCheck,80);return}target=100;requestAnimationFrame(renderProgress);const waitVisual=()=>{if(shown<99.5){requestAnimationFrame(waitVisual);return}shown=100;number.textContent='100%';loader.style.setProperty('--loader-progress','100%');status.textContent='ARCHIVE READY';detail.textContent='CORE EXPERIENCE · READY';setTimeout(()=>{window.__ENO_ARCHIVE_READY__=true;document.body.classList.remove('archive-loading');loader.classList.add('is-ready');window.dispatchEvent(new Event('eno:archive-ready'));setTimeout(()=>loader.remove(),800)},420)};requestAnimationFrame(waitVisual)};
+
+  const weights={
+    portrait:20,
+    idleVideo:25,
+    openVideo:25,
+    capsule:30
+  };
+
+  const labels={
+    portrait:'HOME PORTRAIT',
+    idleVideo:'INTRO IDLE VIDEO',
+    openVideo:'INTRO OPEN VIDEO',
+    capsule:'INTRO 3D'
+  };
+
+  const done=new Set();
+  let actual=1,shown=1,target=1;
+  let degraded=false;
+
+  const renderProgress=()=>{
+    shown+=(target-shown)*.16;
+    if(Math.abs(target-shown)<.08)shown=target;
+    const value=Math.max(1,Math.min(100,Math.floor(shown)));
+    number.textContent=`${value}%`;
+    loader.style.setProperty('--loader-progress',`${shown.toFixed(2)}%`);
+    if(shown<target-.05)requestAnimationFrame(renderProgress);
+  };
+
+  const complete=(name,wasDegraded=false)=>{
+    if(done.has(name)||window.__ENO_FAIL_OPEN__)return;
+    done.add(name);
+    if(wasDegraded)degraded=true;
+    actual+=weights[name]||0;
+    target=Math.min(99,actual);
+    detail.textContent=`${labels[name]||name} · ${wasDegraded?'SKIPPED':'READY'}`;
+    requestAnimationFrame(renderProgress);
+  };
+
+  const waitEvent=(okEvent,errorEvent,name,timeout=7000)=>new Promise((resolve,reject)=>{
+    let timer;
+    const cleanup=()=>{
+      clearTimeout(timer);
+      removeEventListener(okEvent,onOk);
+      removeEventListener(errorEvent,onError);
+    };
+    const onOk=()=>{cleanup();resolve()};
+    const onError=()=>{cleanup();reject(new Error(errorEvent))};
+    addEventListener(okEvent,onOk,{once:true});
+    addEventListener(errorEvent,onError,{once:true});
+    timer=setTimeout(()=>{
+      cleanup();
+      reject(new Error(`${name} timeout`));
+    },timeout);
+  });
+
+  const fetchWarm=async url=>{
+    const response=await fetch(url,{cache:'force-cache'});
+    if(!response.ok)throw new Error(`${url} ${response.status}`);
+    await response.arrayBuffer();
+  };
+
+  const decodeImage=url=>new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.decoding='async';
+    img.onload=()=>{
+      const p=img.decode?.();
+      p?.then(resolve).catch(()=>resolve())||resolve();
+    };
+    img.onerror=()=>reject(new Error(`image failed: ${url}`));
+    img.src=url;
+  });
+
+  const prepareMedia=async(el,url,event='canplay')=>{
+    if(!el)throw new Error(`missing media: ${url}`);
+    await fetchWarm(url);
+    el.preload='auto';
+    el.load();
+    if(el.readyState>=3)return;
+    await new Promise((resolve,reject)=>{
+      let timer;
+      const cleanup=()=>{
+        clearTimeout(timer);
+        el.removeEventListener(event,onReady);
+        el.removeEventListener('error',onError);
+      };
+      const onReady=()=>{cleanup();resolve()};
+      const onError=()=>{cleanup();reject(new Error(`media failed: ${url}`))};
+      el.addEventListener(event,onReady,{once:true});
+      el.addEventListener('error',onError,{once:true});
+      timer=setTimeout(()=>{
+        cleanup();
+        el.readyState>=2?resolve():reject(new Error(`media timeout: ${url}`));
+      },6500);
+    });
+  };
+
+  const safeTask=(name,promise,onFail)=>promise
+    .then(()=>complete(name,false))
+    .catch(error=>{
+      console.warn('[V15 Ready Gate]',name,error);
+      try{onFail?.(error)}catch{}
+      complete(name,true);
+    });
+
+  const idle=document.querySelector('#enoIntroIdle');
+  const open=document.querySelector('#enoIntroOpen');
+
+  safeTask('portrait',decodeImage('assets/images/home-cover-v6-portrait.jpg'));
+  safeTask('idleVideo',prepareMedia(idle,'assets/video/eno-machine-idle.mp4','canplay'));
+  safeTask('openVideo',prepareMedia(open,'assets/video/eno-machine-open.mp4','canplay'));
+
+  safeTask(
+    'capsule',
+    waitEvent('eno:intro-model-ready','eno:intro-model-error','capsule',7000),
+    ()=>window.dispatchEvent(new Event('eno:intro-model-error'))
+  );
+
+  const finishCheck=()=>{
+    if(window.__ENO_FAIL_OPEN__)return;
+    if(done.size<Object.keys(weights).length){
+      setTimeout(finishCheck,70);
+      return;
+    }
+
+    target=100;
+    requestAnimationFrame(renderProgress);
+
+    const waitVisual=()=>{
+      if(window.__ENO_FAIL_OPEN__)return;
+      if(shown<99.4){
+        requestAnimationFrame(waitVisual);
+        return;
+      }
+
+      shown=100;
+      number.textContent='100%';
+      loader.style.setProperty('--loader-progress','100%');
+      status.textContent='ARCHIVE READY';
+      detail.textContent=degraded?'OPENING EXPERIENCE · SAFE MODE':'OPENING EXPERIENCE · READY';
+
+      clearTimeout(window.__ENO_FAIL_OPEN_TIMER__);
+
+      setTimeout(()=>{
+        if(window.__ENO_FAIL_OPEN__)return;
+        window.__ENO_ARCHIVE_READY__=true;
+        document.body.classList.remove('archive-loading');
+        loader.classList.add('is-ready');
+        window.dispatchEvent(new Event('eno:archive-ready'));
+        setTimeout(()=>loader.remove(),700);
+
+        /* Deep content warms only after the visitor is already allowed in. */
+        const warmDeep=()=>{
+          const warm=url=>fetch(url,{cache:'force-cache'}).catch(()=>{});
+          [
+            'assets/audio/portfolio-bgm.m4a',
+            'assets/models/hanshu-bottle.glb',
+            'hanshu-note-pet-v17.jpg',
+            'hanshu-note-hack-v17.jpg',
+            'hanshu-note-proof-v17.jpg',
+            ...Array.from({length:12},(_,i)=>`soft-control-${i+1}.jpg`)
+          ].forEach(warm);
+        };
+
+        if('requestIdleCallback' in window){
+          requestIdleCallback(warmDeep,{timeout:2500});
+        }else{
+          setTimeout(warmDeep,900);
+        }
+      },320);
+    };
+    requestAnimationFrame(waitVisual);
+  };
+
   finishCheck();
 })();
 </script>
@@ -932,6 +1136,12 @@ if(typeof gsap==='undefined'){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,forceIntro=new URLSearchParams(location.search).get('intro')==='1',storageKey='enoIntroPlayed';let introWasPlayed=false;try{introWasPlayed=sessionStorage.getItem(storageKey)==='true'}catch{}const repeatVisit=!forceIntro&&introWasPlayed;
   let isEntering=false,finished=false;const timers=[],later=(fn,delay)=>timers.push(setTimeout(fn,delay));
   const resetHomeScroll=()=>{const html=document.documentElement,previous=html.style.scrollBehavior;html.style.scrollBehavior='auto';scrollTo(0,0);html.scrollTop=0;document.body.scrollTop=0;requestAnimationFrame(()=>html.style.scrollBehavior=previous)};
+  if(window.__ENO_FAIL_OPEN__){
+    root.hidden=true;
+    root.setAttribute('aria-hidden','true');
+    document.body.classList.remove('archive-loading','eno-intro-active','eno-intro-reveal');
+    return;
+  }
   document.body.classList.add('eno-intro-active','eno-intro-reveal');if(forceIntro||!introWasPlayed){try{history.scrollRestoration='manual'}catch{}resetHomeScroll();addEventListener('pageshow',resetHomeScroll,{once:true})}idleVideo.loop=true;openVideo.loop=false;
   const holdFinalFrame=video=>{video.pause();if(Number.isFinite(video.duration)&&video.duration>.05)video.currentTime=video.duration-.04};
   const playIdle=rate=>{idleVideo.playbackRate=rate;const playing=idleVideo.play();if(playing)playing.catch(()=>{})};
@@ -940,7 +1150,14 @@ if(typeof gsap==='undefined'){
   const enterHome=mode=>{if(finished)return;finished=true;timers.forEach(clearTimeout);timers.length=0;try{sessionStorage.setItem(storageKey,'true')}catch{}resetHomeScroll();document.body.classList.remove('eno-intro-active');if(mode==='draw'){root.classList.add('is-capsule-wipe');later(()=>root.classList.add('is-leaving'),460);later(hideIntro,1180)}else{root.classList.add('is-leaving');later(hideIntro,680)}};
   const turnMachine=()=>{if(isEntering||finished||!root.classList.contains('is-model-ready'))return;isEntering=true;knob.disabled=true;status.textContent='Drawing one idea from the machine';root.classList.add('is-drawing','is-open-playing');idleVideo.pause();openVideo.currentTime=0;const playing=openVideo.play();if(playing)playing.catch(()=>root.classList.remove('is-open-playing'));later(()=>root.classList.add('is-outlet-revealed'),760);window.dispatchEvent(new CustomEvent('eno:intro-draw'))};
   const showMachine=()=>{if(forceIntro||!introWasPlayed)resetHomeScroll();root.classList.add('is-machine');status.textContent=root.classList.contains('is-model-ready')?'Turn the idea machine to enter':'Loading 3D capsule · 0%';knob.disabled=!root.classList.contains('is-model-ready');if(!reduce)playIdle(1)};
-  window.addEventListener('eno:intro-model-progress',event=>{if(!root.classList.contains('is-machine'))return;status.textContent=`Loading 3D capsule · ${event.detail}%`});window.addEventListener('eno:intro-model-ready',()=>{root.classList.add('is-model-ready');if(root.classList.contains('is-machine')&&!isEntering){knob.disabled=false;status.textContent='Turn the idea machine to enter'}});window.addEventListener('eno:intro-model-error',()=>{status.textContent='3D capsule could not load';knob.disabled=true});window.addEventListener('eno:intro-complete',()=>enterHome('draw'));
+  window.addEventListener('eno:intro-model-progress',event=>{if(!root.classList.contains('is-machine'))return;status.textContent=`Loading 3D capsule · ${event.detail}%`});window.addEventListener('eno:intro-model-ready',()=>{root.classList.add('is-model-ready');if(root.classList.contains('is-machine')&&!isEntering){knob.disabled=false;status.textContent='Turn the idea machine to enter'}});window.addEventListener('eno:intro-model-error',()=>{
+    root.classList.add('is-model-fallback');
+    status.textContent='Opening archive…';
+    knob.disabled=true;
+    if(root.classList.contains('is-machine')&&!finished){
+      later(()=>enterHome('skip'),650);
+    }
+  });window.addEventListener('eno:intro-complete',()=>enterHome('draw'));
   openVideo.addEventListener('ended',()=>holdFinalFrame(openVideo));skip.addEventListener('click',()=>enterHome('skip'));knob.addEventListener('click',()=>reduce?enterHome('skip'):turnMachine());
   const bootIntro=()=>{if(root.dataset.introBooted==='true')return;root.dataset.introBooted='true';if(reduce){later(()=>{showMachine();root.classList.add('is-reduced')},380)}else{later(showMachine,2150)}};if(window.__ENO_ARCHIVE_READY__)bootIntro();else window.addEventListener('eno:archive-ready',bootIntro,{once:true})
 })();
