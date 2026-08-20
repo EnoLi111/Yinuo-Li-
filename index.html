@@ -30,14 +30,15 @@
 
       if(number) number.textContent='100%';
       if(status) status.textContent='ARCHIVE READY';
-      if(detail) detail.textContent='NETWORK FALLBACK · OPEN';
+      if(detail) detail.textContent='COLD-START FALLBACK · INTRO READY';
 
-      body.classList.remove('archive-loading','eno-intro-active','eno-intro-reveal');
+      body.classList.remove('archive-loading');
+      body.classList.add('eno-intro-active','eno-intro-reveal','eno-static-fallback');
 
       const intro=document.getElementById('enoIntro');
       if(intro){
-        intro.hidden=true;
-        intro.setAttribute('aria-hidden','true');
+        intro.hidden=false;
+        intro.setAttribute('aria-hidden','false');
       }
 
       loader.classList.add('is-ready');
@@ -45,6 +46,33 @@
 
       window.dispatchEvent(new Event('eno:archive-ready'));
       window.dispatchEvent(new Event('eno:archive-fail-open'));
+
+      /* Zero-dependency escape hatch: if animation libraries are blocked,
+         the intro still appears and can always enter the portfolio. */
+      const forceHome=()=>{
+        body.classList.remove('archive-loading','eno-intro-active','eno-intro-reveal');
+        body.classList.add('eno-static-fallback');
+        if(intro){
+          intro.hidden=true;
+          intro.setAttribute('aria-hidden','true');
+        }
+        try{window.scrollTo(0,0)}catch{}
+      };
+      const knob=document.getElementById('enoIntroKnob');
+      const skip=document.getElementById('enoIntroSkip');
+      if(knob&&!knob.dataset.fallbackBound){
+        knob.dataset.fallbackBound='1';
+        knob.disabled=false;
+        knob.addEventListener('click',()=>{
+          if(!window.__ENO_FULL_INTRO_CONTROLLER__) forceHome();
+        });
+      }
+      if(skip&&!skip.dataset.fallbackBound){
+        skip.dataset.fallbackBound='1';
+        skip.addEventListener('click',()=>{
+          if(!window.__ENO_FULL_INTRO_CONTROLLER__) forceHome();
+        });
+      }
     };
     release();
   };
@@ -56,7 +84,7 @@
 </script>
   <link rel="preload" href="assets/images/home-cover-v6-portrait.jpg" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
   <style>
   /* GLOBAL STYLES */
@@ -713,7 +741,38 @@
 }
 
 </style>
-  <!-- v16 checkpoint: v15 + tiny HTML first load + head watchdog + externalized little-Eno image -->
+  <!-- v18 checkpoint: no-install cold-start safe + optional CDN animation + delayed heavy 3D -->
+
+<style>
+/* V17 COLD-START SAFETY:
+   Animation enhancement may fail; content itself must never disappear. */
+body.eno-static-fallback .eno-reveal,
+body.eno-static-fallback [data-eno-reveal],
+body.eno-static-fallback .about-eno-avatar-shell,
+body.eno-static-fallback .about-eno-bubble,
+body.eno-static-fallback .case-card,
+body.eno-static-fallback .soft-control-card,
+body.eno-static-fallback .about-eno,
+body.eno-static-fallback .about-eno *:not(.about-eno-panel),
+body.eno-static-fallback .poster-project,
+body.eno-static-fallback .poster-project img,
+body.eno-static-fallback .hanshu-card,
+body.eno-static-fallback .hanshu-card img,
+body.eno-static-fallback main,
+body.eno-static-fallback main img{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+body.eno-static-fallback .eno-reveal,
+body.eno-static-fallback [data-eno-reveal],
+body.eno-static-fallback .about-eno-avatar-shell,
+body.eno-static-fallback .about-eno-bubble,
+body.eno-static-fallback .case-card,
+body.eno-static-fallback .soft-control-card{
+  transform:none !important;
+}
+</style>
+
 </head>
 <body class="archive-loading">
 <div class="archive-loader" id="archiveLoader" role="status" aria-live="polite" aria-label="Preparing Eno's archive">
@@ -880,8 +939,8 @@
 <div class="poster-viewer" id="posterViewer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Soft Control 海报详情"><div class="viewer-backdrop" id="viewerBackdrop"></div><div class="poster-detail-card" id="posterDetailCard"><img id="viewerImage" src="soft-control-1.jpg" alt="Soft Control 海报大图"></div><button class="viewer-close" id="viewerClose" aria-label="关闭海报预览">CLOSE ×</button><button class="viewer-prev" id="viewerPrev" aria-label="上一张">←</button><span class="viewer-count" id="viewerCount">01 / 12</span><button class="viewer-next" id="viewerNext" aria-label="下一张">→</button></div>
 <!-- GLOBAL INTERACTIONS -->
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 <script>
 if(typeof gsap==='undefined'){
   console.error('GSAP failed to load');
@@ -955,17 +1014,15 @@ if(typeof gsap==='undefined'){
   window.__ENO_ARCHIVE_READY__=false;
 
   const weights={
-    portrait:20,
-    idleVideo:25,
-    openVideo:25,
-    capsule:30
+    portrait:25,
+    idleVideo:35,
+    openVideo:40
   };
 
   const labels={
     portrait:'HOME PORTRAIT',
     idleVideo:'INTRO IDLE VIDEO',
-    openVideo:'INTRO OPEN VIDEO',
-    capsule:'INTRO 3D'
+    openVideo:'INTRO OPEN VIDEO'
   };
 
   const done=new Set();
@@ -1064,11 +1121,6 @@ if(typeof gsap==='undefined'){
   safeTask('idleVideo',prepareMedia(idle,'assets/video/eno-machine-idle.mp4','canplay'));
   safeTask('openVideo',prepareMedia(open,'assets/video/eno-machine-open.mp4','canplay'));
 
-  safeTask(
-    'capsule',
-    waitEvent('eno:intro-model-ready','eno:intro-model-error','capsule',7000),
-    ()=>window.dispatchEvent(new Event('eno:intro-model-error'))
-  );
 
   const finishCheck=()=>{
     if(window.__ENO_FAIL_OPEN__)return;
@@ -1108,6 +1160,7 @@ if(typeof gsap==='undefined'){
           const warm=url=>fetch(url,{cache:'force-cache'}).catch(()=>{});
           [
             'assets/audio/portfolio-bgm.m4a',
+            'assets/models/portfolio-capsule.glb',
             'assets/models/hanshu-bottle.glb',
             'hanshu-note-pet-v17.jpg',
             'hanshu-note-hack-v17.jpg',
@@ -1136,29 +1189,25 @@ if(typeof gsap==='undefined'){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,forceIntro=new URLSearchParams(location.search).get('intro')==='1',storageKey='enoIntroPlayed';let introWasPlayed=false;try{introWasPlayed=sessionStorage.getItem(storageKey)==='true'}catch{}const repeatVisit=!forceIntro&&introWasPlayed;
   let isEntering=false,finished=false;const timers=[],later=(fn,delay)=>timers.push(setTimeout(fn,delay));
   const resetHomeScroll=()=>{const html=document.documentElement,previous=html.style.scrollBehavior;html.style.scrollBehavior='auto';scrollTo(0,0);html.scrollTop=0;document.body.scrollTop=0;requestAnimationFrame(()=>html.style.scrollBehavior=previous)};
-  if(window.__ENO_FAIL_OPEN__){
-    root.hidden=true;
-    root.setAttribute('aria-hidden','true');
-    document.body.classList.remove('archive-loading','eno-intro-active','eno-intro-reveal');
-    return;
-  }
+  window.__ENO_FULL_INTRO_CONTROLLER__=true;
+  root.hidden=false;
+  root.setAttribute('aria-hidden','false');
   document.body.classList.add('eno-intro-active','eno-intro-reveal');if(forceIntro||!introWasPlayed){try{history.scrollRestoration='manual'}catch{}resetHomeScroll();addEventListener('pageshow',resetHomeScroll,{once:true})}idleVideo.loop=true;openVideo.loop=false;
   const holdFinalFrame=video=>{video.pause();if(Number.isFinite(video.duration)&&video.duration>.05)video.currentTime=video.duration-.04};
   const playIdle=rate=>{idleVideo.playbackRate=rate;const playing=idleVideo.play();if(playing)playing.catch(()=>{})};
   const stopVideos=()=>{idleVideo.pause();openVideo.pause()};
   const hideIntro=()=>{resetHomeScroll();root.hidden=true;root.setAttribute('aria-hidden','true');stopVideos();document.body.classList.remove('eno-intro-reveal')};
   const enterHome=mode=>{if(finished)return;finished=true;timers.forEach(clearTimeout);timers.length=0;try{sessionStorage.setItem(storageKey,'true')}catch{}resetHomeScroll();document.body.classList.remove('eno-intro-active');if(mode==='draw'){root.classList.add('is-capsule-wipe');later(()=>root.classList.add('is-leaving'),460);later(hideIntro,1180)}else{root.classList.add('is-leaving');later(hideIntro,680)}};
-  const turnMachine=()=>{if(isEntering||finished||!root.classList.contains('is-model-ready'))return;isEntering=true;knob.disabled=true;status.textContent='Drawing one idea from the machine';root.classList.add('is-drawing','is-open-playing');idleVideo.pause();openVideo.currentTime=0;const playing=openVideo.play();if(playing)playing.catch(()=>root.classList.remove('is-open-playing'));later(()=>root.classList.add('is-outlet-revealed'),760);window.dispatchEvent(new CustomEvent('eno:intro-draw'))};
-  const showMachine=()=>{if(forceIntro||!introWasPlayed)resetHomeScroll();root.classList.add('is-machine');status.textContent=root.classList.contains('is-model-ready')?'Turn the idea machine to enter':'Loading 3D capsule · 0%';knob.disabled=!root.classList.contains('is-model-ready');if(!reduce)playIdle(1)};
-  window.addEventListener('eno:intro-model-progress',event=>{if(!root.classList.contains('is-machine'))return;status.textContent=`Loading 3D capsule · ${event.detail}%`});window.addEventListener('eno:intro-model-ready',()=>{root.classList.add('is-model-ready');if(root.classList.contains('is-machine')&&!isEntering){knob.disabled=false;status.textContent='Turn the idea machine to enter'}});window.addEventListener('eno:intro-model-error',()=>{
+  const turnMachine=()=>{if(isEntering||finished)return;isEntering=true;knob.disabled=true;status.textContent='Drawing one idea from the machine';root.classList.add('is-drawing','is-open-playing');idleVideo.pause();openVideo.currentTime=0;const playing=openVideo.play();if(playing)playing.catch(()=>root.classList.remove('is-open-playing'));later(()=>root.classList.add('is-outlet-revealed'),760);if(root.classList.contains('is-model-ready')){window.dispatchEvent(new CustomEvent('eno:intro-draw'))}else{root.classList.add('is-model-fallback')}};
+  const showMachine=()=>{if(forceIntro||!introWasPlayed)resetHomeScroll();root.classList.add('is-machine');status.textContent='Turn the idea machine to enter';knob.disabled=false;window.dispatchEvent(new Event('eno:intro-machine-shown'));if(!reduce)playIdle(1)};
+  window.addEventListener('eno:intro-model-progress',()=>{});window.addEventListener('eno:intro-model-ready',()=>{root.classList.add('is-model-ready');if(root.classList.contains('is-machine')&&!isEntering){knob.disabled=false;status.textContent='Turn the idea machine to enter'}});window.addEventListener('eno:intro-model-error',()=>{
     root.classList.add('is-model-fallback');
-    status.textContent='Opening archive…';
-    knob.disabled=true;
-    if(root.classList.contains('is-machine')&&!finished){
-      later(()=>enterHome('skip'),650);
+    if(root.classList.contains('is-machine')&&!isEntering){
+      knob.disabled=false;
+      status.textContent='Turn the idea machine to enter';
     }
   });window.addEventListener('eno:intro-complete',()=>enterHome('draw'));
-  openVideo.addEventListener('ended',()=>holdFinalFrame(openVideo));skip.addEventListener('click',()=>enterHome('skip'));knob.addEventListener('click',()=>reduce?enterHome('skip'):turnMachine());
+  openVideo.addEventListener('ended',()=>{holdFinalFrame(openVideo);if(isEntering&&!root.classList.contains('is-model-ready')&&!finished)later(()=>enterHome('skip'),220)});skip.addEventListener('click',()=>enterHome('skip'));knob.addEventListener('click',()=>reduce?enterHome('skip'):turnMachine());
   const bootIntro=()=>{if(root.dataset.introBooted==='true')return;root.dataset.introBooted='true';if(reduce){later(()=>{showMachine();root.classList.add('is-reduced')},380)}else{later(showMachine,2150)}};if(window.__ENO_ARCHIVE_READY__)bootIntro();else window.addEventListener('eno:archive-ready',bootIntro,{once:true})
 })();
 </script>
@@ -1529,7 +1578,14 @@ import * as THREE from 'three';import{GLTFLoader}from'three/addons/loaders/GLTFL
     else if(elapsed<4.15){const t=ease.inOut(clamp((elapsed-3.53)/.62));position.lerpVectors(near,pass,t);position.y+=Math.sin(t*Math.PI)*.1;position.z=mix(5.4,6.55,t);rotation={x:8.86+t*3.35,y:2.75+t*1.12,z:.07-t*.28};scale=mix(baseScale*1.02,baseScale*1.12,t);root.classList.add('is-capsule-approach');if(t>.25)root.classList.add('is-capsule-wipe')}
     else{window.dispatchEvent(new Event('eno:intro-complete'));drawing=false;return}
     setPose(position,rotation,scale);render();raf=requestAnimationFrame(animate)};
-  loader.load('assets/models/portfolio-capsule.glb',gltf=>{const model=gltf.scene,box=new THREE.Box3().setFromObject(model),center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3()),maxDimension=Math.max(size.x,size.y,size.z);model.position.sub(center);group=new THREE.Group();group.add(model);scene.add(group);baseScale=1.38/maxDimension;modelRadius=maxDimension*.5;group.visible=false;loaded=true;root.dataset.capsuleMeshes=String(model.getObjectsByProperty('isMesh',true).length);root.dataset.capsuleMaterials=String(new Set(model.getObjectsByProperty('isMesh',true).map(mesh=>mesh.material).flat()).size);resize();window.dispatchEvent(new Event('eno:intro-model-ready'))},event=>{if(event.total)window.dispatchEvent(new CustomEvent('eno:intro-model-progress',{detail:Math.round(event.loaded/event.total*100)}))},()=>window.dispatchEvent(new Event('eno:intro-model-error')));
+  let capsuleLoadStarted=false;
+  const startCapsuleLoad=()=>{
+    if(capsuleLoadStarted)return;
+    capsuleLoadStarted=true;
+    loader.load('assets/models/portfolio-capsule.glb',gltf=>{const model=gltf.scene,box=new THREE.Box3().setFromObject(model),center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3()),maxDimension=Math.max(size.x,size.y,size.z);model.position.sub(center);group=new THREE.Group();group.add(model);scene.add(group);baseScale=1.38/maxDimension;modelRadius=maxDimension*.5;group.visible=false;loaded=true;root.dataset.capsuleMeshes=String(model.getObjectsByProperty('isMesh',true).length);root.dataset.capsuleMaterials=String(new Set(model.getObjectsByProperty('isMesh',true).map(mesh=>mesh.material).flat()).size);resize();window.dispatchEvent(new Event('eno:intro-model-ready'))},event=>{if(event.total)window.dispatchEvent(new CustomEvent('eno:intro-model-progress',{detail:Math.round(event.loaded/event.total*100)}))},()=>window.dispatchEvent(new Event('eno:intro-model-error')));
+  };
+  window.addEventListener('eno:intro-machine-shown',startCapsuleLoad,{once:true});
+  if(root.classList.contains('is-machine')) startCapsuleLoad();
   window.addEventListener('eno:intro-draw',()=>{if(!loaded||drawing||reduce)return;drawing=true;group.visible=true;root.classList.add('is-capsule-visible');startTime=performance.now();cancelAnimationFrame(raf);raf=requestAnimationFrame(animate)});addEventListener('resize',resize,{passive:true});resize();render();
 })();
 </script>
@@ -1574,7 +1630,7 @@ function setupEntrance(size){
   requestAnimationFrame(()=>{scrollPlugin.refresh();syncPreEntry()})
 }
 function load(){if(renderer)return;scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(30,1,.01,1000);renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.9;renderer.domElement.setAttribute('role','img');renderer.domElement.setAttribute('aria-label','韩束亮白瓶三维产品模型');host.prepend(renderer.domElement);resize();scene.add(new THREE.HemisphereLight(0xfffbf8,0x727985,1.5));[['key',0xffeee8,3.1,-4,4.5,5],['rim',0xe1e9ff,2.6,4,3,-4],['top',0xffffff,1.2,0,7,1]].forEach(([,c,i,x,y,z])=>{const l=new THREE.DirectionalLight(c,i);l.position.set(x,y,z);scene.add(l)});const draco=new DRACOLoader();draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/libs/draco/');const loader=new GLTFLoader();loader.setDRACOLoader(draco);loader.load('assets/models/hanshu-bottle.glb',g=>{const m=g.scene;m.traverse(n=>{if(n.isMesh){n.castShadow=true;n.receiveShadow=true}});const box=new THREE.Box3().setFromObject(m),center=box.getCenter(new THREE.Vector3());m.position.set(-center.x,-box.min.y,-center.z);m.updateMatrixWorld(true);const size=new THREE.Box3().setFromObject(m).getSize(new THREE.Vector3());group=new THREE.Group();group.add(m);idleGroup=new THREE.Group();idleGroup.add(group);entryGroup=new THREE.Group();entryGroup.add(idleGroup);scene.add(entryGroup);const canvas=document.createElement('canvas');canvas.width=canvas.height=128;const c=canvas.getContext('2d'),grad=c.createRadialGradient(64,64,4,64,64,60);grad.addColorStop(0,'rgba(40,30,34,.25)');grad.addColorStop(1,'rgba(40,30,34,0)');c.fillStyle=grad;c.fillRect(0,0,128,128);const shadow=new THREE.Mesh(new THREE.PlaneGeometry(size.x*1.7,size.x*.7),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(canvas),transparent:true,depthWrite:false}));shadow.rotation.x=-Math.PI/2;scene.add(shadow);const target=size.y*.47,distance=(size.y/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov)/2)))/(mobile()?.96:.84);camera.position.set(0,target-size.y*.05,distance);camera.lookAt(0,target,0);setupEntrance(size);loaded=true;status.textContent='3D MODEL · 100%';setTimeout(()=>status.hidden=true,500);render();window.dispatchEvent(new Event('eno:hanshu-model-ready'));start()},e=>{if(e.total)status.textContent=`3D MODEL · ${Math.round(e.loaded/e.total*100)}%`},()=>{status.hidden=true;fallback.style.display='grid';window.dispatchEvent(new Event('eno:hanshu-model-error'))});}
-load();new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)start();else if(raf){cancelAnimationFrame(raf);raf=0}syncPreEntry()},{threshold:.01}).observe(section);motion?.subscribe(()=>{if(motionActive()){start();syncPreEntry()}else{if(raf){cancelAnimationFrame(raf);raf=0}preEntryTimeline?.pause();render()}});if(matchMedia('(pointer:fine)').matches&&!reduce){stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();pointer.tx=(e.clientX-r.left)/r.width*2-1;pointer.ty=(e.clientY-r.top)/r.height*2-1});stage.addEventListener('pointerleave',()=>pointer.tx=pointer.ty=0)}addEventListener('resize',resize);
+const modelWarmObserver=new IntersectionObserver(es=>{if(es[0].isIntersecting){load();modelWarmObserver.disconnect()}},{rootMargin:'900px 0px',threshold:.001});modelWarmObserver.observe(section);new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)start();else if(raf){cancelAnimationFrame(raf);raf=0}syncPreEntry()},{threshold:.01}).observe(section);motion?.subscribe(()=>{if(motionActive()){start();syncPreEntry()}else{if(raf){cancelAnimationFrame(raf);raf=0}preEntryTimeline?.pause();render()}});if(matchMedia('(pointer:fine)').matches&&!reduce){stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();pointer.tx=(e.clientX-r.left)/r.width*2-1;pointer.ty=(e.clientY-r.top)/r.height*2-1});stage.addEventListener('pointerleave',()=>pointer.tx=pointer.ty=0)}addEventListener('resize',resize);
 </script>
 <script>
 /* One persistent BGM instance. Fully buffered by the Ready Gate; starts only from Intro user interaction. */
